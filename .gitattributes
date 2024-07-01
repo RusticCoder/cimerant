@@ -1,0 +1,151 @@
+# This file is inspired by https://github.com/alexkaratarakis/gitattributes
+#
+# Auto detect text files and perform LF normalization
+# http://davidlaing.com/2012/09/19/customise-your-gitattributes-to-become-a-git-ninja/
+* text=auto
+
+# The above will handle all files NOT found below
+# These files are text and should be normalized (Convert crlf => lf)
+
+*               text=auto
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+*.coffee        text
+*.cql           text
+*.css           text
+*.df            text
+*.ejs           text
+*.html          text diff=html
+*.java          text diff=java
+*.js            text
+*.json          text
+*.less          text
+*.properties    text
+*.ps1           text eol=crlf
+*.sass          text
+*.scss          text
+*.sh            text eol=lf
+*.sql           text
+*.ts            text
+*.txt           text
+*.xml           text
+*.yaml          text
+*.yml           text
+
+# Documents
+*.adoc          text
+*.csv           text
+*.doc           diff=astextplain
+*.DOC           diff=astextplain
+*.docx          diff=astextplain
+*.DOCX          diff=astextplain
+*.dot           diff=astextplain
+*.DOT           diff=astextplain
+*.markdown      text
+*.md            text
+*.mustache      text
+*.pdf           diff=astextplain
+*.PDF           diff=astextplain
+*.rtf           diff=astextplain
+*.RTF           diff=astextplain
+*.tab           text
+*.textile       text
+*.tsv           text
+*.txt           text
+*COPYRIGHT*     text
+*README*        text
+AUTHORS         text
+CHANGELOG       text
+CHANGES         text
+CONTRIBUTING    text
+COPYING         text
+copyright       text
+INSTALL         text
+license         text
+LICENSE         text
+NEWS            text
+readme          text
+TODO            text
+
+# Graphics
+*.eps           binary
+*.gif           binary
+*.ico           binary
+*.jpeg          binary
+*.jpg           binary
+*.png           binary
+# SVG treated as an asset (binary) by default. If you want to treat it as text,
+# comment-out the following line and uncomment the line after.
+*.svg           binary
+#*.svg          text
+*.tif           binary
+*.tiff          binary
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.class         binary
+*.jar           binary
+*.war           binary
+
+## LINTERS
+.csslintrc      text
+.eslintrc       text
+.jscsrc         text
+.jshintignore   text
+.jshintrc       text
+.stylelintrc    text
+
+## CONFIGS
+.editorconfig   text
+.gitattributes  text
+.gitconfig      text
+.gitignore      text
+.htaccess       text
+*.conf          text
+*.config        text
+*.npmignore     text
+
+## HEROKU
+.slugignore     text
+Procfile        text
+
+## AUDIO
+*.kar           binary
+*.m4a           binary
+*.mid           binary
+*.midi          binary
+*.mp3           binary
+*.ogg           binary
+*.ra            binary
+
+## VIDEO
+*.3gp           binary
+*.3gpp          binary
+*.as            binary
+*.asf           binary
+*.asx           binary
+*.fla           binary
+*.flv           binary
+*.m4v           binary
+*.mng           binary
+*.mov           binary
+*.mp4           binary
+*.mpeg          binary
+*.mpg           binary
+*.swc           binary
+*.swf           binary
+*.webm          binary
+
+## ARCHIVES
+*.7z            binary
+*.gz            binary
+*.rar           binary
+*.tar           binary
+*.zip           binary
+
+## FONTS
+*.eot           binary
+*.otf           binary
+*.ttf           binary
+*.woff          binary
+*.woff2         binary

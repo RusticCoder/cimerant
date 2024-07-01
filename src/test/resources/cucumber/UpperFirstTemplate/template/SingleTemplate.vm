@@ -1,0 +1,37 @@
+#if($this.getGrouping())
+#set($length = $this.getGrouping().size() - 1)
+#foreach($i in [0..$length])
+#set($quiet = $this.getGrouping().set($i, $this.upperFirst($this.getGrouping().get($i))))
+#end
+#end
+$this.setFileName($this.upperFirst($this.getFileName()))
+<root#if($this.getFileName()) name="$this.getFileName()"#end#if($this.getGrouping()) grouping="$this.getGrouping()"#end>
+    <attributes size="$this.getAttributes().size()">
+        #foreach($attribute in $this.getAttributes().entrySet())
+        <attribute key="$this.upperFirst($attribute.getKey())">$this.upperFirst($attribute.getValue())</attribute>
+        #end
+    </attributes>
+    #foreach($object in $this.getObjects())
+    #if($object.getGrouping())
+    #set($length = $object.getGrouping().size() - 1)
+    #foreach($i in [0..$length])
+    #set($quiet = $object.getGrouping().set($i, $object.upperFirst($object.getGrouping().get($i))))
+    #end
+    #end
+    #if($object.getFileName())
+    $object.setFileName($object.upperFirst($object.getFileName()))
+    #end
+    <object#if($object.getFileName()) name="$object.getFileName()"#end#if($object.getGrouping()) grouping="$object.getGrouping()"#end>
+        <attributes size="$object.getAttributes().size()">
+            #foreach ($attribute in $object.getAttributes().entrySet())
+            <attribute key="$object.upperFirst($attribute.getKey())">$object.upperFirst($attribute.getValue())</attribute>
+            #end
+        </attributes>
+        <fields size="$object.getFields().size()">
+            #foreach ($field in $object.getFields().entrySet())
+            <field key="$object.upperFirst($field.getKey())">$field.getValue()</field>
+            #end
+        </fields>
+    </object>
+    #end
+</root>

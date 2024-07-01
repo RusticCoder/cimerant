@@ -1,0 +1,176 @@
+
+<root name="destination">
+    <attributes size="11">
+        <attribute key="command_line_key_1">here's_message_#1</attribute>
+        <attribute key="command_line_key_2">here's_message_#2</attribute>
+        <attribute key="model_key_1">a_test_string</attribute>
+        <attribute key="model_key_2">a_test_string</attribute>
+        <attribute key="model_key_3">a_test_string</attribute>
+        <attribute key="model_key_4">a_test_string</attribute>
+        <attribute key="model_key_5">a_test_string</attribute>
+        <attribute key="model_key_6">a_test_string</attribute>
+        <attribute key="model_key_7">a$test$string</attribute>
+        <attribute key="model_key_8">ateststring</attribute>
+        <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+    </attributes>
+    
+    <object name="destination_a_test_string" grouping="[com, a_test_string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a_test_string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a$test$string" grouping="[com, a$test$string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a$test$string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a_test_string" grouping="[com, a_test_string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a_test_string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a_test_string" grouping="[com, a_test_string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a_test_string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a_test_string" grouping="[com, a_test_string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a_test_string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a_test_string" grouping="[com, a_test_string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a_test_string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a_test_string" grouping="[com, a_test_string]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a_test_string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    
+    <object name="destination_a_test_string" grouping="[com, ateststring]">
+        <attributes size="12">
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ateststring">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

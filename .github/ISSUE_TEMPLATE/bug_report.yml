@@ -1,0 +1,101 @@
+name: Bug Report
+description: Report an Cimerant bug.
+title: "[Bug]: "
+labels: "bug :new:"
+body:
+- type: markdown
+  attributes:
+    value: |
+      Thank you for taking the time to fill out this bug report.
+- type: input
+  id: contact
+  attributes:
+    label: Contact Details (optional)
+    description: How can we get in touch with you if we need more info?
+    placeholder: ex. email@example.com
+  validations:
+    required: false
+- type: checkboxes
+  attributes:
+    label: Preflight Checklist
+    description: Please ensure you've completed all of the following.
+    options:
+      - label: I have read the [Contributing Guidelines](https://github.com/RusticCoder/.github/blob/master/CONTRIBUTING.md) for this project.
+        required: true
+      - label: I agree to follow the [Code of Conduct](https://github.com/RusticCoder/.github/blob/master/CODE_OF_CONDUCT.md) that this project adheres to.
+        required: true
+      - label: I have searched the [issue tracker](https://github.com/RusticCoder/cimerant/issues) for a bug report that matches the one I want to file, without success.
+        required: true
+- type: input
+  attributes:
+    label: Cimerant Version
+    description: |
+      What version of Cimerant are you using?
+
+      Note: Please only report issues for [currently supported versions of Cimerant](https://rusticcoder.github.io/cimerant/docs/latest/support#currently-supported-versions).
+    placeholder: 1.0.0
+  validations:
+    required: true
+- type: dropdown
+  attributes:
+    label: Operating System
+    options:
+      - Windows
+      - MacOS
+      - Linux (specify distro below)
+      - Other (specify OS below)
+  validations:
+    required: true
+- type: input
+  attributes:
+    label: Operating System Version
+    description: What operating system version are you using? On Windows, click Start button > Settings > System > About. On macOS, click the Apple Menu > About This Mac. On Linux, use lsb_release or uname -a.
+    placeholder: "e.g. Windows 10 v1909, macOS v10.15.7, or Ubuntu v20.04"
+  validations:
+    required: true
+- type: dropdown
+  attributes:
+    label: Operating System Architecture
+    options:
+      - x64
+      - ia32
+      - arm64 (including Apple Silicon)
+      - Other (specify below)
+  validations:
+    required: true
+- type: input
+  attributes:
+    label: Last Known Working Cimerant Version
+    description: What is the last version of Cimerant this worked in, if applicable?
+    placeholder: 1.0.0
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Expected Behavior
+    description: A clear and concise description of what you expected to happen.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Actual Behavior
+    description: A clear and concise description of what actually happens.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: To Reproduce
+    description: |
+      Steps to reproduce the behavior:
+      1. Using model '...'
+      2. Using template '....'
+      3. Using command line arguments '....'
+      4. See error
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Additional Information
+    description: If your problem needs further explanation please add more information here.
+  validations:
+    required: false

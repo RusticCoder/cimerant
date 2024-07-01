@@ -1,0 +1,21 @@
+#if($this.getGrouping())
+#set($length = $this.getGrouping().size() - 1)
+#foreach($i in [0..$length])
+#set($quiet = $this.getGrouping().set($i, $this.forwardSlashTitleCase($this.getGrouping().get($i))))
+#end
+#end
+$this.setFileName($this.forwardSlashTitleCase($this.getFileName()))
+<root#if($this.getFileName()) name="$this.getFileName()"#end#if($this.getGrouping()) grouping="$this.getGrouping()"#end>
+    <object#if($this.getFileName()) name="$this.getFileName()"#end#if($this.getGrouping()) grouping="$this.getGrouping()"#end>
+        <attributes size="$this.getAttributes().size()">
+            #foreach ($attribute in $this.getAttributes().entrySet())
+            <attribute key="$this.forwardSlashTitleCase($attribute.getKey())">$this.forwardSlashTitleCase($attribute.getValue())</attribute>
+            #end
+        </attributes>
+        <fields size="$this.getFields().size()">
+            #foreach ($field in $this.getFields().entrySet())
+            <field key="$this.forwardSlashTitleCase($field.getKey())">$field.getValue()</field>
+            #end
+        </fields>
+    </object>
+</root>

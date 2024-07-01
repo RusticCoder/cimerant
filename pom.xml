@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================= -->
+<!-- Built-in Maven Goals                                                    -->
+<!-- https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Built-in_Lifecycle_Bindings -->
+<!-- ======================================================================= -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.rusticcoder</groupId>
+    <artifactId>cimerant</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Cimerant</name>
+    <description>A model-driven template code generator tool to create templated applications using Apache Velocity and formatted text files as the model.</description>
+    <url>https://github.com/RusticCoder/cimerant</url>
+    <inceptionYear>2023</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>GPL-3.0-only</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+            <distribution>manual</distribution>
+            <comments>GNU General Public License v3.0 only</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>rcoder</id>
+            <name>Rustic Coder</name>
+            <email>Rustic.Coder@google.com</email>
+            <url>https://github.com/RusticCoder</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Chicago</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:file://${project.basedir}/.git</connection>
+        <developerConnection>scm:git:file://${project.basedir}/.git</developerConnection>
+        <url>scm:git:file://${project.basedir}/.git</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/RusticCoder/cimerant/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>dev</id>
+            <name>Local repository</name>
+            <url>file://${user.home}/.m2/repository</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <checkstyle.version>3.4.0</checkstyle.version>
+        <commonmark.version>0.22.0</commonmark.version>
+        <doxia.version>1.11.1</doxia.version>
+        <fasterxml.version>2.17.1</fasterxml.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.version>3.13.0</maven.compiler.version>
+        <maven.dependency.version>3.7.1</maven.dependency.version>
+        <maven.javadoc.version>3.7.0</maven.javadoc.version>
+        <maven.license.version>2.4.0</maven.license.version>
+        <maven.surefire.version>3.3.0</maven.surefire.version>
+        <pmd.analysisCacheLocation>${project.build.directory}/pmd/pmd.cache</pmd.analysisCacheLocation>
+        <pmd.benchmarkOutputFilename>${project.build.directory}/pmd/pmd-benchmark.txt</pmd.benchmarkOutputFilename>
+        <pmd.rulesetsTargetDirectory>${project.build.directory}/pmd/rulesets</pmd.rulesetsTargetDirectory>
+        <pmd.version>3.23.0</pmd.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <slf4j.version>2.1.0-alpha1</slf4j.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.junit/junit-bom      -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.11.0-M2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-bom -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-bom</artifactId>
+                <version>7.18.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- =============================================================== -->
+        <!-- Commons CLI: An API for parsing command line options passed     -->
+        <!-- to programs.                                                    -->
+        <!-- https://commons.apache.org/proper/commons-cli                   -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli      -->
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>
+            <version>1.8.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Commons Lang: Provide enough methods for manipulation of its    -->
+        <!-- core classes.                                                   -->
+        <!-- https://commons.apache.org/proper/commons-lang                  -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Commons Text: A library focused on algorithms working on        -->
+        <!-- strings.                                                        -->
+        <!-- https://commons.apache.org/proper/commons-text                  -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.12.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Commons Collections: Build upon the JDK classes by providing    -->
+        <!-- new interfaces, implementations and utilities.                  -->
+        <!-- https://commons.apache.org/proper/commons-collections           -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.5.0-M2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Commons IO: A library of utilities to assist with developing    -->
+        <!-- IO functionality.                                               -->
+        <!-- https://commons.apache.org/proper/commons-io                    -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io        -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.16.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- CommonMark: A strongly defined, highly compatible specification -->
+        <!-- of Markdown.                                                    -->
+        <!-- https://commonmark.org                                          -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.commonmark/commonmark    -->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>${commonmark.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.commonmark/commonmark-ext-gfm-tables -->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark-ext-gfm-tables</artifactId>
+            <version>${commonmark.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Jackson: A suite of tools for parsing JSON.                     -->
+        <!-- https://github.com/FasterXML                                    -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${fasterxml.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${fasterxml.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- SLF4J: A simple facade or abstraction for various logging       -->
+        <!-- frameworks.                                                     -->
+        <!-- https://www.slf4j.org                                           -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api          -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Velocity: A Java-based template engine.                         -->
+        <!-- https://velocity.apache.org                                     -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-engine-core -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Cucumber: A tool that supports Behaviour-Driven Development     -->
+        <!-- (BDD).                                                          -->
+        <!-- https://cucumber.io/docs/installation/java/#maven               -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java    -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine -->
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit   -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit   -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- JUnit: A testing framework                                      -->
+        <!-- https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- ArchUnit: Unit test your Java architecture                      -->
+        <!-- https://www.archunit.org/getting-started                        -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/com.tngtech.archunit/archunit-junit5 -->
+        <!-- <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5</artifactId>
+            <version>1.3.0</version>
+            <scope>test</scope>
+        </dependency> -->
+
+        <!-- =============================================================== -->
+        <!-- System Lambda: A collection of functions for testing code which -->
+        <!-- uses java.lang.System.                                          -->
+        <!-- https://github.com/stefanbirkner/system-lambda                  -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/com.github.stefanbirkner/system-lambda -->
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-lambda</artifactId>
+            <version>1.2.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Error Prone dependency                                          -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.core/org.eclipse.core.runtime -->
+        <dependency>
+            <groupId>org.eclipse.core</groupId>
+            <artifactId>org.eclipse.core.runtime</artifactId>
+            <version>3.7.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- =============================================================== -->
+        <!-- Evo Inflector                                                   -->
+        <!-- =============================================================== -->
+
+        <!-- https://mvnrepository.com/artifact/org.atteo/evo-inflector -->
+        <dependency>
+            <groupId>org.atteo</groupId>
+            <artifactId>evo-inflector</artifactId>
+            <version>1.3</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <defaultGoal>clean package</defaultGoal>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <pluginManagement>
+            <plugins>
+                <!-- ======================================================= -->
+                <!-- Surefire: A test framework.                             -->
+                <!-- https://maven.apache.org/surefire/maven-surefire-plugin/usage.html -->
+                <!-- Goals:                                                      -->
+                <!-- mvn surefire:test                                       -->
+                <!--   https://maven.apache.org/surefire/maven-surefire-plugin/test-mojo.html -->
+                <!--   Runs the unit tests of an application.                -->
+                <!-- ======================================================= -->
+
+                <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.version}</version>
+                    <configuration>
+                        <argLine>-ea -Xmx8g -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                        <parallel>all</parallel>
+                        <perCoreThreadCount>true</perCoreThreadCount>
+                        <testFailureIgnore>false</testFailureIgnore>
+                        <useUnlimitedThreads>true</useUnlimitedThreads>
+                        <properties>
+                            <!-- Work around. Surefire does not include enough information to disambiguate between different examples and scenarios. -->
+                            <configurationParameters>cucumber.junit-platform.naming-strategy=long
+                                junit.platform.reporting.open.xml.enabled=true
+                                junit.platform.reporting.output.dir=target/site/surefire-reports</configurationParameters>
+                        </properties>
+                    </configuration>
+                </plugin>
+
+                <!-- =========================================================== -->
+                <!-- JPackage Plugin: The jpackage maven plugin lets you create  -->
+                <!-- a custom runtime image/installer with the jpackage tool.    -->
+                <!-- The main idea is to avoid being tied to project artifacts   -->
+                <!-- and allow the user to fully control the process of creating -->
+                <!-- an image/installer.                                         -->
+                <!-- https://akman.github.io/jpackage-maven-plugin/usage.html    -->
+                <!-- Goals:                                                      -->
+                <!-- mvn jpackage:jpackage                                       -->
+                <!--   https://akman.github.io/jpackage-maven-plugin/jpackage-mojo.html -->
+                <!--   The jpackage goal lets you create a custom runtime image  -->
+                <!--   with the jpackage tool.                                   -->
+                <!-- =========================================================== -->
+
+                <!-- https://mvnrepository.com/artifact/com.github.akman/jpackage-maven-plugin -->
+                <plugin>
+                    <groupId>com.github.akman</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>0.1.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- =========================================================== -->
+            <!-- Clean: A plugin used when you want to remove files          -->
+            <!-- generated at build-time in a project's directory.           -->
+            <!-- https://www.mojohaus.org/license-maven-plugin/usage.html    -->
+            <!-- Goals:                                                      -->
+            <!-- mvn clean:clean                                             -->
+            <!--   https://maven.apache.org/plugins/maven-clean-plugin/clean-mojo.html -->
+            <!--   This attempts to clean a project's working directory of   -->
+            <!--   the files that were generated at build-time.              -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}</directory>
+                            <includes>
+                                <include>LICENSE</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- License Plugin: Manages the license of a maven project and  -->
+            <!-- its dependencies.                                           -->
+            <!-- https://www.mojohaus.org/license-maven-plugin/usage.html    -->
+            <!-- Goals:                                                      -->
+            <!-- mvn license:update-project-license                          -->
+            <!--   https://www.mojohaus.org/license-maven-plugin/update-project-license-mojo.html -->
+            <!--   Updates (or creates) the main project license file        -->
+            <!--   according to the given license defines as licenseName.    -->
+            <!-- mvn license:add-third-party                                 -->
+            <!--   https://www.mojohaus.org/license-maven-plugin/add-third-party-mojo.html -->
+            <!--   Generate the third-party license file.                    -->
+            <!-- mvn license:third-party-report                              -->
+            <!--   https://www.mojohaus.org/license-maven-plugin/third-party-report-mojo.html -->
+            <!--   Generates a report of all third-parties detected in the   -->
+            <!--   module.                                                   -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/license-maven-plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${maven.license.version}</version>
+                <configuration>
+                    <organizationName>.</organizationName>
+                    <licenseName>gpl_v3</licenseName>
+                    <licenseFile>${basedir}/LICENSE</licenseFile>
+                    <outputDirectory>${project.build.directory}/site/license</outputDirectory>
+                    <thirdPartyFilename>THIRD-PARTY.txt</thirdPartyFilename>
+                    <sortArtifactByName>true</sortArtifactByName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>license-plugin</id>
+                        <goals>
+                            <goal>update-project-license</goal>
+                            <goal>add-third-party</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>license-prepare-package</id>
+                        <goals>
+                            <goal>third-party-report</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Compiler Plugin: Used to compile the sources of your        -->
+            <!-- project.                                                    -->
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn compiler:compile                                        -->
+            <!--   https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html -->
+            <!--   Compiles application sources.                             -->
+            <!-- mvn compiler:testCompile                                    -->
+            <!--   https://maven.apache.org/plugins/maven-compiler-plugin/testCompile-mojo.html -->
+            <!--   Compiles application test sources.                        -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <release>${maven.compiler.target}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:unchecked</arg>
+                        <arg>-XDcompilePolicy=simple</arg>
+                        <arg>-Xplugin:ErrorProne -XepOpt:NullAway:AnnotatedPackages=com.uber</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <!-- =============================================== -->
+                        <!-- Error Prone: A static analysis tool for Java    -->
+                        <!-- that catches common programming mistakes at     -->
+                        <!-- compile-time.                                   -->
+                        <!-- https://errorprone.info/docs/installation       -->
+                        <!-- =============================================== -->
+
+                        <!-- https://mvnrepository.com/artifact/com.google.errorprone/error_prone_core -->
+                        <path>
+                            <groupId>com.google.errorprone</groupId>
+                            <artifactId>error_prone_core</artifactId>
+                            <version>2.24.1</version>
+                        </path>
+
+                        <!-- =============================================== -->
+                        <!-- NullAway: Fast Annotation-Based Null Checking   -->
+                        <!-- for Java.                                       -->
+                        <!-- https://github.com/uber/NullAway/wiki/Configuration -->
+                        <!-- =============================================== -->
+
+                        <!-- https://mvnrepository.com/artifact/com.uber.nullaway/nullaway -->
+                        <path>
+                            <groupId>com.uber.nullaway</groupId>
+                            <artifactId>nullaway</artifactId>
+                            <version>0.10.22</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Maven Enforcer Plugin: The Loving Iron Fist of Maven        -->
+            <!-- https://maven.apache.org/enforcer/maven-enforcer-plugin/usage.html -->
+            <!-- Built-In Rules: The following built-in rules ship along     -->
+            <!-- with the enforcer plugin.                                   -->
+            <!-- https://maven.apache.org/enforcer/enforcer-rules/index.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn enforcer:enforce                                        -->
+            <!--   https://maven.apache.org/enforcer/maven-enforcer-plugin/enforce-mojo.html -->
+            <!--   This goal executes the defined enforcer-rules once per    -->
+            <!--   module.                                                   -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-enforcer-plugin -->
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/requireJavaVersion.html -->
+                    <execution>
+                        <id>enforcer-plugin-requireJavaVersion</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>${maven.compiler.target}</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html -->
+                    <execution>
+                        <id>enforcer-plugin-requireMavenVersion</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.9.1</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/banDuplicatePomDependencyVersions.html -->
+                    <execution>
+                        <id>enforcer-plugin-banDuplicatePomDependencyVersions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDuplicatePomDependencyVersions></banDuplicatePomDependencyVersions>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/banDynamicVersions.html -->
+                    <execution>
+                        <id>enforcer-plugin-banDynamicVersions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDynamicVersions>
+                                    <ignores>
+                                        <ignore>org.apache.maven</ignore>
+                                    </ignores>
+                                    <allowSnapshots>false</allowSnapshots>
+                                </banDynamicVersions>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/requirePluginVersions.html -->
+                    <execution>
+                        <id>enforcer-plugin-requirePluginVersions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requirePluginVersions>
+                                    <message>Best Practice is to always define plugin versions!</message>
+                                    <banLatest>true</banLatest>
+                                    <banRelease>true</banRelease>
+                                    <banSnapshots>true</banSnapshots>
+                                    <phases>clean,deploy,site</phases>
+                                    <unCheckedPluginList>org.apache.maven.plugins:maven-site-plugin, org.apache.maven.plugins:maven-resources-plugin, org.apache.maven.plugins:maven-jar-plugin, org.apache.maven.plugins:maven-clean-plugin, org.apache.maven.plugins:maven-install-plugin,
+                                        org.apache.maven.plugins:maven-deploy-plugin</unCheckedPluginList>
+                                </requirePluginVersions>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/requireReleaseDeps.html    -->
+                    <!-- https://maven.apache.org/enforcer/enforcer-rules/requireReleaseVersion.html -->
+                    <execution>
+                        <id>enforcer-plugin-requireReleaseVersion</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireReleaseVersion>
+                                    <message>No Snapshots Allowed!</message>
+                                </requireReleaseVersion>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Spotless: Keep your code spotless.                          -->
+            <!-- https://github.com/diffplug/spotless/tree/main/plugin-maven -->
+            <!-- Goals:                                                      -->
+            <!-- mvn spotless:apply                                          -->
+            <!--   Implement automated code formatting.                      -->
+            <!-- mvn spotless:check                                          -->
+            <!--   Validate if code was formatted.                           -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/com.diffplug.spotless/spotless-maven-plugin -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.43.0</version>
+                <configuration>
+                    <upToDateChecking>
+                        <enabled>true</enabled>
+                        <indexFile>${project.build.directory}/spotless/index</indexFile>
+                    </upToDateChecking>
+                    <gherkin>
+                        <includes>
+                            <include>src/**/*.feature</include>
+                        </includes>
+                        <gherkinUtils></gherkinUtils>
+                    </gherkin>
+                    <json>
+                        <includes>
+                            <include>src/**/*.json</include>
+                        </includes>
+                        <excludes>
+                            <exclude>src/test/resources/cucumber/Err0020Test/model/Model.json</exclude>
+                            <exclude>src/test/resources/cucumber/Test0001SpecJ/result/destinationFile.json</exclude>
+                            <exclude>src/test/resources/cucumber/Test0001SpecU/result/destinationFile.json</exclude>
+                            <exclude>src/test/resources/cucumber/Test0001SpecX/result/destinationFile.json</exclude>
+                        </excludes>
+                        <jackson>
+                            <features>
+                                <INDENT_OUTPUT>true</INDENT_OUTPUT>
+                                <ORDER_MAP_ENTRIES_BY_KEYS>true</ORDER_MAP_ENTRIES_BY_KEYS>
+                            </features>
+                            <jsonFeatures>
+                                <QUOTE_FIELD_NAMES>true</QUOTE_FIELD_NAMES>
+                            </jsonFeatures>
+                            <spaceBeforeSeparator>true</spaceBeforeSeparator>
+                        </jackson>
+                    </json>
+                    <java>
+                        <removeUnusedImports>
+                            <engine>google-java-format</engine>
+                        </removeUnusedImports>
+                        <googleJavaFormat>
+                            <version>1.19.2</version>
+                            <style>GOOGLE</style>
+                        </googleJavaFormat>
+                    </java>
+                    <markdown>
+                        <includes>
+                            <include>src/**/*.md</include>
+                        </includes>
+                        <flexmark></flexmark>
+                    </markdown>
+                    <pom>
+                        <includes>
+                            <include>pom.xml</include>
+                        </includes>
+                        <sortPom>
+                            <nrOfIndentSpace>4</nrOfIndentSpace>
+                        </sortPom>
+                    </pom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>spotless-plugin-apply</id>
+                        <goals>
+                            <goal>apply</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <id>spotless-plugin-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Checkstyle: Adhere to a coding standard.                    -->
+            <!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn checkstyle:checkstyle                                   -->
+            <!--   https://maven.apache.org/plugins/maven-checkstyle-plugin/checkstyle-mojo.html -->
+            <!--   A reporting goal that performs Checkstyle analysis and    -->
+            <!--   generates a report on violations.                         -->
+            <!-- mvn checkstyle:check                                        -->
+            <!--   https://maven.apache.org/plugins/maven-checkstyle-plugin/check-mojo.html -->
+            <!--   A goal that performs Checkstyle analysis and outputs      -->
+            <!--   violations or a count of violations to the console,       -->
+            <!--   potentially failing the build. It can also be configured  -->
+            <!--   to re-use an earlier analysis.                            -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <configuration>
+                    <sourceDirectories>
+                        <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+                    </sourceDirectories>
+                    <configLocation>${project.basedir}/config/checkstyle/google_checks.xml</configLocation>
+                    <consoleOutput>false</consoleOutput>
+                    <failsOnError>false</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <dependencies>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.doxia/doxia-sitetools -->
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-sitetools</artifactId>
+                        <version>${doxia.version}</version>
+                        <type>pom</type>
+                        <scope>compile</scope>
+                    </dependency>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.doxia/doxia-site-renderer -->
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-site-renderer</artifactId>
+                        <version>${doxia.version}</version>
+                        <scope>compile</scope>
+                    </dependency>
+                    <!-- https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle -->
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>10.17.0</version>
+                        <scope>compile</scope>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>checkstyle-plugin</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- PMD: An extensible cross-language static code analyzer.     -->
+            <!-- https://maven.apache.org/plugins/maven-pmd-plugin/usage.html -->
+            <!-- https://docs.pmd-code.org/latest/pmd_userdocs_tools_maven.html -->
+            <!-- Copy/Paste Detector (CPD): Find duplicate code.             -->
+            <!-- https://docs.pmd-code.org/latest/pmd_userdocs_cpd.html      -->
+            <!-- Goals Overview                                              -->
+            <!-- https://maven.apache.org/plugins/maven-pmd-plugin/#goals-overview -->
+            <!-- Goals:                                                      -->
+            <!-- mvn pmd:pmd                                                 -->
+            <!--   https://maven.apache.org/plugins/maven-pmd-plugin/pmd-mojo.html -->
+            <!--   Creates a PMD site report based on the rulesets and       -->
+            <!--   configuration set in the plugin. It can also generate a   -->
+            <!--   pmd output file aside from the site report in any of the  -->
+            <!--   following formats: xml, csv or txt.                       -->
+            <!-- mvn pmd:check                                               -->
+            <!--   https://maven.apache.org/plugins/maven-pmd-plugin/check-mojo.html -->
+            <!--   Fails the build if there were any PMD violations in the   -->
+            <!--   source code. This goal invokes automatically pmd:pmd      -->
+            <!--   prior to executing itself.                                -->
+            <!-- mvn pmd:cpd                                                 -->
+            <!--   https://maven.apache.org/plugins/maven-pmd-plugin/cpd-mojo.html -->
+            <!--   Creates a report for PMD's Copy/Paste Detector (CPD)      -->
+            <!--   tool. It can also generate a cpd results file in any of   -->
+            <!--   these formats: xml, csv or txt.                           -->
+            <!-- mvn pmd:cpd-check                                           -->
+            <!--   https://maven.apache.org/plugins/maven-pmd-plugin/cpd-check-mojo.html -->
+            <!--   Fails the build if there were any CPD violations in the   -->
+            <!--   source code. This goal invokes automatically pmd:cpd      -->
+            <!--   prior to executing itself.                                -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
+            <plugin>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <configuration>
+                    <targetJdk>${maven.compiler.target}</targetJdk>
+                    <targetDirectory>${project.build.directory}/pmd</targetDirectory>
+                    <analysisCacheLocation>${pmd.analysisCacheLocation}</analysisCacheLocation>
+                    <benchmarkOutputFilename>${pmd.benchmarkOutputFilename}</benchmarkOutputFilename>
+                    <rulesetsTargetDirectory>${pmd.rulesetsTargetDirectory}</rulesetsTargetDirectory>
+                    <failOnViolation>false</failOnViolation>
+                    <failurePriority>1</failurePriority>
+                    <rulesets>
+                        <!-- <ruleset>${project.basedir}/config/pmd/arch4u-ruleset.xml</ruleset> -->
+                    </rulesets>
+                    <printFailingErrors>true</printFailingErrors>
+                    <excludeRoots>
+                        <excludeRoot>target/generated-sources/</excludeRoot>
+                    </excludeRoots>
+                </configuration>
+                <dependencies>
+                    <!-- https://mvnrepository.com/artifact/io.github.dgroup/arch4u-pmd -->
+                    <dependency>
+                        <groupId>io.github.dgroup</groupId>
+                        <artifactId>arch4u-pmd</artifactId>
+                        <version>0.2.6</version>
+                        <scope>compile</scope>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>pmd-plugin</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                    <execution>
+                        <id>pmd-report</id>
+                        <goals>
+                            <goal>pmd</goal>
+                            <goal>cpd</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- JavaDoc                                                     -->
+            <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn javadoc:javadoc                                         -->
+            <!--   https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
+            <!--   Generates the Javadoc files for the project. It executes  -->
+            <!--   the standard Javadoc tool and supports the parameters     -->
+            <!--   used by the tool.                                         -->
+            <!-- mvn javadoc:test-javadoc                                    -->
+            <!--   https://maven.apache.org/plugins/maven-javadoc-plugin/test-javadoc-mojo.html -->
+            <!--   Generates the test Javadoc files for the project. It      -->
+            <!--   executes the standard Javadoc tool and supports the       -->
+            <!--   parameters used by the tool.                              -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
+                <configuration>
+                    <failOnWarnings>false</failOnWarnings>
+                    <failOnError>false</failOnError>
+                    <links>
+                        <link>https://commons.apache.org/proper/commons-cli/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-collections/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-io/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-lang/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-text/apidocs/</link>
+                        <link>https://devdocs.io/openjdk~${maven.compiler.target}/</link>
+                        <link>https://javadoc.io/doc/com.atlassian.commonmark/commonmark/${commonmark.version}/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/${fasterxml.version}/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/${fasterxml.version}/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/${fasterxml.version}/</link>
+                        <link>https://javadoc.io/doc/org.commonmark/commonmark/${commonmark.version}/</link>
+                        <link>https://slf4j.org/api/</link>
+                        <link>https://velocity.apache.org/engine/2.0/apidocs/</link>
+                    </links>
+                </configuration>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- JaCoCo: Java Code Coverage Library                          -->
+            <!-- https://www.eclemma.org/jacoco/trunk/doc/maven.html         -->
+            <!-- Goals:                                                      -->
+            <!-- mvn jacoco:report                                           -->
+            <!--   https://www.eclemma.org/jacoco/trunk/doc/report-mojo.html -->
+            <!--   Creates a code coverage report for tests of a single      -->
+            <!--   project in multiple formats (HTML, XML, and CSV).         -->
+            <!-- mvn jacoco:check                                            -->
+            <!--   https://www.eclemma.org/jacoco/trunk/doc/check-mojo.html -->
+            <!--   Checks that the code coverage metrics are being met.      -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <executions>
+                    <execution>
+                        <id>jacoco-plugin-prepare-package</id>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Dependency Plugin: Provides the capability to manipulate    -->
+            <!-- artifacts                                                   -->
+            <!-- https://maven.apache.org/plugins/maven-dependency-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn dependency:analyze                                      -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html -->
+            <!--   Analyzes the dependencies of this project and determines  -->
+            <!--   which are: used and declared; used and undeclared; unused -->
+            <!--   and declared.                                             -->
+            <!-- mvn dependency:analyze-dep-mgt                              -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/analyze-dep-mgt-mojo.html -->
+            <!--   Analyzes your projects dependencies and lists mismatches  -->
+            <!--   between resolved dependencies and those listed in your    -->
+            <!--   dependencyManagement section.                             -->
+            <!-- mvn dependency:analyze-report                               -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/analyze-report-mojo.html -->
+            <!--   Analyzes the dependencies of this project and produces a  -->
+            <!--   report that summarises which are: used and declared; used -->
+            <!--   and undeclared; unused and declared.                      -->
+            <!-- mvn dependency:analyze-duplicate                            -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/analyze-duplicate-mojo.html -->
+            <!--   Analyzes the <dependencies/> and <dependencyManagement/>  -->
+            <!--   tags in the pom.xml and determines the duplicate declared -->
+            <!--   dependencies.                                             -->
+            <!-- mvn dependency:resolve                                      -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/resolve-mojo.html -->
+            <!--   Tells Maven to resolve all dependencies and displays the  -->
+            <!--   version. JAVA 9 NOTE: will display the module name when   -->
+            <!--   running with Java 9.                                      -->
+            <!-- mvn dependency:resolve-plugins                              -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/resolve-plugins-mojo.html -->
+            <!--   Tells Maven to resolve plugins and their dependencies.    -->
+            <!-- mvn dependency:sources                                      -->
+            <!--   tells Maven to resolve all dependencies and their source  -->
+            <!--   attachments, and displays the version.                    -->
+            <!-- mvn dependency:tree                                         -->
+            <!--   https://maven.apache.org/plugins/maven-dependency-plugin/tree-mojo.html -->
+            <!--   Displays the dependency tree for this project.            -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>analyze-report</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Release Plugin: Used to release a project with Maven,       -->
+            <!-- saving a lot of repetitive, manual work.                    -->
+            <!-- https://maven.apache.org/maven-release/maven-release-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn release:branch                                          -->
+            <!--   https://maven.apache.org/maven-release/maven-release-plugin/branch-mojo.html -->
+            <!--   Branch a project in SCM, using the same steps as the      -->
+            <!--   release:prepare goal, creating a branch instead of a tag. -->
+            <!-- mvn release:clean                                           -->
+            <!--   https://maven.apache.org/maven-release/maven-release-plugin/clean-mojo.html -->
+            <!--   Clean up after a release preparation.                     -->
+            <!-- mvn release:perform                                         -->
+            <!--   https://maven.apache.org/maven-release/maven-release-plugin/perform-mojo.html -->
+            <!--   Perform a release from SCM, either from a specified tag,  -->
+            <!--   or the tag representing the previous release in the       -->
+            <!--   working copy created by release:prepare.                  -->
+            <!-- mvn release:update-versions                                 -->
+            <!--   https://maven.apache.org/maven-release/maven-release-plugin/update-versions-mojo.html -->
+            <!--   Update the POM versions for a project. This performs the  -->
+            <!--   normal version updates of the release:prepare goal        -->
+            <!--   without making other modifications to the SCM such as     -->
+            <!--   tagging.                                                  -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-release-plugin -->
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <projectVersionPolicyId>SemVerVersionPolicy</projectVersionPolicyId>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- SpotBugs: A program which uses static analysis to look for  -->
+            <!-- bugs in Java code.                                          -->
+            <!-- https://spotbugs.readthedocs.io/en/latest/maven.html        -->
+            <!-- Goals:                                                      -->
+            <!-- mvn spotbugs:spotbugs                                       -->
+            <!--   https://spotbugs.github.io/spotbugs-maven-plugin/spotbugs-mojo.html -->
+            <!--   Spotbugs goal analyses target project by SpotBugs. For    -->
+            <!--   detail, please refer spotbugs goal description in maven   -->
+            <!--   site.                                                     -->
+            <!-- mvn spotbugs:check                                          -->
+            <!--   https://spotbugs.github.io/spotbugs-maven-plugin/check-mojo.html -->
+            <!--   Check goal runs analysis like spotbugs goal, and make the -->
+            <!--   build failed if it found any bugs. For detail, please     -->
+            <!--   refer check goal description in maven site.               -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-maven-plugin -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.6.0</version>
+                <configuration>
+                    <includeFilterFile>${project.basedir}/config/spotbugs/security-include.xml</includeFilterFile>
+                    <excludeFilterFile>${project.basedir}/config/spotbugs/security-exclude.xml</excludeFilterFile>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>1.12.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <dependencies>
+                    <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>4.8.6</version>
+                        <scope>compile</scope>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>spotbugs-plugin</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Cluecumber: Clear and concise JVM and Maven reporting for   -->
+            <!-- the Cucumber BDD JSON format.                               -->
+            <!-- https://github.com/trivago/cluecumber/tree/main/maven       -->
+            <!-- Goals:                                                      -->
+            <!-- mvn cluecumber:reporting                                    -->
+            <!--   Run the reporting as a completely separate step.          -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/com.trivago.rta/cluecumber-maven -->
+            <plugin>
+                <groupId>com.trivago.rta</groupId>
+                <artifactId>cluecumber-maven</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <sourceJsonReportDirectory>${project.build.directory}/cucumber</sourceJsonReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/site/cluecumber</generatedHtmlReportDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>cluecumber-plugin</id>
+                        <goals>
+                            <goal>reporting</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Assembly Plugin: The Assembly Plugin for Maven enables      -->
+            <!-- developers to combine project output into a single          -->
+            <!-- distributable archive that also contains dependencies,      -->
+            <!-- modules, site documentation, and other files.               -->
+            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn assembly:single                                         -->
+            <!--   https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
+            <!--   Assemble an application bundle or distribution from an    -->
+            <!--   assembly descriptor.                                      -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <finalName>${project.build.finalName}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <archive>
+                        <manifest>
+                            <mainClass>cimerant.Cimerant</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <outputDirectory>${project.build.directory}/site</outputDirectory>
+        <plugins>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.6.0</version>
+                <reportSets>
+                    <reportSet>
+                        <id>project-info-report</id>
+                        <reports>
+                            <!-- select reports -->
+                            <report>index</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
+            <!-- <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <configuration>
+                    <sourceDirectories>
+                        <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+                    </sourceDirectories>
+                    <configLocation>${project.basedir}/config/checkstyle/google_checks.xml</configLocation>
+                    <consoleOutput>false</consoleOutput>
+                    <failsOnError>false</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>checkstyle-report</id>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin> -->
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
+            <plugin>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <configuration>
+                    <linkXref>true</linkXref>
+                    <minimumTokens>100</minimumTokens>
+                    <targetJdk>${maven.compiler.target}</targetJdk>
+                    <excludes>
+                        <exclude>**/generated/*.java</exclude>
+                    </excludes>
+                    <excludeRoots>
+                        <excludeRoot>target/generated-sources/stubs</excludeRoot>
+                    </excludeRoots>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>pmd-report</id>
+                        <reports>
+                            <report>pmd</report>
+                            <report>cpd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
+                <configuration>
+                    <failOnWarnings>false</failOnWarnings>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>javadoc-report</id>
+                        <reports>
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
+            <plugin>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <id>jacoco-report</id>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>dependency-report</id>
+                        <reports>
+                            <report>analyze-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- =========================================================== -->
+            <!-- Surefire: A test framework.                                 -->
+            <!-- https://maven.apache.org/surefire/maven-surefire-report-plugin/usage.html -->
+            <!-- Goals:                                                      -->
+            <!-- mvn surefire-report:report                                  -->
+            <!--   https://maven.apache.org/surefire/maven-surefire-report-plugin/report-mojo.html -->
+            <!--   Generates the test results report into HTML format.       -->
+            <!-- mvn surefire-report:report-only                             -->
+            <!--   https://maven.apache.org/surefire/maven-surefire-report-plugin/report-only-mojo.html -->
+            <!--   Creates a nicely formatted Surefire Test Report in html   -->
+            <!--   format. This goal does not run the tests, it only builds  -->
+            <!--   the reports.                                              -->
+            <!-- =========================================================== -->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-report-plugin -->
+            <plugin>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <argLine>-ea -Xmx8g -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError</argLine>
+                </configuration>
+            </plugin>
+
+            <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/license-maven-plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${maven.license.version}</version>
+                <configuration>
+                    <encoding>${project.reporting.outputEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <!-- =========================================================== -->
+    <!-- JPackage Plugin: The jpackage maven plugin lets you create  -->
+    <!-- a custom runtime image/installer with the jpackage tool.    -->
+    <!-- The main idea is to avoid being tied to project artifacts   -->
+    <!-- and allow the user to fully control the process of creating -->
+    <!-- an image/installer.                                         -->
+    <!-- https://akman.github.io/jpackage-maven-plugin/usage.html    -->
+    <!-- Goals:                                                      -->
+    <!-- mvn jpackage:jpackage                                       -->
+    <!--   https://akman.github.io/jpackage-maven-plugin/jpackage-mojo.html -->
+    <!--   The jpackage goal lets you create a custom runtime image  -->
+    <!--   with the jpackage tool.                                   -->
+    <!-- =========================================================== -->
+
+    <profiles>
+        <profile>
+            <id>jpackage-unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- https://mvnrepository.com/artifact/com.github.akman/jpackage-maven-plugin -->
+                    <plugin>
+                        <groupId>com.github.akman</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <configuration>
+                            <appimage>${project.basedir}/images/Cimerant1.png</appimage>
+                            <appversion>${project.version}</appversion>
+                            <arguments>--help</arguments>
+                            <copyright>${project.inceptionYear}</copyright>
+                            <description>${project.description}</description>
+                            <dest>${project.build.directory}/jpackage</dest>
+                            <icon>${project.basedir}/images/Cimerant1.ico</icon>
+                            <input>${project.build.directory}/jpackage/inputdir</input>
+                            <licensefile>${project.basedir}/LICENSE</licensefile>
+                            <mainclass>cimerant.Cimerant</mainclass>
+                            <mainjar>${project.build.directory}/${project.artifactId}-${project.version}.jar</mainjar>
+                            <name>${project.name}</name>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>jpackage-unix-deb</id>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                                <!-- phase>package</phase -->
+                                <configuration>
+                                    <linuxshortcut>true</linuxshortcut>
+                                    <type>DEB</type>
+                                    <toolhome>${project.build.directory}/jpackage/unix</toolhome>
+                                    <runtimeimage>/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64</runtimeimage>
+                                    <forkMode>always</forkMode>
+                                    <environmentVariables>
+                                        <JAVA_HOME>/usr/bin/java</JAVA_HOME>
+                                    </environmentVariables>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>jpackage-unix-rpm</id>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                                <!-- phase>package</phase -->
+                                <configuration>
+                                    <linuxshortcut>true</linuxshortcut>
+                                    <type>RPM</type>
+                                    <toolhome>${project.build.directory}/jpackage/unix</toolhome>
+                                    <runtimeimage>/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc39.x86_64</runtimeimage>
+                                    <forkMode>always</forkMode>
+                                    <environmentVariables>
+                                        <JAVA_HOME>/usr/bin/java</JAVA_HOME>
+                                    </environmentVariables>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>jpackage-mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- https://mvnrepository.com/artifact/com.github.akman/jpackage-maven-plugin -->
+                    <plugin>
+                        <groupId>com.github.akman</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <configuration>
+                            <appimage>${project.basedir}/images/Cimerant1.png</appimage>
+                            <appversion>${project.version}</appversion>
+                            <arguments>--help</arguments>
+                            <copyright>${project.inceptionYear}</copyright>
+                            <description>${project.description}</description>
+                            <dest>${project.build.directory}/jpackage</dest>
+                            <icon>${project.basedir}/images/Cimerant1.ico</icon>
+                            <input>${project.build.directory}/jpackage/inputdir</input>
+                            <licensefile>${project.basedir}/LICENSE</licensefile>
+                            <mainclass>cimerant.Cimerant</mainclass>
+                            <mainjar>${project.build.directory}/${project.artifactId}-${project.version}.jar</mainjar>
+                            <name>${project.name}</name>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>jpackage-mac-dmg</id>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                                <!-- phase>package</phase -->
+                                <configuration>
+                                    <type>DMG</type>
+                                    <toolhome>${project.build.directory}/jpackage/mac</toolhome>
+                                    <runtimeimage>/usr/libexec/java_home</runtimeimage>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>jpackage-mac-pkg</id>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                                <!-- phase>package</phase -->
+                                <configuration>
+                                    <type>PKG</type>
+                                    <toolhome>${project.build.directory}/jpackage/mac</toolhome>
+                                    <runtimeimage>/usr/libexec/java_home</runtimeimage>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>jpackage-windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- https://mvnrepository.com/artifact/com.github.akman/jpackage-maven-plugin -->
+                    <plugin>
+                        <groupId>com.github.akman</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <configuration>
+                            <appimage>${project.basedir}/images/Cimerant1.png</appimage>
+                            <appversion>${project.version}</appversion>
+                            <arguments>--help</arguments>
+                            <copyright>${project.inceptionYear}</copyright>
+                            <description>${project.description}</description>
+                            <dest>${project.build.directory}/jpackage</dest>
+                            <icon>${project.basedir}/images/Cimerant1.ico</icon>
+                            <input>${project.build.directory}/jpackage/inputdir</input>
+                            <licensefile>${project.basedir}/LICENSE</licensefile>
+                            <mainclass>cimerant.Cimerant</mainclass>
+                            <mainjar>${project.build.directory}/${project.artifactId}-${project.version}.jar</mainjar>
+                            <name>${project.name}</name>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>jpackage-windows-exe</id>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                                <!-- phase>package</phase -->
+                                <configuration>
+                                    <type>EXE</type>
+                                    <toolhome>${project.build.directory}/jpackage/windows</toolhome>
+                                    <runtimeimage>C:/Java/jdk/jdk-10.0.2</runtimeimage>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>jpackage-windows-msi</id>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                                <!-- phase>package</phase -->
+                                <configuration>
+                                    <type>MSI</type>
+                                    <toolhome>${project.build.directory}/jpackage/windows</toolhome>
+                                    <runtimeimage>C:/Java/jdk/jdk-10.0.2</runtimeimage>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

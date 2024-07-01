@@ -1,0 +1,151 @@
+######################
+# Project Specific
+######################
+/src/main/webapp/content/css/main.css
+/src/test/javascript/coverage/
+/target/classes/static/**
+
+######################
+# Node
+######################
+/.awcache/*
+/.cache-loader/*
+/node/
+node_modules/
+node_tmp/
+npm-debug.log.*
+
+######################
+# SASS
+######################
+.sass-cache/
+
+######################
+# Eclipse
+######################
+/.classpath
+/.factorypath
+/.loadpath
+/.metadata
+/.project
+/.settings/
+*.bak
+*.pydevproject
+*.swp
+*.tmp
+*~.nib
+/src/main/resources/rebel.xml
+local.properties
+tmp/
+tmp/**/*
+
+# Java memory heap dump
+*.hprof
+
+# Java Flight Recorder
+*.jfr
+
+# External tool builders
+/.externalToolBuilders
+
+# CDT-specific
+/.cproject
+
+# PDT-specific
+/.buildpath
+
+# STS-specific
+/.sts4-cache/*
+
+######################
+# IntelliJ
+######################
+.idea/
+*.ids
+*.iml
+*.ipr
+*.iws
+*.orig
+classes/
+out/
+
+######################
+# Visual Studio Code
+######################
+.vscode/
+
+######################
+# Maven
+######################
+/log/
+/target/
+
+######################
+# Gradle
+######################
+.gradle/
+/build/
+
+######################
+# Package Files
+######################
+*.db
+*.ear
+*.jar
+*.war
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+.svn
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+######################
+# Directories
+######################
+/bin/
+/deploy/
+
+######################
+# Logs
+######################
+*.log*
+
+######################
+# Others
+######################
+.merge_file*
+*.*~
+*.class
+*~
+
+######################
+# Gradle Wrapper
+######################
+!gradle/wrapper/gradle-wrapper.jar
+
+######################
+# Maven Wrapper
+######################
+!.mvn/wrapper/maven-wrapper.jar
+
+######################
+# ESLint
+######################
+.eslintcache

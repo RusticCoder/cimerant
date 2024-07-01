@@ -1,0 +1,64 @@
+
+<root name="Destination_A/Test/String" grouping="[Com, A/test/string]">
+    <object name="Destination_A/Test/String" grouping="[Com, A/test/string]">
+        <attributes size="54">
+            <attribute key="A TEST STRING 6">A TEST STRING 6</attribute>
+            <attribute key="A Test String 5">A Test String 5</attribute>
+            <attribute key="A test string 4">A test string 4</attribute>
+            <attribute key="A$TEST$STRING$6">A$TEST$STRING$6</attribute>
+            <attribute key="A$Test$String$5">A$Test$String$5</attribute>
+            <attribute key="A$test$string$4">A$test$string$4</attribute>
+            <attribute key="A-TEST-STRING-6">A-TEST-STRING-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-test-string-4">A-test-string-4</attribute>
+            <attribute key="A.TEST.STRING.6">A.TEST.STRING.6</attribute>
+            <attribute key="A.Test.String.5">A.Test.String.5</attribute>
+            <attribute key="A.test.string.4">A.test.string.4</attribute>
+            <attribute key="A/TEST/STRING/6">A/TEST/STRING/6</attribute>
+            <attribute key="A/Test/String/5">A/Test/String/5</attribute>
+            <attribute key="A/test/string/4">A/test/string/4</attribute>
+            <attribute key="A\TEST\STRING\6">A\TEST\STRING\6</attribute>
+            <attribute key="A\Test\String\5">A\Test\String\5</attribute>
+            <attribute key="A\test\string\4">A\test\string\4</attribute>
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_Test_String_5">A_Test_String_5</attribute>
+            <attribute key="A_test_string_4">A_test_string_4</attribute>
+            <attribute key="Command Line Key 1">Here's message #1</attribute>
+            <attribute key="Command Line Key 2">Here's message #2</attribute>
+            <attribute key="Model Key 1">A test string</attribute>
+            <attribute key="Model Key 2">A_test_string</attribute>
+            <attribute key="Model Key 3">A-test-string</attribute>
+            <attribute key="Model Key 4">A.test.string</attribute>
+            <attribute key="Model Key 5">A/test/string</attribute>
+            <attribute key="Model Key 6">A\test\string</attribute>
+            <attribute key="Model Key 7">A$test$string</attribute>
+            <attribute key="Model Key 8">Ateststring</attribute>
+            <attribute key="Model Keys">A Test String_a_Test_String_a-Test-String_a.Test.String_a/Test/String_a\Test\String_a$Test$String_aTestString</attribute>
+            <attribute key="A TEST STRING 3">A TEST STRING 3</attribute>
+            <attribute key="A Test String 2">A Test String 2</attribute>
+            <attribute key="A test string 1">A test string 1</attribute>
+            <attribute key="A$TEST$STRING$3">A$TEST$STRING$3</attribute>
+            <attribute key="A$Test$String$2">A$Test$String$2</attribute>
+            <attribute key="A$test$string$1">A$test$string$1</attribute>
+            <attribute key="A-TEST-STRING-3">A-TEST-STRING-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-test-string-1">A-test-string-1</attribute>
+            <attribute key="A.TEST.STRING.3">A.TEST.STRING.3</attribute>
+            <attribute key="A.Test.String.2">A.Test.String.2</attribute>
+            <attribute key="A.test.string.1">A.test.string.1</attribute>
+            <attribute key="A/TEST/STRING/3">A/TEST/STRING/3</attribute>
+            <attribute key="A/Test/String/2">A/Test/String/2</attribute>
+            <attribute key="A/test/string/1">A/test/string/1</attribute>
+            <attribute key="A\TEST\STRING\3">A\TEST\STRING\3</attribute>
+            <attribute key="A\Test\String\2">A\Test\String\2</attribute>
+            <attribute key="A\test\string\1">A\test\string\1</attribute>
+            <attribute key="A_TEST_STRING_3">A_TEST_STRING_3</attribute>
+            <attribute key="A_Test_String_2">A_Test_String_2</attribute>
+            <attribute key="A_test_string_1">A_test_string_1</attribute>
+            <attribute key="Url">Vets.petshop.com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A/TEST/STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

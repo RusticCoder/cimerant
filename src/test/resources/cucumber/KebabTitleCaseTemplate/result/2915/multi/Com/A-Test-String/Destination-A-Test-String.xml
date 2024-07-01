@@ -1,0 +1,64 @@
+
+<root name="Destination-A-Test-String" grouping="[Com, A-Test-String]">
+    <object name="Destination-A-Test-String" grouping="[Com, A-Test-String]">
+        <attributes size="54">
+            <attribute key="A-Test-String-6">A-Test-String-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-Test-String-4">A-Test-String-4</attribute>
+            <attribute key="A$test$string$6">A$test$string$6</attribute>
+            <attribute key="A$test$string$5">A$test$string$5</attribute>
+            <attribute key="A$test$string$4">A$test$string$4</attribute>
+            <attribute key="A-Test-String-6">A-Test-String-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-Test-String-4">A-Test-String-4</attribute>
+            <attribute key="A-Test-String-6">A-Test-String-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-Test-String-4">A-Test-String-4</attribute>
+            <attribute key="A-Test-String-6">A-Test-String-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-Test-String-4">A-Test-String-4</attribute>
+            <attribute key="A-Test-String-6">A-Test-String-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-Test-String-4">A-Test-String-4</attribute>
+            <attribute key="A-Test-String-6">A-Test-String-6</attribute>
+            <attribute key="A-Test-String-5">A-Test-String-5</attribute>
+            <attribute key="A-Test-String-4">A-Test-String-4</attribute>
+            <attribute key="Command-Line-Key-1">Here's-Message-#1</attribute>
+            <attribute key="Command-Line-Key-2">Here's-Message-#2</attribute>
+            <attribute key="Model-Key-1">A-Test-String</attribute>
+            <attribute key="Model-Key-2">A-Test-String</attribute>
+            <attribute key="Model-Key-3">A-Test-String</attribute>
+            <attribute key="Model-Key-4">A-Test-String</attribute>
+            <attribute key="Model-Key-5">A-Test-String</attribute>
+            <attribute key="Model-Key-6">A-Test-String</attribute>
+            <attribute key="Model-Key-7">A$test$string</attribute>
+            <attribute key="Model-Key-8">Ateststring</attribute>
+            <attribute key="Model-Keys">A-Test-String-A-Test-String-A-Test-String-A-Test-String-A-Test-String-A-Test-String-A$test$string-A-Test-String</attribute>
+            <attribute key="A-T-Est-S-Tring-3">A-T-Est-S-Tring-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-Test-String-1">A-Test-String-1</attribute>
+            <attribute key="A$t-Est$s-Tring$3">A$t-Est$s-Tring$3</attribute>
+            <attribute key="A$test$string$2">A$test$string$2</attribute>
+            <attribute key="A$test$string$1">A$test$string$1</attribute>
+            <attribute key="A-T-Est-S-Tring-3">A-T-Est-S-Tring-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-Test-String-1">A-Test-String-1</attribute>
+            <attribute key="A-T-Est-S-Tring-3">A-T-Est-S-Tring-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-Test-String-1">A-Test-String-1</attribute>
+            <attribute key="A-T-Est-S-Tring-3">A-T-Est-S-Tring-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-Test-String-1">A-Test-String-1</attribute>
+            <attribute key="A-T-Est-S-Tring-3">A-T-Est-S-Tring-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-Test-String-1">A-Test-String-1</attribute>
+            <attribute key="A-T-Est-S-Tring-3">A-T-Est-S-Tring-3</attribute>
+            <attribute key="A-Test-String-2">A-Test-String-2</attribute>
+            <attribute key="A-Test-String-1">A-Test-String-1</attribute>
+            <attribute key="Url">Vets-Petshop-Com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A-Test-String">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

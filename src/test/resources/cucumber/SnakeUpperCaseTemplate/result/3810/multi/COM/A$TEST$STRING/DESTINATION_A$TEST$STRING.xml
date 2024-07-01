@@ -1,0 +1,64 @@
+
+<root name="DESTINATION_A$TEST$STRING" grouping="[COM, A$TEST$STRING]">
+    <object name="DESTINATION_A$TEST$STRING" grouping="[COM, A$TEST$STRING]">
+        <attributes size="54">
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_TEST_STRING_5">A_TEST_STRING_5</attribute>
+            <attribute key="A_TEST_STRING_4">A_TEST_STRING_4</attribute>
+            <attribute key="A$TEST$STRING$6">A$TEST$STRING$6</attribute>
+            <attribute key="A$TEST$STRING$5">A$TEST$STRING$5</attribute>
+            <attribute key="A$TEST$STRING$4">A$TEST$STRING$4</attribute>
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_TEST_STRING_5">A_TEST_STRING_5</attribute>
+            <attribute key="A_TEST_STRING_4">A_TEST_STRING_4</attribute>
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_TEST_STRING_5">A_TEST_STRING_5</attribute>
+            <attribute key="A_TEST_STRING_4">A_TEST_STRING_4</attribute>
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_TEST_STRING_5">A_TEST_STRING_5</attribute>
+            <attribute key="A_TEST_STRING_4">A_TEST_STRING_4</attribute>
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_TEST_STRING_5">A_TEST_STRING_5</attribute>
+            <attribute key="A_TEST_STRING_4">A_TEST_STRING_4</attribute>
+            <attribute key="A_TEST_STRING_6">A_TEST_STRING_6</attribute>
+            <attribute key="A_TEST_STRING_5">A_TEST_STRING_5</attribute>
+            <attribute key="A_TEST_STRING_4">A_TEST_STRING_4</attribute>
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="A_T_EST_S_TRING_3">A_T_EST_S_TRING_3</attribute>
+            <attribute key="A_TEST_STRING_2">A_TEST_STRING_2</attribute>
+            <attribute key="A_TEST_STRING_1">A_TEST_STRING_1</attribute>
+            <attribute key="A$T_EST$S_TRING$3">A$T_EST$S_TRING$3</attribute>
+            <attribute key="A$TEST$STRING$2">A$TEST$STRING$2</attribute>
+            <attribute key="A$TEST$STRING$1">A$TEST$STRING$1</attribute>
+            <attribute key="A_T_EST_S_TRING_3">A_T_EST_S_TRING_3</attribute>
+            <attribute key="A_TEST_STRING_2">A_TEST_STRING_2</attribute>
+            <attribute key="A_TEST_STRING_1">A_TEST_STRING_1</attribute>
+            <attribute key="A_T_EST_S_TRING_3">A_T_EST_S_TRING_3</attribute>
+            <attribute key="A_TEST_STRING_2">A_TEST_STRING_2</attribute>
+            <attribute key="A_TEST_STRING_1">A_TEST_STRING_1</attribute>
+            <attribute key="A_T_EST_S_TRING_3">A_T_EST_S_TRING_3</attribute>
+            <attribute key="A_TEST_STRING_2">A_TEST_STRING_2</attribute>
+            <attribute key="A_TEST_STRING_1">A_TEST_STRING_1</attribute>
+            <attribute key="A_T_EST_S_TRING_3">A_T_EST_S_TRING_3</attribute>
+            <attribute key="A_TEST_STRING_2">A_TEST_STRING_2</attribute>
+            <attribute key="A_TEST_STRING_1">A_TEST_STRING_1</attribute>
+            <attribute key="A_T_EST_S_TRING_3">A_T_EST_S_TRING_3</attribute>
+            <attribute key="A_TEST_STRING_2">A_TEST_STRING_2</attribute>
+            <attribute key="A_TEST_STRING_1">A_TEST_STRING_1</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A$TEST$STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

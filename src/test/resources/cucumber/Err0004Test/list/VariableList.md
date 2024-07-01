@@ -1,0 +1,45 @@
+|       Key       |       Value        |
+|-----------------|--------------------|
+| a test string   | a test string 1    |
+| a Test String   | a Test String 2    |
+| a TEST STRING   | a TEST STRING 3    |
+| A test string   | A test string 4    |
+| A Test String   | A Test String 5    |
+| A TEST STRING   | A TEST STRING 6    |
+| a_test_string   | a_test_string_1    |
+| a_Test_String   | a_Test_String_2    |
+| a_TEST_STRING   | a_TEST_STRING_3    |
+| A_test_string   | A_test_string_4    |
+| A_Test_String   | A_Test_String_5    |
+| A_TEST_STRING   | A_TEST_STRING_6    |
+| a-test-string   | a-test-string-1    |
+| a-Test-String   | a-Test-String-2    |
+| a-TEST-STRING   | a-TEST-STRING-3    |
+| A-test-string   | A-test-string-4    |
+| A-Test-String   | A-Test-String-5    |
+| A-TEST-STRING   | A-TEST-STRING-6    |
+| a.test.string   | a.test.string.1    |
+| a.Test.String   | a.Test.String.2    |
+| a.TEST.STRING   | a.TEST.STRING.3    |
+| A.test.string   | A.test.string.4    |
+| A.Test.String   | A.Test.String.5    |
+| A.TEST.STRING   | A.TEST.STRING.6    |
+| a/test/string   | a/test/string/1    |
+| a/Test/String   | a/Test/String/2    |
+| a/TEST/STRING   | a/TEST/STRING/3    |
+| A/test/string   | A/test/string/4    |
+| A/Test/String   | A/Test/String/5    |
+| A/TEST/STRING   | A/TEST/STRING/6    |
+| a\\test\\string | a\\test\\string\\1 |
+| a\\Test\\String | a\\Test\\String\\2 |
+| a\\TEST\\STRING | a\\TEST\\STRING\\3 |
+| A\\test\\string | A\\test\\string\\4 |
+| A\\Test\\String | A\\Test\\String\\5 |
+| A\\TEST\\STRING | A\\TEST\\STRING\\6 |
+| a$test$string   | a$test$string$1    |
+| a$Test$String   | a$Test$String$2    |
+| a$TEST$STRING   | a$TEST$STRING$3    |
+| A$test$string   | A$test$string$4    |
+| A$Test$String   | A$Test$String$5    |
+| A$TEST$STRING   | A$TEST$STRING$6    |
+

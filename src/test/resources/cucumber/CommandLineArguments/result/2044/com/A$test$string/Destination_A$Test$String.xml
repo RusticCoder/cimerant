@@ -1,0 +1,21 @@
+<root name="Destination_A$Test$String" grouping="[com, A$test$string]">
+    <object name="Destination_A$Test$String" grouping="[com, A$test$string]">
+        <attributes size="12">
+            <attribute key="Command Line Key 1">Here's message #1</attribute>
+            <attribute key="Command Line Key 2">Here's message #2</attribute>
+            <attribute key="Model Key 1">a test string</attribute>
+            <attribute key="Model Key 2">a_test_string</attribute>
+            <attribute key="Model Key 3">a-test-string</attribute>
+            <attribute key="Model Key 4">a.test.string</attribute>
+            <attribute key="Model Key 5">a/test/string</attribute>
+            <attribute key="Model Key 6">a\test\string</attribute>
+            <attribute key="Model Key 7">a$test$string</attribute>
+            <attribute key="Model Key 8">ateststring</attribute>
+            <attribute key="Model Keys">[a Test String, a_Test_String, a-Test-String, a.Test.String, a/Test/String, a\Test\String, a$Test$String, aTestString]</attribute>
+            <attribute key="url">vets.petshop.com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A$TEST$STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

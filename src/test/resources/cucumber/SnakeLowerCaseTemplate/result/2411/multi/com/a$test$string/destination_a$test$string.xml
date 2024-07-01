@@ -1,0 +1,64 @@
+
+<root name="destination_a$test$string" grouping="[com, a$test$string]">
+    <object name="destination_a$test$string" grouping="[com, a$test$string]">
+        <attributes size="54">
+            <attribute key="a_test_string_6">a_test_string_6</attribute>
+            <attribute key="a_test_string_5">a_test_string_5</attribute>
+            <attribute key="a_test_string_4">a_test_string_4</attribute>
+            <attribute key="a$test$string$6">a$test$string$6</attribute>
+            <attribute key="a$test$string$5">a$test$string$5</attribute>
+            <attribute key="a$test$string$4">a$test$string$4</attribute>
+            <attribute key="a_test_string_6">a_test_string_6</attribute>
+            <attribute key="a_test_string_5">a_test_string_5</attribute>
+            <attribute key="a_test_string_4">a_test_string_4</attribute>
+            <attribute key="a_test_string_6">a_test_string_6</attribute>
+            <attribute key="a_test_string_5">a_test_string_5</attribute>
+            <attribute key="a_test_string_4">a_test_string_4</attribute>
+            <attribute key="a_test_string_6">a_test_string_6</attribute>
+            <attribute key="a_test_string_5">a_test_string_5</attribute>
+            <attribute key="a_test_string_4">a_test_string_4</attribute>
+            <attribute key="a_test_string_6">a_test_string_6</attribute>
+            <attribute key="a_test_string_5">a_test_string_5</attribute>
+            <attribute key="a_test_string_4">a_test_string_4</attribute>
+            <attribute key="a_test_string_6">a_test_string_6</attribute>
+            <attribute key="a_test_string_5">a_test_string_5</attribute>
+            <attribute key="a_test_string_4">a_test_string_4</attribute>
+            <attribute key="command_line_key_1">here's_message_#1</attribute>
+            <attribute key="command_line_key_2">here's_message_#2</attribute>
+            <attribute key="model_key_1">a_test_string</attribute>
+            <attribute key="model_key_2">a_test_string</attribute>
+            <attribute key="model_key_3">a_test_string</attribute>
+            <attribute key="model_key_4">a_test_string</attribute>
+            <attribute key="model_key_5">a_test_string</attribute>
+            <attribute key="model_key_6">a_test_string</attribute>
+            <attribute key="model_key_7">a$test$string</attribute>
+            <attribute key="model_key_8">ateststring</attribute>
+            <attribute key="model_keys">a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a_test_string_a$test$string_a_test_string</attribute>
+            <attribute key="a_t_est_s_tring_3">a_t_est_s_tring_3</attribute>
+            <attribute key="a_test_string_2">a_test_string_2</attribute>
+            <attribute key="a_test_string_1">a_test_string_1</attribute>
+            <attribute key="a$t_est$s_tring$3">a$t_est$s_tring$3</attribute>
+            <attribute key="a$test$string$2">a$test$string$2</attribute>
+            <attribute key="a$test$string$1">a$test$string$1</attribute>
+            <attribute key="a_t_est_s_tring_3">a_t_est_s_tring_3</attribute>
+            <attribute key="a_test_string_2">a_test_string_2</attribute>
+            <attribute key="a_test_string_1">a_test_string_1</attribute>
+            <attribute key="a_t_est_s_tring_3">a_t_est_s_tring_3</attribute>
+            <attribute key="a_test_string_2">a_test_string_2</attribute>
+            <attribute key="a_test_string_1">a_test_string_1</attribute>
+            <attribute key="a_t_est_s_tring_3">a_t_est_s_tring_3</attribute>
+            <attribute key="a_test_string_2">a_test_string_2</attribute>
+            <attribute key="a_test_string_1">a_test_string_1</attribute>
+            <attribute key="a_t_est_s_tring_3">a_t_est_s_tring_3</attribute>
+            <attribute key="a_test_string_2">a_test_string_2</attribute>
+            <attribute key="a_test_string_1">a_test_string_1</attribute>
+            <attribute key="a_t_est_s_tring_3">a_t_est_s_tring_3</attribute>
+            <attribute key="a_test_string_2">a_test_string_2</attribute>
+            <attribute key="a_test_string_1">a_test_string_1</attribute>
+            <attribute key="url">vets_petshop_com</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a$test$string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

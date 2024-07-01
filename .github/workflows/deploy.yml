@@ -1,0 +1,115 @@
+# This workflow will build a package using Maven and then deploy it to GitHub packages when a release is created
+#
+# [About workflows](https://docs.github.com/en/actions/using-workflows/about-workflows)
+# [Workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on)
+#
+# Github Action format code on check-in pull
+# Github pre commit format code on check-in pull
+# https://github.com/pre-commit/pre-commit-hooks
+
+name: Deploy
+
+run-name: ${{ github.action }} run by ${{ github.actor }} on ${{ github.repository }} triggered by ${{ github.event_name }}
+
+on:
+  release:
+    types: ["created"]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+  pages: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # [Automating builds and tests](https://docs.github.com/en/actions/automating-builds-and-tests)
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/checkout
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      # https://github.com/actions/setup-java
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # https://github.com/s4u/setup-maven-action
+      - name: Setup Maven
+        uses: s4u/setup-maven-action@v1.7.0
+        with:
+          java-version: '17'
+          java-distribution: 'temurin'
+          maven-version: 3.9.1
+
+      # [Building and testing Java with Maven](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven)
+      # [Apache Maven with a settings path](https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path)
+      - name: Validate the project is correct and all necessary information is available.
+        env:
+          MAVEN_OPTS: "-Dmaven.test.skip=true -ea -Xmx512m -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode --update-snapshots clean validate
+
+      - name: Run any checks to verify the package is valid and meets quality criteria.
+        env:
+          MAVEN_OPTS: "-Dmaven.test.skip=true -ea -Xmx512m -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode verify pmd:check pmd:cpd-check
+
+      - name: Take the compiled code and package it in a jar.
+        env:
+          MAVEN_OPTS: "-Dmaven.test.skip=true -ea -Xmx512m -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode assembly:single
+
+      - name: Copy jar to staging.
+        run: mkdir -p staging && cp target/cimerant-*.jar staging
+
+      # https://github.com/actions/upload-artifact
+      - name: Upload staged jar.
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cimerant-${{ github.ref_name }}
+          path: staging
+
+      # [Deploy Publish JavaDoc](https://github.com/marketplace/actions/deploy-publish-javadoc)
+      # https://github.com/MathieuSoysal/Javadoc-publisher.yml
+      - name: Generates documentation for the project.
+        env:
+          MAVEN_OPTS: "-Dmaven.test.skip=true -ea -Xmx512m -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode site javadoc:javadoc javadoc:test-javadoc pmd:pmd pmd:cpd-check
+
+      - name: Git setup
+        run: |
+          git config --global user.email "RusticCoder@github.io"
+          git config --global user.name "RusticCoder"
+
+      - name: Clone github.io
+        run: git clone https://.:${{ secrets.API_TOKEN_GITHUB }}@github.com/RusticCoder/RusticCoder.github.io.git RusticCoder.github.io
+
+      - name: Remove site folder
+        run: rm -rf RusticCoder.github.io/cimerant/site
+
+      - name: Create site folder
+        run: mkdir -p RusticCoder.github.io/cimerant/site
+
+      - name: Copy site
+        run: cp -a target/site/. RusticCoder.github.io/cimerant/site/
+
+      - name: Add changes
+        run: cd RusticCoder.github.io && git add .
+
+      - name: Commit changes
+        run: cd RusticCoder.github.io && git diff-index --quiet HEAD || git commit -m "${{ github.ref }} ${{ github.workflow_name }} push changes"
+
+      - name: Push changes
+        run: cd RusticCoder.github.io && git push

@@ -1,0 +1,94 @@
+# This workflow will build a package using Maven and then deploy it to GitHub packages when a release is created
+#
+# [About workflows](https://docs.github.com/en/actions/using-workflows/about-workflows)
+# [Workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on)
+#
+# Github Action format code on check-in pull
+# Github pre commit format code on check-in pull
+# https://github.com/pre-commit/pre-commit-hooks
+
+name: Validate
+
+run-name: ${{ github.action }} run by ${{ github.actor }} on ${{ github.repository }} triggered by ${{ github.event_name }}
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+  pages: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # [Automating builds and tests](https://docs.github.com/en/actions/automating-builds-and-tests)
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      # https://github.com/actions/checkout
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      # https://github.com/actions/setup-java
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # https://github.com/s4u/setup-maven-action
+      - name: Setup Maven
+        uses: s4u/setup-maven-action@v1.7.0
+        with:
+          java-version: '17'
+          java-distribution: 'temurin'
+          maven-version: 3.9.1
+
+      # [Building and testing Java with Maven](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven)
+      # [Apache Maven with a settings path](https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path)
+      - name: Validate the project is correct and all necessary information is available.
+        env:
+          MAVEN_OPTS: "-Dmaven.test.skip=true -ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode --update-snapshots clean validate
+
+      - name: Run any checks to verify the package is valid and meets quality criteria.
+        env:
+          MAVEN_OPTS: "-Dmaven.test.skip=true -ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode verify pmd:check pmd:cpd-check
+
+      - name: Maven test back forward Slash
+        env:
+          MAVEN_OPTS: "-ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode  verify -Dcucumber.filter.tags="@backSlashLowerCaseTemplate or @backSlashLowerCaseValue or @backSlashTitleCaseTemplate or @backSlashTitleCaseValue or @backSlashUpperCaseTemplate or @backSlashUpperCaseValue or @forwardSlashLowerCaseTemplate or @forwardSlashLowerCaseValue or @forwardSlashTitleCaseTemplate or @forwardSlashTitleCaseValue or @forwardSlashUpperCaseTemplate or @forwardSlashUpperCaseValue"
+
+      - name: Maven test case
+        env:
+          MAVEN_OPTS: "-ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode verify -Dcucumber.filter.tags="@camelCaseTemplate or @camelCaseValue or @lowerCaseTemplate or @lowerCaseValue or @pascalCaseTemplate or @pascalCaseValue or @titleCaseTemplate or @titleCaseValue or @upperCaseTemplate or @upperCaseValue"
+
+      - name: Maven test dot first
+        env:
+          MAVEN_OPTS: "-ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode verify -Dcucumber.filter.tags="@dotLowerCaseTemplate or @dotLowerCaseValue or @dotTitleCaseTemplate or @dotTitleCaseValue or @dotUpperCaseTemplate or @dotUpperCaseValue or @lowerFirstTemplate or @lowerFirstValue or @upperFirstTemplate or @upperFirstValue"
+
+      - name: Maven test kebab snake
+        env:
+          MAVEN_OPTS: "-ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode verify -Dcucumber.filter.tags="@kebabLowerCaseTemplate or @kebabLowerCaseValue or @kebabTitleCaseTemplate or @kebabTitleCaseValue or @kebabUpperCaseTemplate or @kebabUpperCaseValue or @snakeLowerCaseTemplate or @snakeLowerCaseValue or @snakeTitleCaseTemplate or @snakeTitleCaseValue or @snakeUpperCaseTemplate or @snakeUpperCaseValue"
+
+      - name: Maven test error
+        env:
+          MAVEN_OPTS: "-ea -Xmx1g -XX:+UseG1GC -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+        run: mvn --batch-mode verify -Dcucumber.filter.tags="@err0002 or @err0003 or @err0004 or @err0005 or @err0006 or @err0007 or @err0008 or @err0009 or @err0010 or @err0011 or @err0012 or @err0013 or @err0014 or @err0016 or @err0017 or @err0018 or @err0019 or @err0020"

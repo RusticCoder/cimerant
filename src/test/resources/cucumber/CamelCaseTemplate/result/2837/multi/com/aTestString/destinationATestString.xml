@@ -1,0 +1,64 @@
+
+<root name="destinationATestString" grouping="[com, aTestString]">
+    <object name="destinationATestString" grouping="[com, aTestString]">
+        <attributes size="54">
+            <attribute key="aTestString6">aTestString6</attribute>
+            <attribute key="aTestString5">aTestString5</attribute>
+            <attribute key="aTestString4">aTestString4</attribute>
+            <attribute key="a$test$string$6">a$test$string$6</attribute>
+            <attribute key="a$test$string$5">a$test$string$5</attribute>
+            <attribute key="a$test$string$4">a$test$string$4</attribute>
+            <attribute key="aTestString6">aTestString6</attribute>
+            <attribute key="aTestString5">aTestString5</attribute>
+            <attribute key="aTestString4">aTestString4</attribute>
+            <attribute key="aTestString6">aTestString6</attribute>
+            <attribute key="aTestString5">aTestString5</attribute>
+            <attribute key="aTestString4">aTestString4</attribute>
+            <attribute key="aTestString6">aTestString6</attribute>
+            <attribute key="aTestString5">aTestString5</attribute>
+            <attribute key="aTestString4">aTestString4</attribute>
+            <attribute key="aTestString6">aTestString6</attribute>
+            <attribute key="aTestString5">aTestString5</attribute>
+            <attribute key="aTestString4">aTestString4</attribute>
+            <attribute key="aTestString6">aTestString6</attribute>
+            <attribute key="aTestString5">aTestString5</attribute>
+            <attribute key="aTestString4">aTestString4</attribute>
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="aTEstSTring3">aTEstSTring3</attribute>
+            <attribute key="aTestString2">aTestString2</attribute>
+            <attribute key="aTestString1">aTestString1</attribute>
+            <attribute key="a$tEst$sTring$3">a$tEst$sTring$3</attribute>
+            <attribute key="a$test$string$2">a$test$string$2</attribute>
+            <attribute key="a$test$string$1">a$test$string$1</attribute>
+            <attribute key="aTEstSTring3">aTEstSTring3</attribute>
+            <attribute key="aTestString2">aTestString2</attribute>
+            <attribute key="aTestString1">aTestString1</attribute>
+            <attribute key="aTEstSTring3">aTEstSTring3</attribute>
+            <attribute key="aTestString2">aTestString2</attribute>
+            <attribute key="aTestString1">aTestString1</attribute>
+            <attribute key="aTEstSTring3">aTEstSTring3</attribute>
+            <attribute key="aTestString2">aTestString2</attribute>
+            <attribute key="aTestString1">aTestString1</attribute>
+            <attribute key="aTEstSTring3">aTEstSTring3</attribute>
+            <attribute key="aTestString2">aTestString2</attribute>
+            <attribute key="aTestString1">aTestString1</attribute>
+            <attribute key="aTEstSTring3">aTEstSTring3</attribute>
+            <attribute key="aTestString2">aTestString2</attribute>
+            <attribute key="aTestString1">aTestString1</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

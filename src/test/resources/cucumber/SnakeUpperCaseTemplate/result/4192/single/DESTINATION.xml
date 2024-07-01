@@ -1,0 +1,168 @@
+
+<root name="DESTINATION">
+    <attributes size="11">
+        <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+        <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+        <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+        <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+        <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+        <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+        <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+        <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+        <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+        <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+        <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+    </attributes>
+    <object grouping="[COM, A_TEST_STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, A$TEST$STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A$TEST$STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, A_TEST_STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, A_TEST_STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, A_TEST_STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, A_TEST_STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, A_TEST_STRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[COM, ATESTSTRING]">
+        <attributes size="12">
+            <attribute key="COMMAND_LINE_KEY_1">HERE'S_MESSAGE_#1</attribute>
+            <attribute key="COMMAND_LINE_KEY_2">HERE'S_MESSAGE_#2</attribute>
+            <attribute key="MODEL_KEY_1">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_2">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_3">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_4">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_5">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_6">A_TEST_STRING</attribute>
+            <attribute key="MODEL_KEY_7">A$TEST$STRING</attribute>
+            <attribute key="MODEL_KEY_8">ATESTSTRING</attribute>
+            <attribute key="MODEL_KEYS">A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A_TEST_STRING_A$TEST$STRING_A_TEST_STRING</attribute>
+            <attribute key="URL">VETS_PETSHOP_COM</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ATESTSTRING">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+<root#if($this.getFileName()) name="$this.getFileName()"#end#if($this.getGrouping()) grouping="$this.getGrouping()"#end>
+    <object#if($this.getFileName()) name="$this.getFileName()"#end#if($this.getGrouping()) grouping="$this.getGrouping()"#end>
+        <attributes size="$this.getAttributes().size()">
+            #foreach ($attribute in $this.getAttributes().entrySet())
+            <attribute key="$attribute.getKey()">$attribute.getValue()</attribute>
+            #end
+        </attributes>
+        <fields size="$this.getFields().size()">
+            #foreach ($field in $this.getFields().entrySet())
+            <field key="$field.getKey()">$field.getValue()</field>
+            #end
+        </fields>
+    </object>
+</root>

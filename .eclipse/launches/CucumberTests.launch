@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.junit.launchconfig">
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/cimerant/src/test/java/cimerant/CucumberTests.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value=""/>
+    <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
+    <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
+    <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit5"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="cimerant.CucumberTests"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="cimerant"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea&#10;-Xmx8000m&#10;-XX:+UseG1GC&#10;-XX:+HeapDumpOnOutOfMemoryError&#10;-Dcom.sun.management.jmxremote&#10;-Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS&#10;-Dorg.slf4j.simpleLogger.defaultLogLevel=info&#10;-Dorg.slf4j.simpleLogger.showDateTime=true&#10;--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED&#10;--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED&#10;--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"/>
+</launchConfiguration>

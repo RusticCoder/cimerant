@@ -1,0 +1,168 @@
+
+<root name="destination">
+    <attributes size="11">
+        <attribute key="commandLineKey1">here'sMessage#1</attribute>
+        <attribute key="commandLineKey2">here'sMessage#2</attribute>
+        <attribute key="modelKey1">aTestString</attribute>
+        <attribute key="modelKey2">aTestString</attribute>
+        <attribute key="modelKey3">aTestString</attribute>
+        <attribute key="modelKey4">aTestString</attribute>
+        <attribute key="modelKey5">aTestString</attribute>
+        <attribute key="modelKey6">aTestString</attribute>
+        <attribute key="modelKey7">a$test$string</attribute>
+        <attribute key="modelKey8">ateststring</attribute>
+        <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+    </attributes>
+    <object grouping="[com, aTestString]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, a$test$string]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a$test$string">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, aTestString]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, aTestString]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, aTestString]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, aTestString]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, aTestString]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="aTestString">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+    <object grouping="[com, ateststring]">
+        <attributes size="12">
+            <attribute key="commandLineKey1">here'sMessage#1</attribute>
+            <attribute key="commandLineKey2">here'sMessage#2</attribute>
+            <attribute key="modelKey1">aTestString</attribute>
+            <attribute key="modelKey2">aTestString</attribute>
+            <attribute key="modelKey3">aTestString</attribute>
+            <attribute key="modelKey4">aTestString</attribute>
+            <attribute key="modelKey5">aTestString</attribute>
+            <attribute key="modelKey6">aTestString</attribute>
+            <attribute key="modelKey7">a$test$string</attribute>
+            <attribute key="modelKey8">ateststring</attribute>
+            <attribute key="modelKeys">aTestStringATestStringATestStringATestStringATestStringATestStringA$test$stringATestString</attribute>
+            <attribute key="url">vetsPetshopCom</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ateststring">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+    </object>
+</root>
