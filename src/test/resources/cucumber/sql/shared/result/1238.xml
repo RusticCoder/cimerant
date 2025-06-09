@@ -1,0 +1,16 @@
+
+<root name="1238">
+    <attributes size="0">
+    </attributes>
+    <object name="more_derived">
+        <attributes size="2">
+            <attribute key="inherits">derived</attribute>
+            <attribute key="like">derived</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

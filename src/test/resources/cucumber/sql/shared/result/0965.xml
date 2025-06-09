@@ -1,0 +1,16 @@
+
+<root name="0965">
+    <attributes size="0">
+    </attributes>
+    <object name="defc">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, default=0, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="f1">{cimerant:type=relationship, column=f1, foreignTable=defp}</relationship>
+        </relationships>
+    </object>
+</root>

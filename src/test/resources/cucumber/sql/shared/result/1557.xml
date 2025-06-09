@@ -1,0 +1,15 @@
+
+<root name="1557">
+    <attributes size="0">
+    </attributes>
+    <object name="atestp1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

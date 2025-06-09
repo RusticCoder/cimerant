@@ -351,7 +351,7 @@ Error codes are displayed `<System/App>-<Component/Module>-<Status code>`
 | 0017 | Invalid file pattern ${CLASS_NAME} required in multi mode     |
 | 0018 | Single and multi cannot be used together                      |
 | 0019 | Invalid variable list format                                  |
-| 0020 | Invalid JSON file format for                                  |
+| 0020 | Invalid object model file format for                          |
 
 ## Glossary
 
@@ -370,27 +370,6 @@ representation of Cimerant changing design models into objects using
 [Velocity a Java-based template engine][1]
 
 ## Maven Usage
-
-export MAVEN_OPTS="
-\-ea
-\-Xmx512m
-\-XX:+UseG1GC
-\-XX:+HeapDumpOnOutOfMemoryError
-\-Dcom.sun.management.jmxremote
-\-Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
-\-Dorg.slf4j.simpleLogger.defaultLogLevel=info
-\-Dorg.slf4j.simpleLogger.showDateTime=true
-\--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED
-\--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
-\--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED
-\--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED
-"
 
 mvn clean:clean compiler:compile assembly:single
 
@@ -448,9 +427,8 @@ Requires Java 17 and Maven to be installed.
 > cd ~/
 > git clone https://github.com/RusticCoder/cimerant.git
 > cd ~/cimerant
-> export MAVEN_OPTS="-ea -Xmx512m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Dcom.sun.management.jmxremote -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
 > mvn clean compile assembly:single
-> java -jar cimerant-1.0.0.jar --input model.json --templates TemplateList.md
+> java -jar cimerant-1.1.0.jar --input model.json --templates TemplateList.md
 ```
 
 ### Via Executable
@@ -461,11 +439,10 @@ Requires Java 17 and Maven to be installed.
 > cd ~/
 > git clone https://github.com/RusticCoder/cimerant.git
 > cd ~/cimerant
-> export MAVEN_OPTS="-ea -Xmx512m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Dcom.sun.management.jmxremote -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.showDateTime=true --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
 > mvn clean compile assembly:single
 > jpackage --input target/ \
     --name Cimerant \
-    --main-jar cimerant-1.0.0.jar \
+    --main-jar cimerant-1.1.0.jar \
     --main-class cimerant.Cimerant \
     --type exe \
     --java-options '--enable-preview'

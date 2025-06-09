@@ -1,0 +1,18 @@
+
+<root name="2085">
+    <attributes size="0">
+    </attributes>
+    <object name="shipped">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="ordnum">{cimerant:type=field, fieldType=int4}</field>
+            <field key="partnum">{cimerant:type=field, fieldType=text}</field>
+            <field key="ttype">{cimerant:type=field, fieldType=char, maxSize=2}</field>
+            <field key="value">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

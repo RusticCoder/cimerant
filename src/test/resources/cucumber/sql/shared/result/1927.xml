@@ -1,0 +1,15 @@
+
+<root name="1927">
+    <attributes size="0">
+    </attributes>
+    <object name="vac_truncate_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="i">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="j">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

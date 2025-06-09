@@ -1,0 +1,72 @@
+
+<root name="built_in_functions_system">
+    <attributes size="0">
+    </attributes>
+    <object name="cust">
+        <attributes size="0">
+        </attributes>
+        <fields size="10">
+            <field key="Address">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="City">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="Company">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="ContactName">{cimerant:type=field, fieldType=VARCHAR, maxSize=60, nullable=false}</field>
+            <field key="CountryRegion">{cimerant:type=field, fieldType=VARCHAR, maxSize=20, nullable=false}</field>
+            <field key="CustomerID">{cimerant:type=field, default=newid(), fieldType=uniqueidentifier, nullable=false}</field>
+            <field key="Fax">{cimerant:type=field, fieldType=VARCHAR, maxSize=15, nullable=true}</field>
+            <field key="PostalCode">{cimerant:type=field, fieldType=VARCHAR, maxSize=10, nullable=false}</field>
+            <field key="StateProvince">{cimerant:type=field, fieldType=VARCHAR, maxSize=10, nullable=true}</field>
+            <field key="Telephone">{cimerant:type=field, fieldType=VARCHAR, maxSize=15, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="example_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="_id">{cimerant:type=field, fieldType=INT, identity=true, primary=true}</field>
+            <field key="info">{cimerant:type=field, fieldType=VARBINARY, maxSize=max}</field>
+            <field key="name">{cimerant:type=field, fieldType=NVARCHAR, maxSize=max}</field>
+            <field key="surname">{cimerant:type=field, fieldType=NVARCHAR, maxSize=max}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="myTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="column1">{cimerant:type=field, fieldType=INT}</field>
+            <field key="column2">{cimerant:type=field, fieldType=VARCHAR, maxSize=256}</field>
+            <field key="ColumnA">{cimerant:type=field, default=dbo.myfunction(NEWSEQUENTIALID()), fieldType=uniqueidentifier}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="Orders">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="CustomerID">{cimerant:type=field, fieldType=NCHAR, maxSize=5}</field>
+            <field key="OrderDate">{cimerant:type=field, fieldType=DATETIME, nullable=false}</field>
+            <field key="OrderID">{cimerant:type=field, fieldType=INT, primary=true}</field>
+            <field key="ShipDate">{cimerant:type=field, fieldType=DATETIME, nullable=true}</field>
+            <field key="ShipperID">{cimerant:type=field, fieldType=INT, nullable=true}</field>
+            <field key="TerminalID">{cimerant:type=field, default=HOST_ID(), fieldType=CHAR, maxSize=8, nullable=false}</field>
+            <field key="Workstation">{cimerant:type=field, default=HOST_NAME(), fieldType=NCHAR, maxSize=30, nullable=false}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="CustomerID">{cimerant:type=relationship, column=CustomerID, foreignColumn=CustomerID, foreignTable=Customers}</relationship>
+            <relationship key="ShipperID">{cimerant:type=relationship, column=ShipperID, foreignColumn=ShipperID, foreignTable=Shippers}</relationship>
+        </relationships>
+    </object>
+    <object name="RowVersionTestTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="rv">{cimerant:type=field, fieldType=ROWVERSION}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

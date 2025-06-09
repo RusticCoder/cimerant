@@ -1,0 +1,14 @@
+
+<root name="0028">
+    <attributes size="0">
+    </attributes>
+    <object name="myTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ColumnA">{cimerant:type=field, default=dbo.myfunction(NEWSEQUENTIALID()), fieldType=uniqueidentifier}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

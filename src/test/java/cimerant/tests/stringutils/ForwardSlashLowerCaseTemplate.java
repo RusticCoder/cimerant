@@ -47,7 +47,7 @@ public class ForwardSlashLowerCaseTemplate {
       temporaryFolder.create();
 
       ForwardSlashLowerCaseTemplate.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", ForwardSlashLowerCaseTemplate.cimerantPath.getAbsolutePath());
     }
@@ -82,12 +82,12 @@ public class ForwardSlashLowerCaseTemplate {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(ForwardSlashLowerCaseTemplate.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

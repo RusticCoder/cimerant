@@ -1,0 +1,15 @@
+
+<root name="0341">
+    <attributes size="0">
+    </attributes>
+    <object name="new_system_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="othercol">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,61 @@
+
+<root name="ddl_create_table">
+    <attributes size="0">
+    </attributes>
+    <object name="Employee" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="EmployeeID">{cimerant:type=field, clustered=true, fieldType=int, primary=true}</field>
+            <field key="ProductID">{cimerant:type=field, fieldType=int}</field>
+            <field key="SalesPersonID">{cimerant:type=field, fieldType=int, nullable=true}</field>
+            <field key="SpecialOfferID">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="FK_SpecialOfferProduct_SalesOrderDetail">{cimerant:type=relationship, column=ProductID, SpecialOfferID, foreignColumn=ProductID, SpecialOfferID, foreignTable=SpecialOfferProduct}</relationship>
+            <relationship key="SalesPersonID">{cimerant:type=relationship, column=SalesPersonID, foreignColumn=SalesPersonID, foreignTable=SalesPerson}</relationship>
+        </relationships>
+    </object>
+    <object name="PartitionTable" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="process_date">{cimerant:type=field, fieldType=datetime, primary=true}</field>
+            <field key="process_type">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="id">{cimerant:type=field, clustered=false, fieldType=varchar, maxSize=50, nullable=false}</field>
+            <field key="other_id">{cimerant:type=field, clustered=true, fieldType=uniqueidentifier, nullable=false}</field>
+            <field key="value">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TestTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ID">{cimerant:type=field, fieldType=INT, nullable=false, primary=true}</field>
+            <field key="Name">{cimerant:type=field, fieldType=NVARCHAR, maxSize=64, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="xyz">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="ccc">{cimerant:type=field, clustered=true, fieldType=char, maxSize=1, primary=true}</field>
+            <field key="xxx">{cimerant:type=field, fieldType=numeric, nullable=true, precision=18, scale=0}</field>
+            <field key="yyy">{cimerant:type=field, fieldType=numeric, nullable=true, precision=10, scale=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

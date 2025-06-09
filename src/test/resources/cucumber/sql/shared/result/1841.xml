@@ -1,0 +1,14 @@
+
+<root name="1841">
+    <attributes size="0">
+    </attributes>
+    <object name="truncate_a">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

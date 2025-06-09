@@ -1,0 +1,16 @@
+
+<root name="0254">
+    <attributes size="0">
+    </attributes>
+    <object name="PKTABLE">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="ptest1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="ptest2">{cimerant:type=field, fieldType=inet, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

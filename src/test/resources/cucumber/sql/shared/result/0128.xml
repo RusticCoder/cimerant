@@ -1,0 +1,15 @@
+
+<root name="0128">
+    <attributes size="0">
+    </attributes>
+    <object name="with_check">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c2">{cimerant:type=field, fieldType=varchar, maxSize=22}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

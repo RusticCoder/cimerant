@@ -1,0 +1,14 @@
+
+<root name="built_in_functions_cursor">
+    <attributes size="0">
+    </attributes>
+    <object name="TMP">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ii">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

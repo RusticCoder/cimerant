@@ -1,0 +1,14 @@
+
+<root name="1586">
+    <attributes size="0">
+    </attributes>
+    <object name="numrange_test2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="nr">{cimerant:type=field, fieldType=numrange}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

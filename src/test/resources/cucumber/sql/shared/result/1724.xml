@@ -1,0 +1,20 @@
+
+<root name="1724">
+    <attributes size="0">
+    </attributes>
+    <object name="functional_dependencies">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="c">{cimerant:type=field, fieldType=INT}</field>
+            <field key="d">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler1">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler2">{cimerant:type=field, fieldType=NUMERIC}</field>
+            <field key="filler3">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

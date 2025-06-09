@@ -1,0 +1,14 @@
+
+<root name="1216">
+    <attributes size="0">
+    </attributes>
+    <object name="some_tab_child">
+        <attributes size="1">
+            <attribute key="inherits">some_tab</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

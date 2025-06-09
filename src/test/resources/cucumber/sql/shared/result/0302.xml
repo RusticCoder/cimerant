@@ -1,0 +1,15 @@
+
+<root name="0302">
+    <attributes size="0">
+    </attributes>
+    <object name="depth1">
+        <attributes size="1">
+            <attribute key="inherits">depth0</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,21 @@
+
+<root name="0104">
+    <attributes size="0">
+    </attributes>
+    <object name="daily_intelligences">
+        <attributes size="2">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="engine">innodb</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="CREATE">{cimerant:type=field, default=CURRENT_TIMESTAMP, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="gmt_modify">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=bigint, nullable=false, precision=20, primary=true}</field>
+            <field key="monitor_time">{cimerant:type=field, default=NULL, fieldType=TIMESTAMP}</field>
+            <field key="partner_code">{cimerant:type=field, default=NULL, fieldType=varchar, maxSize=32}</field>
+            <field key="text">{cimerant:type=field, default=NULL, fieldType=LONGTEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

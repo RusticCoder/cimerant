@@ -1,0 +1,554 @@
+
+<root name="generated">
+    <attributes size="0">
+    </attributes>
+    <object name="gtest0">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest10">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest10a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest11s">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest12s">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest1_1">
+        <attributes size="1">
+            <attribute key="inherits">gtest1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest1_2">
+        <attributes size="1">
+            <attribute key="inherits">gtest0, gtest1, gtesty</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest20">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest20a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest20b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest21a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest21b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest22a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest22b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest22c">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest23a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest23b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignColumn=x, foreignTable=gtest23a}</relationship>
+        </relationships>
+    </object>
+    <object name="gtest23p">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+            <field key="y">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest23q">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignColumn=y, foreignTable=gtest23p}</relationship>
+        </relationships>
+    </object>
+    <object name="gtest23x">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignColumn=x, foreignTable=gtest23a}</relationship>
+        </relationships>
+    </object>
+    <object name="gtest24">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=gtestdomain1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest25">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest26">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest27">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest28a">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest28b">
+        <attributes size="1">
+            <attribute key="like">gtest28a</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest29">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest30">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest30_1">
+        <attributes size="1">
+            <attribute key="inherits">gtest30</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest3a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=double_int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_2a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_2b">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=double precision}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_5a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, default=5, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_5b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, identity=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_6a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=bool}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_7a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_7b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_7c">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_7d">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_err_8">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_normal">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_normal_child">
+        <attributes size="1">
+            <attribute key="inherits">gtest_normal</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_parent">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=date, nullable=false}</field>
+            <field key="f2">{bigint=true, cimerant:type=field, fieldType=text}</field>
+            <field key="f3">{cimerant:type=field, fieldType=bigint}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_tableoid">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=bool}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtest_varlena">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=varchar}</field>
+            <field key="b">{cimerant:type=field, fieldType=varchar}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtestx">
+        <attributes size="1">
+            <attribute key="inherits">gtest1</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="b">{cimerant:type=field, default=10, fieldType=int, identity=true}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gtesty">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="b">{cimerant:type=field, default=55, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

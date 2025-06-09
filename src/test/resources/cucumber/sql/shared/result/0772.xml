@@ -1,0 +1,15 @@
+
+<root name="0772">
+    <attributes size="0">
+    </attributes>
+    <object name="ft2">
+        <attributes size="2">
+            <attribute key="foreign">true</attribute>
+            <attribute key="inherits">fd_pt1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

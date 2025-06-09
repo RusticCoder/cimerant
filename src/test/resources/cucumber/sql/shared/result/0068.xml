@@ -1,0 +1,14 @@
+
+<root name="0068">
+    <attributes size="0">
+    </attributes>
+    <object name="log_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="row">{cimerant:type=field, fieldType=character, maxSize=512}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

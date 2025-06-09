@@ -1,0 +1,14 @@
+
+<root name="1504">
+    <attributes size="0">
+    </attributes>
+    <object name="stable_qual_pruning">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=timestamp}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

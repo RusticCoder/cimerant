@@ -1,0 +1,16 @@
+
+<root name="1571">
+    <attributes size="0">
+    </attributes>
+    <object name="ctv_data">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="v">{cimerant:type=field, fieldType=text}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

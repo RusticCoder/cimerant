@@ -1,0 +1,18 @@
+
+<root name="0185">
+    <attributes size="0">
+    </attributes>
+    <object name="t_ddl_0027">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="ADDRESS">{cimerant:type=field, fieldType=VARCHAR, maxSize=50, nullable=false}</field>
+            <field key="DEPT">{cimerant:type=field, fieldType=VARCHAR, maxSize=50}</field>
+            <field key="FID">{cimerant:type=field, fieldType=INT}</field>
+            <field key="NAME">{cimerant:type=field, default='Tom', fieldType=VARCHAR, maxSize=50}</field>
+            <field key="PID">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

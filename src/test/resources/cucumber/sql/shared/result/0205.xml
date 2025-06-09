@@ -1,0 +1,23 @@
+
+<root name="0205">
+    <attributes size="0">
+    </attributes>
+    <object name="hash_products">
+        <attributes size="0">
+        </attributes>
+        <fields size="10">
+            <field key="catalog_url">{cimerant:type=field, fieldType=VARCHAR2, maxSize=50}</field>
+            <field key="category_id">{cimerant:type=field, fieldType=NUMBER, precision=2}</field>
+            <field key="list_price">{cimerant:type=field, fieldType=NUMBER, precision=8, scale=2}</field>
+            <field key="min_price">{cimerant:type=field, fieldType=NUMBER, precision=8, scale=2}</field>
+            <field key="product_description">{cimerant:type=field, fieldType=VARCHAR2, maxSize=2000}</field>
+            <field key="product_id">{cimerant:type=field, fieldType=NUMBER, precision=6, primary=true}</field>
+            <field key="product_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=50}</field>
+            <field key="product_status">{cimerant:type=field, fieldType=VARCHAR2, maxSize=20}</field>
+            <field key="supplier_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+            <field key="weight_class">{cimerant:type=field, fieldType=NUMBER, precision=1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

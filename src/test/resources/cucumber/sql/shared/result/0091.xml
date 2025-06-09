@@ -1,0 +1,17 @@
+
+<root name="0091">
+    <attributes size="0">
+    </attributes>
+    <object name="column_names_as_aggr_funcs">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="count">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="max">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="min">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="sum">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

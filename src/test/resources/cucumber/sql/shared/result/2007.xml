@@ -1,0 +1,15 @@
+
+<root name="2007">
+    <attributes size="0">
+    </attributes>
+    <object name="T3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="C3">{cimerant:type=field, fieldType=STRING}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="T2">{cimerant:type=relationship, column=C3, foreignTable=T2}</relationship>
+        </relationships>
+    </object>
+</root>

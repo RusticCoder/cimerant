@@ -1,0 +1,15 @@
+
+<root name="2072">
+    <attributes size="0">
+    </attributes>
+    <object name="undroppable_objs">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="object_identity">{cimerant:type=field, fieldType=text}</field>
+            <field key="object_type">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

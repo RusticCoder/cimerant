@@ -1,0 +1,18 @@
+
+<root name="sql2">
+    <attributes size="0">
+    </attributes>
+    <object name="f">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="i">{cimerant:type=field, fieldType=TEXT, nullable=false}</field>
+            <field key="id">{cimerant:type=field, fieldType=INT, nullable=false, primary=true}</field>
+            <field key="j">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="k">{cimerant:type=field, fieldType=CHAR, maxSize=50}</field>
+            <field key="m">{cimerant:type=field, fieldType=REAL}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

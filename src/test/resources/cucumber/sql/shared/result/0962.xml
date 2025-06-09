@@ -1,0 +1,21 @@
+
+<root name="0962">
+    <attributes size="0">
+    </attributes>
+    <object name="tasks">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="checked_by">{cimerant:type=field, fieldType=INT}</field>
+            <field key="id">{cimerant:type=field, fieldType=INT, primary=true}</field>
+            <field key="owner">{cimerant:type=field, fieldType=INT}</field>
+            <field key="worker">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="3">
+            <relationship key="checked_by">{cimerant:type=relationship, column=checked_by, foreignTable=users}</relationship>
+            <relationship key="owner">{cimerant:type=relationship, column=owner, foreignTable=users}</relationship>
+            <relationship key="worker">{cimerant:type=relationship, column=worker, foreignTable=users}</relationship>
+        </relationships>
+    </object>
+</root>

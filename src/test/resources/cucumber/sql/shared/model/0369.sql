@@ -1,0 +1,1 @@
+CREATE TABLE def_part (LIKE list_parted INCLUDING CONSTRAINTS)

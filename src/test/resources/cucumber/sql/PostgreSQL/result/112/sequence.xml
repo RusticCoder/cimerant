@@ -1,0 +1,50 @@
+
+<root name="sequence">
+    <attributes size="0">
+    </attributes>
+    <object name="sequence_test_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="serialTest1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=serial}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="serialTest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=serial}</field>
+            <field key="f3">{cimerant:type=field, fieldType=smallserial}</field>
+            <field key="f4">{cimerant:type=field, fieldType=serial2}</field>
+            <field key="f5">{cimerant:type=field, fieldType=bigserial}</field>
+            <field key="f6">{cimerant:type=field, fieldType=serial8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=serial}</field>
+            <field key="f2">{cimerant:type=field, default=nextval('myseq2'), fieldType=int}</field>
+            <field key="f3">{cimerant:type=field, default=nextval('myseq3'::text), fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

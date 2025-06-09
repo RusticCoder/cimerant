@@ -1,0 +1,18 @@
+
+<root name="1659">
+    <attributes size="0">
+    </attributes>
+    <object name="shoelace_data">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="sl_avail">{cimerant:type=field, fieldType=integer}</field>
+            <field key="sl_color">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="sl_len">{cimerant:type=field, fieldType=float}</field>
+            <field key="sl_name">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="sl_unit">{cimerant:type=field, fieldType=char, maxSize=8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

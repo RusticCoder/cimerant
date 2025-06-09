@@ -1,0 +1,155 @@
+
+<root name="foreign_data">
+    <attributes size="0">
+    </attributes>
+    <object name="ct3">
+        <attributes size="1">
+            <attribute key="inherits">ft2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fd_pt1">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+            <field key="c3">{cimerant:type=field, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fd_pt2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+            <field key="c3">{cimerant:type=field, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fd_pt2_1">
+        <attributes size="1">
+            <attribute key="foreign">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+            <field key="c3">{cimerant:type=field, fieldType=date}</field>
+            <field key="c4">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="foreign_part">
+        <attributes size="1">
+            <attribute key="foreign">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ft1">
+        <attributes size="1">
+            <attribute key="foreign">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false, primary=true}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+            <field key="c3">{cimerant:type=field, fieldType=date, unique=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="c1">{cimerant:type=relationship, column=c1, foreignColumn=id, foreignTable=ref_table}</relationship>
+        </relationships>
+    </object>
+    <object name="ft2">
+        <attributes size="2">
+            <attribute key="foreign">true</attribute>
+            <attribute key="inherits">fd_pt1</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+            <field key="c3">{cimerant:type=field, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ft3">
+        <attributes size="2">
+            <attribute key="foreign">true</attribute>
+            <attribute key="inherits">ft2</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+            <field key="c3">{cimerant:type=field, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ft_part2">
+        <attributes size="1">
+            <attribute key="foreign">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ft_part_1_2">
+        <attributes size="1">
+            <attribute key="foreign">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="lt1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ref_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="temp_parted">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="use_ft1_column_type">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=ft1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

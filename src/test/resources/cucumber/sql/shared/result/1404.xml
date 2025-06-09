@@ -1,0 +1,14 @@
+
+<root name="1404">
+    <attributes size="0">
+    </attributes>
+    <object name="lock_tbl3">
+        <attributes size="1">
+            <attribute key="inherits">lock_tbl2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

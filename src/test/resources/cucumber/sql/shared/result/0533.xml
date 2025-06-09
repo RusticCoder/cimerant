@@ -1,0 +1,15 @@
+
+<root name="0533">
+    <attributes size="0">
+    </attributes>
+    <object name="road">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+            <field key="thepath">{cimerant:type=field, fieldType=path}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,8 @@
+CREATE TABLE orders22
+(
+order_id int IDENTITY(1000, 1) NOT NULL,
+cust_id  int NOT NULL,
+order_date smalldatetime NOT NULL DEFAULT GETDATE(),
+order_amt money NOT NULL,
+order_person char(30) NOT NULL DEFAULT CURRENT_USER
+)

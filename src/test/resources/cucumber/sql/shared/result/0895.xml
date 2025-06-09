@@ -1,0 +1,14 @@
+
+<root name="0895">
+    <attributes size="0">
+    </attributes>
+    <object name="xid8_t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=xid8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

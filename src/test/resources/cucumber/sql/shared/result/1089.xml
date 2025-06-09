@@ -1,0 +1,22 @@
+
+<root name="1089">
+    <attributes size="0">
+    </attributes>
+    <object name="gstest2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="8">
+            <field key="a">{cimerant:type=field, fieldType=integer}</field>
+            <field key="b">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c">{cimerant:type=field, fieldType=integer}</field>
+            <field key="d">{cimerant:type=field, fieldType=integer}</field>
+            <field key="e">{cimerant:type=field, fieldType=integer}</field>
+            <field key="f">{cimerant:type=field, fieldType=integer}</field>
+            <field key="g">{cimerant:type=field, fieldType=integer}</field>
+            <field key="h">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

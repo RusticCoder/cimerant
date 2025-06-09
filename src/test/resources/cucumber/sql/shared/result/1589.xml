@@ -1,0 +1,14 @@
+
+<root name="1589">
+    <attributes size="0">
+    </attributes>
+    <object name="test_range_spgist">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ir">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

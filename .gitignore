@@ -23,6 +23,7 @@ npm-debug.log.*
 ######################
 # Eclipse
 ######################
+/.checkstyle
 /.classpath
 /.factorypath
 /.loadpath

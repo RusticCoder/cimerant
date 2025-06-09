@@ -1,0 +1,17 @@
+
+<root name="0084">
+    <attributes size="0">
+    </attributes>
+    <object name="transactional_table">
+        <attributes size="1">
+            <attribute key="transactional">1</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="class_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,8 @@
+CREATE TABLE table_items (id INT, purchased DATE)
+    PARTITION BY RANGE( YEAR(purchased) )
+        SUBPARTITION BY HASH( TO_DAYS(purchased) )
+        SUBPARTITIONS 2 (
+        PARTITION p0 VALUES LESS THAN (1990),
+        PARTITION p1 VALUES LESS THAN (2000),
+        PARTITION p2 VALUES LESS THAN MAXVALUE
+    )

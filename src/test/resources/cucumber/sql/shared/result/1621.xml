@@ -1,0 +1,16 @@
+
+<root name="1621">
+    <attributes size="0">
+    </attributes>
+    <object name="people">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="bd">{cimerant:type=field, fieldType=date}</field>
+            <field key="fn">{cimerant:type=field, fieldType=fullname}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="1560">
+    <attributes size="0">
+    </attributes>
+    <object name="test5a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=priv_testdomain1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

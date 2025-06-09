@@ -1,0 +1,20 @@
+
+<root name="0109">
+    <attributes size="0">
+    </attributes>
+    <object name="ent_folder_letter_relationship" grouping="[contract_center]">
+        <attributes size="2">
+            <attribute key="charset">UTF8MB4</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="CREATE_time">{cimerant:type=field, comment=创建时间, default=CURRENT_TIMESTAMP(), fieldType=DATETIME, nullable=false}</field>
+            <field key="data_update_time">{cimerant:type=field, comment=更新时间, default=CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(), fieldType=DATETIME, nullable=false}</field>
+            <field key="deleted">{cimerant:type=field, comment=0-有效记录, 1-删除, default=_UTF8MB4'0', fieldType=TINYINT, nullable=false, precision=1}</field>
+            <field key="id">{cimerant:type=field, comment=唯一标识, fieldType=BIGINT, nullable=false, precision=19, primary=true, unsigned=true}</field>
+            <field key="layer">{cimerant:type=field, comment=文档所属层级，0-主关联文档， 1-次关联文档, default=_UTF8MB4'0', fieldType=TINYINT, precision=4, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

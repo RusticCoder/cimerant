@@ -1,0 +1,18 @@
+
+<root name="0710">
+    <attributes size="0">
+    </attributes>
+    <object name="nulltest">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="col1">{cimerant:type=field, fieldType=dnotnull}</field>
+            <field key="col2">{cimerant:type=field, fieldType=dnotnull, nullable=true}</field>
+            <field key="col3">{cimerant:type=field, fieldType=dnull, nullable=false}</field>
+            <field key="col4">{cimerant:type=field, fieldType=dnull}</field>
+            <field key="col5">{cimerant:type=field, fieldType=dcheck}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

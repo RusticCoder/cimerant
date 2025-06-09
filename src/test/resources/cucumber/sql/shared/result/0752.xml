@@ -1,0 +1,15 @@
+
+<root name="0752">
+    <attributes size="0">
+    </attributes>
+    <object name="T">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c_int">{cimerant:type=field, default=1, fieldType=INT}</field>
+            <field key="pk">{cimerant:type=field, fieldType=INT, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,17 @@
+
+<root name="0502">
+    <attributes size="0">
+    </attributes>
+    <object name="boolindex">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="b">{cimerant:type=field, fieldType=bool, unique=true}</field>
+            <field key="i">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="junk">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

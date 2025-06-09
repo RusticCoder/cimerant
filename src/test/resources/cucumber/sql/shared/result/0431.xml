@@ -1,0 +1,15 @@
+
+<root name="0431">
+    <attributes size="0">
+    </attributes>
+    <object name="varbit_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=BIT, maxSize=16, varying=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=BIT, maxSize=16, varying=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

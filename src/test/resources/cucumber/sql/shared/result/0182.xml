@@ -1,0 +1,18 @@
+
+<root name="0182">
+    <attributes size="0">
+    </attributes>
+    <object name="products">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="description">{cimerant:type=field, fieldType=VARCHAR2, maxSize=512}</field>
+            <field key="id">{cimerant:type=field, fieldType=NUMBER, identity=true, nullable=false, precision=4, primary=true}</field>
+            <field key="name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=255, nullable=false}</field>
+            <field key="PRICE">{cimerant:type=field, fieldType=NUMERIC, precision=10, scale=-2}</field>
+            <field key="weight">{cimerant:type=field, fieldType=FLOAT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

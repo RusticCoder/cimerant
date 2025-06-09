@@ -1,0 +1,16 @@
+
+<root name="1321">
+    <attributes size="0">
+    </attributes>
+    <object name="inserttest3">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, default='foo', fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, default='bar', fieldType=text}</field>
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

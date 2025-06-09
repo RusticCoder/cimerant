@@ -1,0 +1,25 @@
+
+<root name="select">
+    <attributes size="0">
+    </attributes>
+    <object name="foo">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="list_parted_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

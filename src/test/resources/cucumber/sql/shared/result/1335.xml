@@ -1,0 +1,18 @@
+
+<root name="1335">
+    <attributes size="0">
+    </attributes>
+    <object name="dropcol">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="drop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop2">{cimerant:type=field, fieldType=numeric}</field>
+            <field key="keep1">{cimerant:type=field, fieldType=text}</field>
+            <field key="keep2">{cimerant:type=field, fieldType=float}</field>
+            <field key="key">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

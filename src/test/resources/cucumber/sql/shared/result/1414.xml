@@ -1,0 +1,16 @@
+
+<root name="1414">
+    <attributes size="0">
+    </attributes>
+    <object name="num_exp_mul">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=210, scale=10}</field>
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

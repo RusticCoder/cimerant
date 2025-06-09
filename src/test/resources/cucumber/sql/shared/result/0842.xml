@@ -1,0 +1,15 @@
+
+<root name="0842">
+    <attributes size="0">
+    </attributes>
+    <object name="copy_t">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=integer}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

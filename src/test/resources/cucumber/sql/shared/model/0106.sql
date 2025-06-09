@@ -1,0 +1,5 @@
+CREATE TABLE `t_test_curdate` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`c1` datetime NOT NULL DEFAULT CURDATE() COMMENT 'error test',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

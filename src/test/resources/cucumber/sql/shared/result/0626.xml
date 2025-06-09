@@ -1,0 +1,15 @@
+
+<root name="0626">
+    <attributes size="0">
+    </attributes>
+    <object name="ctlb">
+        <attributes size="1">
+            <attribute key="inherits">ctla</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="bb">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

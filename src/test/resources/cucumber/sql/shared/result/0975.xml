@@ -1,0 +1,18 @@
+
+<root name="0975">
+    <attributes size="0">
+    </attributes>
+    <object name="fktable2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="very_very_long_column_name_to_exceed_63_characters">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="pktable1">{cimerant:type=relationship, column=very_very_long_column_name_to_exceed_63_characters, foreignTable=pktable1}</relationship>
+            <relationship key="pktable2">{cimerant:type=relationship, column=a, very_very_long_column_name_to_exceed_63_characters, foreignTable=pktable2}</relationship>
+        </relationships>
+    </object>
+</root>

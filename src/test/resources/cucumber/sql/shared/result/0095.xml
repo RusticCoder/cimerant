@@ -1,0 +1,17 @@
+
+<root name="0095">
+    <attributes size="0">
+    </attributes>
+    <object name="tblSRCHjob_desc">
+        <attributes size="2">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="engine">TokuDB</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="description">{cimerant:type=field, fieldType=mediumtext, nullable=false}</field>
+            <field key="description_id">{autoIncrement=true, cimerant:type=field, fieldType=bigint, nullable=false, precision=20, primary=true, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

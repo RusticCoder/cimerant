@@ -1,0 +1,24 @@
+
+<root name="transactions">
+    <attributes size="0">
+    </attributes>
+    <object name="TestTran">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="Cola">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="Colb">{cimerant:type=field, fieldType=char, maxSize=3}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ValueTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="value">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="0222">
+    <attributes size="0">
+    </attributes>
+    <object name="bytea_test_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="v">{cimerant:type=field, fieldType=bytea}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

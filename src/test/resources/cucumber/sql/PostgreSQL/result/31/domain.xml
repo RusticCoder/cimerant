@@ -1,0 +1,186 @@
+
+<root name="domain">
+    <attributes size="0">
+    </attributes>
+    <object name="basictest">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="testint4">{cimerant:type=field, fieldType=domainint4}</field>
+            <field key="testnumeric">{cimerant:type=field, fieldType=domainnumeric}</field>
+            <field key="testtext">{cimerant:type=field, fieldType=domaintext}</field>
+            <field key="testvarchar">{cimerant:type=field, fieldType=domainvarchar}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dcomptable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="d1">{cimerant:type=field, dcomptypea=true, fieldType=dcomptype, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ddtest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, ddtest1d=true, fieldType=ddtest1, posint2=true, rposint=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="defaulttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="8">
+            <field key="col1">{cimerant:type=field, fieldType=ddef1}</field>
+            <field key="col2">{cimerant:type=field, fieldType=ddef2}</field>
+            <field key="col3">{cimerant:type=field, fieldType=ddef3}</field>
+            <field key="col4">{cimerant:type=field, fieldType=ddef4, primary=true}</field>
+            <field key="col5">{cimerant:type=field, default=NULL, fieldType=ddef1, nullable=false}</field>
+            <field key="col6">{cimerant:type=field, default='88', fieldType=ddef2}</field>
+            <field key="col7">{cimerant:type=field, default=8000, fieldType=ddef4}</field>
+            <field key="col8">{cimerant:type=field, fieldType=ddef5}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dom_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=inotnull}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="domain_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="domarrtest">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="testchar4arr">{cimerant:type=field, fieldType=domainchar4arr}</field>
+            <field key="testint4arr">{cimerant:type=field, fieldType=domainint4arr}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="domcontest">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=con}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="domdeftest">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=ddef1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="domnotnull">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=dnotnulltest}</field>
+            <field key="col2">{cimerant:type=field, fieldType=dnotnulltest}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="domtab">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dposintatable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=dposinta}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dtest">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=dtop}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="nulltest">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="col1">{cimerant:type=field, fieldType=dnotnull}</field>
+            <field key="col2">{cimerant:type=field, fieldType=dnotnull, nullable=true}</field>
+            <field key="col3">{cimerant:type=field, fieldType=dnull, nullable=false}</field>
+            <field key="col4">{cimerant:type=field, fieldType=dnull}</field>
+            <field key="col5">{cimerant:type=field, fieldType=dcheck}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="op">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=orderedpair}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pitable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=posint}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="thethings">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="stuff">{cimerant:type=field, fieldType=things}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="vc4table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=vc4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

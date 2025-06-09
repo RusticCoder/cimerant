@@ -1,0 +1,24 @@
+
+<root name="1945">
+    <attributes size="0">
+    </attributes>
+    <object name="TESTKEYWORD">
+        <attributes size="0">
+        </attributes>
+        <fields size="11">
+            <field key="DATE">{cimerant:type=field, fieldType=int}</field>
+            <field key="DATE_PART">{cimerant:type=field, fieldType=int}</field>
+            <field key="EQUAL_NULL">{cimerant:type=field, fieldType=int}</field>
+            <field key="GET">{cimerant:type=field, fieldType=int}</field>
+            <field key="IFNULL">{cimerant:type=field, fieldType=int}</field>
+            <field key="LEFT">{cimerant:type=field, fieldType=int}</field>
+            <field key="NULLIF">{cimerant:type=field, fieldType=int}</field>
+            <field key="NVL">{cimerant:type=field, fieldType=int}</field>
+            <field key="RIGHT">{cimerant:type=field, fieldType=int}</field>
+            <field key="SPLIT">{cimerant:type=field, fieldType=int}</field>
+            <field key="TO_DATE">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

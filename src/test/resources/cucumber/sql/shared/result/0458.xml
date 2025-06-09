@@ -1,0 +1,14 @@
+
+<root name="0458">
+    <attributes size="0">
+    </attributes>
+    <object name="CIRCLE_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=circle}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

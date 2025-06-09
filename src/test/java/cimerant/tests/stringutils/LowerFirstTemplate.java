@@ -47,7 +47,7 @@ public class LowerFirstTemplate {
       temporaryFolder.create();
 
       LowerFirstTemplate.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", LowerFirstTemplate.cimerantPath.getAbsolutePath());
     }
@@ -80,12 +80,12 @@ public class LowerFirstTemplate {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(LowerFirstTemplate.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

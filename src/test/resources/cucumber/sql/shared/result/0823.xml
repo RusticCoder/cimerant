@@ -1,0 +1,18 @@
+
+<root name="0823">
+    <attributes size="0">
+    </attributes>
+    <object name="part_document">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="cid">{cimerant:type=field, fieldType=int}</field>
+            <field key="dauthor">{cimerant:type=field, fieldType=name}</field>
+            <field key="did">{cimerant:type=field, fieldType=int}</field>
+            <field key="dlevel">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="dtitle">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

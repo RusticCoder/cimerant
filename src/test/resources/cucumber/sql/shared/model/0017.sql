@@ -1,0 +1,6 @@
+CREATE TABLE inventory22
+(
+ part_id INT IDENTITY(100, 1) NOT NULL,
+ description VARCHAR(30) NOT NULL,
+ entry_person VARCHAR(30) NOT NULL DEFAULT USER
+)

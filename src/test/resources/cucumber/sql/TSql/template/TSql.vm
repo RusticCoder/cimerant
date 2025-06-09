@@ -1,0 +1,47 @@
+#set($nb = "")
+#if($this.getGrouping())
+#set($length = $this.getGrouping().size() - 1)
+#foreach($i in [0..$length])
+#set($quiet = $this.getGrouping().set($i, $this.getGrouping().get($i)))
+#end
+#end
+$this.setFileName($this.getFileName())
+<root#if($this.getFileName()) name="$this.getFileName()"#end#if($this.getGrouping()) grouping="$this.getGrouping()"#end>
+    <attributes size="$this.getAttributes().size()">
+        #foreach($attribute in $this.getAttributes().entrySet())
+        <attribute key="$attribute.getKey()">$attribute.getValue()</attribute>
+        #end
+    </attributes>
+    #foreach($object in $this.getObjects())
+    #if($object.getGrouping())
+    #set($length = $object.getGrouping().size() - 1)
+    #foreach($i in [0..$length])
+    #set($quiet = $object.getGrouping().set($i, $object.getGrouping().get($i)))
+    #end
+    #end
+    #if($object.getFileName())
+    $object.setFileName($object.getFileName())
+    #end
+    <object name="#if($object.getObjectName())$object.getObjectName()#end"#if($object.getGrouping()) grouping="$object.getGrouping()"#end>
+        <attributes size="$object.getAttributes().size()">
+            #foreach ($attribute in $object.getAttributes().entrySet())
+            <attribute key="$attribute.getKey()">$attribute.getValue()</attribute>
+            #end
+        </attributes>
+        <fields size="$object.getFields().size()">
+            #foreach ($field in $object.getFields().entrySet())
+            <field key="$field.getKey()">$field.getValue()</field>
+            #end
+        </fields>
+        <relationships size="$object.getRelationships().size()">
+            #foreach ($relationship in $object.getRelationships().entrySet())
+#set($map = $this.newMap($relationship.getValue()))
+#if($relationship.getValue().getOtherEntity())
+#set($quiet = $map.put("foreignTable", $relationship.getValue().getOtherEntity().getObjectName()))
+#end
+            <relationship key="$relationship.getKey()">${map}</relationship>
+            #end
+        </relationships>
+    </object>
+    #end
+</root>

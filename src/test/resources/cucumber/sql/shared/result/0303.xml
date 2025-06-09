@@ -1,0 +1,14 @@
+
+<root name="0303">
+    <attributes size="0">
+    </attributes>
+    <object name="depth2">
+        <attributes size="1">
+            <attribute key="inherits">depth1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="0064">
+    <attributes size="0">
+    </attributes>
+    <object name="MyTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="Col1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="Col2">{cimerant:type=field, fieldType=binary}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

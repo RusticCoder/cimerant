@@ -1,0 +1,14 @@
+
+<root name="1799">
+    <attributes size="0">
+    </attributes>
+    <object name="stmt_trig_on_empty_upd1">
+        <attributes size="1">
+            <attribute key="inherits">stmt_trig_on_empty_upd</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,587 @@
+
+<root name="triggers">
+    <attributes size="0">
+    </attributes>
+    <object name="child">
+        <attributes size="2">
+            <attribute key="inherits">parent</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="aid">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="bid">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="val1">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="child1">
+        <attributes size="1">
+            <attribute key="inherits">parent</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="child2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="child3">
+        <attributes size="1">
+            <attribute key="inherits">parent</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="city_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="city_id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="city_name">{cimerant:type=field, fieldType=text, nullable=false}</field>
+            <field key="country_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="population">{cimerant:type=field, fieldType=bigint}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="country_id">{cimerant:type=relationship, column=country_id, foreignTable=country_table}</relationship>
+        </relationships>
+    </object>
+    <object name="country_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="continent">{cimerant:type=field, fieldType=text, nullable=false}</field>
+            <field key="country_id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="country_name">{cimerant:type=field, fieldType=text, nullable=false, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="depth_a">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="depth_b">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="depth_c">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fkeys">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="fkey1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="fkey2">{cimerant:type=field, fieldType=text}</field>
+            <field key="fkey3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fkeys2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="fkey21">{cimerant:type=field, fieldType=int4}</field>
+            <field key="fkey22">{cimerant:type=field, fieldType=text}</field>
+            <field key="pkey23">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="iocdu_tt_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="log_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tstamp">{cimerant:type=field, default=timeofday()::timestamp, fieldType=timestamp}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="main_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="min_updates_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="my_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parent">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="8">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="aid">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="bcnt">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
+            <field key="val1">{cimerant:type=field, fieldType=text}</field>
+            <field key="val2">{cimerant:type=field, fieldType=text}</field>
+            <field key="val3">{cimerant:type=field, fieldType=text}</field>
+            <field key="val4">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted1_constr">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted1_irreg">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="fd">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted2_stmt_trig">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_constr">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_constr_ancestor">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_irreg">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="fd">{cimerant:type=field, fieldType=int}</field>
+            <field key="fd2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_irreg_ancestor">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="fd">{cimerant:type=field, fieldType=text}</field>
+            <field key="fd2">{cimerant:type=field, fieldType=int}</field>
+            <field key="fd3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_referenced">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_stmt_trig">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_trig">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_trig3">
+        <attributes size="1">
+            <attribute key="like">parted_trig</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_trigger">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_trigger_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="drp">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_trigger_3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pkeys">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="pkey1">{cimerant:type=field, fieldType=int4, nullable=false}</field>
+            <field key="pkey2">{cimerant:type=field, fieldType=text, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="refd_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="self_ref">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignColumn=a, foreignTable=self_ref}</relationship>
+        </relationships>
+    </object>
+    <object name="self_ref_trigger">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="nchildren">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
+            <field key="parent">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="parent">{cimerant:type=relationship, column=parent, foreignTable=self_ref_trigger}</relationship>
+        </relationships>
+    </object>
+    <object name="serializable_update_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="description">{cimerant:type=field, fieldType=text}</field>
+            <field key="filler">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="some_t">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="some_col">{cimerant:type=field, fieldType=boolean, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="stmt_trig_on_empty_upd">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="stmt_trig_on_empty_upd1">
+        <attributes size="1">
+            <attribute key="inherits">stmt_trig_on_empty_upd</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_with_oids">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trg_clone">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trig_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="refd_table">{cimerant:type=relationship, column=a, foreignTable=refd_table}</relationship>
+        </relationships>
+    </object>
+    <object name="trigger_ddl_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=integer}</field>
+            <field key="col2">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigger_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigger_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+            <field key="f3">{cimerant:type=field, fieldType=text}</field>
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+            <field key="v">{cimerant:type=field, fieldType=varchar}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigpart3">
+        <attributes size="1">
+            <attribute key="like">trigpart</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigpart42">
+        <attributes size="1">
+            <attribute key="like">trigpart</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigtest">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+            <field key="i">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trigtest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="i">{cimerant:type=relationship, column=i, foreignColumn=i, foreignTable=trigtest}</relationship>
+        </relationships>
+    </object>
+    <object name="tttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="price_id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="price_off">{cimerant:type=field, default=999999, fieldType=int4}</field>
+            <field key="price_on">{cimerant:type=field, fieldType=int4}</field>
+            <field key="price_val">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="unparted_trigger">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="upsert">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="color">{cimerant:type=field, fieldType=text}</field>
+            <field key="key">{cimerant:type=field, fieldType=int4, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

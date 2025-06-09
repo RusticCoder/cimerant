@@ -1,0 +1,121 @@
+
+<root name="rowtypes">
+    <attributes size="0">
+    </attributes>
+    <object name="cc">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=cantcompare}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="compos">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="compositetable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fullname">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="first">{cimerant:type=field, fieldType=text}</field>
+            <field key="last">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="people">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="bd">{cimerant:type=field, fieldType=date}</field>
+            <field key="fn">{cimerant:type=field, fieldType=fullname}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pp">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="price">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="active">{cimerant:type=field, fieldType=BOOLEAN, nullable=false}</field>
+            <field key="id">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+            <field key="price">{cimerant:type=field, fieldType=NUMERIC}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="quadtable">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="q">{cimerant:type=field, fieldType=quad}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_table">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tt2">
+        <attributes size="2">
+            <attribute key="inherits">tt1</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tt3">
+        <attributes size="2">
+            <attribute key="inherits">tt2</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

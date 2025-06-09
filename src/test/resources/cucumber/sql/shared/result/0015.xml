@@ -1,0 +1,16 @@
+
+<root name="0015">
+    <attributes size="0">
+    </attributes>
+    <object name="sname_example">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="employee_id">{cimerant:type=field, default=NEWID(), fieldType=UNIQUEIDENTIFIER}</field>
+            <field key="login_date">{cimerant:type=field, default=GETDATE(), fieldType=DATETIME}</field>
+            <field key="login_sname">{cimerant:type=field, default=SUSER_SNAME(), fieldType=SYSNAME}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

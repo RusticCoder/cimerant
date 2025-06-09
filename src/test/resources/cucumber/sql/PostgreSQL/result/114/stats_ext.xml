@@ -1,0 +1,171 @@
+
+<root name="stats_ext">
+    <attributes size="0">
+    </attributes>
+    <object name="ab1">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="b">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="c">{cimerant:type=field, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ab1c">
+        <attributes size="1">
+            <attribute key="inherits">ab1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="f" grouping="[tststats]">
+        <attributes size="1">
+            <attribute key="foreign">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="functional_dependencies">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="c">{cimerant:type=field, fieldType=INT}</field>
+            <field key="d">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler1">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler2">{cimerant:type=field, fieldType=NUMERIC}</field>
+            <field key="filler3">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="functional_dependencies_multi">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="b">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="c">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="d">{cimerant:type=field, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mcv_lists">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=VARCHAR}</field>
+            <field key="c">{cimerant:type=field, fieldType=INT}</field>
+            <field key="d">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler1">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler2">{cimerant:type=field, fieldType=NUMERIC}</field>
+            <field key="filler3">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mcv_lists_arrays">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{array=[], cimerant:type=field, fieldType=TEXT}</field>
+            <field key="b">{array=[], cimerant:type=field, fieldType=NUMERIC}</field>
+            <field key="c">{array=[], cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mcv_lists_bool">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="b">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="c">{cimerant:type=field, fieldType=BOOL}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mcv_lists_multi">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="b">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="c">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="d">{cimerant:type=field, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mcv_lists_uuid">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=UUID}</field>
+            <field key="b">{cimerant:type=field, fieldType=UUID}</field>
+            <field key="c">{cimerant:type=field, fieldType=UUID}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ndistinct">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=INT}</field>
+            <field key="c">{cimerant:type=field, fieldType=INT}</field>
+            <field key="d">{cimerant:type=field, fieldType=INT}</field>
+            <field key="filler1">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="filler2">{cimerant:type=field, fieldType=NUMERIC}</field>
+            <field key="filler3">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="priv_test_tbl" grouping="[tststats]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pt" grouping="[tststats]">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t" grouping="[tststats]">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

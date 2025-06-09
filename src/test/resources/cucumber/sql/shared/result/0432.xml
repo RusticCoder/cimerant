@@ -1,0 +1,15 @@
+
+<root name="0432">
+    <attributes size="0">
+    </attributes>
+    <object name="bit_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=BIT, maxSize=16}</field>
+            <field key="b">{cimerant:type=field, fieldType=BIT, maxSize=16}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

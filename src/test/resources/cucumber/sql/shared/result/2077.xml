@@ -1,0 +1,14 @@
+
+<root name="2077">
+    <attributes size="0">
+    </attributes>
+    <object name="use_ft1_column_type">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=ft1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

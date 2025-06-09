@@ -1,0 +1,15 @@
+
+<root name="0141">
+    <attributes size="0">
+    </attributes>
+    <object name="serval3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=SMALLINT, nullable=true, precision=3}</field>
+            <field key="val">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="1284">
+    <attributes size="0">
+    </attributes>
+    <object name="inh_perm_parent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,19 @@
+
+<root name="ddl_table">
+    <attributes size="0">
+    </attributes>
+    <object name="TestTable" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="Guid">{cimerant:type=field, fieldType=NVARCHAR, maxSize=64, nullable=false, unique=true}</field>
+            <field key="K">{cimerant:type=field, clustered=false, fieldType=NVARCHAR, maxSize=64, nullable=false, unique=true}</field>
+            <field key="ModifiedDateUTC">{cimerant:type=field, fieldType=SMALLDATETIME}</field>
+            <field key="Name">{cimerant:type=field, clustered=false, fieldType=nvarchar, maxSize=64, nullable=false, primary=true, unique=true}</field>
+            <field key="TableID">{cimerant:type=field, clustered=true, fieldType=uniqueidentifier, nullable=false, primary=true}</field>
+            <field key="Value">{bit=true, cimerant:type=field, clustered=false, default=0, fieldType=nvarchar, maxSize=64, nullable=false, primary=true, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

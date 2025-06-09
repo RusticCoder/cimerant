@@ -1,0 +1,14 @@
+
+<root name="1111">
+    <attributes size="0">
+    </attributes>
+    <object name="itest_err_3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, default=5, fieldType=int, identity=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

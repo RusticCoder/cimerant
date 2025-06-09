@@ -1,0 +1,144 @@
+
+<root name="insert_conflict">
+    <attributes size="0">
+    </attributes>
+    <object name="capitals">
+        <attributes size="1">
+            <attribute key="inherits">cities</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="state">{cimerant:type=field, fieldType=char, maxSize=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cities">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="altitude">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+            <field key="population">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dropcol">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="drop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop2">{cimerant:type=field, fieldType=numeric}</field>
+            <field key="keep1">{cimerant:type=field, fieldType=text}</field>
+            <field key="keep2">{cimerant:type=field, fieldType=float}</field>
+            <field key="key">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="excluded">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="key">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="insertconflict">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="b">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="insertconflicttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="fruit">{cimerant:type=field, fieldType=text}</field>
+            <field key="key">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_conflict">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_conflict_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="drp">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_conflict_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_conflict_test_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="selfconflict">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="syscolconflicttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="key">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="twoconstraints">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="f2">{cimerant:type=field, fieldType=box}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

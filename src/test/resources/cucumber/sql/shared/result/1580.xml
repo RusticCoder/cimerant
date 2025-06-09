@@ -1,0 +1,16 @@
+
+<root name="1580">
+    <attributes size="0">
+    </attributes>
+    <object name="rngfunc">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="rngfuncid">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="rngfuncname">{cimerant:type=field, fieldType=text}</field>
+            <field key="rngfuncsubid">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

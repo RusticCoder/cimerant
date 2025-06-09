@@ -1,8 +1,8 @@
 package cimerant.context.cimerant;
 
 import cimerant.context.ContextRoot;
+import cimerant.context.NotNullSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 /**
@@ -21,25 +21,25 @@ public interface ObjectContext<E extends Entry<String, Object>> extends ContextR
    * @return the attribute to which the specified name is mapped, or {@code null} if this context
    *     contains no mapping for the name.
    */
-  Object getAttributeByName(String name);
+  NotNullSet getAttributeByName(String name);
 
   /**
    * Returns the attribute of this context by the name of the attribute supplying a default value if
    * the attribute is not found.
    *
-   * @param name name the name whose associated attribute to be returned.
+   * @param name the name whose associated attribute to be returned.
    * @param defaultValue the attribute that is returned when an explicit attribute is not available.
    * @return the attribute of this context by the name of the attribute supplying a default value if
    *     the attribute is not found.
    */
-  Object getAttributeByName(String name, Object defaultValue);
+  NotNullSet getAttributeByName(String name, Object defaultValue);
 
   /**
    * Returns all attributes of this context.
    *
    * @return all attributes of this context.
    */
-  Map<String, Object> getAttributes();
+  ObjectAttributeList getAttributes();
 
   /**
    * Returns the attribute for a field by the name of the field and attribute.
@@ -75,7 +75,7 @@ public interface ObjectContext<E extends Entry<String, Object>> extends ContextR
    *
    * @return all fields of this context.
    */
-  Map<String, Object> getFields();
+  ObjectFieldList getFields();
 
   /**
    * Returns the list of related object with a specific name.
@@ -120,7 +120,7 @@ public interface ObjectContext<E extends Entry<String, Object>> extends ContextR
    *
    * @return all relationship of this context.
    */
-  Map<String, Object> getRelationships();
+  ObjectRelationshipList getRelationships();
 
   /**
    * Returns the root object.

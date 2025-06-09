@@ -1,0 +1,14 @@
+
+<root name="0625">
+    <attributes size="0">
+    </attributes>
+    <object name="ctla">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="aa">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

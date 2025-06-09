@@ -1,0 +1,16 @@
+
+<root name="1732">
+    <attributes size="0">
+    </attributes>
+    <object name="SUBSELECT_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=integer}</field>
+            <field key="f2">{cimerant:type=field, fieldType=integer}</field>
+            <field key="f3">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="1541">
+    <attributes size="0">
+    </attributes>
+    <object name="transition_table_status">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="level">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="node_no">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="status">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

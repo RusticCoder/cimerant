@@ -1,0 +1,226 @@
+
+<root name="privileges">
+    <attributes size="0">
+    </attributes>
+    <object name="acltest1" grouping="[testns]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atest1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=varchar, maxSize=10}</field>
+            <field key="col2">{cimerant:type=field, fieldType=boolean}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atest3">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="one">{cimerant:type=field, fieldType=int}</field>
+            <field key="three">{cimerant:type=field, fieldType=int}</field>
+            <field key="two">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atest4">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atest5">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="four">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="one">{cimerant:type=field, fieldType=int}</field>
+            <field key="three">{cimerant:type=field, fieldType=int}</field>
+            <field key="two">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atest6">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="blue">{cimerant:type=field, fieldType=int}</field>
+            <field key="one">{cimerant:type=field, fieldType=int}</field>
+            <field key="two">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atestc">
+        <attributes size="1">
+            <attribute key="inherits">atestp1, atestp2</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="fz">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atestp1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="atestp2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="fx">{cimerant:type=field, fieldType=int}</field>
+            <field key="fy">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dep_priv_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="lock_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mytable">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="c2">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="c3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1" grouping="[testns]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t2" grouping="[testns]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test10a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{array=[], cimerant:type=field, fieldType=int}</field>
+            <field key="b">{array=[], cimerant:type=field, fieldType=priv_testtype1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test10b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{array=[], cimerant:type=field, fieldType=int}</field>
+            <field key="b">{array=[], cimerant:type=field, fieldType=priv_testtype1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test5a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=priv_testdomain1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test5b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=priv_testdomain1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test9a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test9b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

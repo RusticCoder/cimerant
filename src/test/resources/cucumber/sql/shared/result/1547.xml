@@ -1,0 +1,14 @@
+
+<root name="1547">
+    <attributes size="0">
+    </attributes>
+    <object name="pxtest1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="foobar">{cimerant:type=field, fieldType=VARCHAR, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

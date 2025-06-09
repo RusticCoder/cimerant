@@ -1,0 +1,14 @@
+
+<root name="0456">
+    <attributes size="0">
+    </attributes>
+    <object name="CHAR_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

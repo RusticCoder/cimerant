@@ -1,0 +1,15 @@
+
+<root name="1881">
+    <attributes size="0">
+    </attributes>
+    <object name="base_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="person">{cimerant:type=field, fieldType=text}</field>
+            <field key="visibility">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

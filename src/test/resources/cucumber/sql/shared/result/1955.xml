@@ -1,0 +1,14 @@
+
+<root name="1955">
+    <attributes size="0">
+    </attributes>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,12 +1,18 @@
 package cimerant.context.java.util.impl;
 
+import cimerant.Cimerant;
+import cimerant.ModuleCode;
+import cimerant.StatusCode;
+import cimerant.SysError;
 import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.ListContext;
+import cimerant.logger.CimerantLogger;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -19,7 +25,12 @@ import java.util.Objects;
  */
 public class ListContextImpl<E extends List<?>, T extends ContextRoot<?>>
     extends CollectionContextImpl<E, T> implements ListContext<E, T> {
+  private static final CimerantLogger logger;
   private static final long serialVersionUID = 1L;
+
+  static {
+    logger = (CimerantLogger) LoggerFactory.getLogger(ListContextImpl.class.getName());
+  }
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
@@ -32,8 +43,21 @@ public class ListContextImpl<E extends List<?>, T extends ContextRoot<?>>
    */
   public static <E extends List<?>, T extends ContextRoot<?>> ListContext<E, T> getInstance(
       final E contextObject) {
-    Objects.requireNonNull(contextObject);
-    return ContextRootImpl.registerInstance(new ListContextImpl<>(contextObject));
+    final var moduleCode = ModuleCode.ERR_M1700;
+
+    try {
+      Objects.requireNonNull(contextObject);
+
+      return ContextRootImpl.registerInstance(new ListContextImpl<>(contextObject));
+    } catch (final SysError s) {
+      throw s;
+    } catch (final Throwable t) {
+      // 0001 | Unknown error
+      if (ListContextImpl.logger.isDebugEnabled()) {
+        ListContextImpl.logger.debug(t.getMessage(), t);
+      }
+      throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
+    }
   }
 
   /**
@@ -109,6 +133,7 @@ public class ListContextImpl<E extends List<?>, T extends ContextRoot<?>>
   @Override
   public final int indexOf(final Object object) {
     Objects.requireNonNull(object);
+
     return this.getContextObject().indexOf(object);
   }
 
@@ -119,6 +144,7 @@ public class ListContextImpl<E extends List<?>, T extends ContextRoot<?>>
   @Override
   public final int lastIndexOf(final Object object) {
     Objects.requireNonNull(object);
+
     return this.getContextObject().lastIndexOf(object);
   }
 

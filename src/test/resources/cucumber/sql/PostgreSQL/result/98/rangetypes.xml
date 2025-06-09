@@ -1,0 +1,90 @@
+
+<root name="rangetypes">
+    <attributes size="0">
+    </attributes>
+    <object name="float8range_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f8r">{cimerant:type=field, fieldType=float8range}</field>
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="i8r_array">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{array=[], cimerant:type=field, fieldType=int8range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="numrange_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="nr">{cimerant:type=field, fieldType=NUMRANGE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="numrange_test2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="nr">{cimerant:type=field, fieldType=numrange}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_range_elem">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_range_excl">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="during">{cimerant:type=field, fieldType=tsrange}</field>
+            <field key="room">{cimerant:type=field, fieldType=int4range}</field>
+            <field key="speaker">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_range_gist">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ir">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_range_spgist">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ir">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="textrange_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tr">{cimerant:type=field, fieldType=textrange}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

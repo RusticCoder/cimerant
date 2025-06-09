@@ -1,0 +1,16 @@
+
+<root name="0799">
+    <attributes size="0">
+    </attributes>
+    <object name="TEMP_GROUP">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="f2">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="f3">{cimerant:type=field, fieldType=FLOAT8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

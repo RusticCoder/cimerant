@@ -1,0 +1,17 @@
+
+<root name="1932">
+    <attributes size="0">
+    </attributes>
+    <object name="tree">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=INTEGER, primary=true}</field>
+            <field key="parent_id">{cimerant:type=field, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="parent_id">{cimerant:type=relationship, column=parent_id, foreignColumn=id, foreignTable=tree}</relationship>
+        </relationships>
+    </object>
+</root>

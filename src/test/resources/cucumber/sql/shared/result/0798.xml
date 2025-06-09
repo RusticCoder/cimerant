@@ -1,0 +1,14 @@
+
+<root name="0798">
+    <attributes size="0">
+    </attributes>
+    <object name="TEMP_INT2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=INT2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

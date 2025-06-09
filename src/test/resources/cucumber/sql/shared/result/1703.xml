@@ -1,0 +1,17 @@
+
+<root name="1703">
+    <attributes size="0">
+    </attributes>
+    <object name="credit_card">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="cid">{cimerant:type=field, fieldType=int}</field>
+            <field key="climit">{cimerant:type=field, fieldType=int}</field>
+            <field key="cnum">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="cid">{cimerant:type=relationship, column=cid, foreignColumn=cid, foreignTable=customer}</relationship>
+        </relationships>
+    </object>
+</root>

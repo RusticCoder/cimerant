@@ -1,0 +1,14 @@
+
+<root name="1922">
+    <attributes size="0">
+    </attributes>
+    <object name="vactst">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -27,8 +27,8 @@ public class Err0011Test {
   private static File cimerantPath;
   private static Path destinationFilePath;
   private static final String EXPECTED_REGEX =
-      "CMA-M\\d{2}-0011: Invalid template list path"
-          + " 'src/test/resources/cucumber/Err0011Test/list/TemplateList.md'";
+      "CMA-M\\d{4}-0011: Invalid template list path"
+          + " '(.*?)src/test/resources/cucumber/Err0011Test/list/TemplateList.md'";
   private static final int EXPECTED_STATUS_CODE = -11;
   private static String modelPath;
   private static String rootPath;
@@ -47,7 +47,7 @@ public class Err0011Test {
       temporaryFolder.create();
 
       Err0011Test.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", Err0011Test.cimerantPath.getAbsolutePath());
     }
@@ -79,12 +79,12 @@ public class Err0011Test {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(Err0011Test.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

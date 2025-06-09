@@ -1,0 +1,19 @@
+
+<root name="dml_select">
+    <attributes size="0">
+    </attributes>
+    <object name="pvt">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="Emp1">{cimerant:type=field, fieldType=int}</field>
+            <field key="Emp2">{cimerant:type=field, fieldType=int}</field>
+            <field key="Emp3">{cimerant:type=field, fieldType=int}</field>
+            <field key="Emp4">{cimerant:type=field, fieldType=int}</field>
+            <field key="Emp5">{cimerant:type=field, fieldType=int}</field>
+            <field key="VendorID">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

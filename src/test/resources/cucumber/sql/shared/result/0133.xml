@@ -1,0 +1,14 @@
+
+<root name="0133">
+    <attributes size="0">
+    </attributes>
+    <object name="cast_charset">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col">{cimerant:type=field, fieldType=BINARY, maxSize=16}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

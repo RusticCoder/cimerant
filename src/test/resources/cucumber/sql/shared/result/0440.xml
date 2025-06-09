@@ -1,0 +1,16 @@
+
+<root name="0440">
+    <attributes size="0">
+    </attributes>
+    <object name="booltbl4">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="isfalse">{cimerant:type=field, fieldType=bool}</field>
+            <field key="isnul">{cimerant:type=field, fieldType=bool}</field>
+            <field key="istrue">{cimerant:type=field, fieldType=bool}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

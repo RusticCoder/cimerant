@@ -1,0 +1,17 @@
+
+<root name="0705">
+    <attributes size="0">
+    </attributes>
+    <object name="basictest">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="testint4">{cimerant:type=field, fieldType=domainint4}</field>
+            <field key="testnumeric">{cimerant:type=field, fieldType=domainnumeric}</field>
+            <field key="testtext">{cimerant:type=field, fieldType=domaintext}</field>
+            <field key="testvarchar">{cimerant:type=field, fieldType=domainvarchar}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

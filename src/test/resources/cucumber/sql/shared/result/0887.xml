@@ -1,0 +1,15 @@
+
+<root name="0887">
+    <attributes size="0">
+    </attributes>
+    <object name="pendtest">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ts">{cimerant:type=field, fieldType=tsvector}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

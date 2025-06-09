@@ -1,0 +1,16 @@
+
+<root name="1924">
+    <attributes size="0">
+    </attributes>
+    <object name="pvactst">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{array=[], cimerant:type=field, fieldType=INT}</field>
+            <field key="i">{cimerant:type=field, fieldType=INT}</field>
+            <field key="p">{cimerant:type=field, fieldType=POINT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,17 @@
+
+<root name="2078">
+    <attributes size="0">
+    </attributes>
+    <object name="inserttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{array=[], cimerant:type=field, fieldType=int}</field>
+            <field key="f3">{cimerant:type=field, fieldType=insert_test_type}</field>
+            <field key="f4">{array=[], cimerant:type=field, fieldType=insert_test_type}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="1390">
+    <attributes size="0">
+    </attributes>
+    <object name="fkest">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

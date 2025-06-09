@@ -1,0 +1,15 @@
+
+<root name="1253">
+    <attributes size="0">
+    </attributes>
+    <object name="cc2">
+        <attributes size="1">
+            <attribute key="inherits">cc1, pp1</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f4">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="0030">
+    <attributes size="0">
+    </attributes>
+    <object name="Employee" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="EmployeeID">{cimerant:type=field, clustered=true, fieldType=int, primary=true}</field>
+            <field key="SalesPersonID">{cimerant:type=field, fieldType=int, nullable=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="SalesPersonID">{cimerant:type=relationship, column=SalesPersonID, foreignColumn=SalesPersonID, foreignTable=SalesPerson}</relationship>
+        </relationships>
+    </object>
+</root>

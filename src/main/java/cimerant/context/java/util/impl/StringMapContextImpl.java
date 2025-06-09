@@ -1,13 +1,19 @@
 package cimerant.context.java.util.impl;
 
+import cimerant.Cimerant;
+import cimerant.ModuleCode;
+import cimerant.StatusCode;
+import cimerant.SysError;
 import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.MapContext;
 import cimerant.context.java.util.MapEntrySetContext;
+import cimerant.logger.CimerantLogger;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -17,7 +23,12 @@ import java.util.Set;
  */
 public final class StringMapContextImpl extends ContextRootImpl<Map<String, Object>>
     implements MapContext<String, Object> {
+  private static final CimerantLogger logger;
   private static final long serialVersionUID = 1L;
+
+  static {
+    logger = (CimerantLogger) LoggerFactory.getLogger(StringMapContextImpl.class.getName());
+  }
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
@@ -27,8 +38,21 @@ public final class StringMapContextImpl extends ContextRootImpl<Map<String, Obje
    * @return a instance of the context.
    */
   public static MapContext<String, ?> getInstance(final Map<String, Object> contextObject) {
-    Objects.requireNonNull(contextObject);
-    return ContextRootImpl.registerInstance(new StringMapContextImpl(contextObject));
+    final var moduleCode = ModuleCode.ERR_M1600;
+
+    try {
+      Objects.requireNonNull(contextObject);
+
+      return ContextRootImpl.registerInstance(new StringMapContextImpl(contextObject));
+    } catch (final SysError s) {
+      throw s;
+    } catch (final Throwable t) {
+      // 0001 | Unknown error
+      if (StringMapContextImpl.logger.isDebugEnabled()) {
+        StringMapContextImpl.logger.debug(t.getMessage(), t);
+      }
+      throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
+    }
   }
 
   /**
@@ -50,6 +74,7 @@ public final class StringMapContextImpl extends ContextRootImpl<Map<String, Obje
   @Override
   public boolean containsKey(final Object key) {
     Objects.requireNonNull(key);
+
     return this.getContextObject().containsKey(key);
   }
 
@@ -57,6 +82,7 @@ public final class StringMapContextImpl extends ContextRootImpl<Map<String, Obje
   @Override
   public boolean containsValue(final Object value) {
     Objects.requireNonNull(value);
+
     return this.getContextObject().containsValue(value);
   }
 
@@ -73,6 +99,7 @@ public final class StringMapContextImpl extends ContextRootImpl<Map<String, Obje
   @Override
   public ContextRoot<Object> get(final Object key) {
     Objects.requireNonNull(key);
+
     return ContextRootImpl.getInstance(this.getContextObject().get(key));
   }
 

@@ -1,0 +1,122 @@
+
+<root name="collate">
+    <attributes size="0">
+    </attributes>
+    <object name="collate_test1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, collate=C, fieldType=text, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test10">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, collate=C, fieldType=text}</field>
+            <field key="y">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test20">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, collate=C, fieldType=text, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test21">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f2">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="f2">{cimerant:type=relationship, column=f2, foreignTable=collate_test20}</relationship>
+        </relationships>
+    </object>
+    <object name="collate_test22">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f2">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test23">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, collate=mycoll2, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=testdomain_p}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test5">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, collate=C, fieldType=testdomain_p}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test_fail">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, collate=C, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="collate_test_like">
+        <attributes size="1">
+            <attribute key="like">collate_test1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="vctable">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=varchar, maxSize=25}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

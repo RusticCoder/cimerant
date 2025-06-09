@@ -1,0 +1,14 @@
+
+<root name="0619">
+    <attributes size="0">
+    </attributes>
+    <object name="tab_part_create">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

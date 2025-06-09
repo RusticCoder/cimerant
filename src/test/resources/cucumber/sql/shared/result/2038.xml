@@ -1,0 +1,17 @@
+
+<root name="2038">
+    <attributes size="0">
+    </attributes>
+    <object name="Person">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="Deleted">{cimerant:type=field, default=NULL, fieldType=INTEGER}</field>
+            <field key="FamilyName">{cimerant:type=field, fieldType=NVARCHAR, maxSize=255, nullable=true}</field>
+            <field key="GivenName">{cimerant:type=field, fieldType=NVARCHAR, maxSize=255, nullable=false}</field>
+            <field key="PersonId">{autoIncrement=true, cimerant:type=field, fieldType=INTEGER, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

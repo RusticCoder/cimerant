@@ -1,0 +1,1 @@
+CREATE TABLE CAST (KEY int,TRY_CAST int)

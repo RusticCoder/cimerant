@@ -1,0 +1,14 @@
+
+<root name="0568">
+    <attributes size="0">
+    </attributes>
+    <object name="default_expr_non_column">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, default=avg(non_existent), fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

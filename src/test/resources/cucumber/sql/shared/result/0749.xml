@@ -1,0 +1,16 @@
+
+<root name="0749">
+    <attributes size="0">
+    </attributes>
+    <object name="rewriteme">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="bar">{cimerant:type=field, fieldType=timestamptz}</field>
+            <field key="foo">{cimerant:type=field, fieldType=float}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

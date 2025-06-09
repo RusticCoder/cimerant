@@ -1,0 +1,17 @@
+
+<root name="0191">
+    <attributes size="0">
+    </attributes>
+    <object name="bank_ledger">
+        <attributes size="1">
+            <attribute key="blockchain">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="bank">{cimerant:type=field, fieldType=VARCHAR2, maxSize=128}</field>
+            <field key="deposit_amount">{cimerant:type=field, fieldType=NUMBER}</field>
+            <field key="deposit_date">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

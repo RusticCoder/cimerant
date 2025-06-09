@@ -1,0 +1,7 @@
+CREATE TABLE sid_example
+(
+login_sid   VARBINARY(85) DEFAULT SUSER_SID(),
+login_name  VARCHAR(30) DEFAULT SYSTEM_USER,
+login_dept  VARCHAR(10) DEFAULT 'SALES',
+login_date  DATETIME DEFAULT GETDATE()
+)

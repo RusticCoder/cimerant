@@ -1,0 +1,16 @@
+
+<root name="2055">
+    <attributes size="0">
+    </attributes>
+    <object name="tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="data">{cimerant:type=field, fieldType=xmltype}</field>
+            <field key="data2">{cimerant:type=field, fieldType=xmltype}</field>
+            <field key="ID">{cimerant:type=field, fieldType=number, precision=9, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

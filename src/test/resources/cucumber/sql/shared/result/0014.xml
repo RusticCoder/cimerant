@@ -1,0 +1,17 @@
+
+<root name="0014">
+    <attributes size="0">
+    </attributes>
+    <object name="sid_example">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="login_date">{cimerant:type=field, default=GETDATE(), fieldType=DATETIME}</field>
+            <field key="login_dept">{cimerant:type=field, default='SALES', fieldType=VARCHAR, maxSize=10}</field>
+            <field key="login_name">{cimerant:type=field, default=SYSTEM_USER, fieldType=VARCHAR, maxSize=30}</field>
+            <field key="login_sid">{cimerant:type=field, default=SUSER_SID(), fieldType=VARBINARY, maxSize=85}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

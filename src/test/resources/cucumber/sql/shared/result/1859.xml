@@ -1,0 +1,16 @@
+
+<root name="1859">
+    <attributes size="0">
+    </attributes>
+    <object name="ref_c">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="c">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignColumn=a, foreignTable=trunc_a}</relationship>
+        </relationships>
+    </object>
+</root>

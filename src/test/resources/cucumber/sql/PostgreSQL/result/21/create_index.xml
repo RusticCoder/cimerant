@@ -1,0 +1,244 @@
+
+<root name="create_index">
+    <attributes size="0">
+    </attributes>
+    <object name="array_gin_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{array=[], cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="boolindex">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="b">{cimerant:type=field, fieldType=bool, unique=true}</field>
+            <field key="i">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="junk">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_clustered">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_exprs_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=boolean}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_heap">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_reindex_part">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_reindex_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_reindex_tab2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="c1">{cimerant:type=relationship, column=c1, foreignTable=concur_reindex_tab}</relationship>
+        </relationships>
+    </object>
+    <object name="concur_reindex_tab3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_reindex_tab4">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_replident">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_temp">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_temp_tab_1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_temp_tab_2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="concur_temp_tab_3">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="covering_index_heap">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+            <field key="f3">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cwi_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=varchar, maxSize=10}</field>
+            <field key="c">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="func_index_heap">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="reindex_verbose">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="syscol_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+            <field key="col2">{cimerant:type=field, fieldType=TEXT, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testcomment">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="unlogged_hash_table">
+        <attributes size="1">
+            <attribute key="unlogged">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

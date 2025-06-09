@@ -1,0 +1,16 @@
+
+<root name="0070">
+    <attributes size="0">
+    </attributes>
+    <object name="ships">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="class_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

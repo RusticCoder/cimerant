@@ -1,0 +1,18 @@
+
+<root name="0219">
+    <attributes size="0">
+    </attributes>
+    <object name="p_t1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="create_type">
+    <attributes size="0">
+    </attributes>
+    <object name="default_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=text_w_default}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int42}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

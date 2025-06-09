@@ -1,0 +1,15 @@
+
+<root name="1785">
+    <attributes size="0">
+    </attributes>
+    <object name="trigtest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="i">{cimerant:type=relationship, column=i, foreignColumn=i, foreignTable=trigtest}</relationship>
+        </relationships>
+    </object>
+</root>

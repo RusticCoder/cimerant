@@ -1,0 +1,16 @@
+
+<root name="1528">
+    <attributes size="0">
+    </attributes>
+    <object name="PHone">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

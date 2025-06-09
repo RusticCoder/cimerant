@@ -1,0 +1,15 @@
+
+<root name="1831">
+    <attributes size="0">
+    </attributes>
+    <object name="child3">
+        <attributes size="1">
+            <attribute key="inherits">parent</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

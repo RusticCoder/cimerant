@@ -1,0 +1,15 @@
+
+<root name="0729">
+    <attributes size="0">
+    </attributes>
+    <object name="enumtest_child">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="parent">{cimerant:type=field, fieldType=rainbow}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="parent">{cimerant:type=relationship, column=parent, foreignTable=enumtest_parent}</relationship>
+        </relationships>
+    </object>
+</root>

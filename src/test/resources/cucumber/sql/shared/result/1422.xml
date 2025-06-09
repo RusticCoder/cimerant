@@ -1,0 +1,15 @@
+
+<root name="1422">
+    <attributes size="0">
+    </attributes>
+    <object name="width_bucket_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="operand_f8">{cimerant:type=field, fieldType=float8}</field>
+            <field key="operand_num">{cimerant:type=field, fieldType=numeric}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

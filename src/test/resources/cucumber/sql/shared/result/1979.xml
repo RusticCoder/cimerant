@@ -1,0 +1,17 @@
+
+<root name="1979">
+    <attributes size="0">
+    </attributes>
+    <object name="T">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="Procedure_Name">{cimerant:type=field, fieldType=string}</field>
+            <field key="Query_Id">{cimerant:type=field, fieldType=string, nullable=true}</field>
+            <field key="Source">{cimerant:type=field, fieldType=string, nullable=false}</field>
+            <field key="State">{cimerant:type=field, fieldType=string, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

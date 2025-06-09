@@ -1,0 +1,17 @@
+
+<root name="1615">
+    <attributes size="0">
+    </attributes>
+    <object name="test_replica_identity">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="keya">{cimerant:type=field, deferrable=true, fieldType=text, nullable=false, unique=true}</field>
+            <field key="keyb">{cimerant:type=field, deferrable=true, fieldType=text, nullable=false, unique=true}</field>
+            <field key="nonkey">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

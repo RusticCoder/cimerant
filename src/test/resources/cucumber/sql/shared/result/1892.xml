@@ -1,0 +1,15 @@
+
+<root name="1892">
+    <attributes size="0">
+    </attributes>
+    <object name="tx3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c">{cimerant:type=field, fieldType=integer}</field>
+            <field key="d">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

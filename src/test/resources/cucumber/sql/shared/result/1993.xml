@@ -1,0 +1,14 @@
+
+<root name="1993">
+    <attributes size="0">
+    </attributes>
+    <object name="T2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="C2">{cimerant:type=field, fieldType=STRING, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

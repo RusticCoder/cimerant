@@ -9,11 +9,12 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.RegExUtils;
@@ -45,17 +46,19 @@ public class CliVariableList implements List<CliVariable> {
         try {
           final var str =
               RegExUtils.replaceAll(
-                  StringUtils.upperCase(value), Pattern.compile("[^a-zA-Z0-9]"), "_");
+                  StringUtils.upperCase(value, Locale.getDefault()),
+                  Pattern.compile("[^a-zA-Z0-9]"),
+                  "_");
 
           if (EnumUtils.isValidEnum(Values.class, str)) {
             return Values.valueOf(str);
           }
 
           return UNKNOWN;
-        } catch (final Exception e) {
+        } catch (final Throwable t) {
           final var logger = LoggerFactory.getLogger(Values.class.getName());
           if (logger.isErrorEnabled()) {
-            logger.error(e.getMessage(), e);
+            logger.error(t.getMessage(), t);
           }
           return null;
         }
@@ -112,9 +115,9 @@ public class CliVariableList implements List<CliVariable> {
             break;
           default:
         }
-      } catch (final Exception e) {
+      } catch (final Throwable t) {
         if (this.logger.isDebugEnabled()) {
-          this.logger.debug(e.getMessage(), e);
+          this.logger.debug(t.getMessage(), t);
         }
       }
     }
@@ -127,13 +130,13 @@ public class CliVariableList implements List<CliVariable> {
   }
 
   private static class ParseVariables {
-    private final Map<Integer, CliVariable.Values> cliVariableMap = new HashMap<>();
+    private final Map<Integer, CliVariable.Values> cliVariableMap = new TreeMap<>();
     private final List<CliVariable> cliVariables = new ArrayList<>();
     private final CimerantLogger logger;
 
     /** Creates an instance. */
-    ParseVariables(final String variableList) throws SysError {
-      final var moduleCode = ModuleCode.ERR_M06;
+    ParseVariables(final String variableList) {
+      final var moduleCode = ModuleCode.ERR_M0400;
 
       this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
 
@@ -143,12 +146,14 @@ public class CliVariableList implements List<CliVariable> {
         final List<Extension> extensions = Arrays.asList(TablesExtension.create());
         final var document = Parser.builder().extensions(extensions).build().parseReader(reader);
         this.parseNode(document);
-      } catch (final Exception e) {
+      } catch (final SysError s) {
+        throw s;
+      } catch (final Throwable t) {
         // 0001 | Unknown error
         if (this.logger.isDebugEnabled()) {
-          this.logger.debug(e.getMessage(), e);
+          this.logger.debug(t.getMessage(), t);
         }
-        throw new SysError(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, e.getMessage());
+        throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
       }
     }
 
@@ -175,7 +180,7 @@ public class CliVariableList implements List<CliVariable> {
     private void parseNode(final Node node) {
       if (node != null) {
         for (final Node nodeChild : Arrays.asList(node.getFirstChild(), node.getNext())) {
-          if (nodeChild != null && TableBlock.class.isAssignableFrom(nodeChild.getClass())) {
+          if (nodeChild instanceof TableBlock) {
             this.parseTableBlock((TableBlock) nodeChild);
           }
         }
@@ -185,7 +190,7 @@ public class CliVariableList implements List<CliVariable> {
     private void parseTableBlock(final TableBlock tableBlock) {
       if (tableBlock != null) {
         for (final Node node : Arrays.asList(tableBlock.getFirstChild(), tableBlock.getNext())) {
-          if (node != null && TableHead.class.isAssignableFrom(node.getClass())) {
+          if (node instanceof TableHead) {
             this.parseTableHead((TableHead) node);
           }
         }
@@ -195,7 +200,7 @@ public class CliVariableList implements List<CliVariable> {
     private void parseTableBody(final TableBody tableBody) {
       if (tableBody != null) {
         for (final Node node : Arrays.asList(tableBody.getFirstChild(), tableBody.getNext())) {
-          if (node != null && TableRow.class.isAssignableFrom(node.getClass())) {
+          if (node instanceof TableRow) {
             for (final List<String> cliVariable :
                 this.parseTableRow((TableRow) node, new ArrayList<>())) {
               this.addCliVariable(cliVariable);
@@ -210,9 +215,9 @@ public class CliVariableList implements List<CliVariable> {
       if (tableCell != null) {
         for (final Node node : Arrays.asList(tableCell.getFirstChild(), tableCell.getNext())) {
           if (node != null) {
-            if (Text.class.isAssignableFrom(node.getClass())) {
+            if (node instanceof Text) {
               tableCellData.add(((Text) node).getLiteral());
-            } else if (TableCell.class.isAssignableFrom(node.getClass())) {
+            } else if (node instanceof TableCell) {
               this.parseTableCell((TableCell) node, tableCellData);
             }
           }
@@ -226,21 +231,21 @@ public class CliVariableList implements List<CliVariable> {
       if (tableHead != null) {
         for (final Node node : Arrays.asList(tableHead.getFirstChild(), tableHead.getNext())) {
           if (node != null) {
-            if (TableRow.class.isAssignableFrom(node.getClass())) {
+            if (node instanceof TableRow) {
               for (final List<String> cliVariable :
                   this.parseTableRow((TableRow) node, new ArrayList<>())) {
                 for (var i = 0; i < cliVariable.size(); i++) {
                   try {
                     this.cliVariableMap.put(i, CliVariable.Values.getEnum(cliVariable.get(i)));
-                  } catch (final Exception e) {
+                  } catch (final Throwable t) {
                     this.cliVariableMap.put(i, null);
                     if (this.logger.isDebugEnabled()) {
-                      this.logger.debug(e.getMessage(), e);
+                      this.logger.debug(t.getMessage(), t);
                     }
                   }
                 }
               }
-            } else if (TableBody.class.isAssignableFrom(node.getClass())) {
+            } else if (node instanceof TableBody) {
               this.parseTableBody((TableBody) node);
             }
           }
@@ -253,9 +258,9 @@ public class CliVariableList implements List<CliVariable> {
       if (tableRow != null) {
         for (final Node node : Arrays.asList(tableRow.getFirstChild(), tableRow.getNext())) {
           if (node != null) {
-            if (TableCell.class.isAssignableFrom(node.getClass())) {
+            if (node instanceof TableCell) {
               tableRowData.add(this.parseTableCell((TableCell) node, new ArrayList<>()));
-            } else if (TableRow.class.isAssignableFrom(node.getClass())) {
+            } else if (node instanceof TableRow) {
               this.parseTableRow((TableRow) node, tableRowData);
             }
           }
@@ -324,7 +329,7 @@ public class CliVariableList implements List<CliVariable> {
     return this.cliVariables.addAll(index, arrayList);
   }
 
-  boolean addCliVariablesByVariableList(final String variableList) throws SysError {
+  boolean addCliVariablesByVariableList(final String variableList) {
     final var parseVariables = new ParseVariables(variableList);
     this.cliVariables.addAll(parseVariables.getCliVariables());
     return !parseVariables.getCliVariables().isEmpty();

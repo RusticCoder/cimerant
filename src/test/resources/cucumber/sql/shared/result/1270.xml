@@ -1,0 +1,14 @@
+
+<root name="1270">
+    <attributes size="0">
+    </attributes>
+    <object name="inh_fk_2_child">
+        <attributes size="1">
+            <attribute key="inherits">inh_fk_2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

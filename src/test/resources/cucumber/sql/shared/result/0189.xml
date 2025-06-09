@@ -1,0 +1,15 @@
+
+<root name="0189">
+    <attributes size="0">
+    </attributes>
+    <object name="t_order">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ATTACHMENT_NAME">{byte=true, cimerant:type=field, default='', fieldType=VARCHAR2, maxSize=1024, visible=false}</field>
+            <field key="SYS_ID">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=32, nullable=false, visible=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

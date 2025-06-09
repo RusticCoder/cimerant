@@ -27,8 +27,8 @@ public class Err0009Test {
   private static File cimerantPath;
   private static Path destinationFilePath;
   private static final String EXPECTED_REGEX =
-      "CMA-M\\d{2}-0009: Invalid input file path"
-          + " 'src/test/resources/cucumber/Err0009Test/model/Model.json'";
+      "CMA-M\\d{4}-0009: Invalid input file path"
+          + " '(.*?)src/test/resources/cucumber/Err0009Test/model/Model.json'";
   private static final int EXPECTED_STATUS_CODE = -9;
   private static String modelPath;
   private static String rootPath;
@@ -47,7 +47,7 @@ public class Err0009Test {
       temporaryFolder.create();
 
       Err0009Test.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", Err0009Test.cimerantPath.getAbsolutePath());
     }
@@ -79,12 +79,12 @@ public class Err0009Test {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(Err0009Test.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

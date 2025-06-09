@@ -1,0 +1,16 @@
+
+<root name="1555">
+    <attributes size="0">
+    </attributes>
+    <object name="atest6">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="blue">{cimerant:type=field, fieldType=int}</field>
+            <field key="one">{cimerant:type=field, fieldType=int}</field>
+            <field key="two">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

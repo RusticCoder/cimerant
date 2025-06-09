@@ -1,0 +1,14 @@
+
+<root name="horology">
+    <attributes size="0">
+    </attributes>
+    <object name="TEMP_TIMESTAMP">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=timestamp, timezone=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

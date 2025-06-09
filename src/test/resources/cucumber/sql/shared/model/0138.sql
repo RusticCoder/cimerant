@@ -1,0 +1,1 @@
+CREATE TABLE sercol4 (id SERIAL NOT NULL, val INT)

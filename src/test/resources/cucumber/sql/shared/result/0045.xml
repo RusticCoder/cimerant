@@ -1,0 +1,17 @@
+
+<root name="0045">
+    <attributes size="0">
+    </attributes>
+    <object name="EmployeeSales" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="BusinessEntityID">{cimerant:type=field, fieldType=varchar, maxSize=11, nullable=false}</field>
+            <field key="DataSource">{cimerant:type=field, fieldType=varchar, maxSize=20, nullable=false}</field>
+            <field key="LastName">{cimerant:type=field, fieldType=varchar, maxSize=40, nullable=false}</field>
+            <field key="SalesDollars">{cimerant:type=field, fieldType=money, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

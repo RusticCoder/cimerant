@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[TestTable] (
+  TableID UNIQUEIDENTIFIER NOT NULL,
+  Value NVARCHAR(64) NOT NULL,
+  Name NVARCHAR(64) NOT NULL,
+  CONSTRAINT [PK_TestTable_Value] PRIMARY KEY CLUSTERED (
+    [TableID] ASC,
+    [Value] ASC))

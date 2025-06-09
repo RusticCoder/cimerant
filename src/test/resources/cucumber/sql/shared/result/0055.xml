@@ -1,0 +1,14 @@
+
+<root name="0055">
+    <attributes size="0">
+    </attributes>
+    <object name="test_tbl" grouping="[raw]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="foo">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

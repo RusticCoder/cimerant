@@ -1,0 +1,24 @@
+
+<root name="hs_standby_disallowed">
+    <attributes size="0">
+    </attributes>
+    <object name="hs4">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="hstemp1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

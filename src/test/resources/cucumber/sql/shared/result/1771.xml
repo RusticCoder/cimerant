@@ -1,0 +1,15 @@
+
+<root name="1771">
+    <attributes size="0">
+    </attributes>
+    <object name="temp_inh_oncommit_test1">
+        <attributes size="2">
+            <attribute key="inherits">temp_inh_oncommit_test</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

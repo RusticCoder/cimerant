@@ -1,0 +1,110 @@
+
+<root name="numeric_big">
+    <attributes size="0">
+    </attributes>
+    <object name="num_data">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="val">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_add">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_div">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_ln">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_log10">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_mul">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_power_10_ln">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_sqrt">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_exp_sub">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="expected">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="num_result">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+            <field key="result">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

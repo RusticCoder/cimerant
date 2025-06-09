@@ -1,0 +1,16 @@
+
+<root name="2024">
+    <attributes size="0">
+    </attributes>
+    <object name="t4">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=number}</field>
+            <field key="f2">{cimerant:type=field, fieldType=number}</field>
+            <field key="f3">{cimerant:type=field, fieldType=number}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,44 @@
+
+<root name="replica_identity">
+    <attributes size="0">
+    </attributes>
+    <object name="test_replica_identity">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="keya">{cimerant:type=field, deferrable=true, fieldType=text, nullable=false, unique=true}</field>
+            <field key="keyb">{cimerant:type=field, deferrable=true, fieldType=text, nullable=false, unique=true}</field>
+            <field key="nonkey">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_replica_identity2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_replica_identity3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_replica_identity_othertable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

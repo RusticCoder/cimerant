@@ -1,0 +1,1 @@
+CREATE TABLE RowVersionTestTable (rv ROWVERSION)

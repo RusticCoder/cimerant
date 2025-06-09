@@ -1,0 +1,14 @@
+
+<root name="0243">
+    <attributes size="0">
+    </attributes>
+    <object name="child_noinh_convalid">
+        <attributes size="1">
+            <attribute key="inherits">parent_noinh_convalid</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

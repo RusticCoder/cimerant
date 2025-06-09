@@ -1,0 +1,27 @@
+
+<root name="0116">
+    <attributes size="0">
+    </attributes>
+    <object name="tab1">
+        <attributes size="2">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="12">
+            <field key="f4">{cimerant:type=field, fieldType=FLOAT4}</field>
+            <field key="f8">{cimerant:type=field, fieldType=FLOAT8}</field>
+            <field key="i1">{cimerant:type=field, fieldType=INT1}</field>
+            <field key="i2">{cimerant:type=field, fieldType=INT2}</field>
+            <field key="i3">{cimerant:type=field, fieldType=INT3}</field>
+            <field key="i4">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="i8">{cimerant:type=field, fieldType=INT8}</field>
+            <field key="l">{cimerant:type=field, fieldType=LONG}</field>
+            <field key="lvb">{cimerant:type=field, fieldType=LONG, varbinary=true}</field>
+            <field key="lvc">{cimerant:type=field, fieldType=LONG, varchar=true}</field>
+            <field key="lvcfull">{binary=true, charset=utf8, cimerant:type=field, collate=utf8_bin, fieldType=LONG}</field>
+            <field key="mi">{cimerant:type=field, fieldType=MIDDLEINT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

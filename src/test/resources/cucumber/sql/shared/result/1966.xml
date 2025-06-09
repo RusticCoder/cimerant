@@ -1,0 +1,14 @@
+
+<root name="1966">
+    <attributes size="0">
+    </attributes>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="v">{cimerant:type=field, collate=upper, fieldType=varchar, maxSize=32, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="0475">
+    <attributes size="0">
+    </attributes>
+    <object name="collate_test10">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, collate=C, fieldType=text}</field>
+            <field key="y">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

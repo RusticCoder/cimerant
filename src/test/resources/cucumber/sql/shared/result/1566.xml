@@ -1,0 +1,14 @@
+
+<root name="1566">
+    <attributes size="0">
+    </attributes>
+    <object name="acltest1" grouping="[testns]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

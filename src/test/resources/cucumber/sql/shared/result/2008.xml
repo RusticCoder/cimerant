@@ -1,0 +1,18 @@
+
+<root name="2008">
+    <attributes size="0">
+    </attributes>
+    <object name="TestK">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="FIRST_VALUE">{cimerant:type=field, fieldType=string}</field>
+            <field key="NVL">{cimerant:type=field, fieldType=int}</field>
+            <field key="NVL2">{cimerant:type=field, fieldType=string}</field>
+            <field key="RESPECT">{cimerant:type=field, fieldType=int}</field>
+            <field key="RESTRICT">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

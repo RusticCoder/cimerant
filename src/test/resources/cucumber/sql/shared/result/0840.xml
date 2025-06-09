@@ -1,0 +1,16 @@
+
+<root name="0840">
+    <attributes size="0">
+    </attributes>
+    <object name="blog">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="author">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=integer}</field>
+            <field key="post">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

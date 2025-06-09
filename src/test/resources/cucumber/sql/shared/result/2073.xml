@@ -1,0 +1,16 @@
+
+<root name="2073">
+    <attributes size="0">
+    </attributes>
+    <object name="dropped_objects">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="object">{cimerant:type=field, fieldType=text}</field>
+            <field key="schema">{cimerant:type=field, fieldType=text}</field>
+            <field key="type">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

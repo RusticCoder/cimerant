@@ -1,0 +1,14 @@
+
+<root name="0489">
+    <attributes size="0">
+    </attributes>
+    <object name="tableam_tbl_heapx">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

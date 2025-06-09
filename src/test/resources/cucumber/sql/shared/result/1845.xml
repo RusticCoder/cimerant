@@ -1,0 +1,17 @@
+
+<root name="1845">
+    <attributes size="0">
+    </attributes>
+    <object name="trunc_e">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=truncate_a}</relationship>
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignTable=trunc_c}</relationship>
+        </relationships>
+    </object>
+</root>

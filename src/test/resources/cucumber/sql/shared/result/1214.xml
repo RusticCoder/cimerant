@@ -1,0 +1,16 @@
+
+<root name="1214">
+    <attributes size="0">
+    </attributes>
+    <object name="z">
+        <attributes size="2">
+            <attribute key="inherits">a</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=TEXT, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

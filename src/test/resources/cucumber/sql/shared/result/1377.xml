@@ -1,0 +1,18 @@
+
+<root name="1377">
+    <attributes size="0">
+    </attributes>
+    <object name="nt3">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=boolean}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="nt2_id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="nt2">{cimerant:type=relationship, column=nt2_id, foreignColumn=id, foreignTable=nt2}</relationship>
+        </relationships>
+    </object>
+</root>

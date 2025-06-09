@@ -1,0 +1,15 @@
+
+<root name="0954">
+    <attributes size="0">
+    </attributes>
+    <object name="pktable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=INT4, primary=true}</field>
+            <field key="other">{cimerant:type=field, fieldType=INT4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

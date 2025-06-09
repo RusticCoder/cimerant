@@ -1,0 +1,16 @@
+
+<root name="1076">
+    <attributes size="0">
+    </attributes>
+    <object name="gtest_parent">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=date, nullable=false}</field>
+            <field key="f2">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="f3">{cimerant:type=field, fieldType=bigint}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

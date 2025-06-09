@@ -1,0 +1,15 @@
+
+<root name="0186">
+    <attributes size="0">
+    </attributes>
+    <object name="JSON_TRANS" grouping="[C##RCUSER]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ID">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=8, primary=true, scale=0}</field>
+            <field key="TRANS_MSG">{cimerant:type=field, fieldType=CLOB}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,20 @@
+
+<root name="0073">
+    <attributes size="0">
+    </attributes>
+    <object name="ship_class">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="class_name">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="end_build">{cimerant:type=field, fieldType=year, maxSize=4}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="max_guns_size">{cimerant:type=field, fieldType=int}</field>
+            <field key="max_length">{cimerant:type=field, fieldType=decimal, precision=10, scale=2}</field>
+            <field key="start_build">{cimerant:type=field, fieldType=year}</field>
+            <field key="tonange">{cimerant:type=field, fieldType=decimal, precision=10, scale=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

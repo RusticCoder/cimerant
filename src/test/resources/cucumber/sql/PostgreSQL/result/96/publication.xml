@@ -1,0 +1,72 @@
+
+<root name="publication">
+    <attributes size="0">
+    </attributes>
+    <object name="testpub_nopk" grouping="[pub_test]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="bar">{cimerant:type=field, fieldType=int}</field>
+            <field key="foo">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testpub_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testpub_parted1">
+        <attributes size="1">
+            <attribute key="like">testpub_parted</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testpub_tbl1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testpub_tbl2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testpub_tbl3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="testpub_tbl3a">
+        <attributes size="1">
+            <attribute key="inherits">testpub_tbl3</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

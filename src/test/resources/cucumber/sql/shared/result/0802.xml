@@ -1,0 +1,14 @@
+
+<root name="0802">
+    <attributes size="0">
+    </attributes>
+    <object name="PG_LSN_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=pg_lsn}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="1680">
+    <attributes size="0">
+    </attributes>
+    <object name="t1_1">
+        <attributes size="2">
+            <attribute key="inherits">t1</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

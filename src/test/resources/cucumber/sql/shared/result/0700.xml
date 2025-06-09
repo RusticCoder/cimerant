@@ -1,0 +1,16 @@
+
+<root name="0700">
+    <attributes size="0">
+    </attributes>
+    <object name="delete_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

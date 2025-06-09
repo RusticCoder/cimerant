@@ -1,0 +1,15 @@
+
+<root name="2022">
+    <attributes size="0">
+    </attributes>
+    <object name="t3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=varchar}</field>
+            <field key="f2">{cimerant:type=field, fieldType=number}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

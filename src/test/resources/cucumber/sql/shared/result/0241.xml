@@ -1,0 +1,14 @@
+
+<root name="0241">
+    <attributes size="0">
+    </attributes>
+    <object name="attmp7">
+        <attributes size="1">
+            <attribute key="inherits">attmp3</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

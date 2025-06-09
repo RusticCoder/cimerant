@@ -1,0 +1,15 @@
+
+<root name="0817">
+    <attributes size="0">
+    </attributes>
+    <object name="uaccount">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="pguser">{cimerant:type=field, fieldType=name, primary=true}</field>
+            <field key="seclv">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="oid">
+    <attributes size="0">
+    </attributes>
+    <object name="OID_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=oid}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

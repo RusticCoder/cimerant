@@ -1,0 +1,15 @@
+
+<root name="0669">
+    <attributes size="0">
+    </attributes>
+    <object name="view_base_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=varchar, maxSize=20}</field>
+            <field key="key">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

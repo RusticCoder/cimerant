@@ -1,0 +1,14 @@
+
+<root name="1754">
+    <attributes size="0">
+    </attributes>
+    <object name="temptest">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

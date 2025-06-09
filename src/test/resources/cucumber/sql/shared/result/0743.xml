@@ -1,0 +1,14 @@
+
+<root name="0743">
+    <attributes size="0">
+    </attributes>
+    <object name="schema_one_table_two" grouping="[audit_tbls]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="the_value">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

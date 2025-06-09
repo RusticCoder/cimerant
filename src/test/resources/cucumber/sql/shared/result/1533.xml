@@ -1,0 +1,15 @@
+
+<root name="1533">
+    <attributes size="0">
+    </attributes>
+    <object name="eifoo">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+            <field key="y">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="1942">
+    <attributes size="0">
+    </attributes>
+    <object name="my_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="flag">{cimerant:type=field, fieldType=varchar, maxSize=50}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

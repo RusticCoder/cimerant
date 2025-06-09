@@ -1,0 +1,15 @@
+
+<root name="0679">
+    <attributes size="0">
+    </attributes>
+    <object name="tbl4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="g">{cimerant:type=field, fieldType=int}</field>
+            <field key="h">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

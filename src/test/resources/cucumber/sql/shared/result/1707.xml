@@ -1,0 +1,19 @@
+
+<root name="1707">
+    <attributes size="0">
+    </attributes>
+    <object name="serialTest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=serial}</field>
+            <field key="f3">{cimerant:type=field, fieldType=smallserial}</field>
+            <field key="f4">{cimerant:type=field, fieldType=serial2}</field>
+            <field key="f5">{cimerant:type=field, fieldType=bigserial}</field>
+            <field key="f6">{cimerant:type=field, fieldType=serial8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

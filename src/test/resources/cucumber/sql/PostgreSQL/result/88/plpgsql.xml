@@ -1,0 +1,292 @@
+
+<root name="plpgsql">
+    <attributes size="0">
+    </attributes>
+    <object name="alter_table_under_transition_tables">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="eifoo">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+            <field key="y">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="foo">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="found_test_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="HSlot">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="hubname">{cimerant:type=field, fieldType=char, maxSize=14}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotno">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="Hub">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="name">{cimerant:type=field, fieldType=char, maxSize=14}</field>
+            <field key="nslots">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="IFace">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="ifname">{cimerant:type=field, fieldType=text}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="sysname">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="multi_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="partitioned_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="perform_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="PField">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="PHone">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="PLine">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="backlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="phonenumber">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="PSlot">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="backlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="pfname">{cimerant:type=field, fieldType=text}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="rc_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="Room">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="roomno">{cimerant:type=field, fieldType=char, maxSize=8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="rtype">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="ar">{array=[], cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="stuffs" grouping="[public]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="stuff">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="System">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tabwithcols">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_01">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="transition_table_base">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="val">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="transition_table_level1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="level1_no">{cimerant:type=field, fieldType=serial, nullable=false, primary=true}</field>
+            <field key="level1_node_name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="transition_table_level2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="level1_node_name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+            <field key="level2_no">{cimerant:type=field, fieldType=serial, nullable=false, primary=true}</field>
+            <field key="parent_no">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="transition_table_status">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="level">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="node_no">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="status">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="users">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+            <field key="login">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="WSlot">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="backlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="roomno">{cimerant:type=field, fieldType=char, maxSize=8}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

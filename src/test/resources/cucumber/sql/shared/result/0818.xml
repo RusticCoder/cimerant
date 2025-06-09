@@ -1,0 +1,15 @@
+
+<root name="0818">
+    <attributes size="0">
+    </attributes>
+    <object name="category">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="cid">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="cname">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,37 @@
+
+<root name="0188">
+    <attributes size="0">
+    </attributes>
+    <object name="DOCBESTPARAMATTR" grouping="[ASEDBUSR]">
+        <attributes size="0">
+        </attributes>
+        <fields size="24">
+            <field key="ARCHIVETAG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="BIGTEXTVALUE">{cimerant:type=field, fieldType=CLOB}</field>
+            <field key="BOID">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="CK_CODEVALUE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="CLSBOVALUE">{cimerant:type=field, fieldType=NUMBER, precision=12, scale=0}</field>
+            <field key="CODEVALUE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="CREATEDUSER">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="DATEVALUE">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="DECVALUE">{cimerant:type=field, fieldType=NUMBER, precision=18, scale=6}</field>
+            <field key="GUELTAB">{cimerant:type=field, enable=true, fieldType=DATE, nullable=false}</field>
+            <field key="GUELTBIS">{cimerant:type=field, enable=true, fieldType=DATE, nullable=false}</field>
+            <field key="INTVALUE">{cimerant:type=field, fieldType=NUMBER, precision=12, scale=0}</field>
+            <field key="ITSBOVALUE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSDOCBESTELLUNG">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ITSPARAMATTRDEF">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="LASTUPDATE">{cimerant:type=field, enable=true, fieldType=TIMESTAMP, maxSize=9, nullable=false}</field>
+            <field key="MDBID">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=255}</field>
+            <field key="METABO">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="PKEY">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, primary=true, scale=0}</field>
+            <field key="PROCESSID">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="REPLACED">{cimerant:type=field, enable=true, fieldType=TIMESTAMP, maxSize=9, nullable=false}</field>
+            <field key="REPLACEDUSER">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ROWCOMMENT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=15}</field>
+            <field key="TEXTVALUE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

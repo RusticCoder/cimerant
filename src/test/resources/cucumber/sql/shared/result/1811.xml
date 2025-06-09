@@ -1,0 +1,18 @@
+
+<root name="1811">
+    <attributes size="0">
+    </attributes>
+    <object name="parted_irreg_ancestor">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="fd">{cimerant:type=field, fieldType=text}</field>
+            <field key="fd2">{cimerant:type=field, fieldType=int}</field>
+            <field key="fd3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="0530">
+    <attributes size="0">
+    </attributes>
+    <object name="dept">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="dname">{cimerant:type=field, fieldType=name}</field>
+            <field key="mgrname">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

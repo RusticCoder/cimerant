@@ -1,0 +1,19 @@
+
+<root name="0420">
+    <attributes size="0">
+    </attributes>
+    <object name="arrtest2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="d">{array=[], cimerant:type=field, fieldType=timestamp}</field>
+            <field key="f">{array=[], cimerant:type=field, fieldType=float8}</field>
+            <field key="i">{array=[4], cimerant:type=field, fieldType=integer}</field>
+            <field key="n">{array=[], cimerant:type=field, fieldType=numeric}</field>
+            <field key="t">{array=[], cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

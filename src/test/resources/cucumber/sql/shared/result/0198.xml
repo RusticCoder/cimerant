@@ -1,0 +1,18 @@
+
+<root name="0198">
+    <attributes size="0">
+    </attributes>
+    <object name="T1">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="ADDRESS">{cimerant:type=field, fieldType=VARCHAR, maxSize=255}</field>
+            <field key="ID">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="NAME">{cimerant:type=field, fieldType=VARCHAR, maxSize=10, nullable=false}</field>
+            <field key="PQ_NUMBER">{cimerant:type=field, fieldType=NUMBER, precision=10, unique=true}</field>
+            <field key="SQ_NUMBER">{cimerant:type=field, fieldType=NUMBER, precision=10, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="1294">
+    <attributes size="0">
+    </attributes>
+    <object name="bool_lp">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=bool}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="0036">
+    <attributes size="0">
+    </attributes>
+    <object name="t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="id">{cimerant:type=field, clustered=false, fieldType=varchar, maxSize=50, nullable=false}</field>
+            <field key="other_id">{cimerant:type=field, clustered=true, fieldType=uniqueidentifier, nullable=false}</field>
+            <field key="value">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

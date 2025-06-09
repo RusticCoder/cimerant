@@ -1,0 +1,14 @@
+
+<root name="0791">
+    <attributes size="0">
+    </attributes>
+    <object name="LINE_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="s">{cimerant:type=field, fieldType=line}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

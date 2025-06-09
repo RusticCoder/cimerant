@@ -1,0 +1,14 @@
+
+<root name="0634">
+    <attributes size="0">
+    </attributes>
+    <object name="test_like_id_2">
+        <attributes size="1">
+            <attribute key="like">test_like_id_1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

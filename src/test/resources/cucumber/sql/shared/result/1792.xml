@@ -1,0 +1,14 @@
+
+<root name="1792">
+    <attributes size="0">
+    </attributes>
+    <object name="depth_a">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

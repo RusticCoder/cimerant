@@ -1,0 +1,1 @@
+CREATE or replace TEMP TABLE ACTION (MODE int)

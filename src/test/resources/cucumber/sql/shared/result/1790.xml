@@ -1,0 +1,16 @@
+
+<root name="1790">
+    <attributes size="0">
+    </attributes>
+    <object name="country_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="continent">{cimerant:type=field, fieldType=text, nullable=false}</field>
+            <field key="country_id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="country_name">{cimerant:type=field, fieldType=text, nullable=false, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

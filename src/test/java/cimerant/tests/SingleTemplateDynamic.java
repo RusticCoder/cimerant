@@ -47,7 +47,7 @@ public class SingleTemplateDynamic {
       temporaryFolder.create();
 
       SingleTemplateDynamic.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", SingleTemplateDynamic.cimerantPath.getAbsolutePath());
     }
@@ -80,12 +80,12 @@ public class SingleTemplateDynamic {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(SingleTemplateDynamic.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

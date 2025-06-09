@@ -1,0 +1,1 @@
+CREATE table t1 (i integer not null unique primary key)

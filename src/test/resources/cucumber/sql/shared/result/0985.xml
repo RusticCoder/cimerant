@@ -1,0 +1,14 @@
+
+<root name="0985">
+    <attributes size="0">
+    </attributes>
+    <object name="fk_notpartitioned_pk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

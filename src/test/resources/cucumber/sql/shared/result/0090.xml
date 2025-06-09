@@ -1,0 +1,16 @@
+
+<root name="0090">
+    <attributes size="0">
+    </attributes>
+    <object name="staff">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="first_name">{cimerant:type=field, fieldType=VARCHAR, maxSize=100, nullable=false}</field>
+            <field key="pens_in_drawer">{cimerant:type=field, fieldType=INT, nullable=false, precision=2}</field>
+            <field key="staff_num">{cimerant:type=field, fieldType=INT, nullable=false, precision=5, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

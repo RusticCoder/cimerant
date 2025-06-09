@@ -1,0 +1,15 @@
+
+<root name="2069">
+    <attributes size="0">
+    </attributes>
+    <object name="comptable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=comptype}</field>
+            <field key="c2">{array=[], cimerant:type=field, fieldType=comptype}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

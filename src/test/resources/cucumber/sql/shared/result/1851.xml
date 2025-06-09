@@ -1,0 +1,19 @@
+
+<root name="1851">
+    <attributes size="0">
+    </attributes>
+    <object name="trunc_trigger_log">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="rowcount">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="tgargv">{cimerant:type=field, fieldType=text}</field>
+            <field key="tglevel">{cimerant:type=field, fieldType=text}</field>
+            <field key="tgop">{cimerant:type=field, fieldType=text}</field>
+            <field key="tgtable">{cimerant:type=field, fieldType=name}</field>
+            <field key="tgwhen">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

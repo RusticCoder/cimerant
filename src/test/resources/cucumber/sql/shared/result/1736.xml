@@ -1,0 +1,16 @@
+
+<root name="1736">
+    <attributes size="0">
+    </attributes>
+    <object name="parts">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="cost">{cimerant:type=field, fieldType=float8}</field>
+            <field key="partnum">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

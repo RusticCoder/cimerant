@@ -1,0 +1,19 @@
+
+<root name="1672">
+    <attributes size="0">
+    </attributes>
+    <object name="rule_and_refint_t3">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="id3a">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="id3b">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="id3c">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="rule_and_refint_t1">{cimerant:type=relationship, column=id3a, id3b, foreignColumn=id1a, id1b, foreignTable=rule_and_refint_t1}</relationship>
+            <relationship key="rule_and_refint_t2">{cimerant:type=relationship, column=id3a, id3c, foreignColumn=id2a, id2c, foreignTable=rule_and_refint_t2}</relationship>
+        </relationships>
+    </object>
+</root>

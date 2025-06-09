@@ -1,0 +1,25 @@
+
+<root name="case">
+    <attributes size="0">
+    </attributes>
+    <object name="CASE2_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+            <field key="j">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="CASE_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f">{cimerant:type=field, fieldType=double precision}</field>
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,23 @@
+
+<root name="smoke_tests">
+    <attributes size="0">
+    </attributes>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=binary, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col">{binary=true, charset=cp1251, cimerant:type=field, fieldType=varchar, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

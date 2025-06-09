@@ -1,0 +1,14 @@
+
+<root name="0708">
+    <attributes size="0">
+    </attributes>
+    <object name="vc4table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=vc4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,26 @@
+
+<root name="schema">
+    <attributes size="0">
+    </attributes>
+    <object name="NineProngs">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="cost">{cimerant:type=field, fieldType=int}</field>
+            <field key="partnumber">{cimerant:type=field, fieldType=int}</field>
+            <field key="source">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="Region" grouping="[Sales]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="Region_id">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="Region_Name">{cimerant:type=field, fieldType=char, maxSize=5, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

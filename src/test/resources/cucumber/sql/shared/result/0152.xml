@@ -1,0 +1,14 @@
+
+<root name="0152">
+    <attributes size="0">
+    </attributes>
+    <object name="T1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="C">{char=true, cimerant:type=field, fieldType=NATIONAL}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

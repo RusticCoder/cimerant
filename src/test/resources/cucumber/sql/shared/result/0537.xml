@@ -1,0 +1,15 @@
+
+<root name="0537">
+    <attributes size="0">
+    </attributes>
+    <object name="a_star">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int4}</field>
+            <field key="class">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="0526">
+    <attributes size="0">
+    </attributes>
+    <object name="emp">
+        <attributes size="1">
+            <attribute key="inherits">person</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="manager">{cimerant:type=field, fieldType=name}</field>
+            <field key="salary">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

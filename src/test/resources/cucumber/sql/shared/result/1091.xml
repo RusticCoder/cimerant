@@ -1,0 +1,18 @@
+
+<root name="1091">
+    <attributes size="0">
+    </attributes>
+    <object name="gstest4">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="id">{cimerant:type=field, fieldType=integer}</field>
+            <field key="unhashable_col">{cimerant:type=field, fieldType=bit, maxSize=4}</field>
+            <field key="unsortable_col">{cimerant:type=field, fieldType=xid}</field>
+            <field key="v">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

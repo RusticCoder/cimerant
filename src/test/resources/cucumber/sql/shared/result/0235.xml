@@ -1,0 +1,14 @@
+
+<root name="0235">
+    <attributes size="0">
+    </attributes>
+    <object name="like_constraint_rename_cache">
+        <attributes size="1">
+            <attribute key="like">constraint_rename_cache</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

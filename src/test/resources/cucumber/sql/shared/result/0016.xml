@@ -1,0 +1,17 @@
+
+<root name="0016">
+    <attributes size="0">
+    </attributes>
+    <object name="Sales_Tracking" grouping="[Sales]">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="Last_sale">{cimerant:type=field, default=GETDATE(), fieldType=DATETIME, nullable=false}</field>
+            <field key="Rep_id">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="SRep_tracking_user">{cimerant:type=field, default=SYSTEM_USER, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="Territory_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=2000}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

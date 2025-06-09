@@ -1,0 +1,17 @@
+
+<root name="0907">
+    <attributes size="0">
+    </attributes>
+    <object name="PKTABLE">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="ptest1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="ptest2">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="ptest3">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="ptest4">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

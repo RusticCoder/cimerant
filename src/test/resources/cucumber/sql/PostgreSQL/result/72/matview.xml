@@ -1,0 +1,36 @@
+
+<root name="matview">
+    <attributes size="0">
+    </attributes>
+    <object name="mvtest_boxes">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="b">{cimerant:type=field, fieldType=box}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mvtest_t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="amt">{cimerant:type=field, fieldType=numeric, nullable=false}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="type">{cimerant:type=field, fieldType=text, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mvtest_v">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+            <field key="j">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

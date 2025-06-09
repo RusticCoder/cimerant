@@ -1,0 +1,16 @@
+
+<root name="1353">
+    <attributes size="0">
+    </attributes>
+    <object name="y">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="y1">{cimerant:type=field, fieldType=int}</field>
+            <field key="y2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

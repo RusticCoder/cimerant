@@ -1,0 +1,18 @@
+
+<root name="built_in_functions_json">
+    <attributes size="0">
+    </attributes>
+    <object name="Store" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="Address">{cimerant:type=field, fieldType=VARCHAR, maxSize=500}</field>
+            <field key="jsonContent">{cimerant:type=field, fieldType=NVARCHAR, maxSize=4000}</field>
+            <field key="Latitude">{cimerant:type=field, fieldType=JSON_VALUE}</field>
+            <field key="Longitude">{cimerant:type=field, fieldType=JSON_VALUE}</field>
+            <field key="StoreID">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

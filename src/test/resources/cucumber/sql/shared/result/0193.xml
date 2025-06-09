@@ -1,0 +1,16 @@
+
+<root name="0193">
+    <attributes size="0">
+    </attributes>
+    <object name="T_ORDER">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="COLUMN1">{cimerant:type=field, fieldType=VARCHAR2, maxSize=10}</field>
+            <field key="ORDER_ID">{cimerant:type=field, fieldType=NUMBER, identity=true, precision=10}</field>
+            <field key="STATUS">{cimerant:type=field, fieldType=VARCHAR2, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="0172">
+    <attributes size="0">
+    </attributes>
+    <object name="t" grouping="[s]">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="c">{cimerant:type=field, fieldType=char, maxSize=1}</field>
+            <field key="i">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="t">{cimerant:type=field, fieldType=time, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

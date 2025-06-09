@@ -1,0 +1,15 @@
+
+<root name="0646">
+    <attributes size="0">
+    </attributes>
+    <object name="inhz">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="xx">{cimerant:type=field, default='text', fieldType=text}</field>
+            <field key="yy">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

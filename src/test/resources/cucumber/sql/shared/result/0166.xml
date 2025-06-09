@@ -1,0 +1,21 @@
+
+<root name="0166">
+    <attributes size="0">
+    </attributes>
+    <object name="global_priv">
+        <attributes size="5">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="checksum">1</attribute>
+            <attribute key="collate">utf8_bin</attribute>
+            <attribute key="comment">Users and global privileges</attribute>
+            <attribute key="engine">Aria</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="Host">{cimerant:type=field, collate=utf8_bin, default='', fieldType=CHAR, maxSize=60, nullable=false, primary=true}</field>
+            <field key="Privilege">{charset=utf8mb4, cimerant:type=field, collate=utf8mb4_bin, default='{}', fieldType=LONGTEXT, nullable=false}</field>
+            <field key="User">{cimerant:type=field, collate=utf8_bin, default='', fieldType=CHAR, maxSize=80, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

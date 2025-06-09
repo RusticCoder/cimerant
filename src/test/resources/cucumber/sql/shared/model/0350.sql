@@ -1,0 +1,1 @@
+CREATE TABLE ataddindex(f1 VARCHAR(10))

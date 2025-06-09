@@ -1,0 +1,16 @@
+
+<root name="1317">
+    <attributes size="0">
+    </attributes>
+    <object name="mlparted5a">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

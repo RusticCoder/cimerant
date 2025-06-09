@@ -1,0 +1,24 @@
+
+<root name="polygon">
+    <attributes size="0">
+    </attributes>
+    <object name="POLYGON_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=polygon}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="quad_poly_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="p">{cimerant:type=field, fieldType=polygon}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

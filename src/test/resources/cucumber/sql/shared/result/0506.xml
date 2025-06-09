@@ -1,0 +1,15 @@
+
+<root name="0506">
+    <attributes size="0">
+    </attributes>
+    <object name="concur_reindex_tab3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=int}</field>
+            <field key="c2">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

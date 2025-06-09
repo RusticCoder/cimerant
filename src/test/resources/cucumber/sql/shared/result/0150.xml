@@ -1,0 +1,21 @@
+
+<root name="0150">
+    <attributes size="0">
+    </attributes>
+    <object name="orders_json_2">
+        <attributes size="3">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="collate">utf8mb4_0900_ai_ci</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="additional_info">{cimerant:type=field, default=NULL, fieldType=json}</field>
+            <field key="CREATEd_at">{cimerant:type=field, default=NULL, fieldType=timestamp, nullable=true}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="reward">{cimerant:type=field, default=NULL, fieldType=json}</field>
+            <field key="updated_at">{cimerant:type=field, default=NULL, fieldType=timestamp, nullable=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

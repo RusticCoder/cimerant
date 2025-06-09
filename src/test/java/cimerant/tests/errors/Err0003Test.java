@@ -27,7 +27,7 @@ public class Err0003Test {
   private static File cimerantPath;
   private static Path destinationFilePath;
   private static final String EXPECTED_REGEX =
-      "CMA-M\\d{2}-0003: Duplicate command-line arguments '([^']*)' are not allowed([^']*)";
+      "CMA-M\\d{4}-0003: Duplicate command-line arguments '([^']*)' are not allowed([^']*)";
   private static final int EXPECTED_STATUS_CODE = -3;
   private static String modelPath;
   private static String rootPath;
@@ -46,7 +46,7 @@ public class Err0003Test {
       temporaryFolder.create();
 
       Err0003Test.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", Err0003Test.cimerantPath.getAbsolutePath());
     }
@@ -78,12 +78,12 @@ public class Err0003Test {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(Err0003Test.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 
@@ -150,20 +150,39 @@ public class Err0003Test {
    */
   @Given("err0003.{int} param {string}")
   public void err0003_param(final Integer argUnique, final String argParam) {
-    if ("f".equals(argParam) || "file".equals(argParam)) {
-      this.givenTheFile(argUnique, argParam);
-    } else if ("i".equals(argParam) || "input".equals(argParam)) {
-      this.givenTheInputFile(argUnique, argParam);
-    } else if ("l".equals(argParam) || "templates".equals(argParam)) {
-      this.givenTheTemplates(argUnique, argParam);
-    } else if ("multi".equals(argParam) || "single".equals(argParam)) {
-      this.givenTheSingleMultiValue(argUnique, argParam);
-    } else if ("p".equals(argParam) || "path".equals(argParam)) {
-      this.givenThePath(argUnique, argParam);
-    } else if ("t".equals(argParam) || "template".equals(argParam)) {
-      this.givenTheTemplate(argUnique, argParam);
-    } else if ("variables".equals(argParam) || "x".equals(argParam)) {
-      this.givenTheVars(argUnique, argParam);
+    if (argParam != null) {
+      switch (argParam) {
+        case "f":
+        case "file":
+          this.givenTheFile(argUnique, argParam);
+          break;
+        case "i":
+        case "input":
+          this.givenTheInputFile(argUnique, argParam);
+          break;
+        case "l":
+        case "templates":
+          this.givenTheTemplates(argUnique, argParam);
+          break;
+        case "multi":
+        case "single":
+          this.givenTheSingleMultiValue(argUnique, argParam);
+          break;
+        case "p":
+        case "path":
+          this.givenThePath(argUnique, argParam);
+          break;
+        case "t":
+        case "template":
+          this.givenTheTemplate(argUnique, argParam);
+          break;
+        case "variables":
+        case "x":
+          this.givenTheVars(argUnique, argParam);
+          break;
+        default:
+          break;
+      }
     }
   }
 
@@ -283,18 +302,29 @@ public class Err0003Test {
    */
   @Given("err0003.{int} templates {string}")
   public void givenTheTemplates(final Integer argUnique, final String argTemplates) {
-    if ("l".equals(argTemplates)) {
-      this.values.add("-l '" + Err0003Test.rootPath + "/list/TemplateList001.md'");
-    } else if ("templates".equals(argTemplates)) {
-      this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList001.md'");
-    } else if ("templates2".equals(argTemplates)) {
-      this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList002.md'");
-    } else if ("templates3".equals(argTemplates)) {
-      this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList003.md'");
-    } else if ("templates4".equals(argTemplates)) {
-      this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList004.md'");
-    } else if ("templates5".equals(argTemplates)) {
-      this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList005.md'");
+    if (argTemplates != null) {
+      switch (argTemplates) {
+        case "l":
+          this.values.add("-l '" + Err0003Test.rootPath + "/list/TemplateList001.md'");
+          break;
+        case "templates":
+          this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList001.md'");
+          break;
+        case "templates2":
+          this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList002.md'");
+          break;
+        case "templates3":
+          this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList003.md'");
+          break;
+        case "templates4":
+          this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList004.md'");
+          break;
+        case "templates5":
+          this.values.add("--templates='" + Err0003Test.rootPath + "/list/TemplateList005.md'");
+          break;
+        default:
+          break;
+      }
     }
   }
 

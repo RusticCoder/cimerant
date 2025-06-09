@@ -1,0 +1,15 @@
+
+<root name="0078">
+    <attributes size="0">
+    </attributes>
+    <object name="actor">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="birthday">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP, fieldType=datetime}</field>
+            <field key="last_update">{cimerant:type=field, default=CURRENT_TIMESTAMP, fieldType=timestamp}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

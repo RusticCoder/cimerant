@@ -1,0 +1,14 @@
+
+<root name="0532">
+    <attributes size="0">
+    </attributes>
+    <object name="fast_emp4000">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="home_base">{cimerant:type=field, fieldType=box}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

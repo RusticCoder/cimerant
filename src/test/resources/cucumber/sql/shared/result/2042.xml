@@ -1,0 +1,15 @@
+
+<root name="2042">
+    <attributes size="0">
+    </attributes>
+    <object name="A">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ID">{cimerant:type=field, comment=ID, fieldType=STRING}</field>
+            <field key="NAME">{cimerant:type=field, comment=NAME, fieldType=STRING}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

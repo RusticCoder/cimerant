@@ -1,0 +1,14 @@
+
+<root name="1346">
+    <attributes size="0">
+    </attributes>
+    <object name="INTERVAL_MULDIV_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="span">{cimerant:type=field, fieldType=interval}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

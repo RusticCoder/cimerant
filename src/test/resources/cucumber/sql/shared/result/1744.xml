@@ -1,0 +1,16 @@
+
+<root name="1744">
+    <attributes size="0">
+    </attributes>
+    <object name="upsert">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="key">{cimerant:type=field, fieldType=int4, primary=true}</field>
+            <field key="val">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

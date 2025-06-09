@@ -1,0 +1,16 @@
+
+<root name="0018">
+    <attributes size="0">
+    </attributes>
+    <object name="temp">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="emp_lastname">{cimerant:type=field, fieldType=NVARCHAR, maxSize=200, nullable=false}</field>
+            <field key="emp_middlename">{cimerant:type=field, fieldType=NVARCHAR, maxSize=200, nullable=true}</field>
+            <field key="emp_name">{cimerant:type=field, fieldType=NVARCHAR, maxSize=200, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

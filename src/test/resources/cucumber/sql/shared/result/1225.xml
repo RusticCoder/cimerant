@@ -1,0 +1,14 @@
+
+<root name="1225">
+    <attributes size="0">
+    </attributes>
+    <object name="secondparent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tomorrow">{cimerant:type=field, default=now() :: date  +  1, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,826 @@
+
+<root name="inherit">
+    <attributes size="0">
+    </attributes>
+    <object name="a">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="aa">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ac">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="aa">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="b">
+        <attributes size="1">
+            <attribute key="inherits">a</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="bb">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bar">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bar2">
+        <attributes size="2">
+            <attribute key="inherits">bar</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="base">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bc">
+        <attributes size="1">
+            <attribute key="inherits">ac</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="bb">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bool_lp">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=bool}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bool_rp">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=bool}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="c">
+        <attributes size="1">
+            <attribute key="inherits">a</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="cc">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="c1">
+        <attributes size="1">
+            <attribute key="inherits">p1, p2</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="c2">
+        <attributes size="1">
+            <attribute key="inherits">p1, p2</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="c3">
+        <attributes size="1">
+            <attribute key="inherits">c1, c2</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f4">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cc">
+        <attributes size="1">
+            <attribute key="inherits">ac, bc</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cc1">
+        <attributes size="1">
+            <attribute key="inherits">pp1</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cc2">
+        <attributes size="1">
+            <attribute key="inherits">cc1, pp1</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f4">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="childtab">
+        <attributes size="2">
+            <attribute key="inherits">parent1, parent2</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f4">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cnullchild">
+        <attributes size="1">
+            <attribute key="inherits">cnullparent</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="cnullparent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="d">
+        <attributes size="1">
+            <attribute key="inherits">a, b, c</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="dd">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="derived">
+        <attributes size="1">
+            <attribute key="inherits">base</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="errtst_child_fastdef">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="partid">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="shdata">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="errtst_child_plaindef">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="data">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
+            <field key="partid">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="shdata">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="errtst_child_reorder">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="data">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
+            <field key="partid">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="shdata">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="errtst_parent">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="data">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
+            <field key="partid">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="shdata">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="firstparent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tomorrow">{cimerant:type=field, default=now()::date + 1, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="foo">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="foo2">
+        <attributes size="2">
+            <attribute key="inherits">foo</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_fk_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_fk_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="y">{cimerant:type=relationship, column=y, foreignTable=inh_fk_1}</relationship>
+        </relationships>
+    </object>
+    <object name="inh_fk_2_child">
+        <attributes size="1">
+            <attribute key="inherits">inh_fk_2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_perm_child">
+        <attributes size="1">
+            <attribute key="inherits">inh_temp_parent</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_perm_parent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_temp_child">
+        <attributes size="2">
+            <attribute key="inherits">inh_perm_parent</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_temp_child_2">
+        <attributes size="2">
+            <attribute key="inherits">inh_temp_parent</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_temp_parent">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhs1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inht1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inht2">
+        <attributes size="1">
+            <attribute key="inherits">inht1</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inht3">
+        <attributes size="1">
+            <attribute key="inherits">inht1</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inht4">
+        <attributes size="1">
+            <attribute key="inherits">inht2, inht3</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="z">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhts">
+        <attributes size="1">
+            <attribute key="inherits">inhs1, inht1, inht2</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="invalid_check_con">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="invalid_check_con_child">
+        <attributes size="1">
+            <attribute key="inherits">invalid_check_con</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="jointchild">
+        <attributes size="1">
+            <attribute key="inherits">firstparent, secondparent</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="list_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=varchar}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="matest0">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="matest1">
+        <attributes size="1">
+            <attribute key="inherits">matest0</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="matest2">
+        <attributes size="1">
+            <attribute key="inherits">matest0</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="matest3">
+        <attributes size="1">
+            <attribute key="inherits">matest0</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mclparted">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mcrparted">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="mlparted_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=char}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="more_derived">
+        <attributes size="2">
+            <attribute key="inherits">derived</attribute>
+            <attribute key="like">derived</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="otherchild">
+        <attributes size="1">
+            <attribute key="inherits">firstparent, thirdparent</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="tomorrow">{cimerant:type=field, default=now(), fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="p1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="ff1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="p1_c1">
+        <attributes size="1">
+            <attribute key="inherits">p1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="p2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parent1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parent2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f3">{cimerant:type=field, fieldType=bigint}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_minmax">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=varchar, maxSize=16}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="patest1">
+        <attributes size="2">
+            <attribute key="inherits">patest0</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="patest2">
+        <attributes size="2">
+            <attribute key="inherits">patest0</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="permtest_child">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="permtest_grandchild">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="permtest_parent">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pp1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="range_list_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=char, maxSize=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="range_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="secondparent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tomorrow">{cimerant:type=field, default=now() :: date  +  1, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="some_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="some_tab_child">
+        <attributes size="1">
+            <attribute key="inherits">some_tab</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_constraints">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="val1">{cimerant:type=field, fieldType=varchar, unique=true}</field>
+            <field key="val2">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_constraints_inh">
+        <attributes size="1">
+            <attribute key="inherits">test_constraints</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_ex_constraints">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=circle}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_ex_constraints_inh">
+        <attributes size="1">
+            <attribute key="inherits">test_ex_constraints</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_foreign_constraints">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="id1">{cimerant:type=relationship, column=id1, foreignColumn=id, foreignTable=test_primary_constraints}</relationship>
+        </relationships>
+    </object>
+    <object name="test_foreign_constraints_inh">
+        <attributes size="1">
+            <attribute key="inherits">test_foreign_constraints</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_primary_constraints">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="thirdparent">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tomorrow">{cimerant:type=field, default=now()::date - 1, fieldType=date}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="z">
+        <attributes size="2">
+            <attribute key="inherits">a</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=TEXT, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

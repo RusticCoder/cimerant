@@ -1,0 +1,15 @@
+
+<root name="1016">
+    <attributes size="0">
+    </attributes>
+    <object name="fk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, deferrable=true, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=pk}</relationship>
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,18 @@
+
+<root name="0910">
+    <attributes size="0">
+    </attributes>
+    <object name="FKTABLE">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="ftest1">{cimerant:type=field, fieldType=int}</field>
+            <field key="ftest2">{cimerant:type=field, fieldType=int}</field>
+            <field key="ftest3">{cimerant:type=field, fieldType=int}</field>
+            <field key="ftest4">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="constrname3">{cimerant:type=relationship, column=ftest1, ftest2, ftest3, foreignColumn=ptest1, ptest2, ptest3, foreignTable=PKTABLE}</relationship>
+        </relationships>
+    </object>
+</root>

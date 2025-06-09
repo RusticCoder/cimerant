@@ -1,0 +1,15 @@
+
+<root name="0087">
+    <attributes size="0">
+    </attributes>
+    <object name="blob_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=blob, maxSize=45}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

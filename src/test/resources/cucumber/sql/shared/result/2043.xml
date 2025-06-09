@@ -1,0 +1,16 @@
+
+<root name="2043">
+    <attributes size="0">
+    </attributes>
+    <object name="col_elem_ex">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="col1">{cimerant:type=field, fieldType=INT}</field>
+            <field key="ident">{cimerant:type=field, fieldType=int, identity=true, increment=1, nullable=false, seed=1}</field>
+            <field key="rguid">{cimerant:type=field, default=NEWID(), fieldType=UNIQUEIDENTIFIER, nullable=false, rowguidcol=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

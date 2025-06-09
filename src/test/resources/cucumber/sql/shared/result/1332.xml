@@ -1,0 +1,16 @@
+
+<root name="1332">
+    <attributes size="0">
+    </attributes>
+    <object name="cities">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="altitude">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+            <field key="population">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

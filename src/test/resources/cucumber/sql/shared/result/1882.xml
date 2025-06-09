@@ -1,0 +1,16 @@
+
+<root name="1882">
+    <attributes size="0">
+    </attributes>
+    <object name="base_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="deleted">{cimerant:type=field, fieldType=boolean}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

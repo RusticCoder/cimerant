@@ -14,7 +14,6 @@ public interface CimerantContext<E> {
    * Get the associated context.
    *
    * @return the associated context.
-   * @throws SysError error thrown when trying to get the associated context.
    */
-  ContextRoot<E> getContext() throws SysError;
+  ContextRoot<E> getContext();
 }

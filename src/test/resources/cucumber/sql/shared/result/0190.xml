@@ -1,0 +1,15 @@
+
+<root name="0190">
+    <attributes size="0">
+    </attributes>
+    <object name="B" grouping="[A]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="FIELD1">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=19, primary=true, scale=0}</field>
+            <field key="FIELD2">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=19, scale=0}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

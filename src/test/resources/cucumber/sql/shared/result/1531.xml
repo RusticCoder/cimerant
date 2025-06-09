@@ -1,0 +1,16 @@
+
+<root name="1531">
+    <attributes size="0">
+    </attributes>
+    <object name="users">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+            <field key="login">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

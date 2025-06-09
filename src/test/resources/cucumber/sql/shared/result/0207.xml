@@ -1,0 +1,18 @@
+
+<root name="0207">
+    <attributes size="0">
+    </attributes>
+    <object name="customers_part">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="credit_limit">{cimerant:type=field, fieldType=NUMBER, precision=9, scale=2}</field>
+            <field key="cust_first_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=20}</field>
+            <field key="cust_last_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=20}</field>
+            <field key="customer_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+            <field key="nls_territory">{cimerant:type=field, fieldType=VARCHAR2, maxSize=30}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

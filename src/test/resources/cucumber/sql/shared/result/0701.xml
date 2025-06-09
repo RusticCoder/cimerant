@@ -1,0 +1,15 @@
+
+<root name="0701">
+    <attributes size="0">
+    </attributes>
+    <object name="deptest">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f1">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,29 @@
+
+<root name="0524">
+    <attributes size="0">
+    </attributes>
+    <object name="tenk2">
+        <attributes size="0">
+        </attributes>
+        <fields size="16">
+            <field key="even">{cimerant:type=field, fieldType=int4}</field>
+            <field key="fivethous">{cimerant:type=field, fieldType=int4}</field>
+            <field key="four">{cimerant:type=field, fieldType=int4}</field>
+            <field key="hundred">{cimerant:type=field, fieldType=int4}</field>
+            <field key="odd">{cimerant:type=field, fieldType=int4}</field>
+            <field key="string4">{cimerant:type=field, fieldType=name}</field>
+            <field key="stringu1">{cimerant:type=field, fieldType=name}</field>
+            <field key="stringu2">{cimerant:type=field, fieldType=name}</field>
+            <field key="ten">{cimerant:type=field, fieldType=int4}</field>
+            <field key="tenthous">{cimerant:type=field, fieldType=int4}</field>
+            <field key="thousand">{cimerant:type=field, fieldType=int4}</field>
+            <field key="twenty">{cimerant:type=field, fieldType=int4}</field>
+            <field key="two">{cimerant:type=field, fieldType=int4}</field>
+            <field key="twothousand">{cimerant:type=field, fieldType=int4}</field>
+            <field key="unique1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="unique2">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

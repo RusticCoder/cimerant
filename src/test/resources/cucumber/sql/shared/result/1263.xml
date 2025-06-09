@@ -1,0 +1,14 @@
+
+<root name="1263">
+    <attributes size="0">
+    </attributes>
+    <object name="test_ex_constraints">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=circle}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

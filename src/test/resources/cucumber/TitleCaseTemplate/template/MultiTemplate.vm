@@ -17,5 +17,14 @@ $this.setFileName($this.titleCase($this.getFileName()))
             <field key="$this.titleCase($field.getKey())">$field.getValue()</field>
             #end
         </fields>
+        <relationships size="$this.getRelationships().size()">
+            #foreach ($relationship in $this.getRelationships().entrySet())
+#set($map = $this.newMap($relationship.getValue()))
+#if($relationship.getValue().getOtherEntity())
+#set($quiet = $map.put("foreignTable", $relationship.getValue().getOtherEntity().getObjectName()))
+#end
+            <relationship key="$relationship.getKey()">${map}</relationship>
+            #end
+        </relationships>
     </object>
 </root>

@@ -1,0 +1,14 @@
+
+<root name="1605">
+    <attributes size="0">
+    </attributes>
+    <object name="reloptions_test2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -12,12 +12,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.RegExUtils;
@@ -39,11 +40,15 @@ import org.slf4j.LoggerFactory;
 /** List of Command-line Interface Values. */
 class CliValueList implements List<CliValue> {
   /** Command-line Interface Value. */
-  class CliValue {
+  static class CliValue {
     enum SingleMulti {
       COPY,
       MULTI,
       SINGLE;
+
+      private static SingleMulti getEnum(final String value) {
+        return SingleMulti.valueOf(StringUtils.upperCase(value, Locale.getDefault()));
+      }
     }
 
     private enum Values {
@@ -57,39 +62,55 @@ class CliValueList implements List<CliValue> {
         try {
           final var str =
               RegExUtils.replaceAll(
-                  StringUtils.upperCase(value), Pattern.compile("[^a-zA-Z0-9]"), "_");
+                  StringUtils.upperCase(value, Locale.getDefault()),
+                  Pattern.compile("[^a-zA-Z0-9]"),
+                  "_");
 
           if (EnumUtils.isValidEnum(Values.class, str)) {
             return Values.valueOf(str);
           }
 
           return UNKNOWN;
-        } catch (final Exception e) {
+        } catch (final Throwable t) {
           final var logger = LoggerFactory.getLogger(Values.class.getName());
           if (logger.isErrorEnabled()) {
-            logger.error(e.getMessage(), e);
+            logger.error(t.getMessage(), t);
           }
           return UNKNOWN;
         }
       }
     }
 
-    private String filePattern = null;
+    private final String filePattern;
     private final int lineNumber;
     private final CimerantLogger logger;
-    private String outputPath = "";
-    private SingleMulti singleMulti = null;
-    private String template = null;
+    private final String outputPath;
+    private final SingleMulti singleMulti;
+    private final String template;
 
-    public CliValue(final int lineNumber) {
+    public CliValue(
+        final int lineNumber,
+        final String singleMulti,
+        final String template,
+        final String outputPath,
+        final String filePattern) {
       this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
-      this.lineNumber = lineNumber;
-    }
 
-    private void addError(
-        final StatusCode statusCode, final ModuleCode moduleCode, final String... args) {
-      final Exception e = statusCode.getSysError(moduleCode, this.getLineNumber(), args);
-      this.logger.error(e.getMessage(), e);
+      this.lineNumber = lineNumber;
+
+      SingleMulti singleMultiValue = null;
+      try {
+        singleMultiValue = SingleMulti.getEnum(singleMulti);
+      } catch (final Throwable t) {
+        if (this.logger.isDebugEnabled()) {
+          this.logger.debug(t.getMessage(), t);
+        }
+      }
+      this.singleMulti = singleMultiValue;
+
+      this.template = StringUtils.stripToNull(template);
+      this.outputPath = StringUtils.stripToEmpty(outputPath);
+      this.filePattern = StringUtils.stripToNull(filePattern);
     }
 
     String getFilePattern() {
@@ -132,80 +153,11 @@ class CliValueList implements List<CliValue> {
       return this.template;
     }
 
-    private boolean hasValue(final Values type) {
-      try {
-        switch (type) {
-          case TEMPLATE:
-            return StringUtils.isNotBlank(this.getTemplate());
-          case SINGLE_MULTI:
-            return this.getSingleMulti() != null;
-          case OUTPUT_PATH:
-            return StringUtils.isNotBlank(this.getOutputPath());
-          case FILE_PATTERN:
-            return StringUtils.isNotBlank(this.getFilePattern());
-          default:
-        }
-      } catch (final Exception e) {
-        if (this.logger.isDebugEnabled()) {
-          this.logger.debug(e.getMessage(), e);
-        }
-        return true;
-      }
-      return false;
-    }
-
     private boolean isEmpty() {
       return StringUtils.isBlank(this.filePattern)
           && StringUtils.isBlank(this.outputPath)
           && this.singleMulti == null
           && StringUtils.isBlank(this.template);
-    }
-
-    void setFilePattern(final String filePattern) {
-      this.filePattern = StringUtils.stripToNull(filePattern);
-    }
-
-    void setOutputPath(final String outputPath) {
-      this.outputPath = StringUtils.stripToEmpty(outputPath);
-    }
-
-    void setSingleMulti(final String singleMulti) {
-      try {
-        this.singleMulti = SingleMulti.valueOf(singleMulti.toUpperCase(Locale.getDefault()));
-      } catch (final Exception e) {
-        if (this.logger.isDebugEnabled()) {
-          this.logger.debug(e.getMessage(), e);
-        }
-      }
-    }
-
-    void setTemplate(final String template) {
-      this.template = StringUtils.stripToNull(template);
-    }
-
-    private void setValue(final Values type, final String value) {
-      try {
-        switch (type) {
-          case TEMPLATE:
-            this.setTemplate(value);
-            break;
-          case SINGLE_MULTI:
-            this.setSingleMulti(value);
-            break;
-          case OUTPUT_PATH:
-            this.setOutputPath(
-                Paths.get(CliValueList.this.basePath, StringUtils.stripToEmpty(value)).toString());
-            break;
-          case FILE_PATTERN:
-            this.setFilePattern(value);
-            break;
-          default:
-        }
-      } catch (final Exception e) {
-        if (this.logger.isDebugEnabled()) {
-          this.logger.debug(e.getMessage(), e);
-        }
-      }
     }
 
     /** Returns a string representation of the object. */
@@ -216,15 +168,20 @@ class CliValueList implements List<CliValue> {
   }
 
   private final String basePath;
-  private final Map<Integer, CliValue.Values> cliValueMap = new HashMap<>();
+  private final Map<Integer, CliValue.Values> cliValueMap = new TreeMap<>();
   private final List<CliValue> cliValues = new ArrayList<>();
   private final String inputFile;
+  private final FileType inputFileType;
   private int lastIndex;
   private final CimerantLogger logger;
 
-  CliValueList(final String inputFile, final String basePath) {
+  CliValueList(final String inputFile, final FileType inputFileType, final String basePath) {
+    Objects.requireNonNull(inputFile);
+    Objects.requireNonNull(basePath);
+
     this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
     this.inputFile = inputFile;
+    this.inputFileType = inputFileType;
     this.basePath = basePath;
   }
 
@@ -285,37 +242,94 @@ class CliValueList implements List<CliValue> {
   }
 
   private void addCliValue(final List<String> values) {
-    final var moduleCode = ModuleCode.ERR_M03;
+    Objects.requireNonNull(values);
 
-    final var cliValue = new CliValue(this.lastIndex++);
+    final var moduleCode = ModuleCode.ERR_M0300;
+
+    final var lineNumber = this.lastIndex++;
+    String singleMulti1 = null;
+    String template = null;
+    String outputPath = null;
+    String filePattern = null;
+
     for (var i = 0; i < values.size(); i++) {
-      if (this.cliValueMap.get(i) == CliValue.Values.SINGLE_MULTI
-          && cliValue.hasValue(this.cliValueMap.get(i))) {
+      if (this.cliValueMap.get(i) == CliValue.Values.SINGLE_MULTI && singleMulti1 != null) {
         try {
-          final var singleMulti =
-              SingleMulti.valueOf(values.get(i).toUpperCase(Locale.getDefault()));
-          if (singleMulti == SingleMulti.SINGLE && cliValue.getSingleMulti() == SingleMulti.MULTI
-              || singleMulti == SingleMulti.MULTI
-                  && cliValue.getSingleMulti() == SingleMulti.SINGLE) {
-            cliValue.addError(StatusCode.ERR_0018, moduleCode);
+          final var singleMulti = SingleMulti.getEnum(values.get(i));
+          if ((singleMulti == SingleMulti.SINGLE
+                  && SingleMulti.getEnum(singleMulti1) == SingleMulti.MULTI)
+              || (singleMulti == SingleMulti.MULTI
+                  && SingleMulti.getEnum(singleMulti1) == SingleMulti.SINGLE)) {
+            final var s = StatusCode.ERR_0018.getSysError(moduleCode, lineNumber);
+            this.logger.error(s.getMessage(), s);
           }
-        } catch (final Exception e) {
+        } catch (final Throwable t) {
           if (this.logger.isDebugEnabled()) {
-            this.logger.debug(e.getMessage(), e);
+            this.logger.debug(t.getMessage(), t);
           }
         }
       }
-      if (cliValue.hasValue(this.cliValueMap.get(i))) {
-        cliValue.addError(StatusCode.ERR_0003, moduleCode, this.cliValueMap.get(i).toString());
-      } else {
-        cliValue.setValue(this.cliValueMap.get(i), values.get(i));
+
+      try {
+        switch (this.cliValueMap.get(i)) {
+          case TEMPLATE:
+            if (template != null) {
+              final var s =
+                  StatusCode.ERR_0003.getSysError(moduleCode, this.cliValueMap.get(i).toString());
+              this.logger.error(s.getMessage(), s);
+            } else {
+              template = values.get(i);
+            }
+            break;
+          case SINGLE_MULTI:
+            if (singleMulti1 != null) {
+              final var s =
+                  StatusCode.ERR_0003.getSysError(moduleCode, this.cliValueMap.get(i).toString());
+              this.logger.error(s.getMessage(), s);
+            } else {
+              singleMulti1 = values.get(i);
+            }
+            break;
+          case OUTPUT_PATH:
+            if (outputPath != null) {
+              final var s =
+                  StatusCode.ERR_0003.getSysError(moduleCode, this.cliValueMap.get(i).toString());
+              this.logger.error(s.getMessage(), s);
+            } else {
+              outputPath =
+                  Paths.get(CliValueList.this.basePath, StringUtils.stripToEmpty(values.get(i)))
+                      .toString();
+            }
+            break;
+          case FILE_PATTERN:
+            if (filePattern != null) {
+              final var s =
+                  StatusCode.ERR_0003.getSysError(moduleCode, this.cliValueMap.get(i).toString());
+              this.logger.error(s.getMessage(), s);
+            } else {
+              filePattern = values.get(i);
+            }
+            break;
+          default:
+        }
+      } catch (final Throwable t) {
+        if (this.logger.isDebugEnabled()) {
+          this.logger.debug(t.getMessage(), t);
+        }
       }
     }
-    this.add(cliValue);
+
+    this.add(
+        new CliValue(
+            lineNumber,
+            singleMulti1 == null ? null : singleMulti1.toString(),
+            template,
+            outputPath,
+            filePattern));
   }
 
-  void addCliValuesByTemplateList(final String templateList) throws SysError {
-    final var moduleCode = ModuleCode.ERR_M05;
+  void addCliValuesByTemplateList(final String templateList) {
+    final var moduleCode = ModuleCode.ERR_M0301;
 
     try (var reader =
         new InputStreamReader(
@@ -324,12 +338,14 @@ class CliValueList implements List<CliValue> {
       final var document = Parser.builder().extensions(extensions).build().parseReader(reader);
 
       this.parseNode(document);
-    } catch (final Exception e) {
+    } catch (final SysError s) {
+      throw s;
+    } catch (final Throwable t) {
       // 0001 | Unknown error
       if (this.logger.isDebugEnabled()) {
-        this.logger.debug(e.getMessage(), e);
+        this.logger.debug(t.getMessage(), t);
       }
-      throw new SysError(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, e.getMessage());
+      throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
     }
   }
 
@@ -342,12 +358,16 @@ class CliValueList implements List<CliValue> {
   /** Returns {@code true} if this list contains the specified element. */
   @Override
   public final boolean contains(final Object object) {
+    Objects.requireNonNull(object);
+
     return this.cliValues.contains(object);
   }
 
   /** Returns {@code true} if this list contains all of the elements of the specified collection. */
   @Override
   public final boolean containsAll(final Collection<?> collection) {
+    Objects.requireNonNull(collection);
+
     return this.cliValues.containsAll(collection);
   }
 
@@ -361,6 +381,10 @@ class CliValueList implements List<CliValue> {
     return this.inputFile;
   }
 
+  FileType getInputFileType() {
+    return this.inputFileType;
+  }
+
   public void increaseIndex() {
     ++this.lastIndex;
   }
@@ -371,6 +395,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final int indexOf(final Object object) {
+    Objects.requireNonNull(object);
+
     return this.cliValues.indexOf(object);
   }
 
@@ -392,6 +418,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final int lastIndexOf(final Object object) {
+    Objects.requireNonNull(object);
+
     return this.cliValues.lastIndexOf(object);
   }
 
@@ -412,7 +440,7 @@ class CliValueList implements List<CliValue> {
 
   private void parseNode(final Node node) {
     if (node != null) {
-      if (TableBlock.class.isAssignableFrom(node.getClass())) {
+      if (node instanceof TableBlock) {
         this.parseTableBlock((TableBlock) node);
       } else {
         this.parseNode(node.getFirstChild());
@@ -424,7 +452,7 @@ class CliValueList implements List<CliValue> {
   private void parseTableBlock(final TableBlock tableBlock) {
     if (tableBlock != null) {
       for (final Node node : Arrays.asList(tableBlock.getFirstChild())) {
-        if (node != null && TableHead.class.isAssignableFrom(node.getClass())) {
+        if (node instanceof TableHead) {
           this.parseTableHead((TableHead) node);
         }
       }
@@ -434,7 +462,7 @@ class CliValueList implements List<CliValue> {
   private void parseTableBody(final TableBody tableBody) {
     if (tableBody != null) {
       for (final Node node : Arrays.asList(tableBody.getFirstChild(), tableBody.getNext())) {
-        if (node != null && TableRow.class.isAssignableFrom(node.getClass())) {
+        if (node instanceof TableRow) {
           for (final List<String> cliValue :
               this.parseTableRow((TableRow) node, new ArrayList<>())) {
             this.addCliValue(cliValue);
@@ -447,14 +475,14 @@ class CliValueList implements List<CliValue> {
   private List<String> parseTableCell(final TableCell tableCell, final List<String> tableCellData) {
     if (tableCell != null) {
       var node = tableCell.getFirstChild();
-      if (node != null && Text.class.isAssignableFrom(node.getClass())) {
+      if (node instanceof Text) {
         tableCellData.add(((Text) node).getLiteral());
       } else {
         tableCellData.add(null);
       }
 
       node = tableCell.getNext();
-      if (node != null && TableCell.class.isAssignableFrom(node.getClass())) {
+      if (node instanceof TableCell) {
         this.parseTableCell((TableCell) node, tableCellData);
       }
     }
@@ -466,21 +494,21 @@ class CliValueList implements List<CliValue> {
     if (tableHead != null) {
       for (final Node node : Arrays.asList(tableHead.getFirstChild(), tableHead.getNext())) {
         if (node != null) {
-          if (TableRow.class.isAssignableFrom(node.getClass())) {
+          if (node instanceof TableRow) {
             for (final List<String> cliValue :
                 this.parseTableRow((TableRow) node, new ArrayList<>())) {
               for (var i = 0; i < cliValue.size(); i++) {
                 try {
                   this.cliValueMap.put(i, CliValue.Values.getEnum(cliValue.get(i)));
-                } catch (final Exception e) {
+                } catch (final Throwable t) {
                   this.cliValueMap.put(i, null);
                   if (this.logger.isDebugEnabled()) {
-                    this.logger.debug(e.getMessage(), e);
+                    this.logger.debug(t.getMessage(), t);
                   }
                 }
               }
             }
-          } else if (TableBody.class.isAssignableFrom(node.getClass())) {
+          } else if (node instanceof TableBody) {
             this.parseTableBody((TableBody) node);
           }
         }
@@ -490,16 +518,17 @@ class CliValueList implements List<CliValue> {
 
   private List<List<String>> parseTableRow(
       final TableRow tableRow, final List<List<String>> tableRowData) {
-    if (tableRow != null) {
-      var node = tableRow.getFirstChild();
-      if (node != null && TableCell.class.isAssignableFrom(node.getClass())) {
-        tableRowData.add(this.parseTableCell((TableCell) node, new ArrayList<>()));
-      }
+    Objects.requireNonNull(tableRow);
+    Objects.requireNonNull(tableRowData);
 
-      node = tableRow.getNext();
-      if (node != null && TableRow.class.isAssignableFrom(node.getClass())) {
-        this.parseTableRow((TableRow) node, tableRowData);
-      }
+    var node = tableRow.getFirstChild();
+    if (node instanceof TableCell) {
+      tableRowData.add(this.parseTableCell((TableCell) node, new ArrayList<>()));
+    }
+
+    node = tableRow.getNext();
+    if (node instanceof TableRow) {
+      this.parseTableRow((TableRow) node, tableRowData);
     }
 
     return tableRowData;
@@ -517,6 +546,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final boolean remove(final Object object) {
+    Objects.requireNonNull(object);
+
     return this.cliValues.remove(object);
   }
 
@@ -526,6 +557,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final boolean removeAll(final Collection<?> collection) {
+    Objects.requireNonNull(collection);
+
     return this.cliValues.removeAll(collection);
   }
 
@@ -535,6 +568,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final boolean retainAll(final Collection<?> collection) {
+    Objects.requireNonNull(collection);
+
     return this.cliValues.retainAll(collection);
   }
 
@@ -544,6 +579,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final CliValue set(final int index, final CliValue cliValue) {
+    Objects.requireNonNull(cliValue);
+
     return this.cliValues.set(index, cliValue);
   }
 
@@ -577,6 +614,8 @@ class CliValueList implements List<CliValue> {
    */
   @Override
   public final <T> T[] toArray(final T[] array) {
+    Objects.requireNonNull(array);
+
     return this.cliValues.toArray(array);
   }
 

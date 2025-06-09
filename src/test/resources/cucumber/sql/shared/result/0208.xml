@@ -1,0 +1,15 @@
+
+<root name="0208">
+    <attributes size="0">
+    </attributes>
+    <object name="regr_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=float8}</field>
+            <field key="y">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="0920">
+    <attributes size="0">
+    </attributes>
+    <object name="FKTABLE">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ftest1">{cimerant:type=field, fieldType=inet}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="ftest1">{cimerant:type=relationship, column=ftest1, foreignColumn=ptest1, foreignTable=pktable}</relationship>
+        </relationships>
+    </object>
+</root>

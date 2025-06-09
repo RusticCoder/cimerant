@@ -1,0 +1,15 @@
+
+<root name="0044">
+    <attributes size="0">
+    </attributes>
+    <object name="T1" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="column_1">{cimerant:type=field, fieldType=int, identity=true}</field>
+            <field key="column_2">{cimerant:type=field, fieldType=uniqueidentifier}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

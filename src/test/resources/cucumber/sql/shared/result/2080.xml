@@ -1,0 +1,16 @@
+
+<root name="2080">
+    <attributes size="0">
+    </attributes>
+    <object name="mvtest_t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="amt">{cimerant:type=field, fieldType=numeric, nullable=false}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="type">{cimerant:type=field, fieldType=text, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

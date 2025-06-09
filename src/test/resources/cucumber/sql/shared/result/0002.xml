@@ -1,0 +1,16 @@
+
+<root name="0002">
+    <attributes size="0">
+    </attributes>
+    <object name="Eggs" grouping="[Monty]">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="Chilli">{cimerant:type=field, clustered=ASC, fieldType=int}</field>
+            <field key="Ham">{cimerant:type=field, clustered=DESC, fieldType=int}</field>
+            <field key="Milk">{cimerant:type=field, clustered=true, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

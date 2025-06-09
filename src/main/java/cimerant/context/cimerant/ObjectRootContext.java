@@ -1,8 +1,9 @@
 package cimerant.context.cimerant;
 
 import cimerant.context.ContextRoot;
+import cimerant.context.NotNullSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Interface describing the template data context. This set of routines is used by the template to
@@ -12,15 +13,17 @@ import java.util.Map;
  * @param <E> The base type of the context.
  */
 public interface ObjectRootContext<E> extends ContextRoot<E> {
+  void addObject(ObjectContext<Entry<String, Object>> objectContext);
+
   /**
    * Returns the attribute to which the specified name is mapped, or {@code null} if this context
    * contains no mapping for the name.
    *
-   * @param name name the name whose associated attribute to be returned.
+   * @param name the name whose associated attribute to be returned.
    * @return the attribute to which the specified name is mapped, or {@code null} if this context
    *     contains no mapping for the name.
    */
-  Object getAttributeByName(String name);
+  NotNullSet getAttributeByName(String name);
 
   /**
    * Returns the attribute of this context by the name of the attribute supplying a default value if
@@ -31,14 +34,14 @@ public interface ObjectRootContext<E> extends ContextRoot<E> {
    * @return the attribute of this context by the name of the attribute supplying a default value if
    *     the attribute is not found.
    */
-  Object getAttributeByName(String name, Object defaultValue);
+  NotNullSet getAttributeByName(String name, Object defaultValue);
 
   /**
    * Returns all attributes of this context.
    *
    * @return all attributes of this context.
    */
-  Map<String, Object> getAttributes();
+  ObjectAttributeList getAttributes();
 
   /**
    * Returns the object that maps names to values, or {@code null} if this context contains no
@@ -47,7 +50,7 @@ public interface ObjectRootContext<E> extends ContextRoot<E> {
    * @return the object that maps names to values, or {@code null} if this context contains no
    *     object.
    */
-  List<? extends ObjectContext<?>> getObjects();
+  List<ObjectContext<Entry<String, Object>>> getObjects();
 
   /**
    * Returns the objects to which the specified name is mapped, or {@code null} if this context
@@ -57,7 +60,7 @@ public interface ObjectRootContext<E> extends ContextRoot<E> {
    * @return the objects to which the specified name is mapped, or {@code null} if this context
    *     contains no mapping for the name.
    */
-  List<? extends ObjectContext<?>> getObjectsByName(String name);
+  List<ObjectContext<Entry<String, Object>>> getObjectsByName(String name);
 
   /**
    * Returns {@code true} if this context contains a attribute for the specified name.

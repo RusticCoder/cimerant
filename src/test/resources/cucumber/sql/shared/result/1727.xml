@@ -1,0 +1,16 @@
+
+<root name="1727">
+    <attributes size="0">
+    </attributes>
+    <object name="mcv_lists_uuid">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=UUID}</field>
+            <field key="b">{cimerant:type=field, fieldType=UUID}</field>
+            <field key="c">{cimerant:type=field, fieldType=UUID}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

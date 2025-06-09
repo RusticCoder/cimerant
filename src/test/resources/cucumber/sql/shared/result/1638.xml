@@ -1,0 +1,18 @@
+
+<root name="1638">
+    <attributes size="0">
+    </attributes>
+    <object name="rtest_emplog">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="action">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="ename">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="newsal">{cimerant:type=field, fieldType=money}</field>
+            <field key="oldsal">{cimerant:type=field, fieldType=money}</field>
+            <field key="who">{cimerant:type=field, fieldType=name}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

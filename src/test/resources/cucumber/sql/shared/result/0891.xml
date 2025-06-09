@@ -1,0 +1,15 @@
+
+<root name="0891">
+    <attributes size="0">
+    </attributes>
+    <object name="guid1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="guid_field">{cimerant:type=field, fieldType=UUID}</field>
+            <field key="text_field">{cimerant:type=field, default=now(), fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

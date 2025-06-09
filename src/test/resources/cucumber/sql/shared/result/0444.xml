@@ -1,0 +1,41 @@
+
+<root name="0444">
+    <attributes size="0">
+    </attributes>
+    <object name="brintest">
+        <attributes size="0">
+        </attributes>
+        <fields size="28">
+            <field key="bitcol">{cimerant:type=field, fieldType=bit, maxSize=10}</field>
+            <field key="boxcol">{cimerant:type=field, fieldType=box}</field>
+            <field key="bpcharcol">{cimerant:type=field, fieldType=character}</field>
+            <field key="byteacol">{cimerant:type=field, fieldType=bytea}</field>
+            <field key="charcol">{cimerant:type=field, fieldType=char}</field>
+            <field key="cidrcol">{cimerant:type=field, fieldType=cidr}</field>
+            <field key="datecol">{cimerant:type=field, fieldType=date}</field>
+            <field key="float4col">{cimerant:type=field, fieldType=real}</field>
+            <field key="float8col">{cimerant:type=field, fieldType=double precision}</field>
+            <field key="inetcol">{cimerant:type=field, fieldType=inet}</field>
+            <field key="int2col">{cimerant:type=field, fieldType=smallint}</field>
+            <field key="int4col">{cimerant:type=field, fieldType=integer}</field>
+            <field key="int4rangecol">{cimerant:type=field, fieldType=int4range}</field>
+            <field key="int8col">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="intervalcol">{cimerant:type=field, fieldType=interval}</field>
+            <field key="lsncol">{cimerant:type=field, fieldType=pg_lsn}</field>
+            <field key="macaddrcol">{cimerant:type=field, fieldType=macaddr}</field>
+            <field key="namecol">{cimerant:type=field, fieldType=name}</field>
+            <field key="numericcol">{cimerant:type=field, fieldType=numeric}</field>
+            <field key="oidcol">{cimerant:type=field, fieldType=oid}</field>
+            <field key="textcol">{cimerant:type=field, fieldType=text}</field>
+            <field key="tidcol">{cimerant:type=field, fieldType=tid}</field>
+            <field key="timecol">{cimerant:type=field, fieldType=time, timezone=false}</field>
+            <field key="timestampcol">{cimerant:type=field, fieldType=timestamp, timezone=false}</field>
+            <field key="timestamptzcol">{cimerant:type=field, fieldType=timestamp, timezone=true}</field>
+            <field key="timetzcol">{cimerant:type=field, fieldType=time, timezone=true}</field>
+            <field key="uuidcol">{cimerant:type=field, fieldType=uuid}</field>
+            <field key="varbitcol">{cimerant:type=field, fieldType=bit, maxSize=16, varying=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

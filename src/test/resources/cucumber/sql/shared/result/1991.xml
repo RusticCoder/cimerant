@@ -1,0 +1,16 @@
+
+<root name="1991">
+    <attributes size="0">
+    </attributes>
+    <object name="T1">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="NAME">{cimerant:type=field, fieldType=STRING}</field>
+            <field key="TIMESTAMP">{cimerant:type=field, fieldType=DATETIME}</field>
+            <field key="VALUE">{cimerant:type=field, fieldType=STRING}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

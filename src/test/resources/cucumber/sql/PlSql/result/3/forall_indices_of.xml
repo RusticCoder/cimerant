@@ -1,0 +1,14 @@
+
+<root name="forall_indices_of">
+    <attributes size="0">
+    </attributes>
+    <object name="tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=NUMBER}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

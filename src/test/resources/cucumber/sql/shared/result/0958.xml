@@ -1,0 +1,22 @@
+
+<root name="0958">
+    <attributes size="0">
+    </attributes>
+    <object name="fktable">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="x1">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="x2">{cimerant:type=field, fieldType=VARCHAR, maxSize=4}</field>
+            <field key="x3">{cimerant:type=field, fieldType=REAL}</field>
+            <field key="x4">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="x5">{cimerant:type=field, fieldType=INT2}</field>
+        </fields>
+        <relationships size="3">
+            <relationship key="x1">{cimerant:type=relationship, column=x1, foreignColumn=id1, foreignTable=pktable}</relationship>
+            <relationship key="x2">{cimerant:type=relationship, column=x2, foreignColumn=id2, foreignTable=pktable}</relationship>
+            <relationship key="x3">{cimerant:type=relationship, column=x3, foreignColumn=id3, foreignTable=pktable}</relationship>
+        </relationships>
+    </object>
+</root>

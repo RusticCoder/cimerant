@@ -1,10 +1,16 @@
 package cimerant.context.java.util.impl;
 
+import cimerant.Cimerant;
+import cimerant.ModuleCode;
+import cimerant.StatusCode;
+import cimerant.SysError;
 import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.ListIteratorContext;
+import cimerant.logger.CimerantLogger;
 import java.util.ListIterator;
 import java.util.Objects;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -17,7 +23,12 @@ import java.util.Objects;
  */
 public final class ListIteratorContextImpl<E extends ListIterator<?>, T extends ContextRoot<?>>
     extends IteratorContextImpl<E, T> implements ListIteratorContext<E, T> {
+  private static final CimerantLogger logger;
   private static final long serialVersionUID = 1L;
+
+  static {
+    logger = (CimerantLogger) LoggerFactory.getLogger(ListIteratorContextImpl.class.getName());
+  }
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
@@ -30,8 +41,21 @@ public final class ListIteratorContextImpl<E extends ListIterator<?>, T extends 
    */
   public static <E extends ListIterator<?>, T extends ContextRoot<?>>
       ListIteratorContext<E, T> getInstance(final E contextObject) {
-    Objects.requireNonNull(contextObject);
-    return ContextRootImpl.registerInstance(new ListIteratorContextImpl<>(contextObject));
+    final var moduleCode = ModuleCode.ERR_M1000;
+
+    try {
+      Objects.requireNonNull(contextObject);
+
+      return ContextRootImpl.registerInstance(new ListIteratorContextImpl<>(contextObject));
+    } catch (final SysError s) {
+      throw s;
+    } catch (final Throwable t) {
+      // 0001 | Unknown error
+      if (ListIteratorContextImpl.logger.isDebugEnabled()) {
+        ListIteratorContextImpl.logger.debug(t.getMessage(), t);
+      }
+      throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
+    }
   }
 
   /**

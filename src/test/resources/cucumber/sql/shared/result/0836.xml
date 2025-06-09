@@ -1,0 +1,14 @@
+
+<root name="0836">
+    <attributes size="0">
+    </attributes>
+    <object name="test_qual_pushdown">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="abc">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

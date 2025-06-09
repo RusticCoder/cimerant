@@ -1,0 +1,15 @@
+
+<root name="0094">
+    <attributes size="0">
+    </attributes>
+    <object name="rack_shelf_bin">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="bin_volume">{cimerant:type=field, default=bin_len * bin_width * bin_height, fieldType=decimal, precision=20, scale=4}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, primary=true, unique=true, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="0033">
+    <attributes size="0">
+    </attributes>
+    <object name="TestTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ID">{cimerant:type=field, fieldType=INT, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

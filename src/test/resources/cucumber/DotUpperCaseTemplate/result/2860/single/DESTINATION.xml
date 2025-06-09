@@ -32,6 +32,8 @@
         <fields size="1">
             <field key="A.TEST.STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A$TEST$STRING" grouping="[COM, A$TEST$STRING]">
@@ -52,6 +54,8 @@
         <fields size="1">
             <field key="A$TEST$STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A.TEST.STRING" grouping="[COM, A.TEST.STRING]">
@@ -72,6 +76,8 @@
         <fields size="1">
             <field key="A.TEST.STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A.TEST.STRING" grouping="[COM, A.TEST.STRING]">
@@ -92,6 +98,8 @@
         <fields size="1">
             <field key="A.TEST.STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A.TEST.STRING" grouping="[COM, A.TEST.STRING]">
@@ -112,6 +120,8 @@
         <fields size="1">
             <field key="A.TEST.STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A.TEST.STRING" grouping="[COM, A.TEST.STRING]">
@@ -132,6 +142,8 @@
         <fields size="1">
             <field key="A.TEST.STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A.TEST.STRING" grouping="[COM, A.TEST.STRING]">
@@ -152,6 +164,8 @@
         <fields size="1">
             <field key="A.TEST.STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
     
     <object name="DESTINATION.A.TEST.STRING" grouping="[COM, ATESTSTRING]">
@@ -172,5 +186,7 @@
         <fields size="1">
             <field key="ATESTSTRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
 </root>

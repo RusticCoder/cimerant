@@ -1,0 +1,16 @@
+
+<root name="1729">
+    <attributes size="0">
+    </attributes>
+    <object name="mcv_lists_bool">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="b">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="c">{cimerant:type=field, fieldType=BOOL}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[TestTable] (
+  Name NVARCHAR(64) NOT NULL,
+  K NVARCHAR(64) NOT NULL,
+  Value NVARCHAR(64) NOT NULL,
+  Guid NVARCHAR(64) NOT NULL,
+  index ix_name UNIQUE CLUSTERED (Name),
+  INDEX ix_k UNIQUE NONCLUSTERED (K),
+  INDEX ix_value NONCLUSTERED (Value),
+  INDEX ix_guid UNIQUE (Guid))

@@ -1,0 +1,1 @@
+CREATE TABLE quuux2 (a int, b text)

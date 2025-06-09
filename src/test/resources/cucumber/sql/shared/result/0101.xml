@@ -1,0 +1,15 @@
+
+<root name="0101">
+    <attributes size="0">
+    </attributes>
+    <object name="table_items_with_subpartitions">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=INT}</field>
+            <field key="purchased">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

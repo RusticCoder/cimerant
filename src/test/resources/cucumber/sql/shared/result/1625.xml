@@ -1,0 +1,16 @@
+
+<root name="1625">
+    <attributes size="0">
+    </attributes>
+    <object name="price">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="active">{cimerant:type=field, fieldType=BOOLEAN, nullable=false}</field>
+            <field key="id">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+            <field key="price">{cimerant:type=field, fieldType=NUMERIC}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

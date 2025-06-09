@@ -1,0 +1,15 @@
+
+<root name="0535">
+    <attributes size="0">
+    </attributes>
+    <object name="shighway">
+        <attributes size="1">
+            <attribute key="inherits">road</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="surface">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="1539">
+    <attributes size="0">
+    </attributes>
+    <object name="transition_table_level1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="level1_no">{cimerant:type=field, fieldType=serial, nullable=false, primary=true}</field>
+            <field key="level1_node_name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

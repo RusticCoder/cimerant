@@ -1,0 +1,152 @@
+
+<root name="aggregates">
+    <attributes size="0">
+    </attributes>
+    <object name="bitwise_test">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="i">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="i2">{cimerant:type=field, fieldType=INT2}</field>
+            <field key="i4">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="i8">{cimerant:type=field, fieldType=INT8}</field>
+            <field key="x">{cimerant:type=field, fieldType=INT2}</field>
+            <field key="y">{cimerant:type=field, fieldType=BIT, maxSize=4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bool_test">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="b1">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="b2">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="b3">{cimerant:type=field, fieldType=BOOL}</field>
+            <field key="b4">{cimerant:type=field, fieldType=BOOL}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="bytea_test_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="v">{cimerant:type=field, fieldType=bytea}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="minmaxtest">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="minmaxtest1">
+        <attributes size="1">
+            <attribute key="inherits">minmaxtest</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="minmaxtest2">
+        <attributes size="1">
+            <attribute key="inherits">minmaxtest</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="minmaxtest3">
+        <attributes size="1">
+            <attribute key="inherits">minmaxtest</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="p_t1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="regr_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=float8}</field>
+            <field key="y">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=bigint}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1c">
+        <attributes size="2">
+            <attribute key="inherits">t1</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="f1">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="f22">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="x">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="y">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="z">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t3">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, deferrable=true, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, deferrable=true, fieldType=int, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

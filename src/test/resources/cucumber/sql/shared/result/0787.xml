@@ -1,0 +1,15 @@
+
+<root name="0787">
+    <attributes size="0">
+    </attributes>
+    <object name="INET_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c">{cimerant:type=field, fieldType=cidr}</field>
+            <field key="i">{cimerant:type=field, fieldType=inet}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

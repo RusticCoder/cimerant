@@ -1,0 +1,14 @@
+
+<root name="1490">
+    <attributes size="0">
+    </attributes>
+    <object name="lparted_by_int2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=smallint}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

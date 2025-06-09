@@ -1,0 +1,14 @@
+
+<root name="1128">
+    <attributes size="0">
+    </attributes>
+    <object name="itest14">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

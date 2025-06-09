@@ -1,0 +1,16 @@
+
+<root name="1777">
+    <attributes size="0">
+    </attributes>
+    <object name="fkeys">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="fkey1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="fkey2">{cimerant:type=field, fieldType=text}</field>
+            <field key="fkey3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

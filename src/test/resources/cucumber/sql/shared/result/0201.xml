@@ -1,0 +1,20 @@
+
+<root name="0201">
+    <attributes size="0">
+    </attributes>
+    <object name="sales">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="amount_sold">{cimerant:type=field, fieldType=NUMBER, precision=10, scale=2}</field>
+            <field key="channel_id">{cimerant:type=field, fieldType=CHAR, maxSize=1}</field>
+            <field key="cust_id">{cimerant:type=field, fieldType=NUMBER}</field>
+            <field key="prod_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+            <field key="promo_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+            <field key="quantity_sold">{cimerant:type=field, fieldType=NUMBER, precision=3}</field>
+            <field key="time_id">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

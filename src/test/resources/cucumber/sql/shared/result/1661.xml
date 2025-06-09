@@ -1,0 +1,17 @@
+
+<root name="1661">
+    <attributes size="0">
+    </attributes>
+    <object name="shoelace_log">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="log_when">{cimerant:type=field, fieldType=timestamp}</field>
+            <field key="log_who">{cimerant:type=field, fieldType=name}</field>
+            <field key="sl_avail">{cimerant:type=field, fieldType=integer}</field>
+            <field key="sl_name">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

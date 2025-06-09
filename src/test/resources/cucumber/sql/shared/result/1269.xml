@@ -1,0 +1,16 @@
+
+<root name="1269">
+    <attributes size="0">
+    </attributes>
+    <object name="inh_fk_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="y">{cimerant:type=relationship, column=y, foreignTable=inh_fk_1}</relationship>
+        </relationships>
+    </object>
+</root>

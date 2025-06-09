@@ -1,0 +1,17 @@
+
+<root name="0203">
+    <attributes size="0">
+    </attributes>
+    <object name="customers_demo">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="credit_limit">{cimerant:type=field, fieldType=number, precision=9, scale=2}</field>
+            <field key="cust_first_name">{cimerant:type=field, fieldType=varchar2, maxSize=20}</field>
+            <field key="cust_last_name">{cimerant:type=field, fieldType=varchar2, maxSize=20}</field>
+            <field key="customer_id">{cimerant:type=field, fieldType=number, precision=6}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

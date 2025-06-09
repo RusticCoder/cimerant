@@ -1,0 +1,18 @@
+
+<root name="0102">
+    <attributes size="0">
+    </attributes>
+    <object name="positions_rollover">
+        <attributes size="2">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=bigint, nullable=false, precision=20, primary=true}</field>
+            <field key="partition_index">{cimerant:type=field, default=0, fieldType=int, nullable=false, precision=10, primary=true, unsigned=true}</field>
+            <field key="time">{cimerant:type=field, fieldType=datetime, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

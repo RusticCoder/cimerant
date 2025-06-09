@@ -1,0 +1,15 @@
+
+<root name="1711">
+    <attributes size="0">
+    </attributes>
+    <object name="spgist_text_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="t">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

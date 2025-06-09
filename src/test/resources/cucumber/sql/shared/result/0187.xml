@@ -1,0 +1,132 @@
+
+<root name="0187">
+    <attributes size="0">
+    </attributes>
+    <object name="ECLAIMPROCESS" grouping="[ASEDBUSR]">
+        <attributes size="0">
+        </attributes>
+        <fields size="119">
+            <field key="ABSCHLUSSDAT">{cimerant:type=field, fieldType=TIMESTAMP, maxSize=9}</field>
+            <field key="ARCHIVETAG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="AUSZAHLTYPOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="BATCHIMPORTSTATUS">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="BESTDATNOTENKURS">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="BOID">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="COMMENTLERB">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+            <field key="COMMENTLERBKOPF">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=1000}</field>
+            <field key="COMMENTLERBKOPFPOS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="COMMENTLERBOVR">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+            <field key="COMMENTVERS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+            <field key="COMMENTVERSKOPF">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=1000}</field>
+            <field key="COMMENTVERSKOPFPOS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="COMMENTVERSOVR">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+            <field key="CREATED">{cimerant:type=field, enable=true, fieldType=TIMESTAMP, maxSize=9, nullable=false}</field>
+            <field key="CREATEDUSER">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ECLAIMSTATUS">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ECLSABEDRGSTATUS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="EINFEXPFREIG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="EKOGUERLEDIGTCODE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="EKOGURUECKWCODE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ERFREVISION">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="EXTPRUEFSYSDATE">{cimerant:type=field, default=NULL, fieldType=DATE}</field>
+            <field key="EXTPRUEFSYSSTATUS">{char=true, cimerant:type=field, default=NULL, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="FEHLERTEXT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=1024}</field>
+            <field key="FOREIGNCURRACTIV">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="FRISTBEGINN">{cimerant:type=field, default=NULL, enable=true, fieldType=DATE, nullable=false}</field>
+            <field key="HABEGRUENDUNG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="IMPORTDATE">{cimerant:type=field, enable=true, fieldType=DATE, nullable=false}</field>
+            <field key="INTERNCOMMENT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+            <field key="ISESR">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ISEXTERNALSTORED">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ISKOGU">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ITSABTRGERKLG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSANNULXMLSTORE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSAUSZAHLUNGSTYP">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSBEHANDLUNG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECLAIMFDOSSIER">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECLAIMLSTFALL">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECLAIMPROCINS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECLAIMPROCPAT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECLAIMPROCVERS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECLAIMSCHADEN">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSECPLSTABRTYP">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSKSKTARKOST">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSKUERZUNG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSLERBMELDUNG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSMCDXMLSTORE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCAUSFUEHRLE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCBATCHLAUF">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCBEARBOE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCBEARBUSER">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCBEHANDORT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCCOPYFROM">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCECLAIMMAND">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCGBEREICH">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ITSPROCRECHSTELLER">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCSUMINVOICE">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="ITSPROCSUMKOGU">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCSUMPKOGU">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSPROCVERANLASSLE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSSENDUNG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSSTORNOECLPROC">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSSUMPROCKOGU">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSSUMPROCLSTABR">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSSUMPROCZAHLER">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSTHERAPIEMETHODE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="ITSXMLSTORE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="KOPIERT">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="KUERZUNGPROZENT">{cimerant:type=field, fieldType=NUMBER, precision=9, scale=2}</field>
+            <field key="LASTUPDATE">{cimerant:type=field, enable=true, fieldType=TIMESTAMP, maxSize=9, nullable=false}</field>
+            <field key="LSTABRDATE">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="LSTABRSTORNODATE">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="LSTAUFSCHUBOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="LSTFORDERUNGAN">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="LSTFORDERUNGANOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="LSTSPERRENOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="LSTZAHLUNGAN">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="LSTZAHLUNGANOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="MCDINVOICESTATUS">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="MCDVISIBLEDATE">{cimerant:type=field, fieldType=TIMESTAMP, maxSize=9}</field>
+            <field key="MDBID">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=255}</field>
+            <field key="METABO">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="MODIFIALLOWED">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="OVRCOMMENTLERB">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="OVRCOMMENTLERBKOPF">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="OVRCOMMENTVERS">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="OVRCOMMENTVERSKOPF">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="OVRINTERNCOMMENT">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="PKEY">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="PROCBEHANDORTOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="PROCESSDATE">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="PROCESSID">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="PROCRECHSTOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="PROVSTATUS">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="RECHNUNGSTYP">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="REGELVARIABLE1">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=255}</field>
+            <field key="REPLACED">{cimerant:type=field, enable=true, fieldType=TIMESTAMP, maxSize=9, nullable=false}</field>
+            <field key="REPLACEDUSER">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="RESPONSE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=4000}</field>
+            <field key="RKOPFCOMMENT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=255}</field>
+            <field key="ROWCOMMENT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=15}</field>
+            <field key="RUECKWEISUNGTEXT">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=350}</field>
+            <field key="SANKTIONSTUFEFLAG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="SANKTIONSTUFEOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="SBENTSCHEID">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="SECONDOPINION">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="SISTIERUNGOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="STATUS">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="STORNOCODE">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="SUMPOTEINSPARUNG">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=14, scale=4}</field>
+            <field key="TARIFGRPMDC">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=35}</field>
+            <field key="TREATMENTBEGIN">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="TREATMENTEND">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="USEESRREDBANKINFO">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+            <field key="VERARBEITSTATUS">{char=true, cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=40, nullable=false}</field>
+            <field key="VERARBEITUNGCOUNT">{cimerant:type=field, fieldType=NUMBER, precision=12, scale=0}</field>
+            <field key="VORBEHALTOVR">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=12, scale=0}</field>
+            <field key="VORBESCHEXPFREIG">{char=true, cimerant:type=field, fieldType=VARCHAR2, maxSize=40}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,18 @@
+
+<root name="0013">
+    <attributes size="0">
+    </attributes>
+    <object name="deliveries3">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="cust_id">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="delivery_date">{cimerant:type=field, default=DATEADD(dd, 10, GETDATE()), fieldType=SMALLDATETIME, nullable=false}</field>
+            <field key="order_date">{cimerant:type=field, default=GETDATE(), fieldType=SMALLDATETIME, nullable=false}</field>
+            <field key="order_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=5000}</field>
+            <field key="received_shipment">{cimerant:type=field, default=SESSION_USER, fieldType=NCHAR, maxSize=30, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

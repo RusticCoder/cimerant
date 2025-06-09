@@ -1,0 +1,15 @@
+
+<root name="1663">
+    <attributes size="0">
+    </attributes>
+    <object name="shoelace_ok">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ok_name">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="ok_quant">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

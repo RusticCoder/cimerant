@@ -1,0 +1,215 @@
+
+<root name="create_table">
+    <attributes size="0">
+    </attributes>
+    <object name="DIRECTION">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="LANGUAGE">{cimerant:type=field, fieldType=INT}</field>
+            <field key="LENGTH">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="floor">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="any_value">{cimerant:type=field, fieldType=int}</field>
+            <field key="getdate">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="public" grouping="[public, public]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="public">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t">
+        <attributes size="2">
+            <attribute key="comment">\'test\'</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="i">{cimerant:type=field, comment=hello world, default=1, fieldType=int, integer=true, nullable=false, unique=true}</field>
+            <field key="Procedure_Name">{cimerant:type=field, fieldType=string}</field>
+            <field key="Query_Id">{cimerant:type=field, fieldType=string, nullable=true}</field>
+            <field key="Source">{cimerant:type=field, fieldType=string, nullable=false}</field>
+            <field key="State">{cimerant:type=field, fieldType=string, nullable=false}</field>
+            <field key="v">{cimerant:type=field, collate=upper, comment=hello world, fieldType=varchar, nullable=false, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="C1">{cimerant:type=field, deferrable=true, fieldType=STRING, unique=true}</field>
+            <field key="i">{autoIncrement=true, cimerant:type=field, comment=hello world, default=1, fieldType=integer, nullable=false, primary=true, unique=true}</field>
+            <field key="NAME">{cimerant:type=field, fieldType=STRING}</field>
+            <field key="TIMESTAMP">{cimerant:type=field, fieldType=DATETIME}</field>
+            <field key="v">{32=true, 9=true, cimerant:type=field, collate=upper, comment=hello world, datetime=true, default='hey', fieldType=varchar, maxSize=16777216, nullable=false, primary=true, unique=true}</field>
+            <field key="VALUE">{cimerant:type=field, fieldType=STRING}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t2">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="C2">{cimerant:type=field, fieldType=STRING, primary=true}</field>
+            <field key="C_NULL">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t3">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="C3">{cimerant:type=field, fieldType=STRING}</field>
+            <field key="f1">{cimerant:type=field, fieldType=varchar}</field>
+            <field key="f2">{cimerant:type=field, fieldType=number}</field>
+        </fields>
+        <relationships size="3">
+            <relationship key="CNAME">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
+            <relationship key="INCNAME">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
+            <relationship key="T2">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
+        </relationships>
+    </object>
+    <object name="t4">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=number}</field>
+            <field key="f2">{cimerant:type=field, fieldType=number}</field>
+            <field key="f3">{cimerant:type=field, fieldType=number}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tc1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tc2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tc3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c">{cimerant:type=field, fieldType=char, maxSize=4}</field>
+            <field key="c2">{cimerant:type=field, fieldType=character, maxSize=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TestK">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="FIRST_VALUE">{cimerant:type=field, fieldType=string}</field>
+            <field key="NVL">{cimerant:type=field, fieldType=int}</field>
+            <field key="NVL2">{cimerant:type=field, fieldType=string}</field>
+            <field key="RESPECT">{cimerant:type=field, fieldType=int}</field>
+            <field key="RESTRICT">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TESTKEYWORD">
+        <attributes size="0">
+        </attributes>
+        <fields size="11">
+            <field key="DATE">{cimerant:type=field, fieldType=int}</field>
+            <field key="DATE_PART">{cimerant:type=field, fieldType=int}</field>
+            <field key="EQUAL_NULL">{cimerant:type=field, fieldType=int}</field>
+            <field key="GET">{cimerant:type=field, fieldType=int}</field>
+            <field key="IFNULL">{cimerant:type=field, fieldType=int}</field>
+            <field key="LEFT">{cimerant:type=field, fieldType=int}</field>
+            <field key="NULLIF">{cimerant:type=field, fieldType=int}</field>
+            <field key="NVL">{cimerant:type=field, fieldType=int}</field>
+            <field key="RIGHT">{cimerant:type=field, fieldType=int}</field>
+            <field key="SPLIT">{cimerant:type=field, fieldType=int}</field>
+            <field key="TO_DATE">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TESTSEED">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="IDENT">{cimerant:type=field, default=SCHEM.SEQID.NEXTVAL, fieldType=int}</field>
+            <field key="mycol">{cimerant:type=field, fieldType=string}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TESTSEED2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ident">{cimerant:type=field, fieldType=int, identity=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tpk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tz1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=TIMESTAMPLTZ}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tz2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=TIMESTAMPNTZ}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tz3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=TIMESTAMPTZ}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

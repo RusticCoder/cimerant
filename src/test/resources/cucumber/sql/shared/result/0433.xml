@@ -1,0 +1,14 @@
+
+<root name="0433">
+    <attributes size="0">
+    </attributes>
+    <object name="BIT_SHIFT_TABLE">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="b">{cimerant:type=field, fieldType=BIT, maxSize=16}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

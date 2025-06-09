@@ -1,0 +1,14 @@
+
+<root name="0309">
+    <attributes size="0">
+    </attributes>
+    <object name="skip_wal_skip_rewrite_index">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=varchar, maxSize=10, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="0194">
+    <attributes size="0">
+    </attributes>
+    <object name="sensors_raw" grouping="[DWH_INT_DBT]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="EVENTTS">{cimerant:type=field, fieldType=VARCHAR2, maxSize=30}</field>
+            <field key="SOURCE">{cimerant:type=field, fieldType=VARCHAR2, maxSize=50}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

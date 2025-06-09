@@ -1,0 +1,14 @@
+
+<root name="1616">
+    <attributes size="0">
+    </attributes>
+    <object name="test_replica_identity_othertable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

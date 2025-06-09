@@ -1,0 +1,17 @@
+
+<root name="0970">
+    <attributes size="0">
+    </attributes>
+    <object name="t2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignTable=t1}</relationship>
+        </relationships>
+    </object>
+</root>

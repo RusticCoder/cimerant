@@ -1,0 +1,15 @@
+
+<root name="1847">
+    <attributes size="0">
+    </attributes>
+    <object name="trunc_fa">
+        <attributes size="1">
+            <attribute key="inherits">trunc_f</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="col2a">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

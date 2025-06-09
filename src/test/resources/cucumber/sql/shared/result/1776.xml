@@ -1,0 +1,15 @@
+
+<root name="1776">
+    <attributes size="0">
+    </attributes>
+    <object name="pkeys">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="pkey1">{cimerant:type=field, fieldType=int4, nullable=false}</field>
+            <field key="pkey2">{cimerant:type=field, fieldType=text, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

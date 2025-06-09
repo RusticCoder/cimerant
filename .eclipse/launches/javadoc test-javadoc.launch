@@ -2,7 +2,7 @@
 <launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
     <intAttribute key="M2_COLORS" value="0"/>
     <booleanAttribute key="M2_DEBUG_OUTPUT" value="false"/>
-    <stringAttribute key="M2_GOALS" value="javadoc:test-javadoc"/>
+    <stringAttribute key="M2_GOALS" value="clean javadoc:test-javadoc"/>
     <booleanAttribute key="M2_NON_RECURSIVE" value="false"/>
     <booleanAttribute key="M2_OFFLINE" value="false"/>
     <stringAttribute key="M2_PROFILES" value=""/>
@@ -17,6 +17,7 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea&#10;-Xmx512m&#10;-XX:+UseG1GC&#10;-XX:+HeapDumpOnOutOfMemoryError&#10;-Dcom.sun.management.jmxremote&#10;-Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS&#10;-Dorg.slf4j.simpleLogger.defaultLogLevel=info&#10;-Dorg.slf4j.simpleLogger.showDateTime=true&#10;--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED&#10;--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED&#10;--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED&#10;--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"/>
+    <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17/"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS&#10;-Dorg.slf4j.simpleLogger.defaultLogLevel=info&#10;-Dorg.slf4j.simpleLogger.showDateTime=true"/>
     <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:/cimerant}"/>
 </launchConfiguration>

@@ -1,0 +1,14 @@
+
+<root name="0789">
+    <attributes size="0">
+    </attributes>
+    <object name="INT4_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

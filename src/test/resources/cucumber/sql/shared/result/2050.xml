@@ -1,0 +1,14 @@
+
+<root name="2050">
+    <attributes size="0">
+    </attributes>
+    <object name="CustomerTable">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="table_type">{cimerant:type=field, fieldType=varchar, maxSize=5}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

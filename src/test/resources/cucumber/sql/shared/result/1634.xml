@@ -1,0 +1,15 @@
+
+<root name="1634">
+    <attributes size="0">
+    </attributes>
+    <object name="rtest_interface">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ifname">{cimerant:type=field, fieldType=text}</field>
+            <field key="sysname">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

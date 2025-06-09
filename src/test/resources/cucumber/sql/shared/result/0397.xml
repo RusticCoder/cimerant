@@ -1,0 +1,14 @@
+
+<root name="0397">
+    <attributes size="0">
+    </attributes>
+    <object name="inh_test">
+        <attributes size="1">
+            <attribute key="inherits">part_2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

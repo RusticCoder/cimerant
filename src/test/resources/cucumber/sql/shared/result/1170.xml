@@ -1,0 +1,17 @@
+
+<root name="1170">
+    <attributes size="0">
+    </attributes>
+    <object name="idxpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="col_keep">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_1">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_2">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

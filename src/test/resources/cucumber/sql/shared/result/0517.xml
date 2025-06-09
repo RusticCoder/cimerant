@@ -1,0 +1,15 @@
+
+<root name="0517">
+    <attributes size="0">
+    </attributes>
+    <object name="table2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+            <field key="col2">{cimerant:type=field, fieldType=TEXT, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

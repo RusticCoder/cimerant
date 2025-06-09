@@ -1,0 +1,15 @@
+
+<root name="1275">
+    <attributes size="0">
+    </attributes>
+    <object name="patest2">
+        <attributes size="2">
+            <attribute key="inherits">patest0</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

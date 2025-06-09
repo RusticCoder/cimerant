@@ -1,0 +1,1 @@
+CREATE TABLE tt6 () INHERITS (tt0)

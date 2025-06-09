@@ -1,0 +1,1 @@
+CREATE table eifoo (i integer, y integer)

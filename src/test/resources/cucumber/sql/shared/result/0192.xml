@@ -1,0 +1,19 @@
+
+<root name="0192">
+    <attributes size="0">
+    </attributes>
+    <object name="bctab_part">
+        <attributes size="1">
+            <attribute key="blockchain">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="amount">{cimerant:type=field, fieldType=number}</field>
+            <field key="recipient">{cimerant:type=field, fieldType=varchar2, maxSize=50}</field>
+            <field key="sender">{cimerant:type=field, fieldType=varchar2, maxSize=50}</field>
+            <field key="trans_date">{cimerant:type=field, fieldType=DATE}</field>
+            <field key="trans_id">{cimerant:type=field, fieldType=number, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

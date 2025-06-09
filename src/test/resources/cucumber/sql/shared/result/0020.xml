@@ -1,0 +1,16 @@
+
+<root name="0020">
+    <attributes size="0">
+    </attributes>
+    <object name="npub_info">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="pr_info">{cimerant:type=field, fieldType=ntext, nullable=true}</field>
+            <field key="pub_id">{cimerant:type=field, clustered=true, fieldType=CHAR, maxSize=4, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="pub_id">{cimerant:type=relationship, column=pub_id, foreignColumn=pub_id, foreignTable=publishers}</relationship>
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,15 @@
+
+<root name="0098">
+    <attributes size="0">
+    </attributes>
+    <object name="table_with_buckets">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="buckets">{cimerant:type=field, comment=分桶数, fieldType=int, nullable=false, precision=11}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, comment=ID, fieldType=int, nullable=false, precision=11}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

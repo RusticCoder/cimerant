@@ -1,0 +1,16 @@
+
+<root name="0628">
+    <attributes size="0">
+    </attributes>
+    <object name="inhe">
+        <attributes size="2">
+            <attribute key="inherits">ctlb</attribute>
+            <attribute key="like">inhx</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ee">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

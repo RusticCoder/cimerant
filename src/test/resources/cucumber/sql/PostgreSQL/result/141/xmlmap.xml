@@ -1,0 +1,38 @@
+
+<root name="xmlmap">
+    <attributes size="0">
+    </attributes>
+    <object name="test1" grouping="[testxmlschema]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test2" grouping="[testxmlschema]">
+        <attributes size="0">
+        </attributes>
+        <fields size="15">
+            <field key="aaa">{cimerant:type=field, fieldType=text}</field>
+            <field key="m">{cimerant:type=field, fieldType=bytea}</field>
+            <field key="n">{cimerant:type=field, fieldType=bool}</field>
+            <field key="o">{cimerant:type=field, fieldType=testxmldomain}</field>
+            <field key="p">{cimerant:type=field, fieldType=xml}</field>
+            <field key="q">{cimerant:type=field, fieldType=date}</field>
+            <field key="r">{cimerant:type=field, fieldType=timestamp}</field>
+            <field key="s">{cimerant:type=field, fieldType=time}</field>
+            <field key="t">{cimerant:type=field, fieldType=real}</field>
+            <field key="u">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="v">{cimerant:type=field, fieldType=smallint}</field>
+            <field key="w">{cimerant:type=field, fieldType=numeric, precision=9, scale=2}</field>
+            <field key="x">{cimerant:type=field, fieldType=char, maxSize=6}</field>
+            <field key="y">{cimerant:type=field, fieldType=varchar, maxSize=500}</field>
+            <field key="z">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

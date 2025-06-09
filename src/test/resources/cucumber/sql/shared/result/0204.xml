@@ -1,0 +1,19 @@
+
+<root name="0204">
+    <attributes size="0">
+    </attributes>
+    <object name="list_customers">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="cust_address">{cimerant:type=field, fieldType=CUST_ADDRESS_TYP}</field>
+            <field key="cust_email">{cimerant:type=field, fieldType=VARCHAR2, maxSize=30}</field>
+            <field key="cust_first_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=20}</field>
+            <field key="cust_last_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=20}</field>
+            <field key="customer_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+            <field key="nls_territory">{cimerant:type=field, fieldType=VARCHAR2, maxSize=30}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

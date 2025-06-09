@@ -1,0 +1,23 @@
+
+<root name="0026">
+    <attributes size="0">
+    </attributes>
+    <object name="cust">
+        <attributes size="0">
+        </attributes>
+        <fields size="10">
+            <field key="Address">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="City">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="Company">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="ContactName">{cimerant:type=field, fieldType=VARCHAR, maxSize=60, nullable=false}</field>
+            <field key="CountryRegion">{cimerant:type=field, fieldType=VARCHAR, maxSize=20, nullable=false}</field>
+            <field key="CustomerID">{cimerant:type=field, default=newid(), fieldType=uniqueidentifier, nullable=false}</field>
+            <field key="Fax">{cimerant:type=field, fieldType=VARCHAR, maxSize=15, nullable=true}</field>
+            <field key="PostalCode">{cimerant:type=field, fieldType=VARCHAR, maxSize=10, nullable=false}</field>
+            <field key="StateProvince">{cimerant:type=field, fieldType=VARCHAR, maxSize=10, nullable=true}</field>
+            <field key="Telephone">{cimerant:type=field, fieldType=VARCHAR, maxSize=15, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

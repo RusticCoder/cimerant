@@ -1,0 +1,86 @@
+
+<root name="built_in_functions_security">
+    <attributes size="0">
+    </attributes>
+    <object name="deliveries3">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="cust_id">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="delivery_date">{cimerant:type=field, default=DATEADD(dd, 10, GETDATE()), fieldType=SMALLDATETIME, nullable=false}</field>
+            <field key="order_date">{cimerant:type=field, default=GETDATE(), fieldType=SMALLDATETIME, nullable=false}</field>
+            <field key="order_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=5000}</field>
+            <field key="received_shipment">{cimerant:type=field, default=SESSION_USER, fieldType=NCHAR, maxSize=30, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inventory22">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="description">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="entry_person">{cimerant:type=field, default=USER, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="part_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=100}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="orders22">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="cust_id">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="order_amt">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="order_date">{cimerant:type=field, default=GETDATE(), fieldType=smalldatetime, nullable=false}</field>
+            <field key="order_id">{cimerant:type=field, fieldType=int, identity=true, increment=1, nullable=false, seed=1000}</field>
+            <field key="order_person">{cimerant:type=field, default=CURRENT_USER, fieldType=char, maxSize=30, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="Sales_Tracking" grouping="[Sales]">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="Last_sale">{cimerant:type=field, default=GETDATE(), fieldType=DATETIME, nullable=false}</field>
+            <field key="Rep_id">{cimerant:type=field, fieldType=INT, nullable=false}</field>
+            <field key="SRep_tracking_user">{cimerant:type=field, default=SYSTEM_USER, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="Territory_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=2000}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="sid_example">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="login_date">{cimerant:type=field, default=GETDATE(), fieldType=DATETIME}</field>
+            <field key="login_dept">{cimerant:type=field, default='SALES', fieldType=VARCHAR, maxSize=10}</field>
+            <field key="login_name">{cimerant:type=field, default=SYSTEM_USER, fieldType=VARCHAR, maxSize=30}</field>
+            <field key="login_sid">{cimerant:type=field, default=SUSER_SID(), fieldType=VARBINARY, maxSize=85}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="sname_example">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="employee_id">{cimerant:type=field, default=NEWID(), fieldType=UNIQUEIDENTIFIER}</field>
+            <field key="login_date">{cimerant:type=field, default=GETDATE(), fieldType=DATETIME}</field>
+            <field key="login_sname">{cimerant:type=field, default=SUSER_SNAME(), fieldType=SYSNAME}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

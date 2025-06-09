@@ -1,0 +1,15 @@
+
+<root name="1328">
+    <attributes size="0">
+    </attributes>
+    <object name="insertconflicttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="fruit">{cimerant:type=field, fieldType=text}</field>
+            <field key="key">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

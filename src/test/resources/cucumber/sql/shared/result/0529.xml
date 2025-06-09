@@ -1,0 +1,16 @@
+
+<root name="0529">
+    <attributes size="0">
+    </attributes>
+    <object name="city">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="budget">{cimerant:type=field, fieldType=city_budget}</field>
+            <field key="location">{cimerant:type=field, fieldType=box}</field>
+            <field key="name">{cimerant:type=field, fieldType=name}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

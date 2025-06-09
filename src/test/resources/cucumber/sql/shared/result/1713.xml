@@ -1,0 +1,15 @@
+
+<root name="1713">
+    <attributes size="0">
+    </attributes>
+    <object name="trunc_stats_test1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+            <field key="stuff">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

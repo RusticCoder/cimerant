@@ -1,0 +1,14 @@
+
+<root name="0570">
+    <attributes size="0">
+    </attributes>
+    <object name="default_expr_agg">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, default=select 1, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

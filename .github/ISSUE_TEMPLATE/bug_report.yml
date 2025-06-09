@@ -33,7 +33,7 @@ body:
       What version of Cimerant are you using?
 
       Note: Please only report issues for [currently supported versions of Cimerant](https://rusticcoder.github.io/cimerant/docs/latest/support#currently-supported-versions).
-    placeholder: 1.0.0
+    placeholder: 1.1.0
   validations:
     required: true
 - type: dropdown
@@ -67,7 +67,13 @@ body:
   attributes:
     label: Last Known Working Cimerant Version
     description: What is the last version of Cimerant this worked in, if applicable?
-    placeholder: 1.0.0
+    placeholder: 1.1.0
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Model
+    description: An example of the model causing the unexpected behavior.
   validations:
     required: false
 - type: textarea

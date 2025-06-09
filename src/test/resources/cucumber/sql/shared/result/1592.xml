@@ -1,0 +1,15 @@
+
+<root name="1592">
+    <attributes size="0">
+    </attributes>
+    <object name="float8range_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f8r">{cimerant:type=field, fieldType=float8range}</field>
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

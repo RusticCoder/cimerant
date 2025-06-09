@@ -1,0 +1,15 @@
+
+<root name="1671">
+    <attributes size="0">
+    </attributes>
+    <object name="rule_and_refint_t2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id2a">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="id2c">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

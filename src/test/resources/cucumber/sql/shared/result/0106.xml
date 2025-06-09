@@ -1,0 +1,17 @@
+
+<root name="0106">
+    <attributes size="0">
+    </attributes>
+    <object name="t_test_curdate">
+        <attributes size="2">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, comment=error test, default=CURDATE(), fieldType=datetime, nullable=false}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="0088">
+    <attributes size="0">
+    </attributes>
+    <object name="user_account">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id1">{cimerant:type=field, default=nextval(`useraccount`.`user_account_id_seq`), fieldType=bigint, nullable=false, precision=20, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

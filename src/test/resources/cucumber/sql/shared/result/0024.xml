@@ -1,0 +1,21 @@
+
+<root name="0024">
+    <attributes size="0">
+    </attributes>
+    <object name="Orders">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="CustomerID">{cimerant:type=field, fieldType=NCHAR, maxSize=5}</field>
+            <field key="OrderDate">{cimerant:type=field, fieldType=DATETIME, nullable=false}</field>
+            <field key="OrderID">{cimerant:type=field, fieldType=INT, primary=true}</field>
+            <field key="ShipDate">{cimerant:type=field, fieldType=DATETIME, nullable=true}</field>
+            <field key="ShipperID">{cimerant:type=field, fieldType=INT, nullable=true}</field>
+            <field key="Workstation">{cimerant:type=field, default=HOST_NAME(), fieldType=NCHAR, maxSize=30, nullable=false}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="CustomerID">{cimerant:type=relationship, column=CustomerID, foreignColumn=CustomerID, foreignTable=Customers}</relationship>
+            <relationship key="ShipperID">{cimerant:type=relationship, column=ShipperID, foreignColumn=ShipperID, foreignTable=Shippers}</relationship>
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,21 @@
+
+<root name="0103">
+    <attributes size="0">
+    </attributes>
+    <object name="tab_with_json_value">
+        <attributes size="3">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="collate">utf8mb4_bin</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="col0">{cimerant:type=field, fieldType=JSON, nullable=false}</field>
+            <field key="col1">{cimerant:type=field, collate=utf8mb4_bin, fieldType=VARCHAR, maxSize=36, nullable=false, primary=true}</field>
+            <field key="col2">{cimerant:type=field, collate=utf8mb4_bin, fieldType=VARCHAR, maxSize=36, nullable=false}</field>
+            <field key="col3">{cimerant:type=field, collate=utf8mb4_bin, fieldType=VARCHAR, maxSize=36, nullable=false}</field>
+            <field key="col4">{cimerant:type=field, fieldType=JSON, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

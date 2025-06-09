@@ -1,0 +1,15 @@
+
+<root name="1710">
+    <attributes size="0">
+    </attributes>
+    <object name="spgist_box_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="b">{cimerant:type=field, fieldType=box}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

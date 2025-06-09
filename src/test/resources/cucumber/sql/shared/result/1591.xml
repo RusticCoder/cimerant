@@ -1,0 +1,16 @@
+
+<root name="1591">
+    <attributes size="0">
+    </attributes>
+    <object name="test_range_excl">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="during">{cimerant:type=field, fieldType=tsrange}</field>
+            <field key="room">{cimerant:type=field, fieldType=int4range}</field>
+            <field key="speaker">{cimerant:type=field, fieldType=int4range}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

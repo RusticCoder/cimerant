@@ -1,0 +1,24 @@
+
+<root name="0126">
+    <attributes size="0">
+    </attributes>
+    <object name="ts_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="11">
+            <field key="ts1">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts10">{cimerant:type=field, default=NULL, fieldType=TIMESTAMP}</field>
+            <field key="ts11">{cimerant:type=field, default='2038-01-01 00:00:00', fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts2">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIME, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts3">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts4">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(), fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts5">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIME(), fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts6">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP(), fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts7">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE NOW(), fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="ts8">{cimerant:type=field, fieldType=TIMESTAMP, maxSize=6, nullable=false}</field>
+            <field key="ts9">{cimerant:type=field, default=NOW(6) ON UPDATE NOW(6), fieldType=TIMESTAMP, maxSize=6, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="0624">
+    <attributes size="0">
+    </attributes>
+    <object name="inhx">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="xx">{cimerant:type=field, default='text', fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

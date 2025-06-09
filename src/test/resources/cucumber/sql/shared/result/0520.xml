@@ -1,0 +1,15 @@
+
+<root name="0520">
+    <attributes size="0">
+    </attributes>
+    <object name="hobbies_r">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="name">{cimerant:type=field, fieldType=text}</field>
+            <field key="person">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

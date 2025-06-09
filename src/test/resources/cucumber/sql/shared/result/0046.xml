@@ -1,0 +1,22 @@
+
+<root name="0046">
+    <attributes size="0">
+    </attributes>
+    <object name="NewEmployee" grouping="[HumanResources]">
+        <attributes size="0">
+        </attributes>
+        <fields size="9">
+            <field key="AddressLine1">{cimerant:type=field, fieldType=nvarchar, maxSize=60, nullable=false}</field>
+            <field key="City">{cimerant:type=field, fieldType=nvarchar, maxSize=30, nullable=false}</field>
+            <field key="CurrentFlag">{cimerant:type=field, fieldType=Flag}</field>
+            <field key="EmployeeID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="FirstName">{cimerant:type=field, fieldType=nvarchar, maxSize=50, nullable=false}</field>
+            <field key="LastName">{cimerant:type=field, fieldType=nvarchar, maxSize=50, nullable=false}</field>
+            <field key="PhoneNumber">{cimerant:type=field, fieldType=Phone, nullable=true}</field>
+            <field key="PostalCode">{cimerant:type=field, fieldType=nvarchar, maxSize=15, nullable=false}</field>
+            <field key="State">{cimerant:type=field, fieldType=nchar, maxSize=3, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

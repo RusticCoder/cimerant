@@ -1,0 +1,35 @@
+
+<root name="spgist">
+    <attributes size="0">
+    </attributes>
+    <object name="spgist_box_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="b">{cimerant:type=field, fieldType=box}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="spgist_point_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="p">{cimerant:type=field, fieldType=point}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="spgist_text_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="t">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

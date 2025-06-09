@@ -1,0 +1,15 @@
+
+<root name="1984">
+    <attributes size="0">
+    </attributes>
+    <object name="TESTSEED">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="IDENT">{cimerant:type=field, default=SEQID.NEXTVAL, fieldType=int}</field>
+            <field key="mycol">{cimerant:type=field, fieldType=string}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

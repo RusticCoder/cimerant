@@ -1,0 +1,79 @@
+
+<root name="dml_insert">
+    <attributes size="0">
+    </attributes>
+    <object name="EmployeeSales" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="8">
+            <field key="BusinessEntityID">{cimerant:type=field, fieldType=varchar, maxSize=11, nullable=false}</field>
+            <field key="CurrentSales">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="DataSource">{cimerant:type=field, fieldType=varchar, maxSize=20, nullable=false}</field>
+            <field key="EmployeeID">{cimerant:type=field, fieldType=nvarchar, identity=true, increment=5, int=true, maxSize=11, nullable=false, seed=1}</field>
+            <field key="FirstName">{cimerant:type=field, fieldType=nvarchar, maxSize=20, nullable=false}</field>
+            <field key="LastName">{cimerant:type=field, fieldType=varchar, maxSize=20, nullable=false, nvarchar=true}</field>
+            <field key="SalesDollars">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="YearlySales">{cimerant:type=field, fieldType=money, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="NewEmployee" grouping="[HumanResources]">
+        <attributes size="0">
+        </attributes>
+        <fields size="9">
+            <field key="AddressLine1">{cimerant:type=field, fieldType=nvarchar, maxSize=60, nullable=false}</field>
+            <field key="City">{cimerant:type=field, fieldType=nvarchar, maxSize=30, nullable=false}</field>
+            <field key="CurrentFlag">{cimerant:type=field, fieldType=Flag}</field>
+            <field key="EmployeeID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="FirstName">{cimerant:type=field, fieldType=nvarchar, maxSize=50, nullable=false}</field>
+            <field key="LastName">{cimerant:type=field, fieldType=nvarchar, maxSize=50, nullable=false}</field>
+            <field key="PhoneNumber">{cimerant:type=field, fieldType=Phone, nullable=true}</field>
+            <field key="PostalCode">{cimerant:type=field, fieldType=nvarchar, maxSize=15, nullable=false}</field>
+            <field key="State">{cimerant:type=field, fieldType=nchar, maxSize=3, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="SalesHistory" grouping="[Sales]">
+        <attributes size="0">
+        </attributes>
+        <fields size="11">
+            <field key="CarrierTrackingNumber">{cimerant:type=field, fieldType=nvarchar, maxSize=25, nullable=true}</field>
+            <field key="LineTotal">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="ModifiedDate">{cimerant:type=field, fieldType=datetime, nullable=false}</field>
+            <field key="OrderQty">{cimerant:type=field, fieldType=smallint, nullable=false}</field>
+            <field key="ProductID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="rowguid">{cimerant:type=field, fieldType=uniqueidentifier, nullable=false}</field>
+            <field key="SalesOrderDetailID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="SalesOrderID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="SpecialOfferID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="UnitPrice">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="UnitPriceDiscount">{cimerant:type=field, fieldType=money, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="T1" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="column_1">{cimerant:type=field, fieldType=int, identity=true}</field>
+            <field key="column_2">{cimerant:type=field, default='my column default', fieldType=varchar, maxSize=30, uniqueidentifier=true}</field>
+            <field key="column_3">{cimerant:type=field, fieldType=rowversion}</field>
+            <field key="column_4">{cimerant:type=field, fieldType=varchar, maxSize=40, nullable=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="T1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="column_1">{cimerant:type=field, fieldType=int}</field>
+            <field key="column_2">{cimerant:type=field, fieldType=varchar, maxSize=30}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="1781">
+    <attributes size="0">
+    </attributes>
+    <object name="log_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tstamp">{cimerant:type=field, default=timeofday()::timestamp, fieldType=timestamp}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

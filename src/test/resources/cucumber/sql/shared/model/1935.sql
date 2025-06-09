@@ -1,0 +1,1 @@
+CREATE TEMPORARY TABLE x (n integer)

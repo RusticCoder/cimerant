@@ -1,0 +1,15 @@
+
+<root name="select_distinct">
+    <attributes size="0">
+    </attributes>
+    <object name="disttable">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

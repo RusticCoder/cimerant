@@ -1,0 +1,18 @@
+
+<root name="0147">
+    <attributes size="0">
+    </attributes>
+    <object name="foo">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="c1">{cimerant:type=field, fieldType=decimal, precision=19}</field>
+            <field key="c2">{cimerant:type=field, fieldType=decimal, precision=19, scale=5}</field>
+            <field key="c3">{cimerant:type=field, fieldType=decimal, precision=0, scale=0}</field>
+            <field key="c4">{cimerant:type=field, fieldType=decimal, precision=0, scale=2}</field>
+            <field key="c5">{cimerant:type=field, fieldType=decimal, precision=19, scale=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

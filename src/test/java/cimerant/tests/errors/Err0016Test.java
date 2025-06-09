@@ -27,7 +27,7 @@ public class Err0016Test {
   private static File cimerantPath;
   private static Path destinationFilePath;
   private static final String EXPECTED_REGEX =
-      "CMA-M\\d{2}-0016: Invalid file pattern \\$\\{CLASS_NAME\\} not allowed in single mode"
+      "CMA-M\\d{4}-0016: Invalid file pattern \\$\\{CLASS_NAME\\} not allowed in single mode"
           + " '([^']*)\\$\\{CLASS_NAME\\}([^']*)'([^']*)";
   private static final int EXPECTED_STATUS_CODE = -16;
   private static String modelPath;
@@ -47,7 +47,7 @@ public class Err0016Test {
       temporaryFolder.create();
 
       Err0016Test.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", Err0016Test.cimerantPath.getAbsolutePath());
     }
@@ -79,12 +79,12 @@ public class Err0016Test {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(Err0016Test.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

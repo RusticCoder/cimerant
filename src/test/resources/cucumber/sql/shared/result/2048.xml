@@ -1,0 +1,15 @@
+
+<root name="2048">
+    <attributes size="0">
+    </attributes>
+    <object name="PartitionTable" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="process_date">{cimerant:type=field, fieldType=datetime, primary=true}</field>
+            <field key="process_type">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

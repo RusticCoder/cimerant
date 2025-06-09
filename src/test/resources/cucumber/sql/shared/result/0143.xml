@@ -1,0 +1,14 @@
+
+<root name="0143">
+    <attributes size="0">
+    </attributes>
+    <object name="serial">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="serial">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

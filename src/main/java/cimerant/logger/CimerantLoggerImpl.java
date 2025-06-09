@@ -35,7 +35,7 @@ public class CimerantLoggerImpl extends LegacyAbstractLogger implements Cimerant
   private Level getCurrentLogLevel() {
     try {
       return Level.valueOf(System.getProperty("slf4j.level"));
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       return Level.ERROR;
     }
   }
@@ -66,8 +66,7 @@ public class CimerantLoggerImpl extends LegacyAbstractLogger implements Cimerant
       final String messagePattern,
       final Object[] arguments,
       final Throwable throwable) {
-    if (throwable != null && SysError.class.isAssignableFrom(throwable.getClass())) {
-      final var sysError = (SysError) throwable;
+    if (throwable instanceof final SysError sysError) {
       synchronized (CimerantLoggerImpl.SYS_ERROR_QUEUE) {
         CimerantLoggerImpl.SYS_ERROR_QUEUE.add(sysError);
       }

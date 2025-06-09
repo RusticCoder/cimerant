@@ -1,0 +1,24 @@
+
+<root name="0184">
+    <attributes size="0">
+    </attributes>
+    <object name="FND_SEC_GUIDELINES_TL" grouping="[APPLSYS]">
+        <attributes size="0">
+        </attributes>
+        <fields size="11">
+            <field key="CODE">{cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=20, nullable=false}</field>
+            <field key="CREATED_BY">{cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=30, nullable=false}</field>
+            <field key="CREATION_DATE">{cimerant:type=field, enable=true, fieldType=DATE, nullable=false}</field>
+            <field key="DESCRIPTION">{cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=2000, nullable=false}</field>
+            <field key="INFO">{cimerant:type=field, enable=true, fieldType=CLOB, nullable=false}</field>
+            <field key="LANGUAGE">{cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=30, nullable=false}</field>
+            <field key="LAST_UPDATE_DATE">{cimerant:type=field, enable=true, fieldType=DATE, nullable=false}</field>
+            <field key="LAST_UPDATE_LOGIN">{cimerant:type=field, fieldType=NUMBER, precision=15, scale=0}</field>
+            <field key="LAST_UPDATED_BY">{cimerant:type=field, enable=true, fieldType=NUMBER, nullable=false, precision=15, scale=0}</field>
+            <field key="SOURCE_LANG">{cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=4, nullable=false}</field>
+            <field key="TITLE">{cimerant:type=field, enable=true, fieldType=VARCHAR2, maxSize=100, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

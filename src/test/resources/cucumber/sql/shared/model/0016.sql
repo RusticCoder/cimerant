@@ -1,0 +1,7 @@
+CREATE TABLE Sales.Sales_Tracking
+(
+    Territory_id INT IDENTITY(2000, 1) NOT NULL,
+    Rep_id INT NOT NULL,
+    Last_sale DATETIME NOT NULL DEFAULT GETDATE(),
+    SRep_tracking_user VARCHAR(30) NOT NULL DEFAULT SYSTEM_USER
+)

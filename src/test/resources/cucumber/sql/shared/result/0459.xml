@@ -1,0 +1,15 @@
+
+<root name="0459">
+    <attributes size="0">
+    </attributes>
+    <object name="clstr_tst_s">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="b">{cimerant:type=field, fieldType=INT}</field>
+            <field key="rf_a">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

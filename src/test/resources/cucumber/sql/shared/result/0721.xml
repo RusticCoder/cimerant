@@ -1,0 +1,14 @@
+
+<root name="0721">
+    <attributes size="0">
+    </attributes>
+    <object name="ddtest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=ddtest1d}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

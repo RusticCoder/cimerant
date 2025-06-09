@@ -1,0 +1,41 @@
+
+<root name="prepared_xacts">
+    <attributes size="0">
+    </attributes>
+    <object name="pxtest1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="foobar">{cimerant:type=field, fieldType=VARCHAR, maxSize=10}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pxtest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pxtest3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="fff">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pxtest4">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

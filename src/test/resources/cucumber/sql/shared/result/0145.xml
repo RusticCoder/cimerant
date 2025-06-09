@@ -1,0 +1,14 @@
+
+<root name="0145">
+    <attributes size="0">
+    </attributes>
+    <object name="USER">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="INTERNAL">{cimerant:type=field, default=FALSE, fieldType=BOOLEAN}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

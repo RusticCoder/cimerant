@@ -1,0 +1,15 @@
+
+<root name="0306">
+    <attributes size="0">
+    </attributes>
+    <object name="anothertab">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="atcol1">{cimerant:type=field, fieldType=serial8}</field>
+            <field key="atcol2">{cimerant:type=field, fieldType=boolean}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

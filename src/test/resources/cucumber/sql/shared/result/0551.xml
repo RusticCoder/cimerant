@@ -1,0 +1,15 @@
+
+<root name="0551">
+    <attributes size="0">
+    </attributes>
+    <object name="bt_f8_heap">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="random">{cimerant:type=field, fieldType=int4}</field>
+            <field key="seqno">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

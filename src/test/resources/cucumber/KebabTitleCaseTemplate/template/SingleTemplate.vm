@@ -32,6 +32,15 @@ $this.setFileName($this.kebabTitleCase($this.getFileName()))
             <field key="$object.kebabTitleCase($field.getKey())">$field.getValue()</field>
             #end
         </fields>
+        <relationships size="$object.getRelationships().size()">
+            #foreach ($relationship in $object.getRelationships().entrySet())
+#set($map = $this.newMap($relationship.getValue()))
+#if($relationship.getValue().getOtherEntity())
+#set($quiet = $map.put("foreignTable", $relationship.getValue().getOtherEntity().getObjectName()))
+#end
+            <relationship key="$relationship.getKey()">${map}</relationship>
+            #end
+        </relationships>
     </object>
     #end
 </root>

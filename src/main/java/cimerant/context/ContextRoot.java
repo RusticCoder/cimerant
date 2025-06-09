@@ -1,7 +1,10 @@
 package cimerant.context;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import org.apache.velocity.context.Context;
 
 /**
@@ -29,20 +32,10 @@ public interface ContextRoot<E> extends Context {
    * backSlashLowerCase("to back slash case") = "to_backSlash_Case"
    * </pre>
    *
-   * @param list the list to be converted to back slash lower case, may be null.
+   * @param arg the list to be converted to back slash lower case, may be null.
    * @return back slash lower case of list, {@code null} if null list input
    */
-  String backSlashLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into back slash lower case, that is each word is made up of lower
-   * case characters separated by a back slash.
-   *
-   * @param string the string to be converted to back slash lower case, may be null.
-   * @return back slash lower case of string, {@code null} if null string input
-   * @see #backSlashLowerCase(List)
-   */
-  String backSlashLowerCase(String string);
+  String backSlashLowerCase(Object arg);
 
   /**
    * Converts a list of words into back slash title case, that is each word is made up of title case
@@ -61,20 +54,10 @@ public interface ContextRoot<E> extends Context {
    * backSlashtitleCase("to back slash case") = "To_backSlash_Case"
    * </pre>
    *
-   * @param list the list to be converted to back slash title case, may be null.
+   * @param arg the list to be converted to back slash title case, may be null.
    * @return back slash title case of list, {@code null} if null list input
    */
-  String backSlashTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into back slash title case, that is each word is made up of title
-   * case characters separated by a back slash.
-   *
-   * @param string the string to be converted to back slash title case, may be null.
-   * @return back slash title case of string, {@code null} if null string input
-   * @see #backSlashTitleCase(List)
-   */
-  String backSlashTitleCase(String string);
+  String backSlashTitleCase(Object arg);
 
   /**
    * Converts a list of words into back slash upper case, that is each word is made up of upper case
@@ -93,20 +76,10 @@ public interface ContextRoot<E> extends Context {
    * backSlashupperCase("to back slash case") = "TO_backSlash_CASE"
    * </pre>
    *
-   * @param list the list to be converted to back slash upper case, may be null.
+   * @param arg the list to be converted to back slash upper case, may be null.
    * @return back slash upper case of list, {@code null} if null list input
    */
-  String backSlashUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into back slash upper case, that is each word is made up of upper
-   * case characters separated by a back slash.
-   *
-   * @param string the string to be converted to back slash upper case, may be null.
-   * @return back slash upper case of string, {@code null} if null string input
-   * @see #backSlashUpperCase(List)
-   */
-  String backSlashUpperCase(String string);
+  String backSlashUpperCase(Object arg);
 
   /**
    * Converts all the delimiter separated words in a list into camel case, that is each word is made
@@ -128,21 +101,10 @@ public interface ContextRoot<E> extends Context {
    * camelCase("to Camel case") = "toCamelCase"
    * </pre>
    *
-   * @param list the list to be converted to camel case, may be null.
+   * @param arg the list to be converted to camel case, may be null.
    * @return camel case of list, {@code null} if null list input
    */
-  String camelCase(List<String> list);
-
-  /**
-   * Converts all the delimiter separated words in a list into camel case, that is each word is made
-   * up of a title case character and then a series of lower case characters. The first string
-   * character will be lower case.
-   *
-   * @param string the string to be converted to camel case, may be null.
-   * @return camel case of string, {@code null} if null string input
-   * @see #camelCase(List)
-   */
-  String camelCase(String string);
+  String camelCase(Object arg);
 
   /**
    * Returns {@code true} if the context has the specified key is in the context.
@@ -201,20 +163,10 @@ public interface ContextRoot<E> extends Context {
    * dotLowerCase("to dot case") = "to_dot_Case"
    * </pre>
    *
-   * @param list the list to be converted to dot lower case, may be null.
+   * @param arg the list to be converted to dot lower case, may be null.
    * @return dot lower case of list, {@code null} if null list input
    */
-  String dotLowerCase(List<String> list);
-
-  /**
-   * Converts a list of words into dot lower case, that is each word is made up of lower case
-   * characters separated by a dot.
-   *
-   * @param string the string to be converted to dot lower case, may be null.
-   * @return dot lower case of string, {@code null} if null string input
-   * @see #dotLowerCase(List)
-   */
-  String dotLowerCase(String string);
+  String dotLowerCase(Object arg);
 
   /**
    * Converts a list of words into dot title case, that is each word is made up of title case
@@ -233,20 +185,10 @@ public interface ContextRoot<E> extends Context {
    * dottitleCase("to dot case") = "To_dot_Case"
    * </pre>
    *
-   * @param list the list to be converted to dot title case, may be null.
+   * @param arg the list to be converted to dot title case, may be null.
    * @return dot title case of list, {@code null} if null list input
    */
-  String dotTitleCase(List<String> list);
-
-  /**
-   * Converts a list of words into dot title case, that is each word is made up of title case
-   * characters separated by a dot.
-   *
-   * @param string the string to be converted to dot title case, may be null.
-   * @return dot title case of string, {@code null} if null string input
-   * @see #dotTitleCase(List)
-   */
-  String dotTitleCase(String string);
+  String dotTitleCase(Object arg);
 
   /**
    * Converts a list of words into dot upper case, that is each word is made up of upper case
@@ -265,20 +207,19 @@ public interface ContextRoot<E> extends Context {
    * dotupperCase("to dot case") = "TO_dot_CASE"
    * </pre>
    *
-   * @param list the list to be converted to dot upper case, may be null.
+   * @param arg the list to be converted to dot upper case, may be null.
    * @return dot upper case of list, {@code null} if null list input
    */
-  String dotUpperCase(List<String> list);
+  String dotUpperCase(Object arg);
 
   /**
-   * Converts a list of words into dot upper case, that is each word is made up of upper case
-   * characters separated by a dot.
+   * Formats a {@link Date} into a date-time string.
    *
-   * @param string the string to be converted to dot upper case, may be null.
-   * @return dot upper case of string, {@code null} if null list input
-   * @see #dotUpperCase(List)
+   * @param date the time value to be formatted into a date-time string.
+   * @param format the pattern describing the date and time format.
+   * @return the formatted date-time string.
    */
-  String dotUpperCase(String string);
+  String formatDate(Date date, String format);
 
   /**
    * Converts a list of words into forward slash lower case, that is each word is made up of lower
@@ -297,20 +238,10 @@ public interface ContextRoot<E> extends Context {
    * forwardSlashLowerCase("to forward slash case") = "to_forwardSlash_Case"
    * </pre>
    *
-   * @param list the list to be converted to forward slash lower case, may be null.
+   * @param arg the list to be converted to forward slash lower case, may be null.
    * @return forward slash lower case of list, {@code null} if null list input
    */
-  String forwardSlashLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into forward slash lower case, that is each word is made up of lower
-   * case characters separated by a forward slash.
-   *
-   * @param string the string to be converted to forward slash lower case, may be null.
-   * @return forward slash lower case of string, {@code null} if null string input
-   * @see #forwardSlashLowerCase(List)
-   */
-  String forwardSlashLowerCase(String string);
+  String forwardSlashLowerCase(Object arg);
 
   /**
    * Converts a list of words into forward slash title case, that is each word is made up of title
@@ -329,20 +260,10 @@ public interface ContextRoot<E> extends Context {
    * forwardSlashtitleCase("to forward slash case") = "To_forwardSlash_Case"
    * </pre>
    *
-   * @param list the list to be converted to forward slash title case, may be null.
+   * @param arg the list to be converted to forward slash title case, may be null.
    * @return forward slash title case of list, {@code null} if null list input
    */
-  String forwardSlashTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into forward slash title case, that is each word is made up of title
-   * case characters separated by a forward slash.
-   *
-   * @param string the string to be converted to forward slash title case, may be null.
-   * @return forward slash title case of string, {@code null} if null string input
-   * @see #forwardSlashTitleCase(List)
-   */
-  String forwardSlashTitleCase(String string);
+  String forwardSlashTitleCase(Object arg);
 
   /**
    * Converts a list of words into forward slash upper case, that is each word is made up of upper
@@ -361,20 +282,10 @@ public interface ContextRoot<E> extends Context {
    * forwardSlashupperCase("to forward slash case") = "TO_forwardSlash_CASE"
    * </pre>
    *
-   * @param list the list to be converted to forward slash upper case, may be null.
+   * @param arg the list to be converted to forward slash upper case, may be null.
    * @return forward slash upper case of list, {@code null} if null list input
    */
-  String forwardSlashUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into forward slash upper case, that is each word is made up of upper
-   * case characters separated by a forward slash.
-   *
-   * @param string the string to be converted to forward slash upper case, may be null.
-   * @return forward slash upper case of string, {@code null} if null string input
-   * @see #forwardSlashUpperCase(List)
-   */
-  String forwardSlashUpperCase(String string);
+  String forwardSlashUpperCase(Object arg);
 
   /**
    * Returns the class of the associated context.
@@ -466,20 +377,10 @@ public interface ContextRoot<E> extends Context {
    * kebabLowerCase("to Kebab case") = "to-Kebab-Case"
    * </pre>
    *
-   * @param list the list to be converted to kebab lower case, may be null.
+   * @param arg the list to be converted to kebab lower case, may be null.
    * @return kebab lower case of list, {@code null} if null list input
    */
-  String kebabLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into kebab lower case, that is each word is made up of lower case
-   * characters separated by a dash.
-   *
-   * @param string the string to be converted to kebab lower case, may be null.
-   * @return kebab lower case of string, {@code null} if null string input
-   * @see #kebabLowerCase(List)
-   */
-  String kebabLowerCase(String string);
+  String kebabLowerCase(Object arg);
 
   /**
    * Converts a list of words into kebab title case, that is each word is made up of title case
@@ -498,20 +399,10 @@ public interface ContextRoot<E> extends Context {
    * kebabtitleCase("to kebab case") = "To-Kebab-Case"
    * </pre>
    *
-   * @param list the list to be converted to kebab title case, may be null.
+   * @param arg the list to be converted to kebab title case, may be null.
    * @return kebab title case of list, {@code null} if null list input
    */
-  String kebabTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into kebab title case, that is each word is made up of title case
-   * characters separated by a dash.
-   *
-   * @param string the string to be converted to kebab title case, may be null.
-   * @return kebab title case of string, {@code null} if null string input
-   * @see #kebabTitleCase(List)
-   */
-  String kebabTitleCase(String string);
+  String kebabTitleCase(Object arg);
 
   /**
    * Converts a list of words into kebab upper case, that is each word is made up of upper case
@@ -530,20 +421,10 @@ public interface ContextRoot<E> extends Context {
    * kebabupperCase("to Kebab case") = "TO-KEBAB-CASE"
    * </pre>
    *
-   * @param list the list to be converted to kebab upper case, may be null.
+   * @param arg the list to be converted to kebab upper case, may be null.
    * @return kebab upper case of list, {@code null} if null list input
    */
-  String kebabUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into kebab upper case, that is each word is made up of upper case
-   * characters separated by a dash.
-   *
-   * @param string the string to be converted to kebab upper case, may be null.
-   * @return kebab upper case of string, {@code null} if null string input
-   * @see #kebabUpperCase(List)
-   */
-  String kebabUpperCase(String string);
+  String kebabUpperCase(Object arg);
 
   /**
    * Converts a list to lower case as per {@link String#toLowerCase()}.
@@ -561,19 +442,10 @@ public interface ContextRoot<E> extends Context {
    * transformations, the method should be used with a specific locale (e.g. {@link
    * Locale#ENGLISH}).
    *
-   * @param list the list to be converted to lower case, may be null.
+   * @param arg the list to be converted to lower case, may be null.
    * @return lower case of list, {@code null} if null list input
    */
-  String lowerCase(List<String> list);
-
-  /**
-   * Converts a string to lower case as per {@link String#toLowerCase()}.
-   *
-   * @param string the string to be converted to lower case, may be null.
-   * @return lower case of string, {@code null} if null string input
-   * @see #lowerCase(List)
-   */
-  String lowerCase(String string);
+  String lowerCase(Object arg);
 
   /**
    * Uncapitalizes a string, changing the first character to lower case as per {@link
@@ -591,20 +463,51 @@ public interface ContextRoot<E> extends Context {
    * StringUtils.uncapitalize("CAT") = "cAT"
    * </pre>
    *
-   * @param list the list to be converted first character to lower case, may be null.
+   * @param arg the list to be converted first character to lower case, may be null.
    * @return first character to lower case of list, {@code null} if null list input
    */
-  String lowerFirst(List<String> list);
+  String lowerFirst(Object arg);
 
   /**
-   * Uncapitalizes a string, changing the first character to lower case as per {@link
-   * Character#toLowerCase(int)}. No other characters are changed.
+   * An object that maps keys to values. A map cannot contain duplicate keys; each key can map to at
+   * most one value.
    *
-   * @param string the string to be converted first character to lower case, may be null.
-   * @return first character to lower case of string, {@code null} if null string input
-   * @see #lowerFirst(List)
+   * @return a object that maps keys to values. A map cannot contain duplicate keys; each key can
+   *     map to at most one value.
    */
-  String lowerFirst(String string);
+  Map<String, ?> newMap();
+
+  /**
+   * An object that maps keys to values. A map cannot contain duplicate keys; each key can map to at
+   * most one value.
+   *
+   * @return a object that maps keys to values. A map cannot contain duplicate keys; each key can
+   *     map to at most one value.
+   */
+  Map<String, ?> newMap(Map<String, ?> m);
+
+  /**
+   * Constructs a new, empty collection that contains no duplicate elements.
+   *
+   * @return a collection that contains no duplicate elements.
+   */
+  Set<String> newSet();
+
+  /**
+   * Constructs a new, empty collection that contains no duplicate elements.
+   *
+   * @param iterable collection whose elements will comprise the new set
+   * @return a collection that contains no duplicate elements.
+   */
+  Set<String> newSet(Iterable<?> iterable);
+
+  /**
+   * Constructs a new, empty collection that contains no duplicate elements.
+   *
+   * @param string element to be added.
+   * @return a collection that contains no duplicate elements.
+   */
+  Set<String> newSet(String string);
 
   /**
    * Converts all the delimiter separated words in a list into pascal case, that is each word is
@@ -626,42 +529,20 @@ public interface ContextRoot<E> extends Context {
    * pascalCase("to Pascal case") = "ToPascalCase"
    * </pre>
    *
-   * @param list the list to be converted to pascal case, may be null.
+   * @param arg the list to be converted to pascal case, may be null.
    * @return pascal case of list, {@code null} if null list input
    */
-  String pascalCase(List<String> list);
-
-  /**
-   * Converts all the delimiter separated words in a string into pascal case, that is each word is
-   * made up of a title case character and then a series of lower case characters. The first string
-   * character will be upper case.
-   *
-   * @param string the string to be converted to pascal case, may be null.
-   * @return pascal case of string, {@code null} if null string input
-   * @see #pascalCase(List)
-   */
-  String pascalCase(String string);
+  String pascalCase(Object arg);
 
   /**
    * Converts a list of words into plural back slash lower case, that is each word is made up of
    * lower case characters separated by a back slash with the last word converted to the plural form
    * of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural back slash lower case, may be null.
+   * @param arg the list to be converted to plural back slash lower case, may be null.
    * @return plural back slash lower case of list, {@code null} if null list input
    */
-  String pluralBackSlashLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural back slash lower case, that is each word is made up of
-   * lower case characters separated by a back slash with the last word converted to the plural form
-   * of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural back slash lower case, may be null.
-   * @return plural back slash lower case of string, {@code null} if null string input
-   * @see #pluralBackSlashLowerCase(List)
-   */
-  String pluralBackSlashLowerCase(String string);
+  String pluralBackSlashLowerCase(Object arg);
 
   /**
    * Converts a list of words into plural back slash title case, that is each word is made up of
@@ -673,47 +554,20 @@ public interface ContextRoot<E> extends Context {
    * words (articles, prepositions, and coordinating conjunctions) are typically not capitalized
    * unless they are the first or last word of the title.
    *
-   * @param list the list to be converted to plural back slash title case, may be null.
+   * @param arg the list to be converted to plural back slash title case, may be null.
    * @return plural back slash title case of list, {@code null} if null list input
    */
-  String pluralBackSlashTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural back slash title case, that is each word is made up of
-   * title case characters separated by a back slash with the last word converted to the plural form
-   * of the given word denoting more than one.
-   *
-   * <p>In title case, the first and last words of the title are capitalized, along with all major
-   * words (nouns, pronouns, verbs, adjectives, adverbs, and subordinating conjunctions). Minor
-   * words (articles, prepositions, and coordinating conjunctions) are typically not capitalized
-   * unless they are the first or last word of the title.
-   *
-   * @param string the string to be converted to plural back slash title case, may be null.
-   * @return plural back slash title case of string, {@code null} if null string input
-   * @see #pluralBackSlashTitleCase(List)
-   */
-  String pluralBackSlashTitleCase(String string);
+  String pluralBackSlashTitleCase(Object arg);
 
   /**
    * Converts a list of words into plural back slash upper case, that is each word is made up of
    * upper case characters separated by a back slash with the last word converted to the plural form
    * of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural back slash upper case, may be null.
+   * @param arg the list to be converted to plural back slash upper case, may be null.
    * @return plural back slash upper case of list, {@code null} if null list input
    */
-  String pluralBackSlashUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural back slash upper case, that is each word is made up of
-   * upper case characters separated by a back slash with the last word converted to the plural form
-   * of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural back slash upper case, may be null.
-   * @return plural back slash upper case of string, {@code null} if null string input
-   * @see #pluralBackSlashUpperCase(List)
-   */
-  String pluralBackSlashUpperCase(String string);
+  String pluralBackSlashUpperCase(Object arg);
 
   /**
    * Converts all the delimiter separated words in a list into plural camel case, that is each word
@@ -721,251 +575,119 @@ public interface ContextRoot<E> extends Context {
    * string character will be lower case with the last word converted to the plural form of the
    * given word denoting more than one.
    *
-   * @param list the list to be converted to plural camel case, may be null.
+   * @param arg the list to be converted to plural camel case, may be null.
    * @return plural camel case of list, {@code null} if null list input
    */
-  String pluralCamelCase(List<String> list);
-
-  /**
-   * Converts all the delimiter separated words in a string into plural camel case, that is each
-   * word is made up of a title case character and then a series of lower case characters. The first
-   * string character will be lower case with the last word converted to the plural form of the
-   * given word denoting more than one.
-   *
-   * @param string the string to be converted to plural camel case, may be null.
-   * @return plural camel case of string, {@code null} if null string input
-   * @see #pluralCamelCase(List)
-   */
-  String pluralCamelCase(String string);
+  String pluralCamelCase(Object arg);
 
   /**
    * Converts a list of words into plural dot lower case, that is each word is made up of lower case
    * characters separated by a dot with the last word converted to the plural form of the given word
    * denoting more than one.
    *
-   * @param list the list to be converted to plural dot lower case, may be null.
+   * @param arg the list to be converted to plural dot lower case, may be null.
    * @return plural dot lower case of list, {@code null} if null list input
    */
-  String pluralDotLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural dot lower case, that is each word is made up of lower
-   * case characters separated by a dot with the last word converted to the plural form of the given
-   * word denoting more than one.
-   *
-   * @param string the string to be converted to plural dot lower case, may be null.
-   * @return plural dot lower case of string, {@code null} if null string input
-   * @see #pluralDotLowerCase(List)
-   */
-  String pluralDotLowerCase(String string);
+  String pluralDotLowerCase(Object arg);
 
   /**
    * Converts a list of words into plural dot title case, that is each word is made up of title case
    * characters separated by a dot with the last word converted to the plural form of the given word
    * denoting more than one.
    *
-   * @param list the list to be converted to plural dot title case, may be null.
+   * @param arg the list to be converted to plural dot title case, may be null.
    * @return plural dot title case of list, {@code null} if null list input
    */
-  String pluralDotTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural dot title case, that is each word is made up of title
-   * case characters separated by a dot with the last word converted to the plural form of the given
-   * word denoting more than one.
-   *
-   * @param string the string to be converted to plural dot title case, may be null.
-   * @return plural dot title case of string, {@code null} if null string input
-   * @see #pluralDotTitleCase(List)
-   */
-  String pluralDotTitleCase(String string);
+  String pluralDotTitleCase(Object arg);
 
   /**
    * Converts a list of words into plural dot upper case, that is each word is made up of upper case
    * characters separated by a dot with the last word converted to the plural form of the given word
    * denoting more than one.
    *
-   * @param list the list to be converted to plural dot upper case, may be null.
+   * @param arg the list to be converted to plural dot upper case, may be null.
    * @return plural dot upper case of list, {@code null} if null list input
    */
-  String pluralDotUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural dot upper case, that is each word is made up of upper
-   * case characters separated by a dot with the last word converted to the plural form of the given
-   * word denoting more than one.
-   *
-   * @param string the string to be converted to plural dot upper case, may be null.
-   * @return plural dot upper case of string, {@code null} if null string input
-   * @see #pluralDotUpperCase(List)
-   */
-  String pluralDotUpperCase(String string);
+  String pluralDotUpperCase(Object arg);
 
   /**
    * Converts a list of words into plural forward slash lower case, that is each word is made up of
    * lower case characters separated by a forward slash with the last word converted to the plural
    * form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural forward slash lower case, may be null.
+   * @param arg the list to be converted to plural forward slash lower case, may be null.
    * @return plural forward slash lower case of list, {@code null} if null list input
    */
-  String pluralForwardSlashLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural forward slash lower case, that is each word is made up
-   * of lower case characters separated by a forward slash with the last word converted to the
-   * plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural forward slash lower case, may be null.
-   * @return plural forward slash lower case of string, {@code null} if null string input
-   * @see #pluralForwardSlashLowerCase(List)
-   */
-  String pluralForwardSlashLowerCase(String string);
+  String pluralForwardSlashLowerCase(Object arg);
 
   /**
    * Converts a list of words into plural forward slash title case, that is each word is made up of
    * title case characters separated by a forward slash with the last word converted to the plural
    * form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural forward slash title case, may be null.
+   * @param arg the list to be converted to plural forward slash title case, may be null.
    * @return plural forward slash title case of list, {@code null} if null list input
    */
-  String pluralForwardSlashTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural forward slash title case, that is each word is made up
-   * of title case characters separated by a forward slash with the last word converted to the
-   * plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural forward slash title case, may be null.
-   * @return plural forward slash title case of string, {@code null} if null string input
-   * @see #pluralForwardSlashTitleCase(List)
-   */
-  String pluralForwardSlashTitleCase(String string);
+  String pluralForwardSlashTitleCase(Object arg);
 
   /**
    * Converts a list of words into plural forward slash upper case, that is each word is made up of
    * upper case characters separated by a forward slash with the last word converted to the plural
    * form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural forward slash upper case, may be null.
+   * @param arg the list to be converted to plural forward slash upper case, may be null.
    * @return plural forward slash upper case of list, {@code null} if null list input
    */
-  String pluralForwardSlashUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural forward slash upper case, that is each word is made up
-   * of upper case characters separated by a forward slash with the last word converted to the
-   * plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural forward slash upper case, may be null.
-   * @return plural forward slash upper case of string, {@code null} if null string input
-   * @see #pluralForwardSlashUpperCase(List)
-   */
-  String pluralForwardSlashUpperCase(String string);
+  String pluralForwardSlashUpperCase(Object arg);
 
   /**
    * Converts a list of words into plural kebab lower case, that is each word is made up of lower
    * case characters separated by a dash with the last word converted to the plural form of the
    * given word denoting more than one.
    *
-   * @param list the list to be converted to plural kebab lower case, may be null.
+   * @param arg the list to be converted to plural kebab lower case, may be null.
    * @return plural kebab lower case of list, {@code null} if null list input
    */
-  String pluralKebabLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural kebab lower case, that is each word is made up of lower
-   * case characters separated by a dash with the last word converted to the plural form of the
-   * given word denoting more than one.
-   *
-   * @param string the string to be converted to plural kebab lower case, may be null.
-   * @return plural kebab lower case of string, {@code null} if null string input
-   * @see #pluralKebabLowerCase(List)
-   */
-  String pluralKebabLowerCase(String string);
+  String pluralKebabLowerCase(Object arg);
 
   /**
    * Converts a list of words into plural kebab title case, that is each word is made up of title
    * case characters separated by a dash with the last word converted to the plural form of the
    * given word denoting more than one.
    *
-   * @param list the list to be converted to plural kebab title case, may be null.
+   * @param arg the list to be converted to plural kebab title case, may be null.
    * @return plural kebab title case of list, {@code null} if null list input
    */
-  String pluralKebabTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural kebab title case, that is each word is made up of title
-   * case characters separated by a dash with the last word converted to the plural form of the
-   * given word denoting more than one.
-   *
-   * @param string the string to be converted to plural kebab title case, may be null.
-   * @return plural kebab title case of string, {@code null} if null string input
-   * @see #pluralKebabTitleCase(List)
-   */
-  String pluralKebabTitleCase(String string);
+  String pluralKebabTitleCase(Object arg);
 
   /**
    * Converts a list of words into plural kebab upper case, that is each word is made up of upper
    * case characters separated by a dash with the last word converted to the plural form of the
    * given word denoting more than one.
    *
-   * @param list the list to be converted to plural kebab upper case, may be null.
+   * @param arg the list to be converted to plural kebab upper case, may be null.
    * @return plural kebab upper case of list, {@code null} if null list input
    */
-  String pluralKebabUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural kebab upper case, that is each word is made up of upper
-   * case characters separated by a dash with the last word converted to the plural form of the
-   * given word denoting more than one.
-   *
-   * @param string the string to be converted to plural kebab upper case, may be null.
-   * @return plural kebab upper case of string, {@code null} if null string input
-   * @see #pluralKebabUpperCase(List)
-   */
-  String pluralKebabUpperCase(String string);
+  String pluralKebabUpperCase(Object arg);
 
   /**
    * Converts a list to plural lower case as per {@link String#toLowerCase()} with the last word
    * converted to the plural form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural lower case, may be null.
+   * @param arg the list to be converted to plural lower case, may be null.
    * @return plural lower case of list, {@code null} if null list input
    */
-  String pluralLowerCase(List<String> list);
-
-  /**
-   * Converts a string to plural lower case as per {@link String#toLowerCase()} with the last word
-   * converted to the plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural lower case, may be null.
-   * @return plural lower case of string, {@code null} if null string input
-   * @see #pluralLowerCase(List)
-   */
-  String pluralLowerCase(String string);
+  String pluralLowerCase(Object arg);
 
   /**
    * Uncapitalizes a string, changing the plural first character to lower case as per {@link
    * Character#toLowerCase(int)}. No other characters are changed with the last word converted to
    * the plural form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural first character to lower case, may be null.
+   * @param arg the list to be converted to plural first character to lower case, may be null.
    * @return plural first character to lower case of list, {@code null} if null list input
    */
-  String pluralLowerFirst(List<String> list);
-
-  /**
-   * Uncapitalizes a string, changing the plural first character to lower case as per {@link
-   * Character#toLowerCase(int)}. No other characters are changed with the last word converted to
-   * the plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural first character to lower case, may be null.
-   * @return plural first character to lower case of string, {@code null} if null string input
-   * @see #pluralLowerFirst(List)
-   */
-  String pluralLowerFirst(String string);
+  String pluralLowerFirst(Object arg);
 
   /**
    * Converts all the delimiter separated words in a list into plural pascal case, that is each word
@@ -973,150 +695,71 @@ public interface ContextRoot<E> extends Context {
    * string character will be upper case with the last word converted to the plural form of the
    * given word denoting more than one.
    *
-   * @param list the list to be converted to plural pascal case, may be null.
+   * @param arg the list to be converted to plural pascal case, may be null.
    * @return plural pascal case of list, {@code null} if null list input
    */
-  String pluralPascalCase(List<String> list);
-
-  /**
-   * Converts all the delimiter separated words in a string into plural pascal case, that is each
-   * word is made up of a title case character and then a series of lower case characters. The first
-   * string character will be upper case with the last word converted to the plural form of the
-   * given word denoting more than one.
-   *
-   * @param string the string to be converted to plural pascal case, may be null.
-   * @return plural pascal case of string, {@code null} if null string input
-   * @see #pluralPascalCase(List)
-   */
-  String pluralPascalCase(String string);
+  String pluralPascalCase(Object arg);
 
   /**
    * Converts a list of words into plural snake lower case, that is each word is made up of lower
    * case characters separated by a underscore with the last word converted to the plural form of
    * the given word denoting more than one.
    *
-   * @param list the list to be converted to plural snake lower case, may be null.
+   * @param arg the list to be converted to plural snake lower case, may be null.
    * @return plural snake lower case of list, {@code null} if null list input
    */
-  String pluralSnakeLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural snake lower case, that is each word is made up of lower
-   * case characters separated by a underscore with the last word converted to the plural form of
-   * the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural snake lower case, may be null.
-   * @return plural snake lower case of string, {@code null} if null string input
-   * @see #pluralSnakeLowerCase(List)
-   */
-  String pluralSnakeLowerCase(String string);
+  String pluralSnakeLowerCase(Object arg);
 
   /**
    * Converts a list of words into plural snake title case, that is each word is made up of title
    * case characters separated by a underscore with the last word converted to the plural form of
    * the given word denoting more than one.
    *
-   * @param list the list to be converted to plural snake title case, may be null.
+   * @param arg the list to be converted to plural snake title case, may be null.
    * @return plural snake title case of list, {@code null} if null list input
    */
-  String pluralSnakeTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural snake title case, that is each word is made up of title
-   * case characters separated by a underscore with the last word converted to the plural form of
-   * the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural snake title case, may be null.
-   * @return plural snake title case of string, {@code null} if null string input
-   * @see #pluralSnakeTitleCase(List)
-   */
-  String pluralSnakeTitleCase(String string);
+  String pluralSnakeTitleCase(Object arg);
 
   /**
    * Converts a list of words into plural snake upper case, that is each word is made up of upper
    * case characters separated by a underscore with the last word converted to the plural form of
    * the given word denoting more than one.
    *
-   * @param list the list to be converted to plural snake upper case, may be null.
+   * @param arg the list to be converted to plural snake upper case, may be null.
    * @return plural snake upper case of list, {@code null} if null list input
    */
-  String pluralSnakeUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into plural snake upper case, that is each word is made up of upper
-   * case characters separated by a underscore with the last word converted to the plural form of
-   * the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural snake upper case, may be null.
-   * @return plural snake upper case of string, {@code null} if null string input
-   * @see #pluralSnakeUpperCase(List)
-   */
-  String pluralSnakeUpperCase(String string);
+  String pluralSnakeUpperCase(Object arg);
 
   /**
    * Converts a list of words to the plural capitalization style commonly used for the titles of
    * books, articles, songs, etc. with the last word converted to the plural form of the given word
    * denoting more than one.
    *
-   * @param list the list to be converted to plural capitalization style commonly used for the
-   *     titles of books, may be null.
+   * @param arg the list to be converted to plural capitalization style commonly used for the titles
+   *     of books, may be null.
    * @return plural capitalization style commonly used for the titles of books of list, {@code null}
    *     if null list input
    */
-  String pluralTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words to the plural capitalization style commonly used for the titles of
-   * books, articles, songs, etc. with the last word converted to the plural form of the given word
-   * denoting more than one.
-   *
-   * @param string the string to be converted to plural capitalization style commonly used for the
-   *     titles of books, may be null.
-   * @return plural capitalization style commonly used for the titles of books of string, {@code
-   *     null} if null string input
-   * @see #pluralTitleCase(List)
-   */
-  String pluralTitleCase(String string);
+  String pluralTitleCase(Object arg);
 
   /**
    * Converts a list to plural upper case as per {@link String#toUpperCase()} with the last word
    * converted to the plural form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural upper case, may be null.
+   * @param arg the list to be converted to plural upper case, may be null.
    * @return plural upper case of list, {@code null} if null list input
    */
-  String pluralUpperCase(List<String> list);
-
-  /**
-   * Converts a string to plural upper case as per {@link String#toUpperCase()} with the last word
-   * converted to the plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural upper case, may be null.
-   * @return plural upper case of string, {@code null} if null string input
-   * @see #pluralUpperCase(List)
-   */
-  String pluralUpperCase(String string);
+  String pluralUpperCase(Object arg);
 
   /**
    * Capitalizes a plural string changing the first character to title case as per {@link
    * Character#toTitleCase(int)}. No other characters are changed with the last word converted to
    * the plural form of the given word denoting more than one.
    *
-   * @param list the list to be converted to plural upper first, may be null.
+   * @param arg the list to be converted to plural upper first, may be null.
    * @return plural upper first of list, {@code null} if null list input
    */
-  String pluralUpperFirst(List<String> list);
-
-  /**
-   * Capitalizes a plural string changing the first character to title case as per {@link
-   * Character#toTitleCase(int)}. No other characters are changed with the last word converted to
-   * the plural form of the given word denoting more than one.
-   *
-   * @param string the string to be converted to plural upper first, may be null.
-   * @return plural upper first of string, {@code null} if null string input
-   * @see #pluralUpperFirst(List)
-   */
-  String pluralUpperFirst(String string);
+  String pluralUpperFirst(Object arg);
 
   /**
    * Set the extension of the file this context will be saved as.
@@ -1140,11 +783,25 @@ public interface ContextRoot<E> extends Context {
   void setFilePath(List<String> filePath);
 
   /**
+   * Set the path this context will be saved to.
+   *
+   * @param filePath the path this context will be saved to.
+   */
+  void setFilePath(String[] filePath);
+
+  /**
    * Set the context grouping.
    *
    * @param groupings the context grouping.
    */
   void setGrouping(List<String> groupings);
+
+  /**
+   * Set the context grouping.
+   *
+   * @param groupings the context grouping.
+   */
+  void setGrouping(String[] groupings);
 
   /**
    * Set the name of this object.
@@ -1158,63 +815,30 @@ public interface ContextRoot<E> extends Context {
    * lower case characters separated by a back slash with the last word converted to the singular
    * form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular back slash lower case, may be null.
+   * @param arg the list to be converted to singular back slash lower case, may be null.
    * @return singular back slash lower case of list, {@code null} if null list input
    */
-  String singularBackSlashLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular back slash lower case, that is each word is made up of
-   * lower case characters separated by a back slash with the last word converted to the singular
-   * form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular back slash lower case, may be null.
-   * @return singular back slash lower case of string, {@code null} if null string input
-   * @see #singularBackSlashLowerCase(List)
-   */
-  String singularBackSlashLowerCase(String string);
+  String singularBackSlashLowerCase(Object arg);
 
   /**
    * Converts a list of words into singular back slash title case, that is each word is made up of
    * title case characters separated by a back slash with the last word converted to the singular
    * form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular back slash title case, may be null.
+   * @param arg the list to be converted to singular back slash title case, may be null.
    * @return singular back slash title case of list, {@code null} if null list input
    */
-  String singularBackSlashTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular back slash title case, that is each word is made up of
-   * title case characters separated by a back slash with the last word converted to the singular
-   * form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular back slash title case, may be null.
-   * @return singular back slash title case of string, {@code null} if null string input
-   * @see #singularBackSlashTitleCase(List)
-   */
-  String singularBackSlashTitleCase(String string);
+  String singularBackSlashTitleCase(Object arg);
 
   /**
    * Converts a list of words into singular back slash upper case, that is each word is made up of
    * upper case characters separated by a back slash with the last word converted to the singular
    * form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular back slash upper case, may be null.
+   * @param arg the list to be converted to singular back slash upper case, may be null.
    * @return singular back slash upper case of list, {@code null} if null list input
    */
-  String singularBackSlashUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular back slash upper case, that is each word is made up of
-   * upper case characters separated by a back slash with the last word converted to the singular
-   * form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular back slash upper case, may be null.
-   * @return singular back slash upper case of string, {@code null} if null string input
-   * @see #singularBackSlashUpperCase(List)
-   */
-  String singularBackSlashUpperCase(String string);
+  String singularBackSlashUpperCase(Object arg);
 
   /**
    * Converts all the delimiter separated words in a list into singular camel case, that is each
@@ -1222,251 +846,119 @@ public interface ContextRoot<E> extends Context {
    * String character will be lower case with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular camel case, may be null.
+   * @param arg the list to be converted to singular camel case, may be null.
    * @return singular camel case of list, {@code null} if null list input
    */
-  String singularCamelCase(List<String> list);
-
-  /**
-   * Converts all the delimiter separated words in a string into singular camel case, that is each
-   * word is made up of a title case character and then a series of lower case characters. The first
-   * String character will be lower case with the last word converted to the singular form of the
-   * given word denoting only one.
-   *
-   * @param string the string to be converted to singular camel case, may be null.
-   * @return singular camel case of string, {@code null} if null string input
-   * @see #singularCamelCase(List)
-   */
-  String singularCamelCase(String string);
+  String singularCamelCase(Object arg);
 
   /**
    * Converts a list of words into singular dot lower case, that is each word is made up of lower
    * case characters separated by a dot with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular dot lower case, may be null.
+   * @param arg the list to be converted to singular dot lower case, may be null.
    * @return singular dot lower case of list, {@code null} if null list input
    */
-  String singularDotLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular dot lower case, that is each word is made up of lower
-   * case characters separated by a dot with the last word converted to the singular form of the
-   * given word denoting only one.
-   *
-   * @param string the string to be converted to singular dot lower case, may be null.
-   * @return singular dot lower case of string, {@code null} if null string input
-   * @see #singularDotLowerCase(List)
-   */
-  String singularDotLowerCase(String string);
+  String singularDotLowerCase(Object arg);
 
   /**
    * Converts a list of words into singular dot title case, that is each word is made up of title
    * case characters separated by a dot with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular dot title case, may be null.
+   * @param arg the list to be converted to singular dot title case, may be null.
    * @return singular dot title case of list, {@code null} if null list input
    */
-  String singularDotTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular dot title case, that is each word is made up of title
-   * case characters separated by a dot with the last word converted to the singular form of the
-   * given word denoting only one.
-   *
-   * @param string the string to be converted to singular dot title case, may be null.
-   * @return singular dot title case of string, {@code null} if null string input
-   * @see #singularDotTitleCase(List)
-   */
-  String singularDotTitleCase(String string);
+  String singularDotTitleCase(Object arg);
 
   /**
    * Converts a list of words into singular dot upper case, that is each word is made up of upper
    * case characters separated by a dot with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular dot upper case, may be null.
+   * @param arg the list to be converted to singular dot upper case, may be null.
    * @return singular dot upper case of list, {@code null} if null list input
    */
-  String singularDotUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular dot upper case, that is each word is made up of upper
-   * case characters separated by a dot with the last word converted to the singular form of the
-   * given word denoting only one.
-   *
-   * @param string the string to be converted to singular dot upper case, may be null.
-   * @return singular dot upper case of string, {@code null} if null string input
-   * @see #singularDotUpperCase(List)
-   */
-  String singularDotUpperCase(String string);
+  String singularDotUpperCase(Object arg);
 
   /**
    * Converts a list of words into singular forward slash lower case, that is each word is made up
    * of lower case characters separated by a forward slash with the last word converted to the
    * singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular forward slash lower case, may be null.
+   * @param arg the list to be converted to singular forward slash lower case, may be null.
    * @return singular forward slash lower case of list, {@code null} if null list input
    */
-  String singularForwardSlashLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular forward slash lower case, that is each word is made up
-   * of lower case characters separated by a forward slash with the last word converted to the
-   * singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular forward slash lower case, may be null.
-   * @return singular forward slash lower case of string, {@code null} if null string input
-   * @see #singularForwardSlashLowerCase(List)
-   */
-  String singularForwardSlashLowerCase(String string);
+  String singularForwardSlashLowerCase(Object arg);
 
   /**
    * Converts a list of words into singular forward slash title case, that is each word is made up
    * of title case characters separated by a forward slash with the last word converted to the
    * singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular forward slash title case, may be null.
+   * @param arg the list to be converted to singular forward slash title case, may be null.
    * @return singular forward slash title case of list, {@code null} if null list input
    */
-  String singularForwardSlashTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular forward slash title case, that is each word is made up
-   * of title case characters separated by a forward slash with the last word converted to the
-   * singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular forward slash title case, may be null.
-   * @return singular forward slash title case of string, {@code null} if null string input
-   * @see #singularForwardSlashTitleCase(List)
-   */
-  String singularForwardSlashTitleCase(String string);
+  String singularForwardSlashTitleCase(Object arg);
 
   /**
    * Converts a list of words into singular forward slash upper case, that is each word is made up
    * of upper case characters separated by a forward slash with the last word converted to the
    * singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular forward slash upper case, may be null.
+   * @param arg the list to be converted to singular forward slash upper case, may be null.
    * @return singular forward slash upper case of list, {@code null} if null list input
    */
-  String singularForwardSlashUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular forward slash upper case, that is each word is made up
-   * of upper case characters separated by a forward slash with the last word converted to the
-   * singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular forward slash upper case, may be null.
-   * @return singular forward slash upper case of string, {@code null} if null string input
-   * @see #singularForwardSlashUpperCase(List)
-   */
-  String singularForwardSlashUpperCase(String string);
+  String singularForwardSlashUpperCase(Object arg);
 
   /**
    * Converts a list of words into singular kebab lower case, that is each word is made up of lower
    * case characters separated by a dash with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular kebab lower case, may be null.
+   * @param arg the list to be converted to singular kebab lower case, may be null.
    * @return singular kebab lower case of list, {@code null} if null list input
    */
-  String singularKebabLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular kebab lower case, that is each word is made up of
-   * lower case characters separated by a dash with the last word converted to the singular form of
-   * the given word denoting only one.
-   *
-   * @param string the string to be converted to singular kebab lower case, may be null.
-   * @return singular kebab lower case of string, {@code null} if null string input
-   * @see #singularKebabLowerCase(List)
-   */
-  String singularKebabLowerCase(String string);
+  String singularKebabLowerCase(Object arg);
 
   /**
    * Converts a list of words into singular kebab title case, that is each word is made up of title
    * case characters separated by a dash with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular kebab title case, may be null.
+   * @param arg the list to be converted to singular kebab title case, may be null.
    * @return singular kebab title case of list, {@code null} if null list input
    */
-  String singularKebabTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular kebab title case, that is each word is made up of
-   * title case characters separated by a dash with the last word converted to the singular form of
-   * the given word denoting only one.
-   *
-   * @param string the string to be converted to singular kebab title case, may be null.
-   * @return singular kebab title case of string, {@code null} if null string input
-   * @see #singularKebabTitleCase(List)
-   */
-  String singularKebabTitleCase(String string);
+  String singularKebabTitleCase(Object arg);
 
   /**
    * Converts a list of words into singular kebab upper case, that is each word is made up of upper
    * case characters separated by a dash with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular kebab upper case, may be null.
+   * @param arg the list to be converted to singular kebab upper case, may be null.
    * @return singular kebab upper case of list, {@code null} if null list input
    */
-  String singularKebabUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular kebab upper case, that is each word is made up of
-   * upper case characters separated by a dash with the last word converted to the singular form of
-   * the given word denoting only one.
-   *
-   * @param string the string to be converted to singular kebab upper case, may be null.
-   * @return singular kebab upper case of string, {@code null} if null string input
-   * @see #singularKebabUpperCase(List)
-   */
-  String singularKebabUpperCase(String string);
+  String singularKebabUpperCase(Object arg);
 
   /**
    * Converts a list to singular lower case as per {@link String#toLowerCase()} with the last word
    * converted to the singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular lower case, may be null.
+   * @param arg the list to be converted to singular lower case, may be null.
    * @return singular lower case of list, {@code null} if null list input
    */
-  String singularLowerCase(List<String> list);
-
-  /**
-   * Converts a string to singular lower case as per {@link String#toLowerCase()} with the last word
-   * converted to the singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular lower case, may be null.
-   * @return singular lower case of string, {@code null} if null string input
-   * @see #singularLowerCase(List)
-   */
-  String singularLowerCase(String string);
+  String singularLowerCase(Object arg);
 
   /**
    * Uncapitalizes a string, changing the first character to lower case as per {@link
    * Character#toLowerCase(int)}. No other characters are changed with the last word converted to
    * the singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular lower case first character, may be null.
+   * @param arg the list to be converted to singular lower case first character, may be null.
    * @return singular lower case first character of list, {@code null} if null list input
    */
-  String singularLowerFirst(List<String> list);
-
-  /**
-   * Uncapitalizes a string, changing the first character to lower case as per {@link
-   * Character#toLowerCase(int)}. No other characters are changed with the last word converted to
-   * the singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular lower case first character, may be null.
-   * @return singular lower case first character of string, {@code null} if null string input
-   * @see #singularLowerFirst(List)
-   */
-  String singularLowerFirst(String string);
+  String singularLowerFirst(Object arg);
 
   /**
    * Converts all the delimiter separated words in a list into singular pascal case, that is each
@@ -1474,147 +966,69 @@ public interface ContextRoot<E> extends Context {
    * String character will be upper case with the last word converted to the singular form of the
    * given word denoting only one.
    *
-   * @param list the list to be converted to singular pascal case, may be null.
+   * @param arg the list to be converted to singular pascal case, may be null.
    * @return singular pascal case of list, {@code null} if null list input
    */
-  String singularPascalCase(List<String> list);
-
-  /**
-   * Converts all the delimiter separated words in a string into singular pascal case, that is each
-   * word is made up of a title case character and then a series of lower case characters. The first
-   * String character will be upper case with the last word converted to the singular form of the
-   * given word denoting only one.
-   *
-   * @param string the string to be converted to singular pascal case, may be null.
-   * @return singular pascal case of string, {@code null} if null string input
-   * @see #singularPascalCase(List)
-   */
-  String singularPascalCase(String string);
+  String singularPascalCase(Object arg);
 
   /**
    * Converts a list of words into singular snake lower case, that is each word is made up of lower
    * case characters separated by a underscore with the last word converted to the singular form of
    * the given word denoting only one.
    *
-   * @param list the list to be converted to singular snake lower case, may be null.
+   * @param arg the list to be converted to singular snake lower case, may be null.
    * @return singular snake lower case of list, {@code null} if null list input
    */
-  String singularSnakeLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular snake lower case, that is each word is made up of
-   * lower case characters separated by a underscore with the last word converted to the singular
-   * form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular snake lower case, may be null.
-   * @return singular snake lower case of string, {@code null} if null string input
-   * @see #singularSnakeLowerCase(List)
-   */
-  String singularSnakeLowerCase(String string);
+  String singularSnakeLowerCase(Object arg);
 
   /**
    * Converts a list of words into singular snake title case, that is each word is made up of title
    * case characters separated by a underscore with the last word converted to the singular form of
    * the given word denoting only one.
    *
-   * @param list the list to be converted to singular snake title case, may be null.
+   * @param arg the list to be converted to singular snake title case, may be null.
    * @return singular snake title case of list, {@code null} if null list input
    */
-  String singularSnakeTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular snake title case, that is each word is made up of
-   * title case characters separated by a underscore with the last word converted to the singular
-   * form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular snake title case, may be null.
-   * @return singular snake title case of string, {@code null} if null string input
-   * @see #singularSnakeTitleCase(List)
-   */
-  String singularSnakeTitleCase(String string);
+  String singularSnakeTitleCase(Object arg);
 
   /**
    * Converts a list of words into singular snake upper case, that is each word is made up of upper
    * case characters separated by a underscore with the last word converted to the singular form of
    * the given word denoting only one.
    *
-   * @param list the list to be converted to singular snake upper case, may be null.
+   * @param arg the list to be converted to singular snake upper case, may be null.
    * @return singular snake upper case of list, {@code null} if null list input
    */
-  String singularSnakeUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into singular snake upper case, that is each word is made up of
-   * upper case characters separated by a underscore with the last word converted to the singular
-   * form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular snake upper case, may be null.
-   * @return singular snake upper case of string, {@code null} if null string input
-   * @see #singularSnakeUpperCase(List)
-   */
-  String singularSnakeUpperCase(String string);
+  String singularSnakeUpperCase(Object arg);
 
   /**
    * Converts a list of words to the capitalization style commonly used for the singular titles of
    * books, articles, songs, etc. with the last word converted to the singular form of the given
    * word denoting only one.
    *
-   * @param list the list to be converted to singular titles of books, may be null.
+   * @param arg the list to be converted to singular titles of books, may be null.
    * @return singular titles of books of list, {@code null} if null list input
    */
-  String singularTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words to the capitalization style commonly used for the singular titles of
-   * books, articles, songs, etc. with the last word converted to the singular form of the given
-   * word denoting only one.
-   *
-   * @param string the string to be converted to singular titles of books, may be null.
-   * @return singular titles of books of string, {@code null} if null string input
-   * @see #singularTitleCase(List)
-   */
-  String singularTitleCase(String string);
+  String singularTitleCase(Object arg);
 
   /**
    * Converts a list to singular upper case as per {@link String#toUpperCase()} with the last word
    * converted to the singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular upper case, may be null.
+   * @param arg the list to be converted to singular upper case, may be null.
    * @return singular upper case of list, {@code null} if null list input
    */
-  String singularUpperCase(List<String> list);
-
-  /**
-   * Converts a string to singular upper case as per {@link String#toUpperCase()} with the last word
-   * converted to the singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular upper case, may be null.
-   * @return singular upper case of string, {@code null} if null string input
-   * @see #singularUpperCase(List)
-   */
-  String singularUpperCase(String string);
+  String singularUpperCase(Object arg);
 
   /**
    * Capitalizes a string changing the singular first character to title case as per {@link
    * Character#toTitleCase(int)}. No other characters are changed with the last word converted to
    * the singular form of the given word denoting only one.
    *
-   * @param list the list to be converted to singular first character to title case, may be null.
+   * @param arg the list to be converted to singular first character to title case, may be null.
    * @return singular first character to title case of list, {@code null} if null list input
    */
-  String singularUpperFirst(List<String> list);
-
-  /**
-   * Capitalizes a string changing the singular first character to title case as per {@link
-   * Character#toTitleCase(int)}. No other characters are changed with the last word converted to
-   * the singular form of the given word denoting only one.
-   *
-   * @param string the string to be converted to singular first character to title case, may be
-   *     null.
-   * @return singular first character to title case of string, {@code null} if null string input
-   * @see #singularUpperFirst(List)
-   */
-  String singularUpperFirst(String string);
+  String singularUpperFirst(Object arg);
 
   /**
    * Converts a list of words into snake lower case, that is each word is made up of lower case
@@ -1633,20 +1047,10 @@ public interface ContextRoot<E> extends Context {
    * snakeLowerCase("to snake case") = "to_snake_Case"
    * </pre>
    *
-   * @param list the list to be converted to snake lower case, may be null.
+   * @param arg the list to be converted to snake lower case, may be null.
    * @return snake lower case of list, {@code null} if null list input
    */
-  String snakeLowerCase(List<String> list);
-
-  /**
-   * Converts a string of words into snake lower case, that is each word is made up of lower case
-   * characters separated by a underscore.
-   *
-   * @param string the string to be converted to snake lower case, may be null.
-   * @return snake lower case of string, {@code null} if null string input
-   * @see #snakeLowerCase(List)
-   */
-  String snakeLowerCase(String string);
+  String snakeLowerCase(Object arg);
 
   /**
    * Converts a list of words into snake title case, that is each word is made up of title case
@@ -1665,20 +1069,10 @@ public interface ContextRoot<E> extends Context {
    * snaketitleCase("to snake case") = "To_Snake_Case"
    * </pre>
    *
-   * @param list the list to be converted to snake title case, may be null.
+   * @param arg the list to be converted to snake title case, may be null.
    * @return snake title case of list, {@code null} if null list input
    */
-  String snakeTitleCase(List<String> list);
-
-  /**
-   * Converts a string of words into snake title case, that is each word is made up of title case
-   * characters separated by a underscore.
-   *
-   * @param string the string to be converted to snake title case, may be null.
-   * @return snake title case of string, {@code null} if null string input
-   * @see #snakeTitleCase(List)
-   */
-  String snakeTitleCase(String string);
+  String snakeTitleCase(Object arg);
 
   /**
    * Converts a list of words into snake upper case, that is each word is made up of upper case
@@ -1697,20 +1091,10 @@ public interface ContextRoot<E> extends Context {
    * snakeupperCase("to snake case") = "TO_SNAKE_CASE"
    * </pre>
    *
-   * @param list the list to be converted to snake upper case, may be null.
+   * @param arg the list to be converted to snake upper case, may be null.
    * @return snake upper case of list, {@code null} if null list input
    */
-  String snakeUpperCase(List<String> list);
-
-  /**
-   * Converts a string of words into snake upper case, that is each word is made up of upper case
-   * characters separated by a underscore.
-   *
-   * @param string the string to be converted to snake upper case, may be null.
-   * @return snake upper case of string, {@code null} if null string input
-   * @see #snakeUpperCase(List)
-   */
-  String snakeUpperCase(String string);
+  String snakeUpperCase(Object arg);
 
   /**
    * Converts a list of words to the capitalization style commonly used for the titles of books,
@@ -1721,20 +1105,10 @@ public interface ContextRoot<E> extends Context {
    * words (articles, prepositions, and coordinating conjunctions) are typically not capitalized
    * unless they are the first or last word of the title.
    *
-   * @param list the list to be converted to title case, may be null.
+   * @param arg the list to be converted to title case, may be null.
    * @return title case of list, {@code null} if null list input
    */
-  String titleCase(List<String> list);
-
-  /**
-   * Converts a string of words to the capitalization style commonly used for the titles of books,
-   * articles, songs, etc.
-   *
-   * @param string the string to be converted to title case, may be null.
-   * @return title case of string, {@code null} if null string input
-   * @see #titleCase(List)
-   */
-  String titleCase(String string);
+  String titleCase(Object arg);
 
   /**
    * Converts a list to upper case as per {@link String#toUpperCase()}.
@@ -1752,19 +1126,10 @@ public interface ContextRoot<E> extends Context {
    * transformations, the method should be used with a specific locale (e.g. {@link
    * Locale#ENGLISH}).
    *
-   * @param list the list to be converted to upper case, may be null.
+   * @param arg the list to be converted to upper case, may be null.
    * @return upper case of list, {@code null} if null list input
    */
-  String upperCase(List<String> list);
-
-  /**
-   * Converts a string to upper case as per {@link String#toUpperCase()}.
-   *
-   * @param string the string to be converted to upper case, may be null.
-   * @return upper case of string, {@code null} if null string input
-   * @see #upperCase(List)
-   */
-  String upperCase(String string);
+  String upperCase(Object arg);
 
   /**
    * Capitalizes a string changing the first character to title case as per {@link
@@ -1782,18 +1147,8 @@ public interface ContextRoot<E> extends Context {
    * StringUtils.capitalize("'cat'") = "'cat'"
    * </pre>
    *
-   * @param list the list to be converted to upper first, may be null.
+   * @param arg the list to be converted to upper first, may be null.
    * @return upper first of list, {@code null} if null list input
    */
-  String upperFirst(List<String> list);
-
-  /**
-   * Capitalizes a string changing the first character to title case as per {@link
-   * Character#toTitleCase(int)}. No other characters are changed.
-   *
-   * @param string the string to be converted to upper first, may be null.
-   * @return upper first of string, {@code null} if null string input
-   * @see #upperFirst(List)
-   */
-  String upperFirst(String string);
+  String upperFirst(Object arg);
 }

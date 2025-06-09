@@ -1,0 +1,16 @@
+
+<root name="1728">
+    <attributes size="0">
+    </attributes>
+    <object name="mcv_lists_arrays">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{array=[], cimerant:type=field, fieldType=TEXT}</field>
+            <field key="b">{array=[], cimerant:type=field, fieldType=NUMERIC}</field>
+            <field key="c">{array=[], cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,3 @@
+CREATE TABLE dbo.TestRethrow
+(    ID INT PRIMARY KEY
+)

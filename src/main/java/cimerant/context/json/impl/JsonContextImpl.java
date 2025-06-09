@@ -1,17 +1,29 @@
 package cimerant.context.json.impl;
 
-import cimerant.context.NotNullMap;
+import cimerant.Cimerant;
+import cimerant.ModuleCode;
+import cimerant.StatusCode;
+import cimerant.SysError;
+import cimerant.context.NotNullSet;
+import cimerant.context.cimerant.ObjectAttributeList;
+import cimerant.context.cimerant.ObjectFieldList;
+import cimerant.context.cimerant.ObjectRelationshipList;
 import cimerant.context.cimerant.ObjectRootContext;
+import cimerant.context.cimerant.impl.ObjectAttributeListImpl;
 import cimerant.context.cimerant.impl.ObjectContextImpl;
+import cimerant.context.cimerant.impl.ObjectFieldImpl;
+import cimerant.context.cimerant.impl.ObjectFieldListImpl;
+import cimerant.context.cimerant.impl.ObjectRelationshipImpl;
+import cimerant.context.cimerant.impl.ObjectRelationshipListImpl;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.json.JsonContext;
 import cimerant.context.json.JsonRootContext;
-import java.util.Collections;
+import cimerant.logger.CimerantLogger;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.TreeMap;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -19,7 +31,12 @@ import java.util.TreeMap;
  */
 public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Object>>
     implements JsonContext {
+  private static final CimerantLogger logger;
   private static final long serialVersionUID = 1L;
+
+  static {
+    logger = (CimerantLogger) LoggerFactory.getLogger(JsonContextImpl.class.getName());
+  }
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
@@ -27,258 +44,104 @@ public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Objec
    *
    * @param parent the context parent.
    * @param parentGroupings the context parent grouping.
-   * @param entry the context entry.
+   * @param contextObject the context entry.
    * @return a instance of the context.
    */
+  @SuppressWarnings("unchecked")
   public static JsonContext getInstance(
+      final Entry<String, Object> contextObject,
       final JsonRootContext parent,
-      final List<String> parentGroupings,
-      final Entry<String, Object> entry) {
-    Objects.requireNonNull(entry);
-    return ContextRootImpl.registerInstance(new JsonContextImpl(parent, parentGroupings, entry));
-  }
+      final List<String> parentGroupings) {
+    final var moduleCode = ModuleCode.ERR_M2000;
 
-  /** The list of attributes. */
-  private final Map<String, Object> attributes;
+    try {
+      Objects.requireNonNull(contextObject);
+      Objects.requireNonNull(parent);
+      Objects.requireNonNull(parentGroupings);
 
-  /** The list of fields. */
-  private final Map<String, Object> fields = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+      final ObjectAttributeList attributes = new ObjectAttributeListImpl();
+      final ObjectFieldList fields = new ObjectFieldListImpl();
+      final ObjectRelationshipList relationships = new ObjectRelationshipListImpl();
 
-  /** The list of relationships. */
-  private final Map<String, Object> relationships = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+      attributes.putAll(parent.getAttributes());
 
-  /** Creates an instance. */
-  @SuppressWarnings("unchecked")
-  private JsonContextImpl(
-      final ObjectRootContext<?> rootContext,
-      final List<String> parentGroupings,
-      final Entry<String, Object> entry) {
-    super(rootContext, entry);
-
-    this.setGrouping(parentGroupings);
-
-    final Map<String, Object> modifiableAttributes = new TreeMap<>(rootContext.getAttributes());
-    modifiableAttributes.putAll(
-        this.parseAttributes(new TreeMap<>((Map<String, Object>) entry.getValue())));
-    this.attributes = new NotNullMap<>(Collections.unmodifiableMap(modifiableAttributes));
-  }
-
-  /**
-   * Returns the attribute to which the specified name is mapped, or {@code null} if this context
-   * contains no mapping for the name.
-   */
-  @Override
-  public Object getAttributeByName(final String name) {
-    if (this.attributes.containsKey(name)) {
-      return this.attributes.get(name);
-    }
-    return null;
-  }
-
-  /**
-   * Returns the attribute of this context by the name of the attribute supplying a default value if
-   * the attribute is not found.
-   */
-  @Override
-  public Object getAttributeByName(final String name, final Object defaultValue) {
-    if (this.attributes.containsKey(name)) {
-      return this.attributes.get(name);
-    }
-    return defaultValue;
-  }
-
-  /** Returns all attributes of this context. */
-  @Override
-  public Map<String, Object> getAttributes() {
-    return this.attributes;
-  }
-
-  /** Returns the attribute for a field by the name of the field and attribute. */
-  @Override
-  @SuppressWarnings("unchecked")
-  public Object getFieldAttributeByName(final String fieldName, final String attributeName) {
-    if (this.fields.containsKey(fieldName)) {
-      final var map = (Map<String, Object>) this.fields.get(fieldName);
-      if (map.containsKey(attributeName)) {
-        return map.get(attributeName);
+      if (contextObject.getValue() instanceof final Map entryValue) {
+        JsonContextImpl.parseMap(entryValue, attributes, fields, relationships);
       }
-    }
-    return null;
-  }
 
-  /**
-   * Returns the attribute for a field by the name of the field and attribute supplying a default
-   * value if the attribute is not found.
-   */
-  @Override
-  @SuppressWarnings("unchecked")
-  public Object getFieldAttributeByName(
-      final String fieldName, final String attributeName, final Object defaultValue) {
-    if (this.fields.containsKey(fieldName)) {
-      final var map = (Map<String, Object>) this.fields.get(fieldName);
-      if (map.containsKey(attributeName)) {
-        return map.get(attributeName);
+      return ContextRootImpl.registerInstance(
+          new JsonContextImpl(
+              contextObject, parent, parentGroupings, attributes, fields, relationships));
+    } catch (final SysError s) {
+      throw s;
+    } catch (final Throwable t) {
+      // 0001 | Unknown error
+      if (JsonContextImpl.logger.isDebugEnabled()) {
+        JsonContextImpl.logger.debug(t.getMessage(), t);
       }
+      throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
     }
-    return defaultValue;
-  }
-
-  /** Returns the field of this context by the name of the field. */
-  @Override
-  public Object getFieldByName(final String name) {
-    if (this.fields.containsKey(name)) {
-      return this.fields.get(name);
-    }
-    return null;
-  }
-
-  /** Returns all fields of this context. */
-  @Override
-  public Map<String, Object> getFields() {
-    return this.fields;
-  }
-
-  /** Returns the attribute for a relationship by the name of the relationship and attribute. */
-  @Override
-  @SuppressWarnings("unchecked")
-  public Object getRelationshipAttributeByName(
-      final String relationshipName, final String attributeName) {
-    if (this.relationships.containsKey(relationshipName)) {
-      final var map = (Map<String, Object>) this.relationships.get(relationshipName);
-      if (map.containsKey(attributeName)) {
-        return map.get(attributeName);
-      }
-    }
-    return null;
-  }
-
-  /**
-   * Returns the attribute for a relationship by the name of the relationship and attribute
-   * supplying a default value if the attribute is not found.
-   */
-  @Override
-  @SuppressWarnings("unchecked")
-  public Object getRelationshipAttributeByName(
-      final String relationshipName, final String attributeName, final Object defaultValue) {
-    if (this.relationships.containsKey(relationshipName)) {
-      final var map = (Map<String, Object>) this.relationships.get(relationshipName);
-      if (map.containsKey(attributeName)) {
-        return map.get(attributeName);
-      }
-    }
-    return defaultValue;
-  }
-
-  /** Returns the relationship of this context by the name of the relationship. */
-  @Override
-  public Object getRelationshipByName(final String name) {
-    if (this.relationships.containsKey(name)) {
-      return this.relationships.get(name);
-    }
-    return null;
-  }
-
-  /** Returns all relationship of this context. */
-  @Override
-  public Map<String, Object> getRelationships() {
-    return this.relationships;
-  }
-
-  /** Returns {@code true} if this context contains a attribute for the specified name. */
-  @Override
-  public boolean hasAttributeByName(final String name) {
-    return this.attributes.containsKey(name);
-  }
-
-  /**
-   * Returns {@code true} if the context has the value to which the specified key is mapped, or
-   * {@code null} if this context contains no mapping for the key.
-   */
-  @Override
-  @SuppressWarnings("unchecked")
-  public boolean hasFieldAttributeByName(final String fieldName, final String attributeName) {
-    if (this.fields.containsKey(fieldName)) {
-      final var map = (Map<String, Object>) this.fields.get(fieldName);
-      return map.containsKey(attributeName);
-    }
-    return false;
-  }
-
-  /** Returns {@code true} if this context contains a field for the specified name. */
-  @Override
-  public boolean hasFieldByName(final String name) {
-    return this.fields.containsKey(name);
-  }
-
-  /**
-   * Returns {@code true} if the context has the value to which the specified key is mapped, or
-   * {@code null} if this context contains no mapping for the key.
-   */
-  @Override
-  @SuppressWarnings("unchecked")
-  public boolean hasRelationshipAttributeByName(
-      final String relationshipName, final String attributeName) {
-    if (this.relationships.containsKey(relationshipName)) {
-      final var map = (Map<String, Object>) this.relationships.get(relationshipName);
-      return map.containsKey(attributeName);
-    }
-    return false;
-  }
-
-  /** Returns {@code true} if this context contains a relationship for the specified name. */
-  @Override
-  public boolean hasRelationshipByName(final String name) {
-    return this.relationships.containsKey(name);
   }
 
   @SuppressWarnings("unchecked")
-  private Map<String, Object> parseAttributes(final Map<String, Object> map) {
-    final Map<String, Object> modifiableAttributes = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
+  private static ObjectAttributeList parseMap(
+      final Map<String, Object> map,
+      final ObjectAttributeList attributes,
+      final ObjectFieldList fields,
+      final ObjectRelationshipList relationships) {
     for (final Entry<String, Object> mapEntry : map.entrySet()) {
       switch (CimerantKeys.valueOf(mapEntry)) {
         case CIMERANT_ATTRIBUTES:
-          if (Map.class.isAssignableFrom(mapEntry.getValue().getClass())) {
-            modifiableAttributes.putAll(new TreeMap<>((Map<String, Object>) mapEntry.getValue()));
+          if (mapEntry.getValue() instanceof final Map mapEntryValue) {
+            attributes.putAll(mapEntryValue);
           } else {
-            modifiableAttributes.put(mapEntry.getKey(), mapEntry.getValue());
+            attributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
           }
           break;
         case CIMERANT_TYPE:
           switch (CimerantTypes.valueOf(mapEntry)) {
             case FIELD:
-              this.fields.put(
+              fields.put(
                   mapEntry.getKey(),
-                  new NotNullMap<>(
-                      Collections.unmodifiableMap((Map<String, Object>) mapEntry.getValue())));
+                  new ObjectFieldImpl((Map<String, Object>) mapEntry.getValue()));
               break;
             case RELATIONSHIP:
-              this.relationships.put(
+              relationships.put(
                   mapEntry.getKey(),
-                  new NotNullMap<>(
-                      Collections.unmodifiableMap((Map<String, Object>) mapEntry.getValue())));
+                  new ObjectRelationshipImpl((Map<String, Object>) mapEntry.getValue()));
               break;
             default:
-              if (Map.class.isAssignableFrom(mapEntry.getValue().getClass())) {
-                modifiableAttributes.putAll(
-                    this.parseAttributes(new TreeMap<>((Map<String, Object>) mapEntry.getValue())));
+              if (mapEntry.getValue() instanceof final Map mapEntryValue) {
+                attributes.putAll(
+                    JsonContextImpl.parseMap(mapEntryValue, attributes, fields, relationships));
               } else {
-                modifiableAttributes.put(mapEntry.getKey(), mapEntry.getValue());
+                attributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
               }
               break;
           }
           break;
         default:
-          if (Map.class.isAssignableFrom(mapEntry.getValue().getClass())) {
-            modifiableAttributes.putAll(
-                this.parseAttributes(new TreeMap<>((Map<String, Object>) mapEntry.getValue())));
+          if (mapEntry.getValue() instanceof final Map mapEntryValue) {
+            attributes.putAll(
+                JsonContextImpl.parseMap(mapEntryValue, attributes, fields, relationships));
           } else if (!CimerantKeys.isValidKey(mapEntry.getKey())) {
-            modifiableAttributes.put(mapEntry.getKey(), mapEntry.getValue());
+            attributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
           }
           break;
       }
     }
 
-    return modifiableAttributes;
+    return attributes;
+  }
+
+  /** Creates an instance. */
+  private JsonContextImpl(
+      final Entry<String, Object> contextObject,
+      final ObjectRootContext<?> rootContext,
+      final List<String> parentGroupings,
+      final ObjectAttributeList attributes,
+      final ObjectFieldList fields,
+      final ObjectRelationshipList relationships) {
+    super(contextObject, rootContext, parentGroupings, attributes, fields, relationships);
   }
 }

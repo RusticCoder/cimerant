@@ -1,0 +1,15 @@
+
+<root name="1939">
+    <attributes size="0">
+    </attributes>
+    <object name="child1">
+        <attributes size="2">
+            <attribute key="inherits">parent</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

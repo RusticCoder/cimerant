@@ -1,0 +1,14 @@
+
+<root name="1865">
+    <attributes size="0">
+    </attributes>
+    <object name="other_events">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="event_id">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="1717">
+    <attributes size="0">
+    </attributes>
+    <object name="ab1">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="b">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="c">{cimerant:type=field, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

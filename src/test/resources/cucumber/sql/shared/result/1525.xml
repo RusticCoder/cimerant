@@ -1,0 +1,17 @@
+
+<root name="1525">
+    <attributes size="0">
+    </attributes>
+    <object name="HSlot">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="hubname">{cimerant:type=field, fieldType=char, maxSize=14}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotno">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

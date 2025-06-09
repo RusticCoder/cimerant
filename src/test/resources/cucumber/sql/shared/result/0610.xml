@@ -1,0 +1,15 @@
+
+<root name="0610">
+    <attributes size="0">
+    </attributes>
+    <object name="parted_collate_must_match">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, collate=C, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, collate=C, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

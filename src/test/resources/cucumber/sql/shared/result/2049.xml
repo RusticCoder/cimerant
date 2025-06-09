@@ -1,0 +1,20 @@
+
+<root name="2049">
+    <attributes size="0">
+    </attributes>
+    <object name="CustomerTable">
+        <attributes size="2">
+            <attribute key="engine">CONNECT</attribute>
+            <attribute key="tableType">ODBC</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="Address">{cimerant:type=field, fieldType=varchar, maxSize=60}</field>
+            <field key="CompanyName">{cimerant:type=field, fieldType=varchar, maxSize=40}</field>
+            <field key="ContactName">{cimerant:type=field, fieldType=varchar, maxSize=30}</field>
+            <field key="CustomerID">{cimerant:type=field, fieldType=varchar, maxSize=5}</field>
+            <field key="Phone">{cimerant:type=field, fieldType=varchar, maxSize=24}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

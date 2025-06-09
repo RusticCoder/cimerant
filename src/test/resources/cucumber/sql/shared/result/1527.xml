@@ -1,0 +1,17 @@
+
+<root name="1527">
+    <attributes size="0">
+    </attributes>
+    <object name="IFace">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="ifname">{cimerant:type=field, fieldType=text}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="sysname">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="0685">
+    <attributes size="0">
+    </attributes>
+    <object name="tt3">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="ax">{cimerant:type=field, fieldType=int8}</field>
+            <field key="b">{cimerant:type=field, fieldType=int2}</field>
+            <field key="c">{cimerant:type=field, fieldType=numeric}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

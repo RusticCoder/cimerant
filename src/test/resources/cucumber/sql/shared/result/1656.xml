@@ -1,0 +1,16 @@
+
+<root name="1656">
+    <attributes size="0">
+    </attributes>
+    <object name="rtest_comp">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="part">{cimerant:type=field, fieldType=text}</field>
+            <field key="size">{cimerant:type=field, fieldType=float}</field>
+            <field key="unit">{cimerant:type=field, fieldType=char, maxSize=4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

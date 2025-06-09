@@ -1,0 +1,14 @@
+
+<root name="0476">
+    <attributes size="0">
+    </attributes>
+    <object name="collate_test20">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, collate=C, fieldType=text, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

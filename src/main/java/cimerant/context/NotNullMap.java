@@ -3,9 +3,8 @@ package cimerant.context;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.StreamWriteConstraints;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * An object that maps keys to values. A map cannot contain duplicate keys; each key can map to at
@@ -14,40 +13,37 @@ import java.util.Set;
  * @param <K> the type of keys maintained by this map
  * @param <V> the type of mapped values
  */
-public class NotNullMap<K, V> implements Map<K, V> {
-  private final Map<K, V> map;
+public class NotNullMap<K extends String, V> extends TreeMap<K, V> {
+  private static final long serialVersionUID = 1L;
 
   /**
-   * Creates an instance.
-   *
-   * @param map map to be wrapped.
+   * Constructs a new, empty tree map, using the natural ordering of its keys. All keys inserted
+   * into the map must implement the {@link Comparable} interface. Furthermore, all such keys must
+   * be <em>mutually comparable</em>: {@code k1.compareTo(k2)} must not throw a {@code
+   * ClassCastException} for any keys {@code k1} and {@code k2} in the map. If the user attempts to
+   * put a key into the map that violates this constraint (for example, the user attempts to put a
+   * string key into a map whose keys are integers), the {@code put(Object key, Object value)} call
+   * will throw a {@code ClassCastException}.
    */
-  public NotNullMap(final Map<K, V> map) {
-    this.map = map;
+  public NotNullMap() {
+    super(String.CASE_INSENSITIVE_ORDER);
   }
 
-  /** Removes all of the mappings from this map (optional operation). */
-  @Override
-  public void clear() {
-    this.map.clear();
-  }
-
-  /** Returns {@code true} if this map contains a mapping for the specified key. */
-  @Override
-  public boolean containsKey(final Object key) {
-    return this.map.containsKey(key);
-  }
-
-  /** Returns {@code true} if this map maps one or more keys to the specified value. */
-  @Override
-  public boolean containsValue(final Object value) {
-    return this.map.containsValue(value);
-  }
-
-  /** Returns a {@link Set} view of the mappings contained in this map. */
-  @Override
-  public Set<Entry<K, V>> entrySet() {
-    return this.map.entrySet();
+  /**
+   * Constructs a new tree map containing the same mappings as the given map, ordered according to
+   * the <em>natural ordering</em> of its keys. All keys inserted into the new map must implement
+   * the {@link Comparable} interface. Furthermore, all such keys must be <em>mutually
+   * comparable</em>: {@code k1.compareTo(k2)} must not throw a {@code ClassCastException} for any
+   * keys {@code k1} and {@code k2} in the map. This method runs in n*log(n) time.
+   *
+   * @param m the map whose mappings are to be placed in this map
+   * @throws ClassCastException if the keys in m are not {@link Comparable}, or are not mutually
+   *     comparable
+   * @throws NullPointerException if the specified map is null
+   */
+  public NotNullMap(final Map<K, V> m) {
+    super(String.CASE_INSENSITIVE_ORDER);
+    super.putAll(m);
   }
 
   /**
@@ -57,51 +53,11 @@ public class NotNullMap<K, V> implements Map<K, V> {
   @SuppressWarnings("unchecked")
   @Override
   public V get(final Object key) {
-    final var returnValue = this.map.get(key);
+    var returnValue = super.get(key);
     if (returnValue == null) {
-      try {
-        return (V) "";
-      } catch (final Exception e) {
-        return null;
-      }
+      returnValue = (V) "";
     }
     return returnValue;
-  }
-
-  /** Returns {@code true} if this map contains no key-value mappings. */
-  @Override
-  public boolean isEmpty() {
-    return this.map.isEmpty();
-  }
-
-  /** Returns a {@link Set} view of the keys contained in this map. */
-  @Override
-  public Set<K> keySet() {
-    return this.map.keySet();
-  }
-
-  /** Associates the specified value with the specified key in this map (optional operation). */
-  @Override
-  public V put(final K key, final V value) {
-    return this.map.put(key, value);
-  }
-
-  /** Copies all of the mappings from the specified map to this map (optional operation). */
-  @Override
-  public void putAll(final Map<? extends K, ? extends V> m) {
-    this.map.putAll(m);
-  }
-
-  /** Removes the mapping for a key from this map if it is present (optional operation). */
-  @Override
-  public V remove(final Object key) {
-    return this.map.remove(key);
-  }
-
-  /** Returns the number of key-value mappings in this map. */
-  @Override
-  public int size() {
-    return this.map.size();
   }
 
   /**
@@ -121,20 +77,5 @@ public class NotNullMap<K, V> implements Map<K, V> {
     } catch (final JsonProcessingException e) {
       return super.toString() + System.lineSeparator() + e.getMessage();
     }
-  }
-
-  /** Returns a string representation of the object. */
-  @Override
-  public String toString() {
-    if (this.map == null) {
-      return null;
-    }
-    return this.map.toString();
-  }
-
-  /** Returns a {@link Collection} view of the values contained in this map. */
-  @Override
-  public Collection<V> values() {
-    return this.map.values();
   }
 }

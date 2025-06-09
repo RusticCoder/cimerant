@@ -1,0 +1,41 @@
+
+<root name="select_views">
+    <attributes size="0">
+    </attributes>
+    <object name="credit_card">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="cid">{cimerant:type=field, fieldType=int}</field>
+            <field key="climit">{cimerant:type=field, fieldType=int}</field>
+            <field key="cnum">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="cid">{cimerant:type=relationship, column=cid, foreignColumn=cid, foreignTable=customer}</relationship>
+        </relationships>
+    </object>
+    <object name="credit_usage">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="cid">{cimerant:type=field, fieldType=int}</field>
+            <field key="usage">{cimerant:type=field, fieldType=int}</field>
+            <field key="ymd">{cimerant:type=field, fieldType=date}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="cid">{cimerant:type=relationship, column=cid, foreignColumn=cid, foreignTable=customer}</relationship>
+        </relationships>
+    </object>
+    <object name="customer">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="cid">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="name">{cimerant:type=field, fieldType=text, nullable=false}</field>
+            <field key="passwd">{cimerant:type=field, fieldType=text}</field>
+            <field key="tel">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

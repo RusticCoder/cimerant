@@ -1,0 +1,14 @@
+
+<root name="0620">
+    <attributes size="0">
+    </attributes>
+    <object name="volatile_partbound_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="partkey">{cimerant:type=field, fieldType=timestamp}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

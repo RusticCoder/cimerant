@@ -1,0 +1,153 @@
+
+<root name="arrays">
+    <attributes size="0">
+    </attributes>
+    <object name="arr_pk_tbl">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=int}</field>
+            <field key="pk">{cimerant:type=field, fieldType=int4, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arr_tbl">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arraggtest">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=INT}</field>
+            <field key="f2">{array=[][], cimerant:type=field, fieldType=TEXT}</field>
+            <field key="f3">{array=[], cimerant:type=field, fieldType=FLOAT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arrtest">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="a">{array=[], cimerant:type=field, fieldType=int2}</field>
+            <field key="b">{array=[][][], cimerant:type=field, fieldType=int4}</field>
+            <field key="c">{array=[], cimerant:type=field, fieldType=name}</field>
+            <field key="d">{array=[][], cimerant:type=field, fieldType=text}</field>
+            <field key="e">{array=[], cimerant:type=field, fieldType=float8}</field>
+            <field key="f">{array=[], cimerant:type=field, fieldType=char, maxSize=5}</field>
+            <field key="g">{array=[], cimerant:type=field, fieldType=varchar, maxSize=5}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arrtest1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="i">{array=[], cimerant:type=field, fieldType=int}</field>
+            <field key="t">{array=[], cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arrtest2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="d">{array=[], cimerant:type=field, fieldType=timestamp}</field>
+            <field key="f">{array=[], cimerant:type=field, fieldType=float8}</field>
+            <field key="i">{array=[4], cimerant:type=field, fieldType=integer}</field>
+            <field key="n">{array=[], cimerant:type=field, fieldType=numeric}</field>
+            <field key="t">{array=[], cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arrtest_f">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="f0">{cimerant:type=field, fieldType=int}</field>
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arrtest_i">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="f0">{cimerant:type=field, fieldType=int}</field>
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="arrtest_s">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{array=[], cimerant:type=field, fieldType=int2}</field>
+            <field key="b">{array=[][], cimerant:type=field, fieldType=int2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="comptable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=comptype}</field>
+            <field key="c2">{array=[], cimerant:type=field, fieldType=comptype}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dest">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=textandtext}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="src">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{array=[], cimerant:type=field, fieldType=int8_tbl}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

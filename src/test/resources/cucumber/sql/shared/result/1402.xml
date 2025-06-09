@@ -1,0 +1,14 @@
+
+<root name="1402">
+    <attributes size="0">
+    </attributes>
+    <object name="lock_tbl1a">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=BIGINT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

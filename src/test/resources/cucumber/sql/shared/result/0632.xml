@@ -1,0 +1,16 @@
+
+<root name="0632">
+    <attributes size="0">
+    </attributes>
+    <object name="inhg">
+        <attributes size="1">
+            <attribute key="like">inhx</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=text}</field>
+            <field key="y">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

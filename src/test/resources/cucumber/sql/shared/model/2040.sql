@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS bar (LIKE like_table)

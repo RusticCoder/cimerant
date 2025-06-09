@@ -27,6 +27,7 @@ public final class StringListContextImpl extends ListContextImpl<List<String>, C
   public static ListContext<List<String>, ContextRoot<String>> getStringInstance(
       final List<String> contextObject) {
     Objects.requireNonNull(contextObject);
+
     return ContextRootImpl.registerInstance(new StringListContextImpl(contextObject));
   }
 

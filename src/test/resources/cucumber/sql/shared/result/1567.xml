@@ -1,0 +1,14 @@
+
+<root name="1567">
+    <attributes size="0">
+    </attributes>
+    <object name="t1" grouping="[testns]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

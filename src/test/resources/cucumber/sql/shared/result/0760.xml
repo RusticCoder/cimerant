@@ -1,0 +1,14 @@
+
+<root name="0760">
+    <attributes size="0">
+    </attributes>
+    <object name="FLOAT8_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

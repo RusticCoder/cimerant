@@ -1,0 +1,16 @@
+
+<root name="1302">
+    <attributes size="0">
+    </attributes>
+    <object name="errtst_child_plaindef">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="data">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
+            <field key="partid">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="shdata">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,22 @@
+
+<root name="0127">
+    <attributes size="0">
+    </attributes>
+    <object name="dt_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="9">
+            <field key="dt1">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, fieldType=DATETIME, nullable=false}</field>
+            <field key="dt10">{cimerant:type=field, default=NULL, fieldType=DATETIME}</field>
+            <field key="dt11">{cimerant:type=field, default='2038-01-01 00:00:00', fieldType=DATETIME}</field>
+            <field key="dt2">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIME, fieldType=DATETIME, nullable=false}</field>
+            <field key="dt3">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP, fieldType=DATETIME, nullable=false}</field>
+            <field key="dt4">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(), fieldType=DATETIME, nullable=false}</field>
+            <field key="dt5">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIME(), fieldType=DATETIME, nullable=false}</field>
+            <field key="dt6">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP(), fieldType=DATETIME, nullable=false}</field>
+            <field key="dt7">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE NOW(), fieldType=DATETIME, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

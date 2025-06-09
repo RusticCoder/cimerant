@@ -3,6 +3,8 @@ package cimerant.context.json.impl;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.StringUtils;
 
 enum CimerantKeys {
   CIMERANT_ATTRIBUTES,
@@ -13,32 +15,33 @@ enum CimerantKeys {
     try {
       CimerantKeys.valueByKey(key);
       return true;
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       return false;
     }
   }
 
-  public static CimerantKeys valueByKey(final String key) {
-    return CimerantKeys.valueOf(key.toUpperCase(Locale.getDefault()).replace(':', '_'));
+  public static Stream<CimerantKeys> stream() {
+    return Stream.of(CimerantKeys.values());
   }
 
-  @SuppressWarnings("unchecked")
+  public static CimerantKeys valueByKey(final String key) {
+    return CimerantKeys.valueOf(StringUtils.upperCase(key, Locale.getDefault()).replace(':', '_'));
+  }
+
   public static CimerantKeys valueOf(final Entry<String, Object> entry) {
     var returnValue = CimerantKeys.UNKNOWN;
 
     if (CimerantKeys.CIMERANT_ATTRIBUTES.getKey().equals(entry.getKey())) {
       returnValue = CimerantKeys.CIMERANT_ATTRIBUTES;
-    } else if (Map.class.isAssignableFrom(entry.getValue().getClass())) {
-      final var map = (Map<String, Object>) entry.getValue();
-      if (map.containsKey(CimerantKeys.CIMERANT_TYPE.getKey())) {
-        returnValue = CimerantKeys.CIMERANT_TYPE;
-      }
+    } else if (entry.getValue() instanceof final Map map
+        && map.containsKey(CimerantKeys.CIMERANT_TYPE.getKey())) {
+      returnValue = CimerantKeys.CIMERANT_TYPE;
     }
 
     return returnValue;
   }
 
   public String getKey() {
-    return this.name().toLowerCase(Locale.getDefault()).replace('_', ':');
+    return StringUtils.lowerCase(this.name(), Locale.getDefault()).replace('_', ':');
   }
 }

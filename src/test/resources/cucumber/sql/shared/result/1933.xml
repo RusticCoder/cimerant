@@ -1,0 +1,17 @@
+
+<root name="1933">
+    <attributes size="0">
+    </attributes>
+    <object name="graph">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="f">{cimerant:type=field, fieldType=int}</field>
+            <field key="label">{cimerant:type=field, fieldType=text}</field>
+            <field key="t">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

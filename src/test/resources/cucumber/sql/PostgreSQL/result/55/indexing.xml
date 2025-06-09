@@ -1,0 +1,207 @@
+
+<root name="indexing">
+    <attributes size="0">
+    </attributes>
+    <object name="covidxpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="covidxpart3">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="covidxpart4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="14">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true, text=true, unique=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true, text=true, unique=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=text, int=true, primary=true}</field>
+            <field key="c1">{cimerant:type=field, fieldType=INT, primary=true}</field>
+            <field key="c2">{cimerant:type=field, fieldType=INT}</field>
+            <field key="c3">{cimerant:type=field, fieldType=VARCHAR, maxSize=10}</field>
+            <field key="col1">{cimerant:type=field, fieldType=INT}</field>
+            <field key="col2">{cimerant:type=field, fieldType=int}</field>
+            <field key="col3">{cimerant:type=field, fieldType=int}</field>
+            <field key="col_keep">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_1">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_2">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_3">{cimerant:type=field, fieldType=int}</field>
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart0">
+        <attributes size="1">
+            <attribute key="like">idxpart</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart1">
+        <attributes size="1">
+            <attribute key="like">idxpart</attribute>
+        </attributes>
+        <fields size="11">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false, unique=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+            <field key="col1">{cimerant:type=field, fieldType=int}</field>
+            <field key="col2">{cimerant:type=field, fieldType=int}</field>
+            <field key="col3">{cimerant:type=field, fieldType=int}</field>
+            <field key="col4">{cimerant:type=field, fieldType=int}</field>
+            <field key="col_keep">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_1">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_2">{cimerant:type=field, fieldType=int}</field>
+            <field key="drop_3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart11">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart2">
+        <attributes size="1">
+            <attribute key="like">idxpart</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text, int=true}</field>
+            <field key="col1">{cimerant:type=field, fieldType=int}</field>
+            <field key="col2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart3">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart_another">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="idxpart_two">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col2">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_index_col_drop">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_pk_detach_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parted_uniq_detach_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk4">
+        <attributes size="1">
+            <attribute key="like">pk</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk5">
+        <attributes size="1">
+            <attribute key="like">pk</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

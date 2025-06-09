@@ -1,0 +1,14 @@
+CREATE TABLE `tab1` (
+  f4 FLOAT4,
+  f8 FLOAT8,
+  i1 INT1,
+  i2 INT2,
+  i3 INT3,
+  i4 INT4,
+  i8 INT8,
+  lvb LONG VARBINARY,
+  lvc LONG VARCHAR,
+  lvcfull LONG BINARY CHARSET utf8 COLLATE utf8_bin,
+  l LONG,
+  mi MIDDLEINT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8

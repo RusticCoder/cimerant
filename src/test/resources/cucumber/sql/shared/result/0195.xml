@@ -1,0 +1,23 @@
+
+<root name="0195">
+    <attributes size="0">
+    </attributes>
+    <object name="print_media_demo">
+        <attributes size="0">
+        </attributes>
+        <fields size="10">
+            <field key="ad_composite">{cimerant:type=field, fieldType=BLOB}</field>
+            <field key="ad_finaltext">{cimerant:type=field, fieldType=CLOB}</field>
+            <field key="ad_fltextn">{cimerant:type=field, fieldType=NCLOB}</field>
+            <field key="ad_graphic">{cimerant:type=field, fieldType=BFILE}</field>
+            <field key="ad_header">{cimerant:type=field, fieldType=adheader_typ}</field>
+            <field key="ad_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+            <field key="ad_photo">{cimerant:type=field, fieldType=BLOB}</field>
+            <field key="ad_sourcetext">{cimerant:type=field, fieldType=CLOB}</field>
+            <field key="ad_textdocs_ntab">{cimerant:type=field, fieldType=textdoc_tab}</field>
+            <field key="product_id">{cimerant:type=field, fieldType=NUMBER, precision=6}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

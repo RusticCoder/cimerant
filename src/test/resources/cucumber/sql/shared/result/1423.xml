@@ -1,0 +1,14 @@
+
+<root name="1423">
+    <attributes size="0">
+    </attributes>
+    <object name="num_input_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="n1">{cimerant:type=field, fieldType=numeric}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

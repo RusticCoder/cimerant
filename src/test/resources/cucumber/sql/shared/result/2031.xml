@@ -1,0 +1,16 @@
+
+<root name="2031">
+    <attributes size="0">
+    </attributes>
+    <object name="dt_t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="downstream">{cimerant:type=field, fieldType=int}</field>
+            <field key="dynamic">{cimerant:type=field, fieldType=int}</field>
+            <field key="target_lag">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

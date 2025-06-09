@@ -1,0 +1,17 @@
+
+<root name="0177">
+    <attributes size="0">
+    </attributes>
+    <object name="employee">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="empID">{cimerant:type=field, encrypt=NO SALT, fieldType=NUMBER}</field>
+            <field key="first_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=128}</field>
+            <field key="last_name">{cimerant:type=field, fieldType=VARCHAR2, maxSize=128}</field>
+            <field key="salary">{cimerant:type=field, encrypt=USING '3DES168', fieldType=NUMBER, precision=6}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

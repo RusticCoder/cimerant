@@ -1,0 +1,14 @@
+
+<root name="0246">
+    <attributes size="0">
+    </attributes>
+    <object name="nv_child_2011">
+        <attributes size="1">
+            <attribute key="inherits">nv_parent</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

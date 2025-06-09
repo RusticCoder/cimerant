@@ -1,0 +1,33 @@
+
+<root name="built_in_functions_data_type">
+    <attributes size="0">
+    </attributes>
+    <object name="t6">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=INT, identity=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t7">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, seed=100}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tableA">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="colA">{cimerant:type=field, fieldType=sql_variant}</field>
+            <field key="colB">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

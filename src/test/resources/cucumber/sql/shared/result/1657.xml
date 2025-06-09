@@ -1,0 +1,15 @@
+
+<root name="1657">
+    <attributes size="0">
+    </attributes>
+    <object name="rtest_unitfact">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="factor">{cimerant:type=field, fieldType=float}</field>
+            <field key="unit">{cimerant:type=field, fieldType=char, maxSize=4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

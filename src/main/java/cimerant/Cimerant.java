@@ -8,13 +8,14 @@ import cimerant.context.impl.ContextRootImpl;
 import cimerant.logger.CimerantLogger;
 import cimerant.logger.CimerantLoggerFactory;
 import cimerant.logger.CimerantServiceProvider;
+import com.github.javafaker.Faker;
 import java.io.File;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +23,9 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.tools.generic.DateTool;
+import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
 import org.slf4j.helpers.Reporter;
@@ -64,7 +68,7 @@ public final class Cimerant {
   }
 
   private void execute(final String... args) {
-    final var moduleCode = ModuleCode.ERR_M02;
+    final var moduleCode = ModuleCode.ERR_M0100;
 
     try {
       final var parsedCommandLine = new ParsedCommandLine(args);
@@ -77,8 +81,8 @@ public final class Cimerant {
       }
 
       if (parsedCommandLine.isValid()) {
-        final var context = parsedCommandLine.getContext();
-        final var contextGrouping = new LinkedList<>(context.getGrouping());
+        final var context = parsedCommandLine.getContext().getContext();
+        final var contextGrouping = new ArrayList<>(context.getGrouping());
         for (final CliValue cliValue : parsedCommandLine.getCliValueList()) {
           final var templateFile = new File(cliValue.getTemplate());
 
@@ -102,14 +106,18 @@ public final class Cimerant {
             final var template = velocityEngine.getTemplate(templateFile.getName());
 
             if (cliValue.getSingleMulti() == SingleMulti.MULTI
-                && ObjectRootContext.class.isAssignableFrom(context.getClass())) {
+                && context instanceof ObjectRootContext) {
               final var objectRootContext = (ObjectRootContext<?>) context;
               for (final var object : objectRootContext.getObjects()) {
                 context.setGrouping(contextGrouping);
-                final var objectGrouping = new LinkedList<>(object.getGrouping());
+                final var objectGrouping = new ArrayList<>(object.getGrouping());
                 final String mergedTemplate;
                 try (final var stringWriter = new StringWriter()) {
                   object.put("this", object);
+                  object.put("dateTool", new DateTool());
+                  object.put("faker", new Faker());
+                  object.put("mathTool", new MathTool());
+                  object.put("numberTool", new NumberTool());
 
                   final var fileName =
                       Paths.get(cliValue.getFilePattern("", object.getObjectName())).toString();
@@ -117,7 +125,7 @@ public final class Cimerant {
 
                   object.setFileName(FilenameUtils.removeExtension(fileName));
                   object.setFileExtension(FilenameUtils.getExtension(fileName));
-                  object.setFilePath(Arrays.asList(filePath.replace("\\", "/").split("/")));
+                  object.setFilePath(Arrays.asList(filePath.replace("\\", "/").split("/", 0)));
 
                   template.merge(object, stringWriter);
 
@@ -164,6 +172,10 @@ public final class Cimerant {
               final String mergedTemplate;
               try (final var stringWriter = new StringWriter()) {
                 context.put("this", context);
+                context.put("dateTool", new DateTool());
+                context.put("faker", new Faker());
+                context.put("mathTool", new MathTool());
+                context.put("numberTool", new NumberTool());
 
                 final var fileName =
                     Paths.get(cliValue.getFilePattern(cliValue.getOutputPath()))
@@ -182,7 +194,7 @@ public final class Cimerant {
 
                 context.setFileName(FilenameUtils.removeExtension(fileName));
                 context.setFileExtension(FilenameUtils.getExtension(fileName));
-                context.setFilePath(Arrays.asList(filePath.replace("\\", "/").split("/")));
+                context.setFilePath(Arrays.asList(filePath.replace("\\", "/").split("/", 0)));
 
                 template.merge(context, stringWriter);
 
@@ -204,7 +216,7 @@ public final class Cimerant {
 
                 final String grouping;
                 if (CollectionUtils.isNotEmpty(context.getGrouping())) {
-                  grouping = String.join(File.separator, context.getGrouping().toString());
+                  grouping = String.join(File.separator, context.getGrouping());
                 } else {
                   grouping = "";
                 }
@@ -280,28 +292,29 @@ public final class Cimerant {
           System.exit(-999);
         }
       }
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       final SysError sysError;
 
-      if (this.logger.hasSysError()) {
+      if (t instanceof SysError) {
+        sysError = (SysError) t;
+      } else if (this.logger.hasSysError()) {
         sysError = this.logger.getSysErrorQueue().peek();
-      } else if (StringUtils.isBlank(e.getMessage())) {
+      } else if (StringUtils.isBlank(t.getMessage())) {
         sysError =
-            new SysError(
+            SysError.getInstance(
                 Cimerant.SYSTEM_CODE,
                 moduleCode,
                 StatusCode.ERR_0001,
-                e.getClass().getSimpleName());
+                t.getClass().getSimpleName());
       } else {
-        sysError =
-            new SysError(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, e.getMessage());
+        sysError = SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
       }
 
       if (!"class com.github.stefanbirkner.systemlambda.SystemLambda$CheckExitCalled"
-          .equals(e.getClass().toString())) {
+          .equals(t.getClass().toString())) {
         System.err.println(sysError.getMessage()); // NOPMD
         if (this.logger.isDebugEnabled()) {
-          e.printStackTrace(System.err);
+          t.printStackTrace(System.err);
         }
       }
 

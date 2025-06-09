@@ -1,0 +1,14 @@
+
+<root name="1978">
+    <attributes size="0">
+    </attributes>
+    <object name="public" grouping="[public, public]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="public">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

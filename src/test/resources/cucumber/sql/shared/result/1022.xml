@@ -1,0 +1,24 @@
+
+<root name="1022">
+    <attributes size="0">
+    </attributes>
+    <object name="fk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="fk_a">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fk_a">{cimerant:type=relationship, column=fk_a, foreignColumn=a, foreignTable=pk}</relationship>
+        </relationships>
+    </object>
+    <object name="pk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

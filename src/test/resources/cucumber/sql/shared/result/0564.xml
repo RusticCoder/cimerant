@@ -1,0 +1,15 @@
+
+<root name="0564">
+    <attributes size="0">
+    </attributes>
+    <object name="doubly_temp" grouping="[pg_temp]">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

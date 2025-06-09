@@ -1,0 +1,14 @@
+
+<root name="0725">
+    <attributes size="0">
+    </attributes>
+    <object name="dom_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=inotnull}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

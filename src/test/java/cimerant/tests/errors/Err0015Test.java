@@ -26,7 +26,7 @@ import org.junit.rules.TemporaryFolder;
 public class Err0015Test {
   private static File cimerantPath;
   private static Path destinationFilePath;
-  private static final String EXPECTED_REGEX = "CMA-M\\d{2}-0015: Invalid file pattern '.*";
+  private static final String EXPECTED_REGEX = "CMA-M\\d{4}-0015: Invalid file pattern '.*";
   private static final int EXPECTED_STATUS_CODE = -15;
   private static String modelPath;
   private static String rootPath;
@@ -45,7 +45,7 @@ public class Err0015Test {
       temporaryFolder.create();
 
       Err0015Test.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", Err0015Test.cimerantPath.getAbsolutePath());
     }
@@ -77,12 +77,12 @@ public class Err0015Test {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(Err0015Test.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 

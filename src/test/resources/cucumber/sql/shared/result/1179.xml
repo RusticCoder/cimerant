@@ -1,0 +1,15 @@
+
+<root name="1179">
+    <attributes size="0">
+    </attributes>
+    <object name="idxpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

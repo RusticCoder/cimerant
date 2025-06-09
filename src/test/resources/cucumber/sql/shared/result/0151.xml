@@ -1,0 +1,19 @@
+
+<root name="0151">
+    <attributes size="0">
+    </attributes>
+    <object name="keywords">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="eur">{cimerant:type=field, fieldType=VARCHAR, maxSize=100}</field>
+            <field key="instant">{cimerant:type=field, fieldType=BIT}</field>
+            <field key="internal">{cimerant:type=field, fieldType=INT}</field>
+            <field key="iso">{charset=utf8mb4, cimerant:type=field, collate=utf8mb4_general_ci, fieldType=VARCHAR, maxSize=10, nullable=false}</field>
+            <field key="jis">{cimerant:type=field, fieldType=VARCHAR, maxSize=100}</field>
+            <field key="usa">{cimerant:type=field, fieldType=VARCHAR, maxSize=100}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

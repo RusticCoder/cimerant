@@ -1,0 +1,15 @@
+
+<root name="1660">
+    <attributes size="0">
+    </attributes>
+    <object name="unit">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="un_fact">{cimerant:type=field, fieldType=float}</field>
+            <field key="un_name">{cimerant:type=field, fieldType=char, maxSize=8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

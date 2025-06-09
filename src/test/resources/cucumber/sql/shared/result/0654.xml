@@ -1,0 +1,15 @@
+
+<root name="0654">
+    <attributes size="0">
+    </attributes>
+    <object name="ctlt1_inh">
+        <attributes size="2">
+            <attribute key="inherits">ctlt1</attribute>
+            <attribute key="like">ctlt1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

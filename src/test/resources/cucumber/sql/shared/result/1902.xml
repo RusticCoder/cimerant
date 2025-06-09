@@ -1,0 +1,15 @@
+
+<root name="1902">
+    <attributes size="0">
+    </attributes>
+    <object name="uv_iocu_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=text, unique=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

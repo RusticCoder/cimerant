@@ -1,0 +1,14 @@
+
+<root name="1805">
+    <attributes size="0">
+    </attributes>
+    <object name="trigpart3">
+        <attributes size="1">
+            <attribute key="like">trigpart</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

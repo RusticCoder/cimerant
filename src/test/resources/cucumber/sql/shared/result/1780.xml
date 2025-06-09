@@ -1,0 +1,17 @@
+
+<root name="1780">
+    <attributes size="0">
+    </attributes>
+    <object name="tttest">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="price_id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="price_off">{cimerant:type=field, default=999999, fieldType=int4}</field>
+            <field key="price_on">{cimerant:type=field, fieldType=int4}</field>
+            <field key="price_val">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

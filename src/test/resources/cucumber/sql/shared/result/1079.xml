@@ -1,0 +1,14 @@
+
+<root name="1079">
+    <attributes size="0">
+    </attributes>
+    <object name="gtest25">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

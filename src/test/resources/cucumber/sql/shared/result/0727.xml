@@ -1,0 +1,14 @@
+
+<root name="0727">
+    <attributes size="0">
+    </attributes>
+    <object name="enumtest">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col">{cimerant:type=field, fieldType=rainbow}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,17 @@
+
+<root name="1523">
+    <attributes size="0">
+    </attributes>
+    <object name="PLine">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="backlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+            <field key="phonenumber">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,14 @@
+
+<root name="time">
+    <attributes size="0">
+    </attributes>
+    <object name="TIME_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=time, maxSize=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

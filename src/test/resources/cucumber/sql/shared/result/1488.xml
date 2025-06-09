@@ -1,0 +1,14 @@
+
+<root name="1488">
+    <attributes size="0">
+    </attributes>
+    <object name="coll_pruning_multi">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

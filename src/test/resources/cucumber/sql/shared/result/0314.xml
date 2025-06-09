@@ -1,0 +1,15 @@
+
+<root name="0314">
+    <attributes size="0">
+    </attributes>
+    <object name="at_partitioned">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int, unique=true}</field>
+            <field key="name">{cimerant:type=field, fieldType=varchar, maxSize=64, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

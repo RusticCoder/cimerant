@@ -1,0 +1,15 @@
+
+<root name="2019">
+    <attributes size="0">
+    </attributes>
+    <object name="DIRECTION">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="LANGUAGE">{cimerant:type=field, fieldType=INT}</field>
+            <field key="LENGTH">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

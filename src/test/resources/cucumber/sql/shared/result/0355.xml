@@ -1,0 +1,15 @@
+
+<root name="0355">
+    <attributes size="0">
+    </attributes>
+    <object name="list_parted">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, collate=C, fieldType=char, maxSize=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

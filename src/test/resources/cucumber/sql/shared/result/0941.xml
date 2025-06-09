@@ -1,0 +1,16 @@
+
+<root name="0941">
+    <attributes size="0">
+    </attributes>
+    <object name="fktable">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ftest1">{cimerant:type=field, fieldType=int}</field>
+            <field key="ftest2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="pktable">{cimerant:type=relationship, column=ftest1, ftest2, foreignColumn=base1, ptest1, foreignTable=pktable}</relationship>
+        </relationships>
+    </object>
+</root>

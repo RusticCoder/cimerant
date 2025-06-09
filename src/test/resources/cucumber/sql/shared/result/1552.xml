@@ -1,0 +1,15 @@
+
+<root name="1552">
+    <attributes size="0">
+    </attributes>
+    <object name="atest2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=varchar, maxSize=10}</field>
+            <field key="col2">{cimerant:type=field, fieldType=boolean}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

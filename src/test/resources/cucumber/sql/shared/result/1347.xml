@@ -1,0 +1,16 @@
+
+<root name="1347">
+    <attributes size="0">
+    </attributes>
+    <object name="J1_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+            <field key="j">{cimerant:type=field, fieldType=integer}</field>
+            <field key="t">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

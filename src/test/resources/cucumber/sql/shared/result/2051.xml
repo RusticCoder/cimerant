@@ -1,0 +1,14 @@
+
+<root name="2051">
+    <attributes size="0">
+    </attributes>
+    <object name="geo">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="coordinate">{cimerant:type=field, fieldType=JSON}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

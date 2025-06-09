@@ -1,0 +1,546 @@
+
+<root name="foreign_key">
+    <attributes size="0">
+    </attributes>
+    <object name="cc">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="f1">{cimerant:type=relationship, column=f1, foreignTable=pp}</relationship>
+        </relationships>
+    </object>
+    <object name="defc">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, default=0, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="f1">{cimerant:type=relationship, column=f1, foreignTable=defp}</relationship>
+        </relationships>
+    </object>
+    <object name="defp">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dropfk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=droppk}</relationship>
+        </relationships>
+    </object>
+    <object name="droppk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, default=50, deferrable=true, fieldType=int}</field>
+            <field key="fk_a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=pk}</relationship>
+            <relationship key="fk_a">{cimerant:type=relationship, column=fk_a, foreignColumn=a, foreignTable=pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk" grouping="[fkpart7]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=pkpart}</relationship>
+        </relationships>
+    </object>
+    <object name="fk2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk4">
+        <attributes size="1">
+            <attribute key="like">fk</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk_notpartitioned_pk">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="fdrop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk_part">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, deferrable=true, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fkey">{cimerant:type=relationship, column=a, foreignTable=pkey}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_part_1_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="my_fkey">{cimerant:type=relationship, column=a, foreignTable=pkey}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, default=2501, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, default=142857, fieldType=int}</field>
+            <field key="fdrop1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignColumn=a, foreignTable=fk_notpartitioned_pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop2">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+            <field key="fdrop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fk_notpartitioned_pk">{cimerant:type=relationship, column=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_3">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop2">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop3">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop4">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fk_notpartitioned_pk">{cimerant:type=relationship, column=a, b, foreignColumn=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_4_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fk_notpartitioned_pk">{cimerant:type=relationship, column=a, b, foreignColumn=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_5">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, deferrable=true, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, deferrable=true, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fk_notpartitioned_pk">{cimerant:type=relationship, column=a, b, foreignColumn=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_5_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fk_notpartitioned_pk">{cimerant:type=relationship, column=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_partitioned_fk_full">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+            <field key="y">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="FKTABLE">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="11">
+            <field key="fk">{cimerant:type=field, deferrable=true, deferred=true, fieldType=INT4, int=true}</field>
+            <field key="ftest1">{cidr=true, cimerant:type=field, default=-1, fieldType=int, inet=true, int8=true, numeric=true}</field>
+            <field key="ftest2">{array=[], cimerant:type=field, default=-2, fieldType=int, inet=true, timestamp=true}</field>
+            <field key="ftest3">{cimerant:type=field, default=-2, fieldType=int}</field>
+            <field key="ftest4">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=INT4, int=true, primary=true}</field>
+            <field key="x1">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="x2">{cimerant:type=field, fieldType=VARCHAR, maxSize=4}</field>
+            <field key="x3">{cimerant:type=field, fieldType=REAL}</field>
+            <field key="x4">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="x5">{cimerant:type=field, fieldType=INT2}</field>
+        </fields>
+        <relationships size="9">
+            <relationship key="constrname">{cimerant:type=relationship, column=ftest1, ftest2, foreignTable=PKTABLE}</relationship>
+            <relationship key="constrname2">{cimerant:type=relationship, column=ftest1, ftest2, foreignTable=PKTABLE}</relationship>
+            <relationship key="constrname3">{cimerant:type=relationship, column=ftest1, ftest2, ftest3, foreignColumn=ptest1, ptest2, ptest3, foreignTable=PKTABLE}</relationship>
+            <relationship key="fk">{cimerant:type=relationship, column=fk, foreignTable=PKTABLE}</relationship>
+            <relationship key="ftest1">{cimerant:type=relationship, column=ftest1, foreignColumn=base1, ptest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="pktable">{cimerant:type=relationship, column=ftest1, ftest2, foreignColumn=base1, ptest1, ptest2, foreignTable=PKTABLE}</relationship>
+            <relationship key="x1">{cimerant:type=relationship, column=x1, foreignColumn=id1, foreignTable=PKTABLE}</relationship>
+            <relationship key="x2">{cimerant:type=relationship, column=x2, foreignColumn=id2, foreignTable=PKTABLE}</relationship>
+            <relationship key="x3">{cimerant:type=relationship, column=x3, foreignColumn=id3, foreignTable=PKTABLE}</relationship>
+        </relationships>
+    </object>
+    <object name="fktable2">
+        <attributes size="0">
+        </attributes>
+        <fields size="8">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+            <field key="e">{cimerant:type=field, fieldType=int}</field>
+            <field key="f1">{cimerant:type=field, deferrable=true, deferred=true, fieldType=int}</field>
+            <field key="very_very_long_column_name_to_exceed_63_characters">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=float8}</field>
+            <field key="y">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="3">
+            <relationship key="f1">{cimerant:type=relationship, column=f1, foreignTable=pktable2}</relationship>
+            <relationship key="pktable1">{cimerant:type=relationship, column=very_very_long_column_name_to_exceed_63_characters, foreignTable=pktable1}</relationship>
+            <relationship key="pktable2">{cimerant:type=relationship, column=a, d, e, very_very_long_column_name_to_exceed_63_characters, x, y, foreignColumn=a, b, foreignTable=pktable2}</relationship>
+        </relationships>
+    </object>
+    <object name="FKTABLE_FAIL1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ftest1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="fkfail1">{cimerant:type=relationship, column=ftest2, foreignTable=PKTABLE}</relationship>
+            <relationship key="ftest1">{cimerant:type=relationship, column=ftest1, foreignColumn=ptest1, foreignTable=PKTABLE}</relationship>
+        </relationships>
+    </object>
+    <object name="FKTABLE_FAIL2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="ftest1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fkfail1">{cimerant:type=relationship, column=ftest1, foreignColumn=ptest2, foreignTable=PKTABLE}</relationship>
+        </relationships>
+    </object>
+    <object name="other_partitioned_fk">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk3">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk32">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk4">
+        <attributes size="1">
+            <attribute key="like">pk</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pk5">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pkey">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pkpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="PKTABLE">
+        <attributes size="2">
+            <attribute key="inherits">pktable_base</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="9">
+            <field key="id">{cimerant:type=field, fieldType=INT4, int=true, primary=true}</field>
+            <field key="id1">{cimerant:type=field, fieldType=INT4, primary=true, unique=true}</field>
+            <field key="id2">{cimerant:type=field, fieldType=VARCHAR, maxSize=4, unique=true}</field>
+            <field key="id3">{cimerant:type=field, fieldType=REAL, unique=true}</field>
+            <field key="other">{cimerant:type=field, fieldType=INT4, int=true}</field>
+            <field key="ptest1">{cimerant:type=field, fieldType=int, inet=true, numeric=true, primary=true, unique=true}</field>
+            <field key="ptest2">{array=[], cimerant:type=field, fieldType=text, inet=true, int=true, primary=true, unique=true}</field>
+            <field key="ptest3">{cimerant:type=field, fieldType=text, int=true, primary=true, unique=true}</field>
+            <field key="ptest4">{cimerant:type=field, fieldType=text, inet=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="pktable">{cimerant:type=relationship, column=base2, ptest2, ptest3, ptest4, foreignColumn=base1, ptest1, ptest2, foreignTable=PKTABLE}</relationship>
+        </relationships>
+    </object>
+    <object name="pktable1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pktable2">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="a">{cimerant:type=field, fieldType=int, float8=true, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, float8=true, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="e">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pktable_base">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="base1">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="base2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pp">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="selfref">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="selfref">{cimerant:type=relationship, column=b, foreignColumn=a, foreignTable=selfref}</relationship>
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t2">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignTable=t1}</relationship>
+        </relationships>
+    </object>
+    <object name="tasks">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="checked_by">{cimerant:type=field, fieldType=INT}</field>
+            <field key="id">{cimerant:type=field, fieldType=INT, primary=true}</field>
+            <field key="owner">{cimerant:type=field, fieldType=INT}</field>
+            <field key="worker">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="3">
+            <relationship key="checked_by">{cimerant:type=relationship, column=checked_by, foreignTable=users}</relationship>
+            <relationship key="owner">{cimerant:type=relationship, column=owner, foreignTable=users}</relationship>
+            <relationship key="worker">{cimerant:type=relationship, column=worker, foreignTable=users}</relationship>
+        </relationships>
+    </object>
+    <object name="tbl1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tbl2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, deferrable=true, deferred=true, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="f1">{cimerant:type=relationship, column=f1, foreignTable=tbl1}</relationship>
+        </relationships>
+    </object>
+    <object name="users">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=INT, primary=true}</field>
+            <field key="name">{cimerant:type=field, fieldType=VARCHAR, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,25 @@
+
+<root name="0747">
+    <attributes size="0">
+    </attributes>
+    <object name="one">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col_a">{cimerant:type=field, fieldType=SERIAL, primary=true}</field>
+            <field key="col_b">{cimerant:type=field, default='forty two', fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="two">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col_c">{cimerant:type=field, default=42, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="col_c">{cimerant:type=relationship, column=col_c, foreignTable=one}</relationship>
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,2 @@
+CREATE table wh_id(MAX_CONCURRENCY_LEVEL int, WAREHOUSE_TYPE int)
+

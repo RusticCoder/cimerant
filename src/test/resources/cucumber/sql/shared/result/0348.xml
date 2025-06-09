@@ -1,0 +1,14 @@
+
+<root name="0348">
+    <attributes size="0">
+    </attributes>
+    <object name="test_add_column">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c1">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

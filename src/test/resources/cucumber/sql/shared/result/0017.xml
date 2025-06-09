@@ -1,0 +1,16 @@
+
+<root name="0017">
+    <attributes size="0">
+    </attributes>
+    <object name="inventory22">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="description">{cimerant:type=field, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="entry_person">{cimerant:type=field, default=USER, fieldType=VARCHAR, maxSize=30, nullable=false}</field>
+            <field key="part_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, nullable=false, seed=100}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

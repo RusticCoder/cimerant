@@ -1,0 +1,16 @@
+
+<root name="0321">
+    <attributes size="0">
+    </attributes>
+    <object name="check_fk_presence_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="t">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="id">{cimerant:type=relationship, column=id, foreignTable=check_fk_presence_1}</relationship>
+        </relationships>
+    </object>
+</root>

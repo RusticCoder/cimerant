@@ -1,0 +1,14 @@
+
+<root name="1719">
+    <attributes size="0">
+    </attributes>
+    <object name="ab1c">
+        <attributes size="1">
+            <attribute key="inherits">ab1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

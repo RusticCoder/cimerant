@@ -1,0 +1,20 @@
+
+<root name="0134">
+    <attributes size="0">
+    </attributes>
+    <object name="check_table_kw">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="changed">{cimerant:type=field, fieldType=varchar, maxSize=256}</field>
+            <field key="extended">{cimerant:type=field, fieldType=varchar, maxSize=256}</field>
+            <field key="fast">{cimerant:type=field, fieldType=varchar, maxSize=256}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="medium">{cimerant:type=field, fieldType=varchar, maxSize=256}</field>
+            <field key="quick">{cimerant:type=field, fieldType=varchar, maxSize=256}</field>
+            <field key="upgrade">{cimerant:type=field, fieldType=varchar, maxSize=256}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

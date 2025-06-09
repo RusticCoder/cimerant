@@ -1,0 +1,16 @@
+
+<root name="1788">
+    <attributes size="0">
+    </attributes>
+    <object name="serializable_update_tab">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="description">{cimerant:type=field, fieldType=text}</field>
+            <field key="filler">{cimerant:type=field, fieldType=text}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

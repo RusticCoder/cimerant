@@ -1,0 +1,34 @@
+
+<root name="timestamptz">
+    <attributes size="0">
+    </attributes>
+    <object name="TIMESTAMPTZ_TBL">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="d1">{cimerant:type=field, fieldType=timestamp, maxSize=2, timezone=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TIMESTAMPTZ_TST">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=timestamptz}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tmptz">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="f1">{cimerant:type=field, fieldType=timestamptz, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

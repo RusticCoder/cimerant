@@ -1,0 +1,17 @@
+
+<root name="0022">
+    <attributes size="0">
+    </attributes>
+    <object name="example_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="_id">{cimerant:type=field, fieldType=INT, identity=true, primary=true}</field>
+            <field key="info">{cimerant:type=field, fieldType=VARBINARY, maxSize=max}</field>
+            <field key="name">{cimerant:type=field, fieldType=NVARCHAR, maxSize=max}</field>
+            <field key="surname">{cimerant:type=field, fieldType=NVARCHAR, maxSize=max}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

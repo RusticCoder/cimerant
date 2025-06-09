@@ -1,0 +1,14 @@
+
+<root name="0882">
+    <attributes size="0">
+    </attributes>
+    <object name="revalidate_bug">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=float8, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

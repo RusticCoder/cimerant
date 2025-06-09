@@ -1,0 +1,15 @@
+
+<root name="0477">
+    <attributes size="0">
+    </attributes>
+    <object name="collate_test21">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f2">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="f2">{cimerant:type=relationship, column=f2, foreignTable=collate_test20}</relationship>
+        </relationships>
+    </object>
+</root>

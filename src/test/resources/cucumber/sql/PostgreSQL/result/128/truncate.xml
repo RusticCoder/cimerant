@@ -1,0 +1,190 @@
+
+<root name="truncate">
+    <attributes size="0">
+    </attributes>
+    <object name="ref_b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="b">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignColumn=a, foreignTable=trunc_a}</relationship>
+        </relationships>
+    </object>
+    <object name="ref_c">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="c">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignColumn=a, foreignTable=trunc_a}</relationship>
+        </relationships>
+    </object>
+    <object name="trunc_a">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=INT, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_b">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=truncate_a}</relationship>
+        </relationships>
+    </object>
+    <object name="trunc_c">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=serial, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_d">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=trunc_c}</relationship>
+        </relationships>
+    </object>
+    <object name="trunc_e">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="2">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=truncate_a}</relationship>
+            <relationship key="b">{cimerant:type=relationship, column=b, foreignTable=trunc_c}</relationship>
+        </relationships>
+    </object>
+    <object name="trunc_f">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="col1">{cimerant:type=field, fieldType=integer, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_fa">
+        <attributes size="1">
+            <attribute key="inherits">trunc_f</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="col2a">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_faa">
+        <attributes size="1">
+            <attribute key="inherits">trunc_fa</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="col3">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_fb">
+        <attributes size="1">
+            <attribute key="inherits">trunc_f</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="col2b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_trigger_log">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="rowcount">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="tgargv">{cimerant:type=field, fieldType=text}</field>
+            <field key="tglevel">{cimerant:type=field, fieldType=text}</field>
+            <field key="tgop">{cimerant:type=field, fieldType=text}</field>
+            <field key="tgtable">{cimerant:type=field, fieldType=name}</field>
+            <field key="tgwhen">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="trunc_trigger_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=text}</field>
+            <field key="f3">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="truncate_a">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="col1">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+            <field key="id1">{cimerant:type=field, default=nextval('truncate_a_id1'), fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="truncate_b">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int, identity=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="truncpart">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=truncprim}</relationship>
+        </relationships>
+    </object>
+    <object name="truncparted">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=char}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="truncprim">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

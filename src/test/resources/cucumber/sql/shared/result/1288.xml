@@ -1,0 +1,15 @@
+
+<root name="1288">
+    <attributes size="0">
+    </attributes>
+    <object name="inh_temp_child_2">
+        <attributes size="2">
+            <attribute key="inherits">inh_temp_parent</attribute>
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

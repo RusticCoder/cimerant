@@ -1,0 +1,14 @@
+
+<root name="1872">
+    <attributes size="0">
+    </attributes>
+    <object name="base_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=float}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

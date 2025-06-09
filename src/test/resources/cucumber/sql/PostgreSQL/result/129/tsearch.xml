@@ -1,0 +1,35 @@
+
+<root name="tsearch">
+    <attributes size="0">
+    </attributes>
+    <object name="pendtest">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ts">{cimerant:type=field, fieldType=tsvector}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="phrase_index_test">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="fts">{cimerant:type=field, fieldType=tsvector}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_tsquery">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="txtkeyword">{cimerant:type=field, fieldType=TEXT}</field>
+            <field key="txtsample">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

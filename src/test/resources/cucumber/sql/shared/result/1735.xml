@@ -1,0 +1,16 @@
+
+<root name="1735">
+    <attributes size="0">
+    </attributes>
+    <object name="orderstest">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="approver_ref">{cimerant:type=field, fieldType=integer}</field>
+            <field key="ordercanceled">{cimerant:type=field, fieldType=boolean}</field>
+            <field key="po_ref">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

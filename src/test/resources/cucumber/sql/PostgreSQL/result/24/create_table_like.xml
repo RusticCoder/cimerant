@@ -1,0 +1,364 @@
+
+<root name="create_table_like">
+    <attributes size="0">
+    </attributes>
+    <object name="ctla">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="aa">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlb">
+        <attributes size="1">
+            <attribute key="inherits">ctla</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="bb">{cimerant:type=field, fieldType=TEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=text, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt10">
+        <attributes size="1">
+            <attribute key="like">ctlseq1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt11">
+        <attributes size="1">
+            <attribute key="like">ctlv1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt11a">
+        <attributes size="1">
+            <attribute key="like">ctlv1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt12">
+        <attributes size="1">
+            <attribute key="like">ctlty1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt12_comments">
+        <attributes size="1">
+            <attribute key="like">ctlt1, ctlt2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt12_storage">
+        <attributes size="1">
+            <attribute key="like">ctlt1, ctlt2</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt13_inh">
+        <attributes size="1">
+            <attribute key="inherits">ctlt1, ctlt3</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt13_like">
+        <attributes size="2">
+            <attribute key="inherits">ctlt1</attribute>
+            <attribute key="like">ctlt3</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt1_inh">
+        <attributes size="2">
+            <attribute key="inherits">ctlt1</attribute>
+            <attribute key="like">ctlt1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt2">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt3">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt4">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=text, int=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ctlt_all">
+        <attributes size="1">
+            <attribute key="like">ctlt1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="foo">
+        <attributes size="1">
+            <attribute key="like">nonexistent</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_error1">
+        <attributes size="1">
+            <attribute key="inherits">ctlt1, ctlt4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inh_error2">
+        <attributes size="2">
+            <attribute key="inherits">ctlt1</attribute>
+            <attribute key="like">ctlt4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhe">
+        <attributes size="2">
+            <attribute key="inherits">ctlb</attribute>
+            <attribute key="like">inhx</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="ee">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhf">
+        <attributes size="1">
+            <attribute key="like">inhx</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhg">
+        <attributes size="1">
+            <attribute key="like">inhx, inhz</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="x">{cimerant:type=field, fieldType=text, primary=true, unique=true}</field>
+            <field key="y">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhx">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="xx">{cimerant:type=field, default='text', fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="inhz">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="xx">{cimerant:type=field, default='text', fieldType=text}</field>
+            <field key="yy">{cimerant:type=field, fieldType=int, unique=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="noinh_con_copy">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="noinh_con_copy1">
+        <attributes size="1">
+            <attribute key="like">noinh_con_copy</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="noinh_con_copy1_parted">
+        <attributes size="1">
+            <attribute key="like">noinh_con_copy</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_4">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, default=42, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_4a">
+        <attributes size="1">
+            <attribute key="like">test_like_4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_4b">
+        <attributes size="1">
+            <attribute key="like">test_like_4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_4c">
+        <attributes size="1">
+            <attribute key="like">test_like_4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_4d">
+        <attributes size="1">
+            <attribute key="like">test_like_4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_gen_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_gen_2">
+        <attributes size="1">
+            <attribute key="like">test_like_gen_1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_gen_3">
+        <attributes size="1">
+            <attribute key="like">test_like_gen_1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_id_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=bigint, identity=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_id_2">
+        <attributes size="1">
+            <attribute key="like">test_like_id_1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_like_id_3">
+        <attributes size="1">
+            <attribute key="like">test_like_id_1</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

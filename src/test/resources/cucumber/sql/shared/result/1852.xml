@@ -1,0 +1,15 @@
+
+<root name="1852">
+    <attributes size="0">
+    </attributes>
+    <object name="truncate_a">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=serial}</field>
+            <field key="id1">{cimerant:type=field, default=nextval('truncate_a_id1'), fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

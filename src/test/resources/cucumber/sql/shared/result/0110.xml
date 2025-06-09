@@ -1,0 +1,19 @@
+
+<root name="0110">
+    <attributes size="0">
+    </attributes>
+    <object name="auth_realm_clients">
+        <attributes size="2">
+            <attribute key="charset">latin1</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="client_id">{cimerant:type=field, fieldType=varchar, maxSize=150, nullable=false}</field>
+            <field key="client_secret">{cimerant:type=field, fieldType=blob, nullable=false}</field>
+            <field key="fk_realm">{cimerant:type=field, default=NULL, fieldType=int, unsigned=true}</field>
+            <field key="pk_realm">{cimerant:type=field, default='0', fieldType=int, nullable=false, primary=true, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

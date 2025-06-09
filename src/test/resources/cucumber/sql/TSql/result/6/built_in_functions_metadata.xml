@@ -1,0 +1,35 @@
+
+<root name="built_in_functions_metadata">
+    <attributes size="0">
+    </attributes>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=VARCHAR, maxSize=40}</field>
+            <field key="c2">{cimerant:type=field, fieldType=NVARCHAR, maxSize=40}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TY">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="Y_id">{cimerant:type=field, fieldType=INT, identity=true, increment=5, primary=true, seed=100}</field>
+            <field key="Y_name">{cimerant:type=field, fieldType=VARCHAR, maxSize=20, nullable=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TZ">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="Z_id">{cimerant:type=field, fieldType=INT, identity=true, increment=1, primary=true, seed=1}</field>
+            <field key="Z_name">{cimerant:type=field, fieldType=VARCHAR, maxSize=20, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

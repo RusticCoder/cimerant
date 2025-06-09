@@ -1,0 +1,14 @@
+
+<root name="0658">
+    <attributes size="0">
+    </attributes>
+    <object name="inh_error1">
+        <attributes size="1">
+            <attribute key="inherits">ctlt1, ctlt4</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

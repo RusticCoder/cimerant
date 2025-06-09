@@ -1,0 +1,15 @@
+
+<root name="0527">
+    <attributes size="0">
+    </attributes>
+    <object name="student">
+        <attributes size="1">
+            <attribute key="inherits">person</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="gpa">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,24 @@
+
+<root name="0049">
+    <attributes size="0">
+    </attributes>
+    <object name="SalesHistory" grouping="[Sales]">
+        <attributes size="0">
+        </attributes>
+        <fields size="11">
+            <field key="CarrierTrackingNumber">{cimerant:type=field, fieldType=nvarchar, maxSize=25, nullable=true}</field>
+            <field key="LineTotal">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="ModifiedDate">{cimerant:type=field, fieldType=datetime, nullable=false}</field>
+            <field key="OrderQty">{cimerant:type=field, fieldType=smallint, nullable=false}</field>
+            <field key="ProductID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="rowguid">{cimerant:type=field, fieldType=uniqueidentifier, nullable=false}</field>
+            <field key="SalesOrderDetailID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="SalesOrderID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="SpecialOfferID">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="UnitPrice">{cimerant:type=field, fieldType=money, nullable=false}</field>
+            <field key="UnitPriceDiscount">{cimerant:type=field, fieldType=money, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

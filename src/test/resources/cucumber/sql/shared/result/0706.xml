@@ -1,0 +1,15 @@
+
+<root name="0706">
+    <attributes size="0">
+    </attributes>
+    <object name="domarrtest">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="testchar4arr">{cimerant:type=field, fieldType=domainchar4arr}</field>
+            <field key="testint4arr">{cimerant:type=field, fieldType=domainint4arr}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

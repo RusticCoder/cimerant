@@ -1,0 +1,17 @@
+
+<root name="1520">
+    <attributes size="0">
+    </attributes>
+    <object name="WSlot">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="backlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="roomno">{cimerant:type=field, fieldType=char, maxSize=8}</field>
+            <field key="slotlink">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+            <field key="slotname">{cimerant:type=field, fieldType=char, maxSize=20}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

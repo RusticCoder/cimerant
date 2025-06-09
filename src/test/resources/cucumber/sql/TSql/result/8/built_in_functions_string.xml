@@ -1,0 +1,37 @@
+
+<root name="built_in_functions_string">
+    <attributes size="0">
+    </attributes>
+    <object name="npub_info">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="pr_info">{cimerant:type=field, fieldType=ntext, nullable=true}</field>
+            <field key="pub_id">{cimerant:type=field, clustered=true, fieldType=CHAR, maxSize=4, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="pub_id">{cimerant:type=relationship, column=pub_id, foreignColumn=pub_id, foreignTable=publishers}</relationship>
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=varchar, maxSize=3}</field>
+            <field key="c2">{cimerant:type=field, fieldType=char, maxSize=3}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="temp">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="emp_lastname">{cimerant:type=field, fieldType=NVARCHAR, maxSize=200, nullable=false}</field>
+            <field key="emp_middlename">{cimerant:type=field, fieldType=NVARCHAR, maxSize=200, nullable=true}</field>
+            <field key="emp_name">{cimerant:type=field, fieldType=NVARCHAR, maxSize=200, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

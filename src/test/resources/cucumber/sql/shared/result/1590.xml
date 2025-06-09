@@ -1,0 +1,14 @@
+
+<root name="1590">
+    <attributes size="0">
+    </attributes>
+    <object name="test_range_elem">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int4}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

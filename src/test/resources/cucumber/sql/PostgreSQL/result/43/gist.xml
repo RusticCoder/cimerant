@@ -1,0 +1,26 @@
+
+<root name="gist">
+    <attributes size="0">
+    </attributes>
+    <object name="gist_point_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=int4}</field>
+            <field key="p">{cimerant:type=field, fieldType=point}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="gist_tbl">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="b">{cimerant:type=field, fieldType=box}</field>
+            <field key="c">{cimerant:type=field, fieldType=circle}</field>
+            <field key="p">{cimerant:type=field, fieldType=point}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

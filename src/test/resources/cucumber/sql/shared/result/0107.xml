@@ -1,0 +1,22 @@
+
+<root name="0107">
+    <attributes size="0">
+    </attributes>
+    <object name="t_table">
+        <attributes size="3">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="collate">utf8mb4_unicode_ci</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="app_url">{cimerant:type=field, collate=utf8mb4_unicode_ci, default=NULL, fieldType=varchar, maxSize=500}</field>
+            <field key="info_no">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true, unsigned=true}</field>
+            <field key="member_id">{cimerant:type=field, collate=utf8mb4_unicode_ci, fieldType=varchar, maxSize=30, nullable=false, unique=true}</field>
+            <field key="product_no">{cimerant:type=field, fieldType=int, nullable=false, precision=11, unique=true, unsigned=true}</field>
+            <field key="redirect_url">{cimerant:type=field, collate=utf8mb4_unicode_ci, default=NULL, fieldType=varchar, maxSize=200}</field>
+            <field key="scope">{cimerant:type=field, collate=utf8mb4_unicode_ci, default=NULL, fieldType=varchar, maxSize=200}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

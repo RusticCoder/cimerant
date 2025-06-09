@@ -1,0 +1,15 @@
+
+<root name="0129">
+    <attributes size="0">
+    </attributes>
+    <object name="genvalue1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=binary, maxSize=16, nullable=false, primary=true}</field>
+            <field key="val">{cimerant:type=field, fieldType=char, maxSize=32}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

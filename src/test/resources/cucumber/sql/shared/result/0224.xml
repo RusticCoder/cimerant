@@ -1,0 +1,15 @@
+
+<root name="0224">
+    <attributes size="0">
+    </attributes>
+    <object name="alt_regress_2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=INTEGER}</field>
+            <field key="b">{cimerant:type=field, fieldType=INTEGER}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

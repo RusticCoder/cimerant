@@ -1,0 +1,15 @@
+
+<root name="0888">
+    <attributes size="0">
+    </attributes>
+    <object name="phrase_index_test">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="fts">{cimerant:type=field, fieldType=tsvector}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

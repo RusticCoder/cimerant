@@ -1,0 +1,15 @@
+
+<root name="1257">
+    <attributes size="0">
+    </attributes>
+    <object name="inht2">
+        <attributes size="1">
+            <attribute key="inherits">inht1</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

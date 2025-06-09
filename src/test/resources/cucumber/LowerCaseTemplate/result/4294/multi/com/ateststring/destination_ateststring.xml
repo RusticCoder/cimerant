@@ -12,11 +12,13 @@
             <attribute key="model key 6">a\test\string</attribute>
             <attribute key="model key 7">a$test$string</attribute>
             <attribute key="model key 8">ateststring</attribute>
-            <attribute key="model keys">a test string_a_test_string_a-test-string_a.test.string_a/test/string_a\test\string_a$test$string_ateststring</attribute>
+            <attribute key="model keys">a test string a_test_string a-test-string a.test.string a/test/string a\test\string a$test$string ateststring</attribute>
             <attribute key="url">vets.petshop.com</attribute>
         </attributes>
         <fields size="1">
             <field key="ateststring">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
 </root>

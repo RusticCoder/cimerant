@@ -1,0 +1,16 @@
+
+<root name="0111">
+    <attributes size="0">
+    </attributes>
+    <object name="site_checker_b_sonet_group_favorites">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="DATE_ADD">{cimerant:type=field, default=NULL, fieldType=datetime}</field>
+            <field key="GROUP_ID">{cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true}</field>
+            <field key="USER_ID">{cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

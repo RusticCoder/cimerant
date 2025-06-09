@@ -1,0 +1,14 @@
+
+<root name="1587">
+    <attributes size="0">
+    </attributes>
+    <object name="textrange_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="tr">{cimerant:type=field, fieldType=textrange}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

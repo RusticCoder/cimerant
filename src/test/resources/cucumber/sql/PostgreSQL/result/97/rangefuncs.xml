@@ -1,0 +1,66 @@
+
+<root name="rangefuncs">
+    <attributes size="0">
+    </attributes>
+    <object name="rngfunc">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="f1">{cimerant:type=field, fieldType=int8}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int8}</field>
+            <field key="rngfuncid">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="rngfuncname">{cimerant:type=field, fieldType=text}</field>
+            <field key="rngfuncsubid">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="rngfunc2">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+            <field key="rngfuncid">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tt">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="f1">{cimerant:type=field, fieldType=serial}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tt_log">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=text}</field>
+            <field key="f1">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="users">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="email">{cimerant:type=field, fieldType=text}</field>
+            <field key="enabled">{cimerant:type=field, fieldType=bool}</field>
+            <field key="moredrop">{cimerant:type=field, fieldType=int}</field>
+            <field key="seq">{cimerant:type=field, fieldType=int}</field>
+            <field key="todrop">{cimerant:type=field, fieldType=bool}</field>
+            <field key="userid">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

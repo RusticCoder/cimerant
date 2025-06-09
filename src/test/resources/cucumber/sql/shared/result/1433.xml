@@ -1,0 +1,16 @@
+
+<root name="1433">
+    <attributes size="0">
+    </attributes>
+    <object name="num_result">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="id1">{cimerant:type=field, fieldType=int4}</field>
+            <field key="id2">{cimerant:type=field, fieldType=int4}</field>
+            <field key="result">{cimerant:type=field, fieldType=numeric, precision=1000, scale=800}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

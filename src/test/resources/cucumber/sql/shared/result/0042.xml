@@ -1,0 +1,16 @@
+
+<root name="0042">
+    <attributes size="0">
+    </attributes>
+    <object name="T1" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="column_2">{cimerant:type=field, default='my column default', fieldType=varchar, maxSize=30}</field>
+            <field key="column_3">{cimerant:type=field, fieldType=rowversion}</field>
+            <field key="column_4">{cimerant:type=field, fieldType=varchar, maxSize=40, nullable=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

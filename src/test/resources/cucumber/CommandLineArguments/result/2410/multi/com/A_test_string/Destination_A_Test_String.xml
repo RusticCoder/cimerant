@@ -17,5 +17,7 @@
         <fields size="1">
             <field key="A_TEST_STRING">{cimerant:type=field, fieldType=int}</field>
         </fields>
+        <relationships size="0">
+        </relationships>
     </object>
 </root>

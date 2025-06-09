@@ -1,0 +1,15 @@
+
+<root name="2084">
+    <attributes size="0">
+    </attributes>
+    <object name="test10b">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{array=[], cimerant:type=field, fieldType=int}</field>
+            <field key="b">{array=[], cimerant:type=field, fieldType=priv_testtype1}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

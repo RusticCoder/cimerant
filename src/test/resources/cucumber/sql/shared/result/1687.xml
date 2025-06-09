@@ -1,0 +1,15 @@
+
+<root name="1687">
+    <attributes size="0">
+    </attributes>
+    <object name="hats">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="hat_color">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="hat_name">{cimerant:type=field, fieldType=char, maxSize=10, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

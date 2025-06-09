@@ -1,0 +1,14 @@
+
+<root name="2014">
+    <attributes size="0">
+    </attributes>
+    <object name="tz1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=TIMESTAMPLTZ}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,16 @@
+
+<root name="incremental_sort">
+    <attributes size="0">
+    </attributes>
+    <object name="t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="a">{cimerant:type=field, fieldType=integer, int=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=integer, int=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

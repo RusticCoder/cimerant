@@ -1,0 +1,14 @@
+
+<root name="0434">
+    <attributes size="0">
+    </attributes>
+    <object name="VARBIT_SHIFT_TABLE">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="v">{cimerant:type=field, fieldType=BIT, maxSize=20, varying=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

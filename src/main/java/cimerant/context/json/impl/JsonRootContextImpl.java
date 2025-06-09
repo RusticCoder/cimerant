@@ -1,20 +1,31 @@
 package cimerant.context.json.impl;
 
+import cimerant.Cimerant;
 import cimerant.CliVariableList;
-import cimerant.context.NotNullMap;
+import cimerant.ModuleCode;
+import cimerant.StatusCode;
+import cimerant.SysError;
+import cimerant.context.NotNullSet;
+import cimerant.context.cimerant.ObjectAttributeList;
+import cimerant.context.cimerant.ObjectContext;
+import cimerant.context.cimerant.impl.ObjectAttributeListImpl;
 import cimerant.context.cimerant.impl.ObjectRootContextImpl;
 import cimerant.context.impl.ContextRootImpl;
-import cimerant.context.json.JsonContext;
 import cimerant.context.json.JsonRootContext;
+import cimerant.logger.CimerantLogger;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -22,157 +33,75 @@ import java.util.stream.Collectors;
  */
 public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String, Object>>
     implements JsonRootContext {
+  private static final CimerantLogger logger;
   private static final long serialVersionUID = 1L;
+
+  static {
+    logger = (CimerantLogger) LoggerFactory.getLogger(JsonRootContextImpl.class.getName());
+  }
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
    * context exists.
    *
-   * @param map the context map.
+   * @param file the context map.
    * @param cliVariableList the context list of command-line interface variables.
    * @return a instance of the context.
+   * @throws IOException if an I/O error occurs
+   * @throws DatabindException if a databind error occurs
+   * @throws StreamReadException if a stream read error occurs
    */
-  public static JsonRootContext getInstance(
-      final Map<String, Object> map, final CliVariableList cliVariableList) {
-    Objects.requireNonNull(map);
-    Objects.requireNonNull(cliVariableList);
-    return ContextRootImpl.registerInstance(new JsonRootContextImpl(map, cliVariableList));
+  public static JsonRootContext getInstance(final File file, final CliVariableList cliVariableList)
+      throws StreamReadException, DatabindException, IOException {
+    final var moduleCode = ModuleCode.ERR_M0600;
+
+    try {
+      Objects.requireNonNull(file);
+      Objects.requireNonNull(cliVariableList);
+
+      final var objectMapper = new ObjectMapper();
+      final Map<String, Object> map = objectMapper.readValue(file, new TypeReference<>() {});
+
+      final ObjectAttributeList attributes = new ObjectAttributeListImpl();
+      final List<ObjectContext<Entry<String, Object>>> objects = new ArrayList<>();
+      final List<Entry<String, Object>> entities = new ArrayList<>();
+      final List<Entry<String, Object>> groupings = new ArrayList<>();
+
+      JsonRootContextImpl.parseMap(map, cliVariableList, attributes, entities, groupings);
+
+      return ContextRootImpl.registerInstance(
+          new JsonRootContextImpl(map, attributes, entities, groupings, objects));
+    } catch (final SysError s) {
+      throw s;
+    } catch (final Throwable t) {
+      // 0001 | Unknown error
+      if (JsonRootContextImpl.logger.isDebugEnabled()) {
+        JsonRootContextImpl.logger.debug(t.getMessage(), t);
+      }
+      throw SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
+    }
   }
 
-  /** The list of attributes. */
-  private final Map<String, Object> attributes;
+  @SuppressWarnings({"unchecked"})
+  private static void parseGroupings(
+      final List<String> parentGroupings,
+      final JsonRootContext parent,
+      final ObjectAttributeList parentAttributes,
+      final Entry<String, Object> contextObject,
+      final List<ObjectContext<Entry<String, Object>>> objects) {
+    parentGroupings.add(contextObject.getKey());
+    final var map = (Map<String, Object>) contextObject.getValue();
 
-  /** The list of objects. */
-  private final List<JsonContext> objects = new ArrayList<>();
-
-  /** Creates an instance. */
-  @SuppressWarnings({"unchecked", "JdkObsolete"})
-  private JsonRootContextImpl(
-      final Map<String, Object> contextObject, final CliVariableList cliVariableList) {
-    super(contextObject);
-    Objects.requireNonNull(cliVariableList);
-
-    final Map<String, Object> modifiableAttributes = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     final List<Entry<String, Object>> entities = new ArrayList<>();
     final List<Entry<String, Object>> groupings = new ArrayList<>();
-
-    for (final Entry<String, Object> entry : this.getContextObject().entrySet()) {
-      switch (CimerantKeys.valueOf(entry)) {
-        case CIMERANT_ATTRIBUTES:
-          modifiableAttributes.putAll((Map<String, Object>) entry.getValue());
-          break;
-        case CIMERANT_TYPE:
-          switch (CimerantTypes.valueOf(entry)) {
-            case ENTITY:
-              entities.add(entry);
-              break;
-            case GROUPING:
-              groupings.add(entry);
-              break;
-            default:
-              modifiableAttributes.put(entry.getKey(), entry.getValue());
-              break;
-          }
-          break;
-        default:
-          modifiableAttributes.put(entry.getKey(), entry.getValue());
-          break;
-      }
-    }
-
-    for (final CliVariableList.CliVariable cliVariable : cliVariableList) {
-      modifiableAttributes.put(cliVariable.getKey(), cliVariable.getValue());
-    }
-
-    this.attributes = new NotNullMap<>(Collections.unmodifiableMap(modifiableAttributes));
-
-    for (final var entity : entities) {
-      this.objects.add(JsonContextImpl.getInstance(this, new LinkedList<>(), entity));
-    }
-
-    for (final var grouping : groupings) {
-      this.parseGroupings(new LinkedList<>(), new TreeMap<>(this.attributes), grouping);
-    }
-  }
-
-  /**
-   * Returns the attribute to which the specified name is mapped, or {@code null} if this context
-   * contains no mapping for the name.
-   */
-  @Override
-  public Object getAttributeByName(final String name) {
-    if (this.attributes.containsKey(name)) {
-      return this.attributes.get(name);
-    }
-    return null;
-  }
-
-  /**
-   * Returns the attribute of this context by the name of the attribute supplying a default value if
-   * the attribute is not found.
-   */
-  @Override
-  public Object getAttributeByName(final String name, final Object defaultValue) {
-    if (this.attributes.containsKey(name)) {
-      return this.attributes.get(name);
-    }
-    return defaultValue;
-  }
-
-  /**
-   * Returns the attribute object that maps names to values, or {@code null} if this context
-   * contains no attribute object.
-   */
-  @Override
-  public Map<String, Object> getAttributes() {
-    return this.attributes;
-  }
-
-  /**
-   * Returns the object that maps names to values, or {@code null} if this context contains no
-   * object.
-   */
-  @Override
-  public List<JsonContext> getObjects() {
-    return this.objects;
-  }
-
-  /**
-   * Returns the objects to which the specified name is mapped, or {@code null} if this context
-   * contains no mapping for the name.
-   */
-  @Override
-  public List<JsonContext> getObjectsByName(final String name) {
-    Objects.requireNonNull(name);
-    return this.objects.stream()
-        .filter(object -> name.equalsIgnoreCase(object.getObjectName()))
-        .collect(Collectors.toList());
-  }
-
-  /** Returns {@code true} if this context contains a attribute for the specified name. */
-  @Override
-  public boolean hasAttributeByName(final String name) {
-    return this.attributes.containsKey(name);
-  }
-
-  @SuppressWarnings({"unchecked", "JdkObsolete"})
-  private void parseGroupings(
-      final List<String> parentGroupings,
-      final Map<String, Object> parentAttributes,
-      final Entry<String, Object> entry) {
-    parentGroupings.add(entry.getKey());
-    final var map = (Map<String, Object>) entry.getValue();
-
-    final List<Entry<String, Object>> entities = new ArrayList<>();
-    final List<Entry<String, Object>> groupings = new LinkedList<>();
 
     for (final Entry<String, Object> mapEntry : map.entrySet()) {
       switch (CimerantKeys.valueOf(mapEntry)) {
         case CIMERANT_ATTRIBUTES:
-          if (Map.class.isAssignableFrom(mapEntry.getValue().getClass())) {
-            parentAttributes.putAll((Map<String, Object>) mapEntry.getValue());
+          if (mapEntry.getValue() instanceof final Map mapEntryValue) {
+            parentAttributes.putAll(mapEntryValue);
           } else {
-            parentAttributes.put(mapEntry.getKey(), mapEntry.getValue());
+            parentAttributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
           }
           break;
         case CIMERANT_TYPE:
@@ -184,22 +113,97 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
               groupings.add(mapEntry);
               break;
             default:
-              parentAttributes.put(mapEntry.getKey(), mapEntry.getValue());
+              parentAttributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
               break;
           }
           break;
         default:
-          parentAttributes.put(mapEntry.getKey(), mapEntry.getValue());
+          if (!"cimerant:type".equals(mapEntry.getKey())) {
+            parentAttributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
+          }
           break;
       }
     }
     for (final var entity : entities) {
-      this.objects.add(
-          JsonContextImpl.getInstance(this, new LinkedList<>(parentGroupings), entity));
+      objects.add(JsonContextImpl.getInstance(entity, parent, new ArrayList<>(parentGroupings)));
     }
     for (final var grouping : groupings) {
-      this.parseGroupings(
-          new LinkedList<>(parentGroupings), new TreeMap<>(parentAttributes), grouping);
+      JsonRootContextImpl.parseGroupings(
+          new ArrayList<>(parentGroupings), parent, parentAttributes, grouping, objects);
     }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static void parseMap(
+      final Map<String, Object> contextObject,
+      final CliVariableList cliVariableList,
+      final ObjectAttributeList attributes,
+      final List<Entry<String, Object>> entities,
+      final List<Entry<String, Object>> groupings) {
+    for (final Entry<String, Object> entry : contextObject.entrySet()) {
+      switch (CimerantKeys.valueOf(entry)) {
+        case CIMERANT_ATTRIBUTES:
+          if (entry.getValue() instanceof final Map map) {
+            attributes.putAll(map);
+          }
+          break;
+        case CIMERANT_TYPE:
+          switch (CimerantTypes.valueOf(entry)) {
+            case ENTITY:
+              entities.add(entry);
+              break;
+            case GROUPING:
+              groupings.add(entry);
+              break;
+            default:
+              attributes.put(entry.getKey(), NotNullSet.getInstance(entry.getValue()));
+              break;
+          }
+          break;
+        default:
+          attributes.put(entry.getKey(), NotNullSet.getInstance(entry.getValue()));
+          break;
+      }
+    }
+
+    for (final CliVariableList.CliVariable cliVariable : cliVariableList) {
+      attributes.put(cliVariable.getKey(), NotNullSet.getInstance(cliVariable.getValue()));
+    }
+  }
+
+  /** Creates an instance. */
+  private JsonRootContextImpl(
+      final Map<String, Object> contextObject,
+      final ObjectAttributeList attributes,
+      final List<Entry<String, Object>> entities,
+      final List<Entry<String, Object>> groupings,
+      final List<ObjectContext<Entry<String, Object>>> objects) {
+    super(contextObject, attributes);
+
+    for (final var entity : entities) {
+      objects.add(JsonContextImpl.getInstance(entity, this, new ArrayList<>()));
+    }
+
+    for (final var grouping : groupings) {
+      JsonRootContextImpl.parseGroupings(new ArrayList<>(), this, attributes, grouping, objects);
+    }
+
+    for (var object : objects) {
+      for (var relationship : object.getRelationships().values()) {
+        var otherEntityRelationshipName = relationship.get("cimerant:otherEntity").first();
+        objects.stream()
+            .filter(
+                otherEntity ->
+                    StringUtils.equalsIgnoreCase(
+                        otherEntityRelationshipName, otherEntity.getObjectName()))
+            .forEach(
+                otherEntity -> {
+                  relationship.setOtherEntity(otherEntity);
+                  relationship.remove("cimerant:otherEntity");
+                });
+      }
+    }
+
+    this.objects = objects;
   }
 }

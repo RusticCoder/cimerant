@@ -1,0 +1,1 @@
+CREATE TABLE float_table (f1 FLOAT, f2 FLOAT(10), f3 FLOAT(7,4))

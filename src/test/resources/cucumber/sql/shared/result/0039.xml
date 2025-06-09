@@ -1,0 +1,16 @@
+
+<root name="0039">
+    <attributes size="0">
+    </attributes>
+    <object name="TestTable" grouping="[dbo]">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="Name">{cimerant:type=field, fieldType=NVARCHAR, maxSize=64, nullable=false}</field>
+            <field key="TableID">{cimerant:type=field, clustered=true, fieldType=UNIQUEIDENTIFIER, nullable=false, primary=true}</field>
+            <field key="Value">{cimerant:type=field, clustered=true, fieldType=NVARCHAR, maxSize=64, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

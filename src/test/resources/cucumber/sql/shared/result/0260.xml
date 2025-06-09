@@ -1,0 +1,15 @@
+
+<root name="0260">
+    <attributes size="0">
+    </attributes>
+    <object name="atacc1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="test">{cimerant:type=field, fieldType=int}</field>
+            <field key="test2">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

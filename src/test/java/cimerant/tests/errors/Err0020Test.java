@@ -22,13 +22,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.rules.TemporaryFolder;
 
-/** 0020 | Invalid JSON file format. */
+/** 0020 | Invalid object model file format. */
 public class Err0020Test {
   private static File cimerantPath;
   private static Path destinationFilePath;
   private static final String EXPECTED_REGEX =
-      "CMA-M\\d{2}-0020: Invalid JSON file format for"
-          + " 'src/test/resources/cucumber/Err0020Test/model/Model.json'";
+      "CMA-M\\d{4}-0020: Invalid JSON file format for"
+          + " '(.*?)src/test/resources/cucumber/Err0020Test/model/Model.json'";
   private static final int EXPECTED_STATUS_CODE = -20;
   private static String modelPath;
   private static String rootPath;
@@ -47,7 +47,7 @@ public class Err0020Test {
       temporaryFolder.create();
 
       Err0020Test.cimerantPath = temporaryFolder.getRoot();
-      // cimerantPath = new File("/tmp/cucumber_user_dir");
+      // cimerantPath = new File(System.getProperty("user.home") + "/tmp");
 
       System.setProperty("user.dir", Err0020Test.cimerantPath.getAbsolutePath());
     }
@@ -79,12 +79,12 @@ public class Err0020Test {
   @AfterAll
   public static void endAll() {
     try (var dirStream = Files.walk(Err0020Test.cimerantPath.toPath())) {
-      dirStream //
-          .filter(Files::isDirectory) //
-          .map(Path::toFile) //
-          .sorted(Comparator.reverseOrder()) //
+      dirStream
+          .filter(Files::isDirectory)
+          .map(Path::toFile)
+          .sorted(Comparator.reverseOrder())
           .forEach(File::delete);
-    } catch (final Exception e) {
+    } catch (final Throwable t) {
       // ignore
     }
 
@@ -96,6 +96,7 @@ public class Err0020Test {
   }
 
   private boolean contentEquals = true;
+  private String expectedRegex = Err0020Test.EXPECTED_REGEX;
   private boolean optionF = false;
   private boolean optionFile = false;
   private boolean optionMulti = false;
@@ -145,7 +146,10 @@ public class Err0020Test {
    */
   @Given("err0020.{int} param {string}")
   public void err0020_param(final Integer argUnique, final String argParam) {
-    this.values.add("-" + argParam);
+    if (StringUtils.isNoneBlank(argParam)) {
+      this.values.add("-input-type=" + argParam);
+      this.expectedRegex = Err0020Test.EXPECTED_REGEX.replace("JSON", argParam);
+    }
   }
 
   /**
@@ -381,13 +385,13 @@ public class Err0020Test {
   public void thenErr0020ErrorIsThrown(final Integer argUnique) {
     Assertions.assertTrue(
         this.textWrittenToSystemErr != null
-            && this.textWrittenToSystemErr.matches(Err0020Test.EXPECTED_REGEX),
+            && this.textWrittenToSystemErr.matches(this.expectedRegex),
         "#"
             + argUnique
             + " expected: "
             + System.lineSeparator()
             + "<"
-            + Err0020Test.EXPECTED_REGEX
+            + this.expectedRegex
             + ">"
             + System.lineSeparator()
             + " but was: "

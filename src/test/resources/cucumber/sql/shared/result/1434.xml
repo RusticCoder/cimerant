@@ -1,0 +1,15 @@
+
+<root name="1434">
+    <attributes size="0">
+    </attributes>
+    <object name="gentable" grouping="[addr_nsp]">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="b">{cimerant:type=field, default='hello', fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

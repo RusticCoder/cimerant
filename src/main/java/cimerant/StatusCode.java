@@ -1,5 +1,7 @@
 package cimerant;
 
+import java.util.stream.Stream;
+
 /** The {@code SystemCode} enumeration represents a set of predefined constants for errors. */
 public enum StatusCode {
   /** Unknown error. */
@@ -40,8 +42,14 @@ public enum StatusCode {
   ERR_0018("Single and multi cannot be used together"),
   /** Invalid variable list format. */
   ERR_0019("Invalid variable list format '%s'"),
-  /** Invalid JSON file format. */
-  ERR_0020("Invalid JSON file format for '%s'");
+  /** Invalid object model file format. */
+  ERR_0020("Invalid %s file format for '%s'"),
+  /** Invalid input file type. */
+  ERR_0021("Invalid input file type '%s' valid types are %s");
+
+  public static Stream<StatusCode> stream() {
+    return Stream.of(StatusCode.values());
+  }
 
   private final String description;
 
@@ -62,10 +70,10 @@ public enum StatusCode {
   }
 
   SysError getSysError(final ModuleCode moduleCodeArg, final int lineNumber, final String... args) {
-    return new SysError(Cimerant.SYSTEM_CODE, moduleCodeArg, this, lineNumber, args);
+    return SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCodeArg, this, lineNumber, args);
   }
 
   SysError getSysError(final ModuleCode moduleCodeArg, final String... args) {
-    return new SysError(Cimerant.SYSTEM_CODE, moduleCodeArg, this, args);
+    return SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCodeArg, this, args);
   }
 }

@@ -1,0 +1,18 @@
+
+<root name="0982">
+    <attributes size="0">
+    </attributes>
+    <object name="fk_partitioned_fk_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="5">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop1">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop2">{cimerant:type=field, fieldType=int}</field>
+            <field key="fdrop3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

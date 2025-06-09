@@ -1,0 +1,15 @@
+
+<root name="1640">
+    <attributes size="0">
+    </attributes>
+    <object name="rtest_t4">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="a">{cimerant:type=field, fieldType=int4}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

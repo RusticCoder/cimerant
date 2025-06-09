@@ -1,0 +1,19 @@
+
+<root name="1658">
+    <attributes size="0">
+    </attributes>
+    <object name="shoe_data">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="sh_avail">{cimerant:type=field, fieldType=integer}</field>
+            <field key="shoename">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="slcolor">{cimerant:type=field, fieldType=char, maxSize=10}</field>
+            <field key="slmaxlen">{cimerant:type=field, fieldType=float}</field>
+            <field key="slminlen">{cimerant:type=field, fieldType=float}</field>
+            <field key="slunit">{cimerant:type=field, fieldType=char, maxSize=8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

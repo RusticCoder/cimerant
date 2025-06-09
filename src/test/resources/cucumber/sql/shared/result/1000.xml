@@ -1,0 +1,34 @@
+
+<root name="1000">
+    <attributes size="0">
+    </attributes>
+    <object name="fk_part">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="fkey">{cimerant:type=relationship, column=a, foreignTable=pkey}</relationship>
+        </relationships>
+    </object>
+    <object name="fk_part_1_1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="my_fkey">{cimerant:type=relationship, column=a, foreignTable=pkey}</relationship>
+        </relationships>
+    </object>
+    <object name="pkey">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

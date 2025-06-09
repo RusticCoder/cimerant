@@ -1,0 +1,16 @@
+
+<root name="0844">
+    <attributes size="0">
+    </attributes>
+    <object name="current_check">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="currentid">{cimerant:type=field, fieldType=int}</field>
+            <field key="payload">{cimerant:type=field, fieldType=text}</field>
+            <field key="rlsuser">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

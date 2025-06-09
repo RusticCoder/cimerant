@@ -1,0 +1,9 @@
+CREATE TABLE [Monty].[Spam]
+(
+    Meat int
+)
+WITH
+(
+    CLUSTERED COLUMNSTORE INDEX,
+    DISTRIBUTION = HASH(Meat)
+)

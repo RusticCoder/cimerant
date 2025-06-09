@@ -1,0 +1,15 @@
+
+<root name="0148">
+    <attributes size="0">
+    </attributes>
+    <object name="T1">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="ID">{cimerant:type=field, fieldType=INT, nullable=false, unique=true}</field>
+            <field key="NAME">{cimerant:type=field, fieldType=VARCHAR, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

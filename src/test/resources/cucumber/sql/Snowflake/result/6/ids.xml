@@ -1,0 +1,111 @@
+
+<root name="ids">
+    <attributes size="0">
+    </attributes>
+    <object name="ACTION">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="MODE">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="alert">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="CAST">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="KEY">{cimerant:type=field, fieldType=int}</field>
+            <field key="TRY_CAST">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="condition">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="i">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="DIRECTION">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="LANGUAGE">{cimerant:type=field, fieldType=INT}</field>
+            <field key="LENGTH">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="dt_t">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="downstream">{cimerant:type=field, fieldType=int}</field>
+            <field key="dynamic">{cimerant:type=field, fieldType=int}</field>
+            <field key="target_lag">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="interval">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="internal">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ROLES">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="DATABASES">{cimerant:type=field, fieldType=int}</field>
+            <field key="INTEGRATIONS">{cimerant:type=field, fieldType=int}</field>
+            <field key="SCHEMAS">{cimerant:type=field, fieldType=int}</field>
+            <field key="USERS">{cimerant:type=field, fieldType=INT}</field>
+            <field key="WAREHOUSES">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="TABLES">
+        <attributes size="1">
+            <attribute key="temp">true</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="ALERTS">{cimerant:type=field, fieldType=int}</field>
+            <field key="STAGES">{cimerant:type=field, fieldType=int}</field>
+            <field key="STREAMS">{cimerant:type=field, fieldType=int}</field>
+            <field key="TASKS">{cimerant:type=field, fieldType=int}</field>
+            <field key="VIEWS">{cimerant:type=field, fieldType=INT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="wh_id">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="MAX_CONCURRENCY_LEVEL">{cimerant:type=field, fieldType=int}</field>
+            <field key="WAREHOUSE_TYPE">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

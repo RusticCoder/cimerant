@@ -1,0 +1,16 @@
+
+<root name="0035">
+    <attributes size="0">
+    </attributes>
+    <object name="xyz">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="ccc">{cimerant:type=field, clustered=true, fieldType=char, maxSize=1, primary=true}</field>
+            <field key="xxx">{cimerant:type=field, fieldType=numeric, nullable=true, precision=18, scale=0}</field>
+            <field key="yyy">{cimerant:type=field, fieldType=numeric, nullable=true, precision=10, scale=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>

@@ -1,0 +1,593 @@
+
+<root name="ddl_create">
+    <attributes size="0">
+    </attributes>
+    <object name="\\test\\_table\\">
+        <attributes size="1">
+            <attribute key="engine">INNODB</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=INT, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="\\test_table">
+        <attributes size="1">
+            <attribute key="engine">INNODB</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=INT, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="actor">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="birthday">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP, fieldType=datetime}</field>
+            <field key="last_update">{cimerant:type=field, default=CURRENT_TIMESTAMP, fieldType=timestamp}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="add_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="col1">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+            <field key="col2">{cimerant:type=field, fieldType=int}</field>
+            <field key="col3">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="another some table $$">
+        <attributes size="1">
+            <attribute key="like">some table $$</attribute>
+        </attributes>
+        <fields size="0">
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="auth_realm_clients">
+        <attributes size="2">
+            <attribute key="charset">latin1</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="4">
+            <field key="client_id">{cimerant:type=field, fieldType=varchar, maxSize=150, nullable=false}</field>
+            <field key="client_secret">{cimerant:type=field, fieldType=blob, nullable=false}</field>
+            <field key="fk_realm">{cimerant:type=field, default=NULL, fieldType=int, unsigned=true}</field>
+            <field key="pk_realm">{cimerant:type=field, default='0', fieldType=int, nullable=false, primary=true, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="blob_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=blob, maxSize=45}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="boolean_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, fieldType=bool}</field>
+            <field key="c2">{cimerant:type=field, default=true, fieldType=boolean}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="char_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="c1">{cimerant:type=field, fieldType=CHAR, maxSize=10, varying=true}</field>
+            <field key="c2">{cimerant:type=field, fieldType=CHARACTER, maxSize=10, varying=true}</field>
+            <field key="c3">{cimerant:type=field, fieldType=NCHAR, maxSize=10, varying=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="child_table">
+        <attributes size="1">
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, primary=true, unsigned=true}</field>
+            <field key="id_parent">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="1">
+            <relationship key="id_parent">{cimerant:type=relationship, column=id_parent, foreignColumn=id, foreignTable=parent_table}</relationship>
+        </relationships>
+    </object>
+    <object name="column_names_as_aggr_funcs">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="count">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="max">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="min">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="sum">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="CustomerTable">
+        <attributes size="2">
+            <attribute key="engine">CONNECT</attribute>
+            <attribute key="tableType">ODBC</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="Address">{cimerant:type=field, fieldType=varchar, maxSize=60}</field>
+            <field key="CompanyName">{cimerant:type=field, fieldType=varchar, maxSize=40}</field>
+            <field key="ContactName">{cimerant:type=field, fieldType=varchar, maxSize=30}</field>
+            <field key="CustomerID">{cimerant:type=field, fieldType=varchar, maxSize=5}</field>
+            <field key="Phone">{cimerant:type=field, fieldType=varchar, maxSize=24}</field>
+            <field key="table_type">{cimerant:type=field, fieldType=varchar, maxSize=5}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="daily_intelligences">
+        <attributes size="2">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="engine">innodb</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="gmt_create">{cimerant:type=field, default=CURRENT_TIMESTAMP, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="gmt_modify">{cimerant:type=field, default=CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, fieldType=TIMESTAMP, nullable=false}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=bigint, nullable=false, precision=20, primary=true}</field>
+            <field key="monitor_time">{cimerant:type=field, default=NULL, fieldType=TIMESTAMP}</field>
+            <field key="partner_code">{cimerant:type=field, default=NULL, fieldType=varchar, maxSize=32}</field>
+            <field key="text">{cimerant:type=field, default=NULL, fieldType=LONGTEXT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ent_folder_letter_relationship" grouping="[contract_center]">
+        <attributes size="2">
+            <attribute key="charset">UTF8MB4</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="data_create_time">{cimerant:type=field, comment=创建时间, default=CURRENT_TIMESTAMP(), fieldType=DATETIME, nullable=false}</field>
+            <field key="data_update_time">{cimerant:type=field, comment=更新时间, default=CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(), fieldType=DATETIME, nullable=false}</field>
+            <field key="deleted">{cimerant:type=field, comment=0-有效记录, 1-删除, default=_UTF8MB4'0', fieldType=TINYINT, nullable=false, precision=1}</field>
+            <field key="id">{cimerant:type=field, comment=唯一标识, fieldType=BIGINT, nullable=false, precision=19, primary=true, unsigned=true}</field>
+            <field key="layer">{cimerant:type=field, comment=文档所属层级，0-主关联文档， 1-次关联文档, default=_UTF8MB4'0', fieldType=TINYINT, precision=4, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="generated_persistent">
+        <attributes size="1">
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, primary=true}</field>
+            <field key="ip_hash">{cimerant:type=field, fieldType=char, maxSize=64, unique=true}</field>
+            <field key="persistent">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="geo">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="coordinate">{cimerant:type=field, fieldType=JSON}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="global_priv">
+        <attributes size="6">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="checksum">1</attribute>
+            <attribute key="collate">utf8_bin</attribute>
+            <attribute key="comment">Users and global privileges</attribute>
+            <attribute key="engine">Aria</attribute>
+            <attribute key="transactional">1</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="Host">{cimerant:type=field, collate=utf8_bin, default='', fieldType=CHAR, maxSize=60, nullable=false, primary=true}</field>
+            <field key="Privilege">{charset=utf8mb4, cimerant:type=field, collate=utf8mb4_bin, default='{}', fieldType=LONGTEXT, nullable=false}</field>
+            <field key="User">{cimerant:type=field, collate=utf8_bin, default='', fieldType=CHAR, maxSize=80, nullable=false, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="guns">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="callibr">{cimerant:type=field, fieldType=decimal, precision=10, scale=3}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="power">{cimerant:type=field, fieldType=decimal, precision=7, scale=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="invisible_column_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=int, visible=false}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="log_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="row">{character=true, cimerant:type=field, fieldType=varchar, maxSize=512}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="new_t">
+        <attributes size="1">
+            <attribute key="like">t1</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="c">{char=true, cimerant:type=field, fieldType=national}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="parent_table">
+        <attributes size="1">
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="column1">{cimerant:type=field, fieldType=varchar, maxSize=30}</field>
+            <field key="id">{cimerant:type=field, fieldType=int, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="positions_rollover">
+        <attributes size="2">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=bigint, nullable=false, precision=20, primary=true}</field>
+            <field key="partition_index">{cimerant:type=field, default=0, fieldType=int, nullable=false, precision=10, primary=true, unsigned=true}</field>
+            <field key="time">{cimerant:type=field, fieldType=datetime, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="rack_shelf_bin">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="bin_volume">{cimerant:type=field, default=bin_len * bin_width * bin_height, fieldType=decimal, precision=20, scale=4}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, primary=true, unique=true, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ship_class">
+        <attributes size="0">
+        </attributes>
+        <fields size="7">
+            <field key="class_name">{cimerant:type=field, fieldType=varchar, maxSize=100}</field>
+            <field key="end_build">{cimerant:type=field, fieldType=year, maxSize=4}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="max_guns_size">{cimerant:type=field, fieldType=int}</field>
+            <field key="max_length">{cimerant:type=field, fieldType=decimal, precision=10, scale=2}</field>
+            <field key="start_build">{cimerant:type=field, fieldType=year}</field>
+            <field key="tonange">{cimerant:type=field, fieldType=decimal, precision=10, scale=2}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ships">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="class_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="ships_guns">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="guns_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="ship_id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="site_checker_b_sonet_group_favorites">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="DATE_ADD">{cimerant:type=field, default=NULL, fieldType=datetime}</field>
+            <field key="GROUP_ID">{cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true}</field>
+            <field key="USER_ID">{cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="some table $$">
+        <attributes size="1">
+            <attribute key="engine">MYISAM</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="class">{cimerant:type=field, fieldType=varchar, maxSize=10}</field>
+            <field key="data">{cimerant:type=field, fieldType=binary}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="some_table">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="val">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="staff">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="first_name">{cimerant:type=field, fieldType=VARCHAR, maxSize=100, nullable=false}</field>
+            <field key="pens_in_drawer">{cimerant:type=field, fieldType=INT, nullable=false, precision=2}</field>
+            <field key="staff_num">{cimerant:type=field, fieldType=INT, nullable=false, precision=5, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="statement">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t_table">
+        <attributes size="3">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="collate">utf8mb4_unicode_ci</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="6">
+            <field key="app_url">{cimerant:type=field, collate=utf8mb4_unicode_ci, default=NULL, fieldType=varchar, maxSize=500}</field>
+            <field key="info_no">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true, unsigned=true}</field>
+            <field key="member_id">{cimerant:type=field, collate=utf8mb4_unicode_ci, fieldType=varchar, maxSize=30, nullable=false, unique=true}</field>
+            <field key="product_no">{cimerant:type=field, fieldType=int, nullable=false, precision=11, unique=true, unsigned=true}</field>
+            <field key="redirect_url">{cimerant:type=field, collate=utf8mb4_unicode_ci, default=NULL, fieldType=varchar, maxSize=200}</field>
+            <field key="scope">{cimerant:type=field, collate=utf8mb4_unicode_ci, default=NULL, fieldType=varchar, maxSize=200}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t_test_curdate">
+        <attributes size="2">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="c1">{cimerant:type=field, comment=error test, default=CURDATE(), fieldType=datetime, nullable=false}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, fieldType=int, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tab1">
+        <attributes size="2">
+            <attribute key="charset">utf8</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="12">
+            <field key="f4">{cimerant:type=field, fieldType=FLOAT4}</field>
+            <field key="f8">{cimerant:type=field, fieldType=FLOAT8}</field>
+            <field key="i1">{cimerant:type=field, fieldType=INT1}</field>
+            <field key="i2">{cimerant:type=field, fieldType=INT2}</field>
+            <field key="i3">{cimerant:type=field, fieldType=INT3}</field>
+            <field key="i4">{cimerant:type=field, fieldType=INT4}</field>
+            <field key="i8">{cimerant:type=field, fieldType=INT8}</field>
+            <field key="l">{cimerant:type=field, fieldType=LONG}</field>
+            <field key="lvb">{cimerant:type=field, fieldType=LONG, varbinary=true}</field>
+            <field key="lvc">{cimerant:type=field, fieldType=LONG, varchar=true}</field>
+            <field key="lvcfull">{binary=true, charset=utf8, cimerant:type=field, collate=utf8_bin, fieldType=LONG}</field>
+            <field key="mi">{cimerant:type=field, fieldType=MIDDLEINT}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tab_with_json_value">
+        <attributes size="3">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="collate">utf8mb4_bin</attribute>
+            <attribute key="engine">InnoDB</attribute>
+        </attributes>
+        <fields size="5">
+            <field key="col0">{cimerant:type=field, fieldType=JSON, nullable=false}</field>
+            <field key="col1">{cimerant:type=field, collate=utf8mb4_bin, fieldType=VARCHAR, maxSize=36, nullable=false, primary=true}</field>
+            <field key="col2">{cimerant:type=field, collate=utf8mb4_bin, fieldType=VARCHAR, maxSize=36, nullable=false}</field>
+            <field key="col3">{cimerant:type=field, collate=utf8mb4_bin, fieldType=VARCHAR, maxSize=36, nullable=false}</field>
+            <field key="col4">{cimerant:type=field, fieldType=JSON, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_default_fn">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="created_at">{cimerant:type=field, default=unix_timestamp(), fieldType=bigint, nullable=false, precision=20}</field>
+            <field key="quote_id">{cimerant:type=field, fieldType=varchar, maxSize=32, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_items">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=INT}</field>
+            <field key="purchased">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_items_with_subpartitions">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="id">{cimerant:type=field, fieldType=INT}</field>
+            <field key="purchased">{cimerant:type=field, fieldType=DATE}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_with_buckets">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="buckets">{cimerant:type=field, comment=分桶数, fieldType=int, nullable=false, precision=11}</field>
+            <field key="id">{autoIncrement=true, cimerant:type=field, comment=ID, fieldType=int, nullable=false, precision=11}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_with_character_set">
+        <attributes size="1">
+            <attribute key="charset">default</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=varchar, maxSize=50}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_with_character_set_eq">
+        <attributes size="1">
+            <attribute key="charset">default</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=varchar, maxSize=50}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_with_index">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=varchar, maxSize=50, unique=true}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="table_with_visible_index">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="data">{cimerant:type=field, fieldType=varchar, maxSize=50, unique=true}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="tblSRCHjob_desc">
+        <attributes size="2">
+            <attribute key="charset">utf8mb4</attribute>
+            <attribute key="engine">TokuDB</attribute>
+        </attributes>
+        <fields size="2">
+            <field key="description">{cimerant:type=field, fieldType=mediumtext, nullable=false}</field>
+            <field key="description_id">{autoIncrement=true, cimerant:type=field, fieldType=bigint, nullable=false, precision=20, primary=true, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="test_table\\">
+        <attributes size="1">
+            <attribute key="engine">INNODB</attribute>
+        </attributes>
+        <fields size="1">
+            <field key="id">{cimerant:type=field, fieldType=INT, nullable=false, precision=11, primary=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="transactional">
+        <attributes size="0">
+        </attributes>
+        <fields size="3">
+            <field key="class_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="transactional_table">
+        <attributes size="1">
+            <attribute key="transactional">1</attribute>
+        </attributes>
+        <fields size="3">
+            <field key="class_id">{cimerant:type=field, fieldType=int}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+            <field key="name">{cimerant:type=field, fieldType=varchar, maxSize=255}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="user_account">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="id1">{cimerant:type=field, default=nextval(`useraccount`.`user_account_id_seq`), fieldType=bigint, nullable=false, precision=20, unsigned=true}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="visible_column_test">
+        <attributes size="0">
+        </attributes>
+        <fields size="2">
+            <field key="col1">{cimerant:type=field, fieldType=int, visible=true}</field>
+            <field key="id">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="žluťoučký">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="kůň">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+</root>
