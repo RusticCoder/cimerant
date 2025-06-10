@@ -436,7 +436,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.version}</version>
                     <configuration>
-                        <argLine>-ea -Xmx8g -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                        <argLine>-ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                         <parallel>all</parallel>
                         <perCoreThreadCount>true</perCoreThreadCount>
                         <testFailureIgnore>false</testFailureIgnore>
@@ -641,7 +641,7 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <fork>true</fork>
                     <meminitial>512</meminitial>
-                    <maxmem>2048</maxmem>
+                    <maxmem>1024</maxmem>
 
                     <compilerArgs>
                         <arg>-XDcompilePolicy=simple</arg>
@@ -1230,7 +1230,7 @@
                         </plugin>
                     </plugins>
                     <fork>true</fork>
-                    <maxHeap>8000</maxHeap>
+                    <maxHeap>1024</maxHeap>
                     <effort>Max</effort>
                     <threshold>low</threshold>
                 </configuration>
@@ -1465,7 +1465,7 @@
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <argLine>-ea -Xmx8g -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                    <argLine>-ea -Xmx1024m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                 </configuration>
             </plugin>
 

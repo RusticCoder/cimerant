@@ -20,5 +20,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="cimerant.ArchitectureTests"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="cimerant"/>
     <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea&#10;-ea -Xmx8g -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea&#10;-ea -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc"/>
 </launchConfiguration>
