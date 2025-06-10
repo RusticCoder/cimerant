@@ -436,7 +436,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.version}</version>
                     <configuration>
-                        <argLine>-ea -Xms9216m -Xmx9216m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                        <argLine>-ea -Xms9216m -Xmx11024m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                         <parallel>all</parallel>
                         <perCoreThreadCount>true</perCoreThreadCount>
                         <testFailureIgnore>false</testFailureIgnore>
