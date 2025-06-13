@@ -20,6 +20,7 @@ public class ParseTreeHelper {
   /**
    * Returns a list of contexts that match the ruleContext class that was passed in.
    *
+   * @param <T> the type of ruleContext.
    * @param ctx the tree of {@link RuleContext} objects created during a parse that makes the data
    *     structure look like a simple parse tree. This node represents both internal nodes, rule
    *     invocations, and leaf nodes, token matches.
@@ -77,6 +78,7 @@ public class ParseTreeHelper {
    * Returns a list of terminalNode values from the parent path leading to the parser rule object
    * matches the expected path.
    *
+   * @param <T> the type of ruleContext.
    * @param ctx the tree of {@link RuleContext} objects created during a parse that makes the data
    *     structure look like a simple parse tree. This node represents both internal nodes, rule
    *     invocations, and leaf nodes, token matches.

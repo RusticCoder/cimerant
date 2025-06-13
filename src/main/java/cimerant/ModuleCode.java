@@ -77,6 +77,11 @@ public enum ModuleCode {
   /** TSqlParserImpl.getInstance(File) method. */
   ERR_M3500("Get instance error");
 
+  /**
+   * Returns a sequential ordered stream whose elements are the specified values.
+   *
+   * @return the new stream
+   */
   public static Stream<ModuleCode> stream() {
     return Stream.of(ModuleCode.values());
   }

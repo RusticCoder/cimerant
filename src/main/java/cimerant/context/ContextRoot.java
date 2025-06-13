@@ -481,6 +481,7 @@ public interface ContextRoot<E> extends Context {
    * An object that maps keys to values. A map cannot contain duplicate keys; each key can map to at
    * most one value.
    *
+   * @param m the map whose mappings are to be placed in this map
    * @return a object that maps keys to values. A map cannot contain duplicate keys; each key can
    *     map to at most one value.
    */

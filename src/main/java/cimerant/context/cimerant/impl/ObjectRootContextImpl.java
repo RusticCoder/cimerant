@@ -33,6 +33,7 @@ public abstract class ObjectRootContextImpl<E> extends ContextRootImpl<E>
    * Creates an instance.
    *
    * @param contextObject The base context object.
+   * @param attributes Key value pair of attributes.
    */
   protected ObjectRootContextImpl(final E contextObject, final ObjectAttributeList attributes) {
     super(contextObject);

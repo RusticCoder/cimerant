@@ -234,6 +234,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
    * Returns a {@link List} consisting of the {@link ParserRuleContext} children of this stream that
    * match a specific {@link Class}.
    *
+   * @param <T> the type of the clazz to be filtered on.
    * @param clazz the {@link Class} to apply to each element to determine if it should be included.
    * @return {@link List} of {@link ParserRuleContext} elements the match the {@link Class}.
    */
@@ -343,6 +344,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
    * Returns a {@link Stream} consisting of the {@link ParseTree} children of this stream that match
    * a specific {@link Class}.
    *
+   * @param <T> the type of the clazz to be filtered on.
    * @param clazz the {@link Class} to apply to each element to determine if it should be included.
    * @return {@link Stream} of {@link ParseTree} elements the match the {@link Class}.
    */
@@ -373,6 +375,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
    * Returns a {@link Stream} consisting of combined text of all child nodes for each child of this
    * stream that match {@link Class}.
    *
+   * @param <T> the type of the clazz to be filtered on.
    * @param input A source of characters for an ANTLR lexer.
    * @param clazz the {@link Class} to apply to each element to determine if the combined text of
    *     all child nodes should be included.

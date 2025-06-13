@@ -24,6 +24,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public final class SqlContextImpl extends ObjectContextImpl<Entry<String, Object>>
     implements SqlContext {
+  /** Field constants. */
   public static class Field {
     /** Constant for SQL column type array. */
     public static final String ARRAY = "array";

@@ -13,6 +13,7 @@ public class ObjectRelationshipImpl extends NotNullMap<String, NotNullSet>
     implements ObjectRelationship {
   private static final long serialVersionUID = 1L;
 
+  /** The other related entity. */
   private ObjectContext<java.util.Map.Entry<String, Object>> otherEntity;
 
   /** Creates an instance. */

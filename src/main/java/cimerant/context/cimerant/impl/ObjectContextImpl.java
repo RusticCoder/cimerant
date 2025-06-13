@@ -38,7 +38,16 @@ public abstract class ObjectContextImpl<E extends Entry<String, Object>> extends
   /** The root context. */
   private final ObjectRootContext<?> rootContext;
 
-  /** Creates an instance. */
+  /**
+   * Creates an instance.
+   *
+   * @param contextObject The base context object.
+   * @param rootContext A set of routines is used by the template.
+   * @param parentGroupings An ordered collection of groupings for this object.
+   * @param attributes Key value pair of attributes.
+   * @param fields Key value pair of fields.
+   * @param relationships Key value pair of relationships.
+   */
   protected ObjectContextImpl(
       final E contextObject,
       final ObjectRootContext<?> rootContext,

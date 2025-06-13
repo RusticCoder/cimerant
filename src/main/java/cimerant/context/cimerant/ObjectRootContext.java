@@ -13,6 +13,11 @@ import java.util.Map.Entry;
  * @param <E> The base type of the context.
  */
 public interface ObjectRootContext<E> extends ContextRoot<E> {
+  /**
+   * Appends the object to the end of this list.
+   *
+   * @param objectContext object to be appended to this list.
+   */
   void addObject(ObjectContext<Entry<String, Object>> objectContext);
 
   /**

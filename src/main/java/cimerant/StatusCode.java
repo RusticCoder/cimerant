@@ -47,6 +47,11 @@ public enum StatusCode {
   /** Invalid input file type. */
   ERR_0021("Invalid input file type '%s' valid types are %s");
 
+  /**
+   * Returns a sequential ordered stream whose elements are the specified values.
+   *
+   * @return the new stream
+   */
   public static Stream<StatusCode> stream() {
     return Stream.of(StatusCode.values());
   }

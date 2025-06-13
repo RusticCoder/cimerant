@@ -356,6 +356,11 @@ public enum FileType {
     return UNKNOWN;
   }
 
+  /**
+   * Returns a sequential ordered stream whose elements are the specified values.
+   *
+   * @return the new stream
+   */
   public static Stream<FileType> stream() {
     return Stream.of(FileType.values());
   }
