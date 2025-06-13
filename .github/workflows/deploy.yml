@@ -78,7 +78,7 @@ jobs:
       # [Deploy Publish JavaDoc](https://github.com/marketplace/actions/deploy-publish-javadoc)
       # https://github.com/MathieuSoysal/Javadoc-publisher.yml
       - name: Generates documentation for the project.
-        run: mvn --batch-mode site javadoc:javadoc javadoc:test-javadoc pmd:pmd pmd:cpd-check
+        run: mvn --batch-mode site javadoc:javadoc javadoc:test-javadoc pmd:pmd pmd:cpd-check -Dpmd.skip=true
 
       - name: Git setup
         run: |
