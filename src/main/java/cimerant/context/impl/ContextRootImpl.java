@@ -214,6 +214,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
     return ContextRootImpl.defineWords(string).split(" ", 0);
   }
 
+  @SuppressWarnings("CPD-START")
   private static List<String> wordsPluralLast(final Object arg) {
     if (arg == null || StringUtils.isEmpty(arg.toString())) {
       return Collections.<String>emptyList();
@@ -233,7 +234,8 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
     return Arrays.asList(list);
   }
 
-  private static Object wordsSingularLast(final Object arg) {
+  @SuppressWarnings("CPD-START")
+  private static List<String> wordsSingularLast(final Object arg) {
     if (arg == null || StringUtils.isEmpty(arg.toString())) {
       return Collections.<String>emptyList();
     }
@@ -259,6 +261,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
    * @param string The string to split into words
    * @return An array of words
    */
+  @SuppressWarnings("CPD-END")
   private static String[] wordsUpperFirst(final String string) {
     if (StringUtils.isBlank(string)) {
       return ArrayUtils.EMPTY_STRING_ARRAY;

@@ -42,6 +42,7 @@ public class CliVariableList implements List<CliVariable> {
       UNKNOWN,
       VALUE;
 
+      @SuppressWarnings("CPD-START")
       private static Values getEnum(final String value) {
         try {
           final var str =
@@ -65,7 +66,9 @@ public class CliVariableList implements List<CliVariable> {
       }
     }
 
+    @SuppressWarnings("CPD-END")
     private String key = null;
+
     private final CimerantLogger logger;
     private String value = null;
 
@@ -135,6 +138,7 @@ public class CliVariableList implements List<CliVariable> {
     private final CimerantLogger logger;
 
     /** Creates an instance. */
+    @SuppressWarnings("CPD-START")
     ParseVariables(final String variableList) {
       final var moduleCode = ModuleCode.ERR_M0400;
 

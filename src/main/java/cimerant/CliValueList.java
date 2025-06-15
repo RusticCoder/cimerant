@@ -58,6 +58,7 @@ class CliValueList implements List<CliValue> {
       TEMPLATE,
       UNKNOWN;
 
+      @SuppressWarnings("CPD-START")
       private static Values getEnum(final String value) {
         try {
           final var str =
@@ -81,7 +82,9 @@ class CliValueList implements List<CliValue> {
       }
     }
 
+    @SuppressWarnings("CPD-END")
     private final String filePattern;
+
     private final int lineNumber;
     private final CimerantLogger logger;
     private final String outputPath;
@@ -328,6 +331,7 @@ class CliValueList implements List<CliValue> {
             filePattern));
   }
 
+  @SuppressWarnings("CPD-START")
   void addCliValuesByTemplateList(final String templateList) {
     final var moduleCode = ModuleCode.ERR_M0301;
 
@@ -350,6 +354,7 @@ class CliValueList implements List<CliValue> {
   }
 
   /** Removes all of the elements from this list (optional operation). */
+  @SuppressWarnings("CPD-END")
   @Override
   public final void clear() {
     this.cliValues.clear();

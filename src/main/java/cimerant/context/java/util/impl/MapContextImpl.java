@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
  * @param <K> the type of keys maintained by this map
  * @param <V> the type of mapped values
  */
+@SuppressWarnings("CPD-START")
 public final class MapContextImpl<K, V> extends ContextRootImpl<Map<K, V>>
     implements MapContext<K, V> {
   private static final CimerantLogger logger;

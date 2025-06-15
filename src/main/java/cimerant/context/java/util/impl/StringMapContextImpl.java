@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
  * to set and get 'named' data object to pass them to the template engine to use when rendering a
  * template.
  */
+@SuppressWarnings("CPD-START")
 public final class StringMapContextImpl extends ContextRootImpl<Map<String, Object>>
     implements MapContext<String, Object> {
   private static final CimerantLogger logger;

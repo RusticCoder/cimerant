@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
  *
  * @param <E> The base type of the context.
  */
+@SuppressWarnings("CPD-START")
 public final class SetContextImpl<E> extends ContextRootImpl<Set<E>> implements SetContext<E> {
   private static final CimerantLogger logger;
   private static final long serialVersionUID = 1L;

@@ -121,12 +121,17 @@ public class SysError extends RuntimeException {
       final int lineNumberArg,
       final Throwable throwableArg,
       final String... args) {
-    final var tempArgs = new Object[args.length + 1];
-    tempArgs[0] = throwableArg.getMessage();
-    if (tempArgs[0] == null) {
-      tempArgs[0] = throwableArg.getClass().getSimpleName();
+    final String[] tempArgs;
+    if (throwableArg == null) {
+      tempArgs = Arrays.stream(args).toArray(String[]::new);
+    } else {
+      tempArgs = new String[args.length + 1];
+      tempArgs[0] = throwableArg.getMessage();
+      if (tempArgs[0] == null) {
+        tempArgs[0] = throwableArg.getClass().getSimpleName();
+      }
+      System.arraycopy(args, 0, tempArgs, 1, args.length);
     }
-    System.arraycopy(args, 0, tempArgs, 1, args.length);
 
     final var returnValue = new StringBuilder();
     returnValue.append(systemCodeArg.getCode());
@@ -149,18 +154,7 @@ public class SysError extends RuntimeException {
       final ModuleCode moduleCodeArg,
       final StatusCode statusCodeArg,
       final String... args) {
-    final var returnValue = new StringBuilder();
-
-    final var output = Arrays.stream(args).toArray(Object[]::new);
-    returnValue.append(systemCodeArg.getCode());
-    returnValue.append('-');
-    returnValue.append(moduleCodeArg.getCode());
-    returnValue.append('-');
-    returnValue.append(statusCodeArg.getCode());
-    returnValue.append(": ");
-    returnValue.append(statusCodeArg.getDescription().formatted(output));
-
-    return returnValue.toString();
+    return message(systemCodeArg, moduleCodeArg, statusCodeArg, -1, null, args);
   }
 
   private static String message(
