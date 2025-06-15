@@ -436,7 +436,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.version}</version>
                     <configuration>
-                        <argLine>@{argLine} -ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                        <argLine>-ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                         <parallel>all</parallel>
                         <perCoreThreadCount>true</perCoreThreadCount>
                         <useUnlimitedThreads>true</useUnlimitedThreads>
@@ -1467,7 +1467,7 @@
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <argLine>@{argLine} -ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                    <argLine>-ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                 </configuration>
             </plugin>
 
