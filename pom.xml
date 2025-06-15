@@ -436,10 +436,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.version}</version>
                     <configuration>
-                        <argLine>-ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                        <argLine>@{argLine} -ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                         <parallel>all</parallel>
                         <perCoreThreadCount>true</perCoreThreadCount>
-                        <testFailureIgnore>false</testFailureIgnore>
                         <useUnlimitedThreads>true</useUnlimitedThreads>
                         <rerunFailingTestsCount>2</rerunFailingTestsCount>
                         <properties>
@@ -554,17 +553,6 @@
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.5.0</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>${project.basedir}</directory>
-                            <includes>
-                                <include>LICENSE</include>
-                            </includes>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                    </filesets>
-                </configuration>
             </plugin>
 
             <!-- =========================================================== -->
@@ -591,12 +579,14 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>${maven.license.version}</version>
                 <configuration>
+                    <encoding>${project.reporting.outputEncoding}</encoding>
                     <organizationName>.</organizationName>
                     <licenseName>gpl_v3</licenseName>
                     <licenseFile>${basedir}/LICENSE</licenseFile>
                     <outputDirectory>${project.build.directory}/site/license</outputDirectory>
                     <thirdPartyFilename>THIRD-PARTY.txt</thirdPartyFilename>
                     <sortArtifactByName>true</sortArtifactByName>
+                    <skipThirdPartyReport>true</skipThirdPartyReport>
                 </configuration>
                 <executions>
                     <execution>
@@ -779,8 +769,12 @@
                                     <banRelease>true</banRelease>
                                     <banSnapshots>true</banSnapshots>
                                     <phases>clean,deploy,site</phases>
-                                    <unCheckedPluginList>org.apache.maven.plugins:maven-site-plugin, org.apache.maven.plugins:maven-resources-plugin, org.apache.maven.plugins:maven-jar-plugin, org.apache.maven.plugins:maven-clean-plugin, org.apache.maven.plugins:maven-install-plugin,
-                                        org.apache.maven.plugins:maven-deploy-plugin</unCheckedPluginList>
+                                    <unCheckedPluginList>org.apache.maven.plugins:maven-clean-plugin,
+                                        org.apache.maven.plugins:maven-deploy-plugin,
+                                        org.apache.maven.plugins:maven-install-plugin,
+                                        org.apache.maven.plugins:maven-jar-plugin,
+                                        org.apache.maven.plugins:maven-resources-plugin,
+                                        org.apache.maven.plugins:maven-site-plugin</unCheckedPluginList>
                                 </requirePluginVersions>
                             </rules>
                         </configuration>
@@ -914,12 +908,12 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle.version}</version>
                 <configuration>
+                    <licenseArtifact>com.example:license-artifact:1.0</licenseArtifact>
                     <sourceDirectories>
                         <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                     </sourceDirectories>
                     <configLocation>${project.basedir}/config/checkstyle/google_checks.xml</configLocation>
                     <consoleOutput>false</consoleOutput>
-                    <failsOnError>false</failsOnError>
                     <linkXRef>false</linkXRef>
                 </configuration>
                 <dependencies>
@@ -999,15 +993,14 @@
                     <analysisCacheLocation>${pmd.analysisCacheLocation}</analysisCacheLocation>
                     <benchmarkOutputFilename>${pmd.benchmarkOutputFilename}</benchmarkOutputFilename>
                     <rulesetsTargetDirectory>${pmd.rulesetsTargetDirectory}</rulesetsTargetDirectory>
-                    <failOnViolation>false</failOnViolation>
-                    <failurePriority>1</failurePriority>
                     <rulesets>
                         <!-- <ruleset>${project.basedir}/config/pmd/arch4u-ruleset.xml</ruleset> -->
                     </rulesets>
                     <printFailingErrors>true</printFailingErrors>
-                    <excludeRoots>
-                        <excludeRoot>target/generated-sources/</excludeRoot>
-                    </excludeRoots>
+                    <excludes>
+                        <exclude>/cimerant/antlr/sql/**/*.java</exclude>
+                        <exclude>/sql/**/*.java</exclude>
+                    </excludes>
                 </configuration>
                 <dependencies>
                     <!-- https://mvnrepository.com/artifact/io.github.dgroup/arch4u-pmd -->
@@ -1058,8 +1051,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.version}</version>
                 <configuration>
-                    <failOnWarnings>false</failOnWarnings>
-                    <failOnError>false</failOnError>
+                    <excludePackageNames>sql.*</excludePackageNames>
                     <links>
                         <link>https://commons.apache.org/proper/commons-cli/apidocs/</link>
                         <link>https://commons.apache.org/proper/commons-collections/apidocs/</link>
@@ -1067,11 +1059,11 @@
                         <link>https://commons.apache.org/proper/commons-lang/apidocs/</link>
                         <link>https://commons.apache.org/proper/commons-text/apidocs/</link>
                         <link>https://devdocs.io/openjdk~${maven.compiler.target}/</link>
-                        <link>https://javadoc.io/doc/com.atlassian.commonmark/commonmark/${commonmark.version}/</link>
-                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/${fasterxml.version}/</link>
-                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/${fasterxml.version}/</link>
-                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/${fasterxml.version}/</link>
-                        <link>https://javadoc.io/doc/org.commonmark/commonmark/${commonmark.version}/</link>
+                        <link>https://javadoc.io/doc/com.atlassian.commonmark/commonmark/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/</link>
+                        <link>https://javadoc.io/doc/org.commonmark/commonmark/</link>
                         <link>https://slf4j.org/api/</link>
                         <link>https://velocity.apache.org/engine/2.0/apidocs/</link>
                     </links>
@@ -1349,17 +1341,17 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
-            <!-- <plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin
+            <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle.version}</version>
                 <configuration>
+                    <licenseArtifact>com.example:license-artifact:1.0</licenseArtifact>
                     <sourceDirectories>
                         <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                     </sourceDirectories>
                     <configLocation>${project.basedir}/config/checkstyle/google_checks.xml</configLocation>
                     <consoleOutput>false</consoleOutput>
-                    <failsOnError>false</failsOnError>
                     <linkXRef>false</linkXRef>
                 </configuration>
                 <reportSets>
@@ -1380,11 +1372,9 @@
                     <minimumTokens>100</minimumTokens>
                     <targetJdk>${maven.compiler.target}</targetJdk>
                     <excludes>
-                        <exclude>**/generated/*.java</exclude>
+                        <exclude>/cimerant/antlr/sql/**/*.java</exclude>
+                        <exclude>/sql/**/*.java</exclude>
                     </excludes>
-                    <excludeRoots>
-                        <excludeRoot>target/generated-sources/stubs</excludeRoot>
-                    </excludeRoots>
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -1401,8 +1391,20 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.version}</version>
                 <configuration>
-                    <failOnWarnings>false</failOnWarnings>
-                    <failOnError>false</failOnError>
+                    <excludePackageNames>sql.*</excludePackageNames>
+                    <links>
+                        <link>https://commons.apache.org/proper/commons-cli/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-collections/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-io/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-lang/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-text/apidocs/</link>
+                        <link>https://devdocs.io/openjdk~${maven.compiler.target}/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/${fasterxml.version}/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/${fasterxml.version}/</link>
+                        <link>https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/${fasterxml.version}/</link>
+                        <link>https://slf4j.org/api/</link>
+                        <link>https://velocity.apache.org/engine/2.0/apidocs/</link>
+                    </links>
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -1465,19 +1467,26 @@
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <argLine>-ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
+                    <argLine>@{argLine} -ea -Xms8192m -Xmx8192m -XX:+UseG1GC -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc</argLine>
                 </configuration>
             </plugin>
 
-            <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/license-maven-plugin -->
+            <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/license-maven-plugin
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>${maven.license.version}</version>
                 <configuration>
                     <encoding>${project.reporting.outputEncoding}</encoding>
+                    <organizationName>.</organizationName>
+                    <licenseName>gpl_v3</licenseName>
+                    <licenseFile>${basedir}/LICENSE</licenseFile>
+                    <outputDirectory>${project.build.directory}/site/license</outputDirectory>
+                    <thirdPartyFilename>THIRD-PARTY.txt</thirdPartyFilename>
+                    <sortArtifactByName>true</sortArtifactByName>
+                    <skipThirdPartyReport>true</skipThirdPartyReport>
                 </configuration>
-            </plugin>
+            </plugin> -->
         </plugins>
     </reporting>
 
