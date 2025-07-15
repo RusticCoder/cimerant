@@ -13,7 +13,6 @@ import cimerant.context.java.util.impl.MapContextImpl;
 import cimerant.context.java.util.impl.MapEntryContextImpl;
 import cimerant.context.java.util.impl.SetContextImpl;
 import cimerant.logger.CimerantLogger;
-import cimerant.logger.CimerantLoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.StreamWriteConstraints;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,7 +34,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.CaseUtils;
 import org.apache.velocity.VelocityContext;
 import org.atteo.evo.inflector.English;
-import org.slf4j.LoggerFactory;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -67,13 +65,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
   private static final long serialVersionUID = 1L;
 
   static {
-    final var getLogger = LoggerFactory.getLogger(ContextRootImpl.class.getName());
-
-    if (getLogger instanceof CimerantLogger) {
-      logger = (CimerantLogger) getLogger;
-    } else {
-      logger = new CimerantLoggerFactory().getLogger(ContextRootImpl.class.getName());
-    }
+    logger = CimerantLogger.getLogger(ContextRootImpl.class.getName());
   }
 
   /** Removes all of the mappings from the map. The map will be empty after this call returns. */

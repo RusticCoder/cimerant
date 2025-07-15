@@ -26,7 +26,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.LoggerFactory;
 import sql.snowflake.SnowflakeParser;
 import sql.snowflake.SnowflakeParserBaseListener;
 import sql.snowflake.SnowflakeParserListener;
@@ -40,7 +39,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(SnowflakeParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(SnowflakeParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

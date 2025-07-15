@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import org.slf4j.LoggerFactory;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -35,7 +34,7 @@ public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Objec
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(JsonContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(JsonContextImpl.class.getName());
   }
 
   /**

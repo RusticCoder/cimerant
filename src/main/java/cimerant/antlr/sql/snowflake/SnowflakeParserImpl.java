@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.snowflake.SnowflakeLexer;
 import sql.snowflake.SnowflakeParser;
 import sql.snowflake.SnowflakeParserListener;
@@ -24,7 +23,7 @@ public class SnowflakeParserImpl extends SnowflakeParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(SnowflakeParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(SnowflakeParserImpl.class.getName());
   }
 
   /**

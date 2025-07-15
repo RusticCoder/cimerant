@@ -34,7 +34,6 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
-import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
 
 class ParsedCommandLine {
@@ -279,7 +278,7 @@ class ParsedCommandLine {
 
   ParsedCommandLine(final String... args) {
     this.args = args;
-    this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+    this.logger = CimerantLogger.getLogger(this.getClass().getName());
   }
 
   CliValueList getCliValueList() {

@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.phoenix.PhoenixLexer;
 import sql.phoenix.PhoenixParser;
 import sql.phoenix.PhoenixParserListener;
@@ -24,7 +23,7 @@ public class PhoenixParserImpl extends PhoenixParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(PhoenixParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(PhoenixParserImpl.class.getName());
   }
 
   /**

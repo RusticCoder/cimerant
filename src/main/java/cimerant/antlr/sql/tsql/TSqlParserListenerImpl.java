@@ -29,7 +29,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableObject;
-import org.slf4j.LoggerFactory;
 import sql.tsql.TSqlParser;
 import sql.tsql.TSqlParserBaseListener;
 import sql.tsql.TSqlParserListener;
@@ -43,7 +42,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(TSqlParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(TSqlParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

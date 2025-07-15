@@ -12,7 +12,6 @@ import cimerant.logger.CimerantLogger;
 import java.io.File;
 import java.util.Map;
 import java.util.Objects;
-import org.slf4j.LoggerFactory;
 
 /**
  * Interface describing the template data context. This set of routines is used by the template to
@@ -35,7 +34,7 @@ public class JsonContext implements CimerantContext<Map<String, Object>> {
     Objects.requireNonNull(file);
     Objects.requireNonNull(cliVariableList);
 
-    this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+    this.logger = CimerantLogger.getLogger(this.getClass().getName());
     this.file = file;
     this.cliVariableList = cliVariableList;
   }

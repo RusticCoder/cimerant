@@ -28,7 +28,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.LoggerFactory;
 import sql.sqlite.SQLiteParser;
 import sql.sqlite.SQLiteParserBaseListener;
 import sql.sqlite.SQLiteParserListener;
@@ -42,7 +41,7 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(SQLiteParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(SQLiteParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

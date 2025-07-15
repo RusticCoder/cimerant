@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -28,7 +27,7 @@ public final class SetContextImpl<E> extends ContextRootImpl<Set<E>> implements 
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(SetContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(SetContextImpl.class.getName());
   }
 
   /**

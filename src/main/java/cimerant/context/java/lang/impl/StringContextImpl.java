@@ -10,7 +10,6 @@ import cimerant.context.java.lang.StringContext;
 import cimerant.logger.CimerantLogger;
 import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper class bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -23,7 +22,7 @@ public class StringContextImpl extends ContextRootImpl<String> implements String
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(StringContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(StringContextImpl.class.getName());
   }
 
   /**

@@ -20,7 +20,6 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 import sql.athena.AthenaParser;
 import sql.athena.AthenaParserBaseListener;
 import sql.athena.AthenaParserListener;
@@ -33,7 +32,7 @@ public class AthenaParserListenerImpl extends AthenaParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(AthenaParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(AthenaParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

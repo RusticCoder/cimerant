@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.tsql.TSqlLexer;
 import sql.tsql.TSqlParser;
 import sql.tsql.TSqlParserListener;
@@ -24,7 +23,7 @@ public class TSqlParserImpl extends TSqlParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(TSqlParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(TSqlParserImpl.class.getName());
   }
 
   /**

@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.mariadb.MariaDBLexer;
 import sql.mariadb.MariaDBParser;
 import sql.mariadb.MariaDBParserListener;
@@ -24,7 +23,7 @@ public class MariaDBParserImpl extends MariaDBParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(MariaDBParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(MariaDBParserImpl.class.getName());
   }
 
   /**

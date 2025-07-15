@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.mysql.positive.MySqlLexer;
 import sql.mysql.positive.MySqlParser;
 import sql.mysql.positive.MySqlParserListener;
@@ -24,7 +23,7 @@ public class MySqlParserImpl extends MySqlParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(MySqlParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(MySqlParserImpl.class.getName());
   }
 
   /**

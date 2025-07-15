@@ -10,7 +10,6 @@ import cimerant.context.java.util.MapEntryContext;
 import cimerant.logger.CimerantLogger;
 import java.util.Map;
 import java.util.Objects;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -27,7 +26,7 @@ public final class MapEntryContextImpl<K, V> extends ContextRootImpl<Map.Entry<K
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(MapEntryContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(MapEntryContextImpl.class.getName());
   }
 
   /**

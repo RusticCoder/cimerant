@@ -10,7 +10,6 @@ import cimerant.context.java.util.IteratorContext;
 import cimerant.logger.CimerantLogger;
 import java.util.Iterator;
 import java.util.Objects;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -27,7 +26,7 @@ public class IteratorContextImpl<E extends Iterator<?>, T extends ContextRoot<?>
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(IteratorContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(IteratorContextImpl.class.getName());
   }
 
   /**

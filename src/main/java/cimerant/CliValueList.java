@@ -97,7 +97,7 @@ class CliValueList implements List<CliValue> {
         final String template,
         final String outputPath,
         final String filePattern) {
-      this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+      this.logger = CimerantLogger.getLogger(this.getClass().getName());
 
       this.lineNumber = lineNumber;
 
@@ -182,7 +182,7 @@ class CliValueList implements List<CliValue> {
     Objects.requireNonNull(inputFile);
     Objects.requireNonNull(basePath);
 
-    this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+    this.logger = CimerantLogger.getLogger(this.getClass().getName());
     this.inputFile = inputFile;
     this.inputFileType = inputFileType;
     this.basePath = basePath;

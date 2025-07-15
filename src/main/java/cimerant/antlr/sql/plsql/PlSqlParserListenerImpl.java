@@ -26,7 +26,6 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 import sql.plsql.PlSqlParser;
 import sql.plsql.PlSqlParserBaseListener;
 import sql.plsql.PlSqlParserListener;
@@ -40,7 +39,7 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(PlSqlParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(PlSqlParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

@@ -74,7 +74,7 @@ public class CliVariableList implements List<CliVariable> {
 
     /** Creates an instance. */
     public CliVariable() {
-      this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+      this.logger = CimerantLogger.getLogger(this.getClass().getName());
     }
 
     /**
@@ -142,7 +142,7 @@ public class CliVariableList implements List<CliVariable> {
     ParseVariables(final String variableList) {
       final var moduleCode = ModuleCode.ERR_M0400;
 
-      this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+      this.logger = CimerantLogger.getLogger(this.getClass().getName());
 
       try (var reader =
           new InputStreamReader(

@@ -3,6 +3,7 @@ package cimerant.logger;
 import cimerant.SysError;
 import java.util.Queue;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** The process of recording events, messages, or data points generated. */
 public interface CimerantLogger extends Logger {
@@ -29,4 +30,19 @@ public interface CimerantLogger extends Logger {
    * @return if the log contains errors
    */
   boolean hasSysError();
+
+  /**
+   * Guarantee the instance is of type Cimerant logger.
+   *
+   * @param className The name of the logger.
+   * @return Instance of Cimerant logger.
+   */
+  static CimerantLogger getLogger(final String className) {
+    final var logger = LoggerFactory.getLogger(className);
+
+    if (logger instanceof CimerantLogger) {
+      return (CimerantLogger) logger;
+    }
+    return new CimerantLoggerFactory().getLogger(className);
+  }
 }

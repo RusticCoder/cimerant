@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.sqlite.SQLiteLexer;
 import sql.sqlite.SQLiteParser;
 import sql.sqlite.SQLiteParserListener;
@@ -24,7 +23,7 @@ public class SQLiteParserImpl extends SQLiteParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(SQLiteParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(SQLiteParserImpl.class.getName());
   }
 
   /**

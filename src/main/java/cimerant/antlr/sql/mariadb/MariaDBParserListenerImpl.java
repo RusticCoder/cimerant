@@ -26,7 +26,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.LoggerFactory;
 import sql.mariadb.MariaDBParser;
 import sql.mariadb.MariaDBParserBaseListener;
 import sql.mariadb.MariaDBParserListener;
@@ -40,7 +39,7 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(MariaDBParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(MariaDBParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

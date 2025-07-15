@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -37,7 +36,7 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(JsonRootContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(JsonRootContextImpl.class.getName());
   }
 
   /**

@@ -14,7 +14,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
-import org.slf4j.LoggerFactory;
 import sql.athena.AthenaLexer;
 import sql.athena.AthenaParser;
 import sql.athena.AthenaParserListener;
@@ -24,7 +23,7 @@ public class AthenaParserImpl extends AthenaParser {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(AthenaParserImpl.class.getName());
+    logger = CimerantLogger.getLogger(AthenaParserImpl.class.getName());
   }
 
   /**

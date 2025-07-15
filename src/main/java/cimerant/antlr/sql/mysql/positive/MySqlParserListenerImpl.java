@@ -28,7 +28,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.LoggerFactory;
 import sql.mysql.positive.MySqlParser;
 import sql.mysql.positive.MySqlParserBaseListener;
 import sql.mysql.positive.MySqlParserListener;
@@ -42,7 +41,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(MySqlParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(MySqlParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

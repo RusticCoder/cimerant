@@ -58,7 +58,7 @@ public final class Cimerant {
   private Cimerant() {
     this.clear();
 
-    this.logger = (CimerantLogger) LoggerFactory.getLogger(this.getClass().getName());
+    this.logger = CimerantLogger.getLogger(this.getClass().getName());
   }
 
   /** Remove all the elements, effectively emptying it. */

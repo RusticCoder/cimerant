@@ -27,7 +27,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.LoggerFactory;
 import sql.hive.v4.HiveParser;
 import sql.hive.v4.HiveParserBaseListener;
 import sql.hive.v4.HiveParserListener;
@@ -41,7 +40,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(HiveParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(HiveParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -31,7 +30,7 @@ public final class MapContextImpl<K, V> extends ContextRootImpl<Map<K, V>>
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(MapContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(MapContextImpl.class.getName());
   }
 
   /**

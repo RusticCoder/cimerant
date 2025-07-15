@@ -21,7 +21,6 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 import sql.phoenix.PhoenixParser;
 import sql.phoenix.PhoenixParserBaseListener;
 import sql.phoenix.PhoenixParserListener;
@@ -35,7 +34,7 @@ public class PhoenixParserListenerImpl extends PhoenixParserBaseListener {
   private static final CimerantLogger logger;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(PhoenixParserListenerImpl.class.getName());
+    logger = CimerantLogger.getLogger(PhoenixParserListenerImpl.class.getName());
   }
 
   private static final void traceChildren(final String methodName, final ParseTree ctx) {

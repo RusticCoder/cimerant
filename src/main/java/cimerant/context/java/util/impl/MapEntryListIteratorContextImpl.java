@@ -11,7 +11,6 @@ import cimerant.logger.CimerantLogger;
 import java.util.ListIterator;
 import java.util.Map.Entry;
 import java.util.Objects;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -29,8 +28,7 @@ public final class MapEntryListIteratorContextImpl<K, V>
   private static final long serialVersionUID = 1L;
 
   static {
-    logger =
-        (CimerantLogger) LoggerFactory.getLogger(MapEntryListIteratorContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(MapEntryListIteratorContextImpl.class.getName());
   }
 
   /**

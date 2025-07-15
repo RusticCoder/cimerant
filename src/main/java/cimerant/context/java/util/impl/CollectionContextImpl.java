@@ -11,7 +11,6 @@ import cimerant.context.java.util.CollectionContext;
 import cimerant.logger.CimerantLogger;
 import java.util.Collection;
 import java.util.Objects;
-import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper interface bridging the gap between {@link org.apache.velocity.context.Context} and {@link
@@ -28,7 +27,7 @@ public class CollectionContextImpl<E extends Collection<?>, T extends ContextRoo
   private static final long serialVersionUID = 1L;
 
   static {
-    logger = (CimerantLogger) LoggerFactory.getLogger(CollectionContextImpl.class.getName());
+    logger = CimerantLogger.getLogger(CollectionContextImpl.class.getName());
   }
 
   /**
