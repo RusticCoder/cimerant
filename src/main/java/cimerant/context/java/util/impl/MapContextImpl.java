@@ -9,6 +9,7 @@ import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.MapContext;
 import cimerant.context.java.util.MapEntrySetContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
@@ -27,7 +28,7 @@ import java.util.Set;
 public final class MapContextImpl<K, V> extends ContextRootImpl<Map<K, V>>
     implements MapContext<K, V> {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(MapContextImpl.class.getName());

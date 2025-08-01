@@ -47,7 +47,7 @@ public class CliVariableList implements List<CliVariable> {
         try {
           final var str =
               RegExUtils.replaceAll(
-                  StringUtils.upperCase(value, Locale.getDefault()),
+                  (CharSequence) StringUtils.upperCase(value, Locale.getDefault()),
                   Pattern.compile("[^a-zA-Z0-9]"),
                   "_");
 
@@ -96,7 +96,7 @@ public class CliVariableList implements List<CliVariable> {
     }
 
     private boolean isEmpty() {
-      return StringUtils.isBlank(this.key);
+      return !StringUtils.isBlank(this.key);
     }
 
     void setKey(final String key) {
@@ -147,7 +147,7 @@ public class CliVariableList implements List<CliVariable> {
       try (var reader =
           new InputStreamReader(
               Files.newInputStream(new File(variableList).toPath()), StandardCharsets.UTF_8)) {
-        final List<Extension> extensions = Arrays.asList(TablesExtension.create());
+        final List<Extension> extensions = List.of(TablesExtension.create());
         final var document = Parser.builder().extensions(extensions).build().parseReader(reader);
         this.parseNode(document);
       } catch (final SysError s) {
@@ -162,7 +162,7 @@ public class CliVariableList implements List<CliVariable> {
     }
 
     public final boolean add(final CliVariable cliVariable) {
-      if (cliVariable != null && !cliVariable.isEmpty()) {
+      if (cliVariable != null && cliVariable.isEmpty()) {
         return this.cliVariables.add(cliVariable);
       }
 
@@ -280,7 +280,7 @@ public class CliVariableList implements List<CliVariable> {
   /** Appends the specified element to the end of this list (optional operation). */
   @Override
   public final boolean add(final CliVariable cliVariable) {
-    if (cliVariable != null && !cliVariable.isEmpty()) {
+    if (cliVariable != null && cliVariable.isEmpty()) {
       return this.cliVariables.add(cliVariable);
     }
 
@@ -290,7 +290,7 @@ public class CliVariableList implements List<CliVariable> {
   /** Inserts the specified element at the specified position in this list (optional operation). */
   @Override
   public final void add(final int index, final CliVariable cliVariable) {
-    if (cliVariable != null && !cliVariable.isEmpty()) {
+    if (cliVariable != null && cliVariable.isEmpty()) {
       this.cliVariables.add(index, cliVariable);
     }
   }
@@ -305,7 +305,7 @@ public class CliVariableList implements List<CliVariable> {
 
     if (collection != null && !collection.isEmpty()) {
       for (final CliVariable cliVariable : collection) {
-        if (cliVariable != null && !cliVariable.isEmpty()) {
+        if (cliVariable != null && cliVariable.isEmpty()) {
           arrayList.add(cliVariable);
         }
       }
@@ -324,7 +324,7 @@ public class CliVariableList implements List<CliVariable> {
 
     if (collection != null && !collection.isEmpty()) {
       for (final CliVariable cliVariable : collection) {
-        if (cliVariable != null && !cliVariable.isEmpty()) {
+        if (cliVariable != null && cliVariable.isEmpty()) {
           arrayList.add(cliVariable);
         }
       }

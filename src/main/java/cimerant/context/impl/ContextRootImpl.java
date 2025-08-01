@@ -16,6 +16,7 @@ import cimerant.logger.CimerantLogger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.StreamWriteConstraints;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.Serial;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +29,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.CaseUtils;
@@ -42,7 +42,7 @@ import org.atteo.evo.inflector.English;
  * @param <E> The base type of the context.
  */
 public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E> {
-  private static volatile Map<Class<?>, Map<Integer, ContextRoot<?>>> instances = new HashMap<>();
+  private static final Map<Class<?>, Map<Integer, ContextRoot<?>>> instances = new HashMap<>();
   private static final CimerantLogger logger;
   private static final List<String> NUMBERS =
       Arrays.asList(
@@ -62,7 +62,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
           "LongAdder",
           "Number",
           "Short");
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(ContextRootImpl.class.getName());
@@ -116,9 +116,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
       if (contextObject instanceof Collection) {
         returnValue =
             (ContextRoot<E>) CollectionContextImpl.getInstance((Collection<E>) contextObject);
-      } else if (contextObject instanceof Map
-          || contextObject instanceof Map.Entry
-          || contextObject instanceof Set) {
+      } else if (contextObject instanceof Map || contextObject instanceof Map.Entry) {
         returnValue = ContextRootImpl.getInstance(contextObject);
       } else if (contextObject instanceof final String string) {
         returnValue = (ContextRoot<E>) StringContextImpl.getInstance(string);
@@ -142,7 +140,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
       return "";
     }
     if (arg.getClass().isArray()) {
-      return StringUtils.join(Arrays.asList(arg), " ");
+      return StringUtils.join(List.of(arg), " ");
     }
     if (arg instanceof Iterable) {
       return StringUtils.join((Iterable<?>) arg, " ");
@@ -173,17 +171,13 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
     Objects.requireNonNull(contextObject);
 
     synchronized (ContextRootImpl.class) {
-      if (ContextRootImpl.instances.get(contextObject.getClass()) == null) {
-        ContextRootImpl.instances.put(contextObject.getClass(), new HashMap<>());
-      }
+      ContextRootImpl.instances.computeIfAbsent(contextObject.getClass(), k -> new HashMap<>());
     }
 
     final var contextObjectClass = ContextRootImpl.instances.get(contextObject.getClass());
     final var hashCode = ((ContextRootImpl<?>) contextObject).getContextObject().hashCode();
     synchronized (ContextRootImpl.class) {
-      if (contextObjectClass.get(hashCode) == null) {
-        contextObjectClass.put(hashCode, contextObject);
-      }
+      contextObjectClass.putIfAbsent(hashCode, contextObject);
     }
 
     return (T) contextObjectClass.get(hashCode);
@@ -216,12 +210,12 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
   @SuppressWarnings("CPD-START")
   private static List<String> wordsPluralLast(final Object arg) {
     if (arg == null || StringUtils.isEmpty(arg.toString())) {
-      return Collections.<String>emptyList();
+      return Collections.emptyList();
     }
 
     final String[] list;
     if (arg.getClass().isArray()) {
-      list = ContextRootImpl.words(StringUtils.join(Arrays.asList(arg), " "));
+      list = ContextRootImpl.words(StringUtils.join(List.of(arg), " "));
     } else if (arg instanceof Iterable) {
       list = ContextRootImpl.words(StringUtils.join((Iterable<?>) arg, " "));
     } else {
@@ -236,12 +230,12 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
   @SuppressWarnings("CPD-START")
   private static List<String> wordsSingularLast(final Object arg) {
     if (arg == null || StringUtils.isEmpty(arg.toString())) {
-      return Collections.<String>emptyList();
+      return Collections.emptyList();
     }
 
     final String[] list;
     if (arg.getClass().isArray()) {
-      list = ContextRootImpl.words(StringUtils.join(Arrays.asList(arg), " "));
+      list = ContextRootImpl.words(StringUtils.join(List.of(arg), " "));
     } else if (arg instanceof Iterable) {
       list = ContextRootImpl.words(StringUtils.join((Iterable<?>) arg, " "));
     } else {
@@ -268,8 +262,7 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
     return Arrays.stream(ContextRootImpl.words(string))
         .map(String::toLowerCase)
         .map(StringUtils::capitalize)
-        .collect(Collectors.toList())
-        .toArray(new String[0]);
+        .toArray(String[]::new);
   }
 
   /** The context object. */

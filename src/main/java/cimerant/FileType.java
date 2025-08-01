@@ -21,8 +21,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -31,10 +30,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.athena.AthenaParserImpl.getInstance(file);
         parser.stmt();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -49,8 +45,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -59,10 +54,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.hive.v4.HiveParserImpl.getInstance(file);
         parser.statement();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -78,7 +70,7 @@ public enum FileType {
 
     @Override
     public cimerant.context.json.JsonRootContext getRootContext(
-        final File file, final CliVariableList cliVariableList) throws Exception {
+        final File file, final CliVariableList cliVariableList) {
       return cimerant.context.json.impl.JsonRootContextImpl.getInstance(file, cliVariableList);
     }
 
@@ -102,8 +94,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -112,10 +103,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.mariadb.MariaDBParserImpl.getInstance(file);
         parser.root();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -130,8 +118,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -140,10 +127,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.mysql.positive.MySqlParserImpl.getInstance(file);
         parser.root();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -158,8 +142,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -168,10 +151,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.phoenix.PhoenixParserImpl.getInstance(file);
         parser.phoenix_file();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -186,8 +166,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -196,10 +175,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.plsql.PlSqlParserImpl.getInstance(file);
         parser.sql_script();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -214,8 +190,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -224,10 +199,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.postgresql.PostgreSQLParserImpl.getInstance(file);
         parser.root();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -242,8 +214,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -252,10 +223,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.snowflake.SnowflakeParserImpl.getInstance(file);
         parser.snowflake_file();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -270,8 +238,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -280,10 +247,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.sqlite.SQLiteParserImpl.getInstance(file);
         parser.parse();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -298,8 +262,7 @@ public enum FileType {
     }
 
     @Override
-    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList)
-        throws IOException {
+    public SqlRootContext getRootContext(final File file, final CliVariableList cliVariableList) {
       return SqlRootContextImpl.getInstance(file, this, cliVariableList);
     }
 
@@ -308,10 +271,7 @@ public enum FileType {
       try {
         final var parser = cimerant.antlr.sql.tsql.TSqlParserImpl.getInstance(file);
         parser.tsql_file();
-        if (0 < parser.getNumberOfSyntaxErrors()) {
-          return false;
-        }
-        return true;
+        return 0 >= parser.getNumberOfSyntaxErrors();
       } catch (final Throwable t) {
         return false;
       }
@@ -327,7 +287,7 @@ public enum FileType {
 
     @Override
     public ObjectRootContext<Map<String, Object>> getRootContext(
-        final File file, final CliVariableList cliVariableList) throws IOException {
+        final File file, final CliVariableList cliVariableList) {
       return null;
     }
 
@@ -383,10 +343,9 @@ public enum FileType {
    * @param file the context map.
    * @param cliVariableList the context list of command-line interface variables.
    * @return a instance of the context.
-   * @throws Exception if an error occurs
    */
   public abstract ObjectRootContext<Map<String, Object>> getRootContext(
-      final File file, final CliVariableList cliVariableList) throws Exception;
+      final File file, final CliVariableList cliVariableList);
 
   /**
    * Returns {@code true} if the object model is valid.

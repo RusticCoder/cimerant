@@ -3,7 +3,7 @@ package cimerant;
 import java.util.stream.Stream;
 
 /** The {@code SystemCode} enumeration represents a set of predefined constants for applications. */
-enum SystemCode {
+public enum SystemCode {
   ERR_CMA("CMA", "Cimerant");
 
   public static Stream<SystemCode> stream() {

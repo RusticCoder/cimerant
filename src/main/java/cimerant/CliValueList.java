@@ -4,7 +4,6 @@ import cimerant.CliValueList.CliValue;
 import cimerant.CliValueList.CliValue.SingleMulti;
 import cimerant.logger.CimerantLogger;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -12,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -63,7 +63,7 @@ class CliValueList implements List<CliValue> {
         try {
           final var str =
               RegExUtils.replaceAll(
-                  StringUtils.upperCase(value, Locale.getDefault()),
+                  (CharSequence) StringUtils.upperCase(value, Locale.getDefault()),
                   Pattern.compile("[^a-zA-Z0-9]"),
                   "_");
 
@@ -144,7 +144,7 @@ class CliValueList implements List<CliValue> {
       return this.lineNumber;
     }
 
-    String getOutputPath() throws IOException {
+    String getOutputPath() {
       return this.outputPath;
     }
 
@@ -322,13 +322,7 @@ class CliValueList implements List<CliValue> {
       }
     }
 
-    this.add(
-        new CliValue(
-            lineNumber,
-            singleMulti1 == null ? null : singleMulti1.toString(),
-            template,
-            outputPath,
-            filePattern));
+    this.add(new CliValue(lineNumber, singleMulti1, template, outputPath, filePattern));
   }
 
   @SuppressWarnings("CPD-START")
@@ -338,7 +332,7 @@ class CliValueList implements List<CliValue> {
     try (var reader =
         new InputStreamReader(
             Files.newInputStream(new File(templateList).toPath()), StandardCharsets.UTF_8)) {
-      final List<Extension> extensions = Arrays.asList(TablesExtension.create());
+      final List<Extension> extensions = List.of(TablesExtension.create());
       final var document = Parser.builder().extensions(extensions).build().parseReader(reader);
 
       this.parseNode(document);
@@ -456,7 +450,7 @@ class CliValueList implements List<CliValue> {
 
   private void parseTableBlock(final TableBlock tableBlock) {
     if (tableBlock != null) {
-      for (final Node node : Arrays.asList(tableBlock.getFirstChild())) {
+      for (final Node node : Collections.singletonList(tableBlock.getFirstChild())) {
         if (node instanceof TableHead) {
           this.parseTableHead((TableHead) node);
         }

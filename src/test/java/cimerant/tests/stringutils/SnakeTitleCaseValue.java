@@ -21,7 +21,7 @@ public class SnakeTitleCaseValue {
    */
   @Given("snakeTitleCaseValue.{int} the input null is passed into Cimerant")
   public void givenTheInputNullIsPassedIntoCimerant(final Integer argUnique) {
-    this.outputString = this.contextRoot.snakeTitleCase((String) null);
+    this.outputString = this.contextRoot.snakeTitleCase(null);
   }
 
   /**
@@ -130,6 +130,6 @@ public class SnakeTitleCaseValue {
    */
   @Then("snakeTitleCaseValue.{int} Cimerant outputs null")
   public void thenCimerantOutputsNull(final Integer argUnique) {
-    Assertions.assertEquals(this.outputString, null);
+    Assertions.assertNull(this.outputString);
   }
 }

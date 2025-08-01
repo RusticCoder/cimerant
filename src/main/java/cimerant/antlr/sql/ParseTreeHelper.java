@@ -41,10 +41,7 @@ public class ParseTreeHelper {
       ctx.children.stream()
           .filter(ParserRuleContext.class::isInstance)
           .map(parserRuleContext -> (ParserRuleContext) parserRuleContext)
-          .forEach(
-              child -> {
-                returnValue.addAll(ParseTreeHelper.findContext(child, ruleContext));
-              });
+          .forEach(child -> returnValue.addAll(ParseTreeHelper.findContext(child, ruleContext)));
     }
 
     return returnValue;
@@ -181,7 +178,7 @@ public class ParseTreeHelper {
    *     structure look like a simple parse tree. This node represents both internal nodes, rule
    *     invocations, and leaf nodes, token matches.
    */
-  public static final void printChildren(final String methodName, final ParseTree ctx) {
+  public static void printChildren(final String methodName, final ParseTree ctx) {
     if (StringUtils.isNoneBlank(ParseTreeHelper.trimToken(ctx.getText()))) {
       if (0 < ctx.getChildCount()) {
         for (var i = 0; i < ctx.getChildCount(); ++i) {
@@ -204,12 +201,12 @@ public class ParseTreeHelper {
    *     structure look like a simple parse tree. This node represents both internal nodes, rule
    *     invocations, and leaf nodes, token matches.
    */
-  public static final void printParents(final String methodName, final ParseTree ctx) {
+  public static void printParents(final String methodName, final ParseTree ctx) {
     final var printString = methodName + ": " + ParseTreeHelper.privatePrintParents("", ctx);
     System.out.println(StringUtils.substring(printString, 0, printString.length() - 2));
   }
 
-  private static final String privatePrintParents(final String returnString, final ParseTree ctx) {
+  private static String privatePrintParents(final String returnString, final ParseTree ctx) {
     if (ctx.getParent() != null) {
       return ParseTreeHelper.privatePrintParents(
           ctx.getParent().getClass().getSimpleName() + ": " + returnString, ctx.getParent());
@@ -224,7 +221,7 @@ public class ParseTreeHelper {
    * @param text the String to be trimmed, may be null
    * @return the trimmed String, or an empty String if {@code null} input
    */
-  public static final String trimBracket(String text) {
+  public static String trimBracket(String text) {
     text = StringUtils.trimToEmpty(text);
     final var firstCharacter = text.charAt(0);
     final var lastCharacter = text.charAt(text.length() - 1);
@@ -242,7 +239,7 @@ public class ParseTreeHelper {
    * @param text the String to be trimmed, may be null
    * @return the trimmed String, or an empty String if {@code null} input
    */
-  public static final String trimParentheses(String text) {
+  public static String trimParentheses(String text) {
     text = StringUtils.trimToEmpty(text);
     final var firstCharacter = text.charAt(0);
     final var lastCharacter = text.charAt(text.length() - 1);
@@ -260,7 +257,7 @@ public class ParseTreeHelper {
    * @param text the String to be trimmed, may be null
    * @return the trimmed String, or an empty String if {@code null} input
    */
-  public static final String trimSingleQuote(String text) {
+  public static String trimSingleQuote(String text) {
     text = StringUtils.trimToEmpty(text);
     final var firstCharacter = text.charAt(0);
     final var lastCharacter = text.charAt(text.length() - 1);
@@ -277,7 +274,7 @@ public class ParseTreeHelper {
    * @param str the String to remove characters from, may be null.
    * @return the stripped String, {@code null} if null String input.
    */
-  public static final String trimToken(final String str) {
+  public static String trimToken(final String str) {
     return StringUtils.trimToNull(StringUtils.strip(str, " '\"[].`(),=;"));
   }
 

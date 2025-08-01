@@ -33,7 +33,7 @@ enum CimerantKeys {
 
     if (CimerantKeys.CIMERANT_ATTRIBUTES.getKey().equals(entry.getKey())) {
       returnValue = CimerantKeys.CIMERANT_ATTRIBUTES;
-    } else if (entry.getValue() instanceof final Map map
+    } else if (entry.getValue() instanceof final Map<?, ?> map
         && map.containsKey(CimerantKeys.CIMERANT_TYPE.getKey())) {
       returnValue = CimerantKeys.CIMERANT_TYPE;
     }

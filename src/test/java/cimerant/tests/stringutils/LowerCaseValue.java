@@ -21,7 +21,7 @@ public class LowerCaseValue {
    */
   @Given("lowerCaseValue.{int} the input null is passed into Cimerant")
   public void givenTheInputNullIsPassedIntoCimerant(final Integer argUnique) {
-    this.outputString = this.contextRoot.lowerCase((String) null);
+    this.outputString = this.contextRoot.lowerCase(null);
   }
 
   /**
@@ -130,6 +130,6 @@ public class LowerCaseValue {
    */
   @Then("lowerCaseValue.{int} Cimerant outputs null")
   public void thenCimerantOutputsNull(final Integer argUnique) {
-    Assertions.assertEquals(this.outputString, null);
+    Assertions.assertNull(this.outputString);
   }
 }

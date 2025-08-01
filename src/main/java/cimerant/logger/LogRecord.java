@@ -44,6 +44,6 @@ public record LogRecord(
       }
       return "null";
     }
-    return this.message.toString();
+    return this.message;
   }
 }

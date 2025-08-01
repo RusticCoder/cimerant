@@ -3,6 +3,7 @@ package cimerant.context;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.StreamWriteConstraints;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.Serial;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -14,7 +15,7 @@ import java.util.TreeMap;
  * @param <V> the type of mapped values
  */
 public class NotNullMap<K extends String, V> extends TreeMap<K, V> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Constructs a new, empty tree map, using the natural ordering of its keys. All keys inserted

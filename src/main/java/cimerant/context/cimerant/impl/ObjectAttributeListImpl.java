@@ -3,13 +3,14 @@ package cimerant.context.cimerant.impl;
 import cimerant.context.NotNullMap;
 import cimerant.context.NotNullSet;
 import cimerant.context.cimerant.ObjectAttributeList;
+import java.io.Serial;
 import java.util.Map;
 import java.util.SortedMap;
 
 /** An {@code Map} object that maps text descriptions to {@code ObjectAttribute}. */
 public class ObjectAttributeListImpl extends NotNullMap<String, NotNullSet>
     implements ObjectAttributeList {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** Creates an instance. */
   public ObjectAttributeListImpl() {

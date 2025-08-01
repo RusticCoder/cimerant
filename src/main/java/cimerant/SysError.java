@@ -1,5 +1,6 @@
 package cimerant;
 
+import java.io.Serial;
 import java.util.Arrays;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Arrays;
  * reasonable application might want to catch.
  */
 public class SysError extends RuntimeException {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
@@ -170,16 +171,13 @@ public class SysError extends RuntimeException {
     }
     System.arraycopy(args, 0, tempArgs, 1, args.length);
 
-    final var returnValue = new StringBuilder();
-    returnValue.append(systemCodeArg.getCode());
-    returnValue.append('-');
-    returnValue.append(moduleCodeArg.getCode());
-    returnValue.append('-');
-    returnValue.append(statusCodeArg.getCode());
-    returnValue.append(": ");
-    returnValue.append(statusCodeArg.getDescription().formatted(tempArgs));
-
-    return returnValue.toString();
+    return systemCodeArg.getCode()
+        + '-'
+        + moduleCodeArg.getCode()
+        + '-'
+        + statusCodeArg.getCode()
+        + ": "
+        + statusCodeArg.getDescription().formatted(tempArgs);
   }
 
   /** The status code associated with the error. */

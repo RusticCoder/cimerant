@@ -14,5 +14,5 @@ Feature: Multiple Templates
     Then singleTemplateStatic.<pUnique> an identical file is produced
 
     Examples:
-      | pUnique | pInputFile | pTemplate  | pTemplates | pSinti   | pPath  | pFile  | pVar   | pVars       |
-      | 1       | "input"    | "template" | ""         | "single" | "path" | "file" | "keys" | "variables" |
+      | pUnique | pInputFile | pTemplate  | pSinti   | pPath  | pFile  | pVar   | pVars       |
+      | 1       | "input"    | "template" | "single" | "path" | "file" | "keys" | "variables" |

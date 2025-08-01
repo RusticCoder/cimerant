@@ -353,23 +353,13 @@ public class SingleTemplateVariables {
     try {
       this.textWrittenToSystemErr =
           SystemLambda.tapSystemErr(
-              () -> {
-                this.statusCode =
-                    SystemLambda.catchSystemExit(
-                        () -> {
-                          Cimerant.main(stockArr);
-                        });
-              });
+              () -> this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr)));
     } catch (final java.lang.AssertionError e) {
       if (!"System.exit has not been called.".equals(e.getMessage())) {
         throw e;
       }
     }
     this.textWrittenToSystemErr = StringUtils.stripToNull(this.textWrittenToSystemErr);
-
-    // System.out.println(
-    // "cimerant.exe "
-    // + Arrays.toString(stockArr).replace(",", "").replace("[", "").replace("]", ""));
   }
 
   /**

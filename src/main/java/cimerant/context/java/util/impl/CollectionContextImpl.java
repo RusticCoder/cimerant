@@ -9,6 +9,7 @@ import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.lang.impl.IterableContextImpl;
 import cimerant.context.java.util.CollectionContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ import java.util.Objects;
 public class CollectionContextImpl<E extends Collection<?>, T extends ContextRoot<?>>
     extends IterableContextImpl<E, T> implements CollectionContext<E, T> {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(CollectionContextImpl.class.getName());
@@ -39,7 +40,7 @@ public class CollectionContextImpl<E extends Collection<?>, T extends ContextRoo
    * @param contextObject The base context object.
    * @return a instance of the context.
    */
-  public static final <E extends Collection<?>, T extends ContextRoot<?>>
+  public static <E extends Collection<?>, T extends ContextRoot<?>>
       CollectionContext<E, T> getInstance(final E contextObject) {
     final var moduleCode = ModuleCode.ERR_M0800;
 

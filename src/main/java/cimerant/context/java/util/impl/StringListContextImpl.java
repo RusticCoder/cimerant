@@ -3,6 +3,7 @@ package cimerant.context.java.util.impl;
 import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.ListContext;
+import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +16,7 @@ import java.util.Objects;
  */
 public final class StringListContextImpl extends ListContextImpl<List<String>, ContextRoot<String>>
     implements ListContext<List<String>, ContextRoot<String>> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the

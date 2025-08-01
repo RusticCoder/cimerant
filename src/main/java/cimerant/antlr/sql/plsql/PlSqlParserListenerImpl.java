@@ -26,6 +26,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import sql.plsql.PlSqlParser;
 import sql.plsql.PlSqlParserBaseListener;
 import sql.plsql.PlSqlParserListener;
@@ -42,7 +43,7 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
     logger = CimerantLogger.getLogger(PlSqlParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (PlSqlParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -15457,8 +15458,8 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
         .map(StringUtils::lowerCase)
         .forEach(
             terminalNodeText -> {
-              if (!StringUtils.equalsIgnoreCase("INITIALLY", terminalNodeText)
-                  && !StringUtils.equalsIgnoreCase("IMMEDIATE", terminalNodeText)) {
+              if (!Strings.CI.equals("INITIALLY", terminalNodeText)
+                  && !Strings.CI.equals("IMMEDIATE", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   // ENABLE
                   currentField.put(terminalNodeText, NotNullSet.getInstance(Boolean.TRUE));
@@ -15763,11 +15764,10 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
           .map(tableviewNameContext -> ParseTreeHelper.trimToken(tableviewNameContext.getText()))
           .filter(StringUtils::isNoneBlank)
           .forEach(
-              tableviewNameText -> {
-                currentRelationship.put(
-                    "foreignTable",
-                    NotNullSet.getInstance(ParseTreeHelper.trimToken(tableviewNameText)));
-              });
+              tableviewNameText ->
+                  currentRelationship.put(
+                      "foreignTable",
+                      NotNullSet.getInstance(ParseTreeHelper.trimToken(tableviewNameText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(PlSqlParser.Inline_constraintContext.class)
           .streamChildrenByClass(PlSqlParser.References_clauseContext.class)
@@ -16778,7 +16778,7 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -22625,9 +22625,9 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .streamTerminalNodeString()
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(PlSqlParser.Foreign_key_clauseContext.class)
             .streamChildrenByClass(PlSqlParser.References_clauseContext.class)
@@ -27307,41 +27307,39 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
     final var parentContext =
         ParseTreeHelper.getParentContext(ctx, PlSqlParser.Column_definitionContext.class);
     final var terminalNode =
-        new ArrayList<>(
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(PlSqlParser.Inline_constraintContext.class)
-                .streamChildrenByClass(PlSqlParser.References_clauseContext.class)
-                .filter(TerminalNode.class::isInstance)
-                .map(
-                    foreignTerminalNode -> {
-                      final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                      if (StringUtils.equalsAnyIgnoreCase(
-                          "REFERENCES", foreignTerminalNode.getText())) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(parentContext)
-                                .streamChildrenByClass(PlSqlParser.Inline_constraintContext.class)
-                                .streamChildrenByClass(PlSqlParser.Constraint_nameContext.class)
-                                .streamChildrenByClass(PlSqlParser.IdentifierContext.class)
-                                .streamChildrenByClass(PlSqlParser.Id_expressionContext.class)
-                                .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .collect(Collectors.toList()));
-                        if (returnValue.isEmpty()) {
-                          returnValue.addAll(
-                              ParseTreeStream.parseTreeStream(parentContext)
-                                  .streamChildrenByClass(PlSqlParser.Column_nameContext.class)
-                                  .streamChildrenByClass(PlSqlParser.IdentifierContext.class)
-                                  .streamChildrenByClass(PlSqlParser.Id_expressionContext.class)
-                                  .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
-                                  .listAllTerminalNode()
-                                  .stream()
-                                  .collect(Collectors.toList()));
-                        }
-                      }
-                      return returnValue;
-                    })
-                .flatMap(List::stream)
-                .collect(Collectors.toList()));
+        ParseTreeStream.parseTreeStream(parentContext)
+            .streamChildrenByClass(PlSqlParser.Inline_constraintContext.class)
+            .streamChildrenByClass(PlSqlParser.References_clauseContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .map(
+                foreignTerminalNode -> {
+                  final List<ParseTree> returnValue = new ArrayList<>();
+                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(parentContext)
+                            .streamChildrenByClass(PlSqlParser.Inline_constraintContext.class)
+                            .streamChildrenByClass(PlSqlParser.Constraint_nameContext.class)
+                            .streamChildrenByClass(PlSqlParser.IdentifierContext.class)
+                            .streamChildrenByClass(PlSqlParser.Id_expressionContext.class)
+                            .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                    if (returnValue.isEmpty()) {
+                      returnValue.addAll(
+                          ParseTreeStream.parseTreeStream(parentContext)
+                              .streamChildrenByClass(PlSqlParser.Column_nameContext.class)
+                              .streamChildrenByClass(PlSqlParser.IdentifierContext.class)
+                              .streamChildrenByClass(PlSqlParser.Id_expressionContext.class)
+                              .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
+                              .listAllTerminalNode()
+                              .stream()
+                              .toList());
+                    }
+                  }
+                  return returnValue;
+                })
+            .flatMap(List::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
     final var parentContext2 =
         ParseTreeHelper.getParentContext(ctx, PlSqlParser.Out_of_line_constraintContext.class);
     terminalNode.addAll(
@@ -27351,7 +27349,7 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
             .streamChildrenByClass(PlSqlParser.Id_expressionContext.class)
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
     terminalNode.addAll(
         ParseTreeStream.parseTreeStream(parentContext2)
             .streamChildrenByClass(PlSqlParser.Foreign_key_clauseContext.class)
@@ -27361,9 +27359,9 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
             .streamChildrenByClass(PlSqlParser.Id_expressionContext.class)
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
 
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -27398,7 +27396,7 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
         ParseTreeStream.parseTreeStream(idExpressionChildrenList)
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     idExpressionChildrenList =
         ParseTreeStream.parseTreeStream(parentContext)
@@ -27409,24 +27407,24 @@ public class PlSqlParserListenerImpl extends PlSqlParserBaseListener {
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(idExpressionChildrenList)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(idExpressionChildrenList)
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(idExpressionChildrenList)
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .streamChildrenByClass(PlSqlParser.Non_reserved_keywords_pre12cContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(idExpressionChildrenList)
             .streamChildrenByClass(PlSqlParser.Regular_idContext.class)
             .streamChildrenByClass(PlSqlParser.Non_reserved_keywords_in_12cContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     return SqlContextImpl.getInstance(this.getRootContext(), terminalNodeTextList);
   }

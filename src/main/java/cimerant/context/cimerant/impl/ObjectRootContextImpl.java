@@ -5,13 +5,14 @@ import cimerant.context.cimerant.ObjectAttributeList;
 import cimerant.context.cimerant.ObjectContext;
 import cimerant.context.cimerant.ObjectRootContext;
 import cimerant.context.impl.ContextRootImpl;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -21,7 +22,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public abstract class ObjectRootContextImpl<E> extends ContextRootImpl<E>
     implements ObjectRootContext<E> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** The list of attributes. */
   private final ObjectAttributeList attributes;
@@ -106,7 +107,7 @@ public abstract class ObjectRootContextImpl<E> extends ContextRootImpl<E>
     Objects.requireNonNull(name);
 
     return this.objects.stream()
-        .filter(object -> StringUtils.equalsIgnoreCase(name, object.getObjectName()))
+        .filter(object -> Strings.CI.equals(name, object.getObjectName()))
         .collect(Collectors.toList());
   }
 

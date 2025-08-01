@@ -21,7 +21,7 @@ public class BackSlashLowerCaseValue {
    */
   @Given("backSlashLowerCaseValue.{int} the input null is passed into Cimerant")
   public void givenTheInputNullIsPassedIntoCimerant(final Integer argUnique) {
-    this.outputString = this.contextRoot.backSlashLowerCase((String) null);
+    this.outputString = this.contextRoot.backSlashLowerCase(null);
   }
 
   /**
@@ -139,6 +139,6 @@ public class BackSlashLowerCaseValue {
    */
   @Then("backSlashLowerCaseValue.{int} Cimerant outputs null")
   public void thenCimerantOutputsNull(final Integer argUnique) {
-    Assertions.assertEquals(this.outputString, null);
+    Assertions.assertNull(this.outputString);
   }
 }

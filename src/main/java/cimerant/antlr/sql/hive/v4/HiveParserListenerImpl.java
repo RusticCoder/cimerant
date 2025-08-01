@@ -25,6 +25,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import sql.hive.v4.HiveParser;
@@ -43,7 +44,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
     logger = CimerantLogger.getLogger(HiveParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (HiveParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -6777,12 +6778,9 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
         ParseTreeStream.parseTreeStream(ctx)
             .streamTerminalNodeString()
             .collect(Collectors.toList());
-    if (commentText != null
-        && !commentText.isEmpty()
-        && StringUtils.equalsIgnoreCase("COMMENT", commentText.get(0))) {
+    if (!commentText.isEmpty() && Strings.CI.equals("COMMENT", commentText.get(0))) {
       commentText.set(0, "");
-      final var comment =
-          StringUtils.trimToEmpty(commentText.stream().collect(Collectors.joining(" ")));
+      final var comment = StringUtils.trimToEmpty(String.join(" ", commentText));
       if (StringUtils.isNoneBlank(comment)) {
         for (final var currentField : currentFieldList) {
           currentField.put(Field.COMMENT, NotNullSet.getInstance(comment));
@@ -6799,7 +6797,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (StringUtils.equalsIgnoreCase("PRECISION", terminalNodeText)) {
+                } else if (Strings.CI.equals("PRECISION", terminalNodeText)) {
                   currentField.put(
                       Field.FIELD_TYPE,
                       NotNullSet.getInstance(
@@ -6819,7 +6817,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
                     currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
                     currentField.remove(Field.MAX_SIZE);
                   }
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -6834,7 +6832,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
             .streamChildrenByClass(HiveParser.ColumnConstraintTypeContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("NOT NULL", nullableText)) {
+    if (Strings.CI.equals("NOT NULL", nullableText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.NULLABLE, NotNullSet.getInstance(Boolean.FALSE));
       }
@@ -6847,11 +6845,11 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
             .streamChildrenByClass(HiveParser.TableConstraintTypeContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("PRIMARY KEY", primaryKeyText)) {
+    if (Strings.CI.equals("PRIMARY KEY", primaryKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.PRIMARY, NotNullSet.getInstance(Boolean.TRUE));
       }
-    } else if (StringUtils.equalsIgnoreCase("UNIQUE", primaryKeyText)) {
+    } else if (Strings.CI.equals("UNIQUE", primaryKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -6869,8 +6867,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
             });
 
     for (final var currentField : currentFieldList) {
-      if (StringUtils.equalsIgnoreCase(
-              "DECIMAL", Objects.toString(currentField.get(Field.FIELD_TYPE), ""))
+      if (Strings.CI.equals("DECIMAL", Objects.toString(currentField.get(Field.FIELD_TYPE), ""))
           && currentField.containsKey(Field.MAX_SIZE)) {
         currentField.put(Field.PRECISION, currentField.get(Field.MAX_SIZE));
         currentField.remove(Field.MAX_SIZE);
@@ -6901,9 +6898,9 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
           .streamChildrenByClass(HiveParser.Id_Context.class)
           .streamTerminalNodeString()
           .forEach(
-              terminalNodeText -> {
-                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-              });
+              terminalNodeText ->
+                  currentRelationship.put(
+                      "foreignTable", NotNullSet.getInstance(terminalNodeText)));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(HiveParser.ColumnConstraintContext.class)
           .streamChildrenByClass(HiveParser.ForeignKeyConstraintContext.class)
@@ -7177,7 +7174,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
                   if (createForeignKeyChild instanceof final TerminalNode terminalNode
                       && !referencesFound.booleanValue()) {
                     referencesFound.setValue(
-                        StringUtils.equalsIgnoreCase("REFERENCES", terminalNode.getText()));
+                        Strings.CI.equals("REFERENCES", terminalNode.getText()));
                   } else if (createForeignKeyChild
                           instanceof final HiveParser.TableNameContext tableNameContext
                       && referencesFound.booleanValue()) {
@@ -7185,10 +7182,9 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
                         .streamChildrenByClass(HiveParser.Id_Context.class)
                         .streamTerminalNodeString()
                         .forEach(
-                            terminalNodeText -> {
-                              currentRelationship.put(
-                                  "foreignTable", NotNullSet.getInstance(terminalNodeText));
-                            });
+                            terminalNodeText ->
+                                currentRelationship.put(
+                                    "foreignTable", NotNullSet.getInstance(terminalNodeText)));
                   } else if (createForeignKeyChild
                       instanceof
                       final HiveParser.ColumnParenthesesListContext columnParenthesesListContext) {
@@ -7386,7 +7382,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -7419,8 +7415,8 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
@@ -10685,11 +10681,11 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
             .streamChildrenByClass(HiveParser.TableConstraintTypeContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("PRIMARY KEY", primaryKeyText)) {
+    if (Strings.CI.equals("PRIMARY KEY", primaryKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.PRIMARY, NotNullSet.getInstance(Boolean.TRUE));
       }
-    } else if (StringUtils.equalsIgnoreCase("UNIQUE", primaryKeyText)) {
+    } else if (Strings.CI.equals("UNIQUE", primaryKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -11642,13 +11638,13 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
           ParseTreeStream.parseTreeStream(parentContext)
               .streamChildrenByClass(HiveParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext)
               .streamChildrenByClass(HiveParser.TableNameContext.class)
               .streamChildrenByClass(HiveParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
     }
     terminalNode.addAll(
         ParseTreeStream.parseTreeStream(ctx)
@@ -11657,23 +11653,22 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
             .filter(TerminalNode.class::isInstance)
             .map(
                 foreignTerminalNode -> {
-                  final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                  if (StringUtils.equalsAnyIgnoreCase(
-                      "REFERENCES", foreignTerminalNode.getText())) {
+                  final List<ParseTree> returnValue = new ArrayList<>();
+                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
                     returnValue.addAll(
                         ParseTreeStream.parseTreeStream(
                                 (ParserRuleContext)
                                     foreignTerminalNode.getParent().getParent().getParent())
                             .streamChildrenByClass(HiveParser.Id_Context.class)
                             .filter(TerminalNode.class::isInstance)
-                            .collect(Collectors.toList()));
+                            .toList());
                   }
                   return returnValue;
                 })
             .flatMap(List::stream)
-            .collect(Collectors.toList()));
+            .toList());
 
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -11705,7 +11700,7 @@ public class HiveParserListenerImpl extends HiveParserBaseListener {
             .streamChildrenByClass(HiveParser.Id_Context.class)
             .streamChildrenByClass(HiveParser.NonReservedContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     return SqlContextImpl.getInstance(this.getRootContext(), terminalNodeTextList);
   }

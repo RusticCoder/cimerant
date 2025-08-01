@@ -21,7 +21,7 @@ enum CimerantTypes {
     CimerantTypes returnValue;
 
     try {
-      if (entry.getValue() instanceof final Map map) {
+      if (entry.getValue() instanceof final Map<?, ?> map) {
         final var key = map.get(CimerantKeys.CIMERANT_TYPE.getKey());
         returnValue =
             CimerantTypes.valueOf(StringUtils.upperCase(key.toString(), Locale.getDefault()));

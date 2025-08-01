@@ -3,13 +3,14 @@ package cimerant.context.cimerant.impl;
 import cimerant.context.NotNullMap;
 import cimerant.context.cimerant.ObjectField;
 import cimerant.context.cimerant.ObjectFieldList;
+import java.io.Serial;
 import java.util.Map;
 import java.util.SortedMap;
 
 /** An {@code Map} object that maps text descriptions to {@code ObjectField}. */
 public class ObjectFieldListImpl extends NotNullMap<String, ObjectField>
     implements ObjectFieldList {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** Creates an instance. */
   public ObjectFieldListImpl() {

@@ -20,6 +20,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import sql.athena.AthenaParser;
 import sql.athena.AthenaParserBaseListener;
 import sql.athena.AthenaParserListener;
@@ -35,7 +36,7 @@ public class AthenaParserListenerImpl extends AthenaParserBaseListener {
     logger = CimerantLogger.getLogger(AthenaParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (AthenaParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -1610,7 +1611,7 @@ public class AthenaParserListenerImpl extends AthenaParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -1626,7 +1627,7 @@ public class AthenaParserListenerImpl extends AthenaParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.MAX_SIZE)) {
                   currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -1735,7 +1736,7 @@ public class AthenaParserListenerImpl extends AthenaParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }

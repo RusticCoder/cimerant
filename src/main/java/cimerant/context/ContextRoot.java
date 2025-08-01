@@ -452,8 +452,8 @@ public interface ContextRoot<E> extends Context {
    * Character#toLowerCase(int)}. No other characters are changed.
    *
    * <p>For a word based algorithm, see {@link
-   * org.apache.commons.lang3.text.WordUtils#uncapitalize(String)}. A {@code null} input list
-   * returns {@code null}.
+   * org.apache.commons.text.WordUtils#uncapitalize(String)}. A {@code null} input list returns
+   * {@code null}.
    *
    * <pre>
    * StringUtils.uncapitalize(null)  = null
@@ -1137,8 +1137,8 @@ public interface ContextRoot<E> extends Context {
    * Character#toTitleCase(int)}. No other characters are changed.
    *
    * <p>For a word based algorithm, see {@link
-   * org.apache.commons.lang3.text.WordUtils#capitalize(String)}. A {@code null} input list returns
-   * {@code null}.
+   * org.apache.commons.text.WordUtils#capitalize(String)}. A {@code null} input list returns {@code
+   * null}.
    *
    * <pre>
    * StringUtils.capitalize(null)  = null

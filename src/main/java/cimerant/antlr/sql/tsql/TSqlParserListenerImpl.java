@@ -26,6 +26,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableObject;
@@ -45,7 +46,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
     logger = CimerantLogger.getLogger(TSqlParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (TSqlParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -7027,20 +7028,17 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
                     ParseTreeStream.parseTreeStream(idContext)
                         .streamTerminalNodeString()
                         .collect(Collectors.joining(" "));
-                if (StringUtils.equalsIgnoreCase("UNSIGNED", idText)) {
-                  if (currentField.getValue() != null) {
-                    currentField
-                        .getValue()
-                        .put(Field.UNSIGNED, NotNullSet.getInstance(Boolean.TRUE));
+                if (Strings.CI.equals("UNSIGNED", idText)) {
+                  if (currentField.get() != null) {
+                    currentField.get().put(Field.UNSIGNED, NotNullSet.getInstance(Boolean.TRUE));
                   }
                 } else {
                   ParseTreeStream.parseTreeStream(idContext)
                       .listAllTerminalNode()
                       .forEach(
-                          terminalNode -> {
-                            currentField.setValue(
-                                ParseTreeHelper.getField(currentTable, terminalNode));
-                          });
+                          terminalNode ->
+                              currentField.setValue(
+                                  ParseTreeHelper.getField(currentTable, terminalNode)));
                 }
               } else if (columnDefinitionContext
                   instanceof
@@ -7055,17 +7053,13 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
                                 " "),
                             Locale.getDefault())
                         + " ";
-                if (currentField.getValue() != null
-                    && !currentField.getValue().containsKey(Field.NULLABLE)
+                if (currentField.get() != null
+                    && !currentField.get().containsKey(Field.NULLABLE)
                     && !columnDefinitionElementText.contains(" DEFAULT NULL ")) {
                   if (columnDefinitionElementText.contains(" NOT NULL ")) {
-                    currentField
-                        .getValue()
-                        .put(Field.NULLABLE, NotNullSet.getInstance(Boolean.FALSE));
+                    currentField.get().put(Field.NULLABLE, NotNullSet.getInstance(Boolean.FALSE));
                   } else if (columnDefinitionElementText.contains(" NULL ")) {
-                    currentField
-                        .getValue()
-                        .put(Field.NULLABLE, NotNullSet.getInstance(Boolean.TRUE));
+                    currentField.get().put(Field.NULLABLE, NotNullSet.getInstance(Boolean.TRUE));
                   }
                 }
               }
@@ -7094,11 +7088,10 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
             .collect(Collectors.joining(" "));
     if (StringUtils.isNoneBlank(fieldType)) {
       for (final var currentField : currentFieldList) {
-        if (StringUtils.equalsIgnoreCase("DOUBLE PRECISION", fieldType)) {
+        if (Strings.CI.equals("DOUBLE PRECISION", fieldType)) {
           if (!currentField.containsKey(Field.FIELD_TYPE)) {
             currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(fieldType));
-          } else if (!StringUtils.equalsIgnoreCase(
-              currentField.get(Field.FIELD_TYPE).toString(), fieldType)) {
+          } else if (!Strings.CI.equals(currentField.get(Field.FIELD_TYPE).toString(), fieldType)) {
             currentField.put(
                 StringUtils.lowerCase(fieldType, Locale.getDefault()),
                 NotNullSet.getInstance(Boolean.TRUE));
@@ -7115,10 +7108,10 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
             terminalNodeText -> {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  if (!StringUtils.equalsIgnoreCase("INHERIT", terminalNodeText)) {
+                  if (!Strings.CI.equals("INHERIT", terminalNodeText)) {
                     currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
                   }
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -7136,7 +7129,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -7154,7 +7147,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -7168,11 +7161,11 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("CLUSTERED", terminalNodeText)) {
+              if (Strings.CI.equals("CLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
                 }
-              } else if (StringUtils.equalsIgnoreCase("NONCLUSTERED", terminalNodeText)) {
+              } else if (Strings.CI.equals("NONCLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.FALSE));
                 }
@@ -7183,7 +7176,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("UNSIGNED", terminalNodeText)) {
+              if (Strings.CI.equals("UNSIGNED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.UNSIGNED, NotNullSet.getInstance(Boolean.TRUE));
                 }
@@ -7196,11 +7189,11 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("CLUSTERED", terminalNodeText)) {
+              if (Strings.CI.equals("CLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
                 }
-              } else if (StringUtils.equalsIgnoreCase("NONCLUSTERED", terminalNodeText)) {
+              } else if (Strings.CI.equals("NONCLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.FALSE));
                 }
@@ -7231,22 +7224,21 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .forEach(
             terminalNodeText -> {
               for (final var currentField : currentFieldList) {
-                if (StringUtils.equalsIgnoreCase("NCHAR", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("NVARCHAR", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("VARCHAR", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("VARBINARY", terminalNodeText)) {
+                if (Strings.CI.equals("NCHAR", terminalNodeText)
+                    || Strings.CI.equals("NVARCHAR", terminalNodeText)
+                    || Strings.CI.equals("VARCHAR", terminalNodeText)
+                    || Strings.CI.equals("VARBINARY", terminalNodeText)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (StringUtils.equalsIgnoreCase("COLLATE", terminalNodeText)) {
+                } else if (Strings.CI.equals("COLLATE", terminalNodeText)) {
                   ParseTreeStream.parseTreeStream(ctx)
                       .streamChildrenByClass(TSqlParser.Data_typeContext.class)
                       .streamChildrenByClass(TSqlParser.Id_Context.class)
                       .streamTerminalNodeString()
                       .forEach(
-                          idContextText -> {
-                            currentField.put(
-                                Field.COLLATION_NAME, NotNullSet.getInstance(idContextText));
-                          });
-                } else if (StringUtils.equalsIgnoreCase("IDENTITY", terminalNodeText)) {
+                          idContextText ->
+                              currentField.put(
+                                  Field.COLLATION_NAME, NotNullSet.getInstance(idContextText)));
+                } else if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
                   currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
                 } else if (currentField.containsKey(Field.IDENTITY)) {
                   if (!currentField.containsKey(Field.SEED)) {
@@ -7256,7 +7248,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
                   }
                 } else if (!currentField.containsKey(Field.PRECISION)) {
                   if (NumberUtils.isCreatable(terminalNodeText)
-                      || StringUtils.equalsIgnoreCase("MAX", terminalNodeText)) {
+                      || Strings.CI.equals("MAX", terminalNodeText)) {
                     currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
                   }
                 } else if (currentField.containsKey(Field.PRECISION)) {
@@ -7270,34 +7262,33 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .forEach(
             terminalNodeText -> {
               for (final var currentField : currentFieldList) {
-                if (StringUtils.equalsIgnoreCase("DEFAULT", terminalNodeText)) {
+                if (Strings.CI.equals("DEFAULT", terminalNodeText)) {
                   ParseTreeStream.parseTreeStream(ctx)
                       .streamChildrenByClass(TSqlParser.Column_definition_elementContext.class)
                       .streamTextByClass(
                           TSqlParserListenerImpl.input, TSqlParser.ExpressionContext.class)
                       .map(ParseTreeHelper::trimParentheses)
                       .forEach(
-                          intervalText -> {
-                            currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
-                          });
-                } else if (StringUtils.equalsIgnoreCase("ROWGUIDCOL", terminalNodeText)) {
+                          intervalText ->
+                              currentField.put(
+                                  Field.DEFAULT, NotNullSet.getInstance(intervalText)));
+                } else if (Strings.CI.equals("ROWGUIDCOL", terminalNodeText)) {
                   currentField.put(Field.ROWGUIDCOL, NotNullSet.getInstance(Boolean.TRUE));
-                } else if (StringUtils.equalsIgnoreCase("NCHAR", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("NVARCHAR", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("VARCHAR", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("VARBINARY", terminalNodeText)) {
+                } else if (Strings.CI.equals("NCHAR", terminalNodeText)
+                    || Strings.CI.equals("NVARCHAR", terminalNodeText)
+                    || Strings.CI.equals("VARCHAR", terminalNodeText)
+                    || Strings.CI.equals("VARBINARY", terminalNodeText)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (StringUtils.equalsIgnoreCase("COLLATE", terminalNodeText)) {
+                } else if (Strings.CI.equals("COLLATE", terminalNodeText)) {
                   ParseTreeStream.parseTreeStream(ctx)
                       .streamChildrenByClass(TSqlParser.Column_definition_elementContext.class)
                       .streamChildrenByClass(TSqlParser.Id_Context.class)
                       .streamTerminalNodeString()
                       .forEach(
-                          idContextText -> {
-                            currentField.put(
-                                Field.COLLATION_NAME, NotNullSet.getInstance(idContextText));
-                          });
-                } else if (StringUtils.equalsIgnoreCase("IDENTITY", terminalNodeText)) {
+                          idContextText ->
+                              currentField.put(
+                                  Field.COLLATION_NAME, NotNullSet.getInstance(idContextText)));
+                } else if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
                   currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
                 } else if (currentField.containsKey(Field.IDENTITY)) {
                   if (!currentField.containsKey(Field.SEED)) {
@@ -7310,13 +7301,12 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
                   currentField.remove(Field.PRECISION);
                   currentField.remove(Field.SCALE);
                 } else if ((currentField.get(Field.FIELD_TYPE) == null)
-                    || (!StringUtils.equalsIgnoreCase(
-                            "NCHAR", currentField.get(Field.FIELD_TYPE).toString())
-                        && !StringUtils.equalsIgnoreCase(
+                    || (!Strings.CI.equals("NCHAR", currentField.get(Field.FIELD_TYPE).toString())
+                        && !Strings.CI.equals(
                             "NVARCHAR", currentField.get(Field.FIELD_TYPE).toString())
-                        && !StringUtils.equalsIgnoreCase(
+                        && !Strings.CI.equals(
                             "VARCHAR", currentField.get(Field.FIELD_TYPE).toString())
-                        && !StringUtils.equalsIgnoreCase(
+                        && !Strings.CI.equals(
                             "VARBINARY", currentField.get(Field.FIELD_TYPE).toString()))) {
                   currentField.put(Field.PRECISION, currentField.get(Field.PRECISION));
                   currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
@@ -7394,10 +7384,10 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
           .filter(StringUtils::isNoneBlank)
           .filter(Predicate.not("null"::equalsIgnoreCase))
           .forEach(
-              anyNameText -> {
-                currentRelationship.put(
-                    "foreignTable", NotNullSet.getInstance(ParseTreeHelper.trimToken(anyNameText)));
-              });
+              anyNameText ->
+                  currentRelationship.put(
+                      "foreignTable",
+                      NotNullSet.getInstance(ParseTreeHelper.trimToken(anyNameText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(TSqlParser.Column_definition_elementContext.class)
           .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
@@ -8009,7 +7999,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -11571,9 +11561,9 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
             .filter(StringUtils::isNoneBlank)
             .filter(Predicate.not("null"::equalsIgnoreCase))
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
             .streamChildrenByClass(TSqlParser.Column_name_listContext.class)
@@ -11641,11 +11631,11 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("CLUSTERED", terminalNodeText)) {
+              if (Strings.CI.equals("CLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
                 }
-              } else if (StringUtils.equalsIgnoreCase("NONCLUSTERED", terminalNodeText)) {
+              } else if (Strings.CI.equals("NONCLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.FALSE));
                 }
@@ -11676,30 +11666,27 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
     }
 
     final var terminalNode =
-        new ArrayList<>(
-            ParseTreeStream.parseTreeStream(ctx)
-                .streamChildrenByClass(TSqlParser.Column_name_list_with_orderContext.class)
-                .streamChildrenByClass(TSqlParser.Id_Context.class)
-                .filter(TerminalNode.class::isInstance)
-                .collect(Collectors.toList()));
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(TSqlParser.Column_name_list_with_orderContext.class)
+            .streamChildrenByClass(TSqlParser.Id_Context.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toCollection(ArrayList::new));
     terminalNode.addAll(
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(TSqlParser.Column_name_list_with_orderContext.class)
             .streamChildrenByClass(TSqlParser.Id_Context.class)
             .streamChildrenByClass(TSqlParser.KeywordContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
 
     final var currentFieldList =
-        terminalNode.stream()
-            .map(child -> ParseTreeHelper.getField(currentTable, child))
-            .collect(Collectors.toList());
+        terminalNode.stream().map(child -> ParseTreeHelper.getField(currentTable, child)).toList();
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("UNIQUE", terminalNodeText)) {
+              if (Strings.CI.equals("UNIQUE", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
                 }
@@ -11710,11 +11697,11 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("CLUSTERED", terminalNodeText)) {
+              if (Strings.CI.equals("CLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
                 }
-              } else if (StringUtils.equalsIgnoreCase("NONCLUSTERED", terminalNodeText)) {
+              } else if (Strings.CI.equals("NONCLUSTERED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.FALSE));
                 }
@@ -11753,23 +11740,20 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
                 ParseTreeStream.parseTreeStream(idContext)
                     .filter(TerminalNode.class::isInstance)
                     .forEach(
-                        terminalNode -> {
-                          currentField.setValue(
-                              ParseTreeHelper.getField(currentTable, terminalNode));
-                        });
+                        terminalNode ->
+                            currentField.setValue(
+                                ParseTreeHelper.getField(currentTable, terminalNode)));
               } else if (child instanceof final TerminalNode terminalNode) {
-                if (StringUtils.equalsIgnoreCase("CLUSTERED", terminalNode.getText())) {
+                if (Strings.CI.equals("CLUSTERED", terminalNode.getText())) {
                   isClustered.setTrue();
-                } else if (isClustered.booleanValue() && currentField.getValue() != null) {
-                  if (StringUtils.equalsIgnoreCase("ASC", terminalNode.getText())
-                      || StringUtils.equalsIgnoreCase("DESC", terminalNode.getText())) {
+                } else if (isClustered.booleanValue() && currentField.get() != null) {
+                  if (Strings.CI.equals("ASC", terminalNode.getText())
+                      || Strings.CI.equals("DESC", terminalNode.getText())) {
                     currentField
-                        .getValue()
+                        .get()
                         .put(Field.CLUSTERED, NotNullSet.getInstance(terminalNode.getText()));
                   } else {
-                    currentField
-                        .getValue()
-                        .put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
+                    currentField.get().put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
                   }
                   currentField.setValue(null);
                 }
@@ -12323,8 +12307,8 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
               .filter(
                   keywordContext ->
                       (keywordContext instanceof TerminalNode
-                          && !StringUtils.equalsIgnoreCase("CONSTRAINTS", keywordContext.getText())
-                          && !StringUtils.equalsIgnoreCase("UNSIGNED", keywordContext.getText())))
+                          && !Strings.CI.equals("CONSTRAINTS", keywordContext.getText())
+                          && !Strings.CI.equals("UNSIGNED", keywordContext.getText())))
               .collect(Collectors.toSet()));
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(idChildrenList)
@@ -12369,47 +12353,44 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
     final var parentContext =
         ParseTreeHelper.getParentContext(ctx, TSqlParser.Column_definitionContext.class);
     final var terminalNode =
-        new ArrayList<>(
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(TSqlParser.Column_definition_elementContext.class)
-                .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
-                .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
-                .filter(TerminalNode.class::isInstance)
-                .map(
-                    foreignTerminalNode -> {
-                      final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                      if (StringUtils.equalsAnyIgnoreCase(
-                          "REFERENCES", foreignTerminalNode.getText())) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(parentContext)
-                                .streamChildrenByClass(TSqlParser.Id_Context.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .collect(Collectors.toList()));
-                        if (returnValue.isEmpty()) {
-                          returnValue.addAll(
-                              ParseTreeStream.parseTreeStream(parentContext)
-                                  .streamChildrenByClass(
-                                      TSqlParser.Column_definition_elementContext.class)
-                                  .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
-                                  .streamChildrenByClass(
-                                      TSqlParser.Foreign_key_optionsContext.class)
-                                  .streamChildrenByClass(TSqlParser.Column_name_listContext.class)
-                                  .streamChildrenByClass(TSqlParser.Id_Context.class)
-                                  .filter(TerminalNode.class::isInstance)
-                                  .collect(Collectors.toList()));
-                        }
-                      }
-                      return returnValue;
-                    })
-                .flatMap(List::stream)
-                .collect(Collectors.toList()));
+        ParseTreeStream.parseTreeStream(parentContext)
+            .streamChildrenByClass(TSqlParser.Column_definition_elementContext.class)
+            .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
+            .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .map(
+                foreignTerminalNode -> {
+                  final List<ParseTree> returnValue = new ArrayList<>();
+                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(parentContext)
+                            .streamChildrenByClass(TSqlParser.Id_Context.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                    if (returnValue.isEmpty()) {
+                      returnValue.addAll(
+                          ParseTreeStream.parseTreeStream(parentContext)
+                              .streamChildrenByClass(
+                                  TSqlParser.Column_definition_elementContext.class)
+                              .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
+                              .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
+                              .streamChildrenByClass(TSqlParser.Column_name_listContext.class)
+                              .streamChildrenByClass(TSqlParser.Id_Context.class)
+                              .filter(TerminalNode.class::isInstance)
+                              .toList());
+                    }
+                  }
+                  return returnValue;
+                })
+            .flatMap(List::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
     final var parentContext2 =
         ParseTreeHelper.getParentContext(ctx, TSqlParser.Table_constraintContext.class);
     terminalNode.addAll(
         ParseTreeStream.parseTreeStream(parentContext2)
             .streamChildrenByClass(TSqlParser.Id_Context.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
     if (terminalNode.isEmpty()) {
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext2)
@@ -12417,10 +12398,10 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
               .streamChildrenByClass(TSqlParser.Table_nameContext.class)
               .streamChildrenByClass(TSqlParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
     }
 
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -12452,7 +12433,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
             .streamChildrenByClass(TSqlParser.Table_nameContext.class)
             .streamChildrenByClass(TSqlParser.Id_Context.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     terminalNodeTextList.replaceAll(text -> StringUtils.trimToNull(StringUtils.strip(text, "#")));
 

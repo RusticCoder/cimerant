@@ -8,9 +8,9 @@ package cimerant;
 // import org.junit.jupiter.api.Tag;
 
 /**
- * https://www.archunit.org
+ * <a href="https://www.archunit.org">ArchUnit</a>
  *
- * <p>https://github.com/TNG/ArchUnit-Examples
+ * <p><a href="https://github.com/TNG/ArchUnit-Examples">ArchUnit Examples</a>
  *
  * <p>example-junit5 shows how to use the JUnit 5 test support where test classes are simply being
  * picked up by being annotated with @AnalyzeClasses

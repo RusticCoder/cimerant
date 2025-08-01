@@ -48,7 +48,7 @@ public final class Cimerant {
    *
    * @param args command line arguments used to specify how Cimerant works.
    */
-  public static final void main(final String... args) {
+  public static void main(final String... args) {
     final var cimerant = new Cimerant();
     cimerant.execute(args);
   }
@@ -106,8 +106,7 @@ public final class Cimerant {
             final var template = velocityEngine.getTemplate(templateFile.getName());
 
             if (cliValue.getSingleMulti() == SingleMulti.MULTI
-                && context instanceof ObjectRootContext) {
-              final var objectRootContext = (ObjectRootContext<?>) context;
+                && context instanceof ObjectRootContext<?> objectRootContext) {
               for (final var object : objectRootContext.getObjects()) {
                 context.setGrouping(contextGrouping);
                 final var objectGrouping = new ArrayList<>(object.getGrouping());
@@ -164,7 +163,7 @@ public final class Cimerant {
                     Files.createDirectories(outputFilePattern.getParent());
                   }
 
-                  Files.write(outputFilePattern, mergedTemplate.getBytes(Charset.defaultCharset()));
+                  Files.writeString(outputFilePattern, mergedTemplate, Charset.defaultCharset());
                 }
               }
             } else {
@@ -232,7 +231,7 @@ public final class Cimerant {
                   Files.createDirectories(outputFilePattern.getParent());
                 }
 
-                Files.write(outputFilePattern, mergedTemplate.getBytes(Charset.defaultCharset()));
+                Files.writeString(outputFilePattern, mergedTemplate, Charset.defaultCharset());
               }
             }
           }
@@ -245,7 +244,7 @@ public final class Cimerant {
               break;
             case WARN:
               if (this.logger.isWarnEnabled()) {
-                System.out.println(error.toString()); // NOPMD
+                System.out.println(error); // NOPMD
                 if (error.exception() != null) {
                   error.exception().printStackTrace(System.out);
                 }
@@ -253,7 +252,7 @@ public final class Cimerant {
               break;
             case INFO:
               if (this.logger.isInfoEnabled()) {
-                System.out.println(error.toString()); // NOPMD
+                System.out.println(error); // NOPMD
                 if (error.exception() != null) {
                   error.exception().printStackTrace(System.out);
                 }
@@ -261,7 +260,7 @@ public final class Cimerant {
               break;
             case DEBUG:
               if (this.logger.isDebugEnabled()) {
-                System.out.println(error.toString()); // NOPMD
+                System.out.println(error); // NOPMD
                 if (error.exception() != null) {
                   error.exception().printStackTrace(System.out);
                 }
@@ -269,7 +268,7 @@ public final class Cimerant {
               break;
             case TRACE:
               if (this.logger.isTraceEnabled()) {
-                System.out.println(error.toString()); // NOPMD
+                System.out.println(error); // NOPMD
                 if (error.exception() != null) {
                   error.exception().printStackTrace(System.out);
                 }
@@ -310,6 +309,7 @@ public final class Cimerant {
         sysError = SysError.getInstance(Cimerant.SYSTEM_CODE, moduleCode, StatusCode.ERR_0001, t);
       }
 
+      assert sysError != null;
       if (!"class com.github.stefanbirkner.systemlambda.SystemLambda$CheckExitCalled"
           .equals(t.getClass().toString())) {
         System.err.println(sysError.getMessage()); // NOPMD

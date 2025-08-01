@@ -23,7 +23,7 @@
 - [Typical Workflow](#typical-workflow)
   - [Modeling Phase](#modeling-phase)
   - [Template Definition](#template-definition)
-  - [Model Transformation / Code Generation](#model-transformation-code-generation)
+  - [Model Transformation / Code Generation](#model-transformation--code-generation)
   - [Iteration and Refinement](#iteration-and-refinement)
 - [Benefits](#benefits)
   - [Productivity](#productivity)
@@ -286,7 +286,7 @@ accessible within the template.
 **Variable List**
 
 | Key             | Value           |
-| --------------- | --------------- |
+|-----------------|-----------------|
 | a test string   | a test string   |
 | a_test_string   | a_test_string   |
 | a-test-string   | a-test-string   |
@@ -299,7 +299,7 @@ accessible within the template.
 File format to list multiple [Velocity templates][2].
 
 | Template          | Single/Multi | Output Path | File Pattern                   |
-| ----------------- | ------------ | ----------- | ------------------------------ |
+|-------------------|--------------|-------------|--------------------------------|
 | SingleTemplate.vm | Single       | src         | Destination.xml                |
 | MultiTemplate.vm  | Multi        | src         | Destination\_${CLASS_NAME}.xml |
 
@@ -315,11 +315,11 @@ Status code: Unique digits identifying the error within the component/module.
 Error codes are displayed `<System/App>-<Component/Module>-<Status code>`
 
 | Code | System/app description |
-| ---- | ---------------------- |
+|------|------------------------|
 | CMA  | Cimerant               |
 
 | Code | Component/module description |
-| ---- | ---------------------------- |
+|------|------------------------------|
 | M00  | Invalid Command              |
 | M01  | Invalid Command Line Values  |
 | M02  | Errors                       |
@@ -331,7 +331,7 @@ Error codes are displayed `<System/App>-<Component/Module>-<Status code>`
 | P00  | Invalid Parser               |
 
 | code | Status code description                                       |
-| ---- | ------------------------------------------------------------- |
+|------|---------------------------------------------------------------|
 | 0001 | Unknown error                                                 |
 | 0002 | Invalid command-line argument                                 |
 | 0003 | Duplicate command-line arguments                              |

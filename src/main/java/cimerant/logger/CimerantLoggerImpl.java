@@ -1,6 +1,7 @@
 package cimerant.logger;
 
 import cimerant.SysError;
+import java.io.Serial;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import org.slf4j.Marker;
@@ -14,7 +15,7 @@ import org.slf4j.helpers.MessageFormatter;
  */
 public class CimerantLoggerImpl extends LegacyAbstractLogger implements CimerantLogger {
   private static final Queue<LogRecord> LOG_RECORD_QUEUE = new ConcurrentLinkedQueue<>();
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
   private static final Queue<SysError> SYS_ERROR_QUEUE = new ConcurrentLinkedQueue<>();
 
   /**

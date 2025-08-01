@@ -1,7 +1,7 @@
 name: Bug Report
 description: Report an Cimerant bug.
 title: "[Bug]: "
-labels: "bug :new:"
+labels: ["bug :new:"]
 body:
 - type: markdown
   attributes:

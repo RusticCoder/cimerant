@@ -1,10 +1,11 @@
 package cimerant.context;
 
+import java.io.Serial;
 import java.util.TreeSet;
 
 /** An object that represents an attribute. */
 public class NotNullSet extends TreeSet<String> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Global access point to get a instance of the context, ensuring that only one instance of the
@@ -53,7 +54,7 @@ public class NotNullSet extends TreeSet<String> {
   public NotNullSet(final String string) {
     super(String.CASE_INSENSITIVE_ORDER);
     if (string != null) {
-      this.add(string.toString());
+      this.add(string);
     }
   }
 

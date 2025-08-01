@@ -43,10 +43,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
    *     operations.
    */
   public static ParseTreeStream parseTreeStream(final List<ParseTree> parseTreeChildren) {
-    if (parseTreeChildren == null) {
-      return new ParseTreeStream(new ArrayList<>());
-    }
-    return new ParseTreeStream(parseTreeChildren);
+    return new ParseTreeStream(Objects.requireNonNullElseGet(parseTreeChildren, ArrayList::new));
   }
 
   /**
@@ -106,7 +103,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
 
   @Override
   public long count() {
-    return this.parseTreeChildren.stream().count();
+    return this.parseTreeChildren.size();
   }
 
   @Override
@@ -153,7 +150,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
 
   @Override
   public void forEach(final Consumer<? super ParseTree> action) {
-    this.parseTreeChildren.stream().forEach(action);
+    this.parseTreeChildren.forEach(action);
   }
 
   @Override
@@ -185,7 +182,6 @@ public class ParseTreeStream implements Stream<ParseTree> {
     final var returnValue =
         this.parseTreeChildren.stream()
             .filter(TerminalNode.class::isInstance)
-            .filter(Objects::nonNull)
             .map(terminalNode -> ((TerminalNode) terminalNode))
             .collect(Collectors.toList());
     returnValue.addAll(
@@ -198,7 +194,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
                     ParseTreeStream.parseTreeStream(parserRuleContext).listAllTerminalNode())
             .filter(Objects::nonNull)
             .flatMap(List::stream)
-            .collect(Collectors.toList()));
+            .toList());
     return returnValue;
   }
 
@@ -209,7 +205,6 @@ public class ParseTreeStream implements Stream<ParseTree> {
    * @return {@link List} of the {@link String} text of all {@link TerminalNode} children of this
    *     stream.
    */
-  @SuppressWarnings("resource")
   public List<String> listAllTerminalNodeText() {
     final var returnValue =
         this.parseTreeChildren.stream()
@@ -226,7 +221,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
                 parserRuleContext ->
                     new ParseTreeStream(parserRuleContext).listAllTerminalNodeText())
             .flatMap(List::stream)
-            .collect(Collectors.toList()));
+            .toList());
     return returnValue;
   }
 
@@ -385,7 +380,6 @@ public class ParseTreeStream implements Stream<ParseTree> {
       final CharStream input, final Class<T> clazz) {
     return this.parseTreeChildren.stream()
         .filter(clazz::isInstance)
-        .filter(Objects::nonNull)
         .map(
             parserRuleContext ->
                 ParseTreeHelper.getText(input, (ParserRuleContext) parserRuleContext))
@@ -394,12 +388,12 @@ public class ParseTreeStream implements Stream<ParseTree> {
 
   @Override
   public Object[] toArray() {
-    return this.parseTreeChildren.stream().toArray();
+    return this.parseTreeChildren.toArray();
   }
 
   @Override
   public <A> A[] toArray(final IntFunction<A[]> generator) {
-    return this.parseTreeChildren.stream().toArray(generator);
+    return this.parseTreeChildren.toArray(generator);
   }
 
   @Override

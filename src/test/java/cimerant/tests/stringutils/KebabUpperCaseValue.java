@@ -21,7 +21,7 @@ public class KebabUpperCaseValue {
    */
   @Given("kebabUpperCaseValue.{int} the input null is passed into Cimerant")
   public void givenTheInputNullIsPassedIntoCimerant(final Integer argUnique) {
-    this.outputString = this.contextRoot.kebabUpperCase((String) null);
+    this.outputString = this.contextRoot.kebabUpperCase(null);
   }
 
   /**
@@ -130,6 +130,6 @@ public class KebabUpperCaseValue {
    */
   @Then("kebabUpperCaseValue.{int} Cimerant outputs null")
   public void thenCimerantOutputsNull(final Integer argUnique) {
-    Assertions.assertEquals(this.outputString, null);
+    Assertions.assertNull(this.outputString);
   }
 }

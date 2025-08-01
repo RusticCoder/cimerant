@@ -28,6 +28,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import sql.postgresql.PostgreSQLParser;
 import sql.postgresql.PostgreSQLParserBaseListener;
 import sql.postgresql.PostgreSQLParserListener;
@@ -44,7 +45,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
     logger = CimerantLogger.getLogger(PostgreSQLParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (PostgreSQLParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -10556,9 +10557,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10575,9 +10576,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10595,9 +10596,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10627,9 +10628,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
                   } else {
                     currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
                   }
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.PRECISION).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10646,7 +10647,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         .map(StringUtils::upperCase)
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("VARYING", terminalNodeText)) {
+              if (Strings.CI.equals("VARYING", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.VARYING, NotNullSet.getInstance(Boolean.TRUE));
                 }
@@ -10660,7 +10661,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         .map(StringUtils::upperCase)
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("IDENTITY", terminalNodeText)) {
+              if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
                 }
@@ -10674,18 +10675,18 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         .map(StringUtils::upperCase)
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("DEFERRABLE", terminalNodeText)) {
+              if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
                 }
-              } else if (StringUtils.equalsIgnoreCase("DEFERRED", terminalNodeText)) {
+              } else if (Strings.CI.equals("DEFERRED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.DEFERRED, NotNullSet.getInstance(Boolean.TRUE));
                 }
               } else {
                 for (final var currentField : currentFieldList) {
-                  if (!StringUtils.equalsIgnoreCase("IMMEDIATE", terminalNodeText)
-                      && !StringUtils.equalsIgnoreCase("INITIALLY", terminalNodeText)) {
+                  if (!Strings.CI.equals("IMMEDIATE", terminalNodeText)
+                      && !Strings.CI.equals("INITIALLY", terminalNodeText)) {
                     currentField.put(
                         StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                         NotNullSet.getInstance(Boolean.TRUE));
@@ -10700,7 +10701,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         .map(StringUtils::upperCase)
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("COLLATE", terminalNodeText)) {
+              if (Strings.CI.equals("COLLATE", terminalNodeText)) {
                 ParseTreeStream.parseTreeStream(ctx)
                     .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
                     .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
@@ -10729,9 +10730,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         for (final var currentField : currentFieldList) {
           if (!currentField.containsKey(Field.FIELD_TYPE)) {
             currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-          } else if (!StringUtils.equalsIgnoreCase(
+          } else if (!Strings.CI.equals(
                   currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-              && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+              && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
             currentField.put(
                 StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                 NotNullSet.getInstance(Boolean.TRUE));
@@ -10750,9 +10751,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10819,9 +10820,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10840,9 +10841,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10861,9 +10862,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10893,9 +10894,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
                   } else {
                     currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
                   }
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.PRECISION).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -10985,7 +10986,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         if (!currentField.containsKey(Field.DEFAULT)
             && i + 1 < colconstraintelemList.size()
             && colconstraintelemList.get(i) instanceof TerminalNode
-            && StringUtils.equalsIgnoreCase(
+            && Strings.CI.equals(
                 "DEFAULT", ParseTreeHelper.trimToken(colconstraintelemList.get(i).getText()))
             && colconstraintelemList.get(i + 1) instanceof ParserRuleContext) {
           final var intervalText =
@@ -11022,7 +11023,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
         .forEach(
             terminalNodeText -> {
               for (final var currentField : currentFieldList) {
-                if (StringUtils.equalsIgnoreCase("VARYING", terminalNodeText)) {
+                if (Strings.CI.equals("VARYING", terminalNodeText)) {
                   currentField.put(Field.VARYING, NotNullSet.getInstance(Boolean.TRUE));
                 }
               }
@@ -11114,11 +11115,10 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
           .filter(StringUtils::isNoneBlank)
           .filter(Predicate.not("null"::equalsIgnoreCase))
           .forEach(
-              identifierText -> {
-                currentRelationship.put(
-                    "foreignTable",
-                    NotNullSet.getInstance(ParseTreeHelper.trimToken(identifierText)));
-              });
+              identifierText ->
+                  currentRelationship.put(
+                      "foreignTable",
+                      NotNullSet.getInstance(ParseTreeHelper.trimToken(identifierText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
           .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
@@ -11784,7 +11784,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -11799,13 +11799,13 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
                 }
-                if (StringUtils.equalsIgnoreCase("UNLOGGED", terminalNodeText)) {
+                if (Strings.CI.equals("UNLOGGED", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.UNLOGGED, NotNullSet.getInstance(Boolean.TRUE));
@@ -12023,7 +12023,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -12038,13 +12038,13 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
                 }
-                if (StringUtils.equalsIgnoreCase("UNLOGGED", terminalNodeText)) {
+                if (Strings.CI.equals("UNLOGGED", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.UNLOGGED, NotNullSet.getInstance(Boolean.TRUE));
@@ -16101,7 +16101,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList());
+            .toList();
     if (!terminalNodeTextList.isEmpty()) {
       final Set<String> inheritsList;
       if (currentTable.getAttributes().get(SqlContextImpl.INHERITS) instanceof Set) {
@@ -17986,20 +17986,20 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
               .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       fieldNameList.addAll(
           ParseTreeStream.parseTreeStream(columnElemContext)
               .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
               .streamChildrenByClass(PostgreSQLParser.Col_name_keywordContext.class)
               .streamChildrenByClass(PostgreSQLParser.Builtin_function_nameContext.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       fieldNameList.addAll(
           ParseTreeStream.parseTreeStream(columnElemContext)
               .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
               .streamChildrenByClass(PostgreSQLParser.Unreserved_keywordContext.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
     }
     final var fieldTypeText =
         ParseTreeStream.parseTreeStream(ctx)
@@ -18010,7 +18010,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
     fieldNameList.stream()
         .map(field -> ParseTreeHelper.getField(currentTable, field))
         .filter(Objects::nonNull)
-        .collect(Collectors.toList())
+        .toList()
         .forEach(
             field -> {
               if ("PRIMARY KEY".equals(fieldTypeText)) {
@@ -18037,11 +18037,8 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
       fieldNameList.stream()
           .map(field -> ParseTreeHelper.getField(currentTable, field))
           .filter(Objects::nonNull)
-          .collect(Collectors.toList())
-          .forEach(
-              field -> {
-                field.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
-              });
+          .toList()
+          .forEach(field -> field.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE)));
     }
 
     final var foreignText =
@@ -18062,9 +18059,9 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .filter(StringUtils::isNoneBlank)
             .filter(Predicate.not("null"::equalsIgnoreCase))
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
             .streamChildrenByClass(PostgreSQLParser.Opt_column_listContext.class)
@@ -19204,46 +19201,44 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
     final var parentContext =
         ParseTreeHelper.getParentContext(ctx, PostgreSQLParser.ColumnDefContext.class);
     final var terminalNode =
-        new ArrayList<>(
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
-                .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
-                .streamChildrenByClass(PostgreSQLParser.ColconstraintelemContext.class)
-                .filter(TerminalNode.class::isInstance)
-                .map(
-                    foreignTerminalNode -> {
-                      final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                      if (StringUtils.equalsAnyIgnoreCase(
-                          "REFERENCES", foreignTerminalNode.getText())) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(parentContext)
-                                .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.NameContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .collect(Collectors.toList()));
-                        if (returnValue.isEmpty()) {
-                          returnValue.addAll(
-                              ParseTreeStream.parseTreeStream(parentContext)
-                                  .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                                  .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                                  .filter(TerminalNode.class::isInstance)
-                                  .collect(Collectors.toList()));
-                          returnValue.addAll(
-                              ParseTreeStream.parseTreeStream(parentContext)
-                                  .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                                  .streamChildrenByClass(
-                                      PostgreSQLParser.Unreserved_keywordContext.class)
-                                  .filter(TerminalNode.class::isInstance)
-                                  .collect(Collectors.toList()));
-                        }
-                      }
-                      return returnValue;
-                    })
-                .flatMap(List::stream)
-                .collect(Collectors.toList()));
+        ParseTreeStream.parseTreeStream(parentContext)
+            .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
+            .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
+            .streamChildrenByClass(PostgreSQLParser.ColconstraintelemContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .map(
+                foreignTerminalNode -> {
+                  final List<ParseTree> returnValue = new ArrayList<>();
+                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(parentContext)
+                            .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.NameContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                    if (returnValue.isEmpty()) {
+                      returnValue.addAll(
+                          ParseTreeStream.parseTreeStream(parentContext)
+                              .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                              .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                              .filter(TerminalNode.class::isInstance)
+                              .toList());
+                      returnValue.addAll(
+                          ParseTreeStream.parseTreeStream(parentContext)
+                              .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                              .streamChildrenByClass(
+                                  PostgreSQLParser.Unreserved_keywordContext.class)
+                              .filter(TerminalNode.class::isInstance)
+                              .toList());
+                    }
+                  }
+                  return returnValue;
+                })
+            .flatMap(List::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
     final var parentContext2 =
         ParseTreeHelper.getParentContext(ctx, PostgreSQLParser.TableconstraintContext.class);
     terminalNode.addAll(
@@ -19252,7 +19247,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
     if (terminalNode.isEmpty()) {
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext2)
@@ -19261,10 +19256,10 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
               .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
               .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
     }
 
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -19304,14 +19299,14 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
             .streamChildrenByClass(PostgreSQLParser.Unreserved_keywordContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(PostgreSQLParser.Qualified_nameContext.class)
             .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
             .streamChildrenByClass(PostgreSQLParser.Col_name_keywordContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(PostgreSQLParser.Qualified_nameContext.class)
@@ -19319,7 +19314,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .streamChildrenByClass(PostgreSQLParser.Col_name_keywordContext.class)
             .streamChildrenByClass(PostgreSQLParser.Builtin_function_nameContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(PostgreSQLParser.Qualified_nameContext.class)
@@ -19327,7 +19322,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .streamChildrenByClass(PostgreSQLParser.Plsql_unreserved_keywordContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(PostgreSQLParser.Qualified_nameContext.class)
@@ -19337,7 +19332,7 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserBaseListener {
             .streamChildrenByClass(PostgreSQLParser.CollabelContext.class)
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     return SqlContextImpl.getInstance(this.getRootContext(), terminalNodeTextList);
   }

@@ -3,7 +3,6 @@
 package sql.postgresql;
 
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;

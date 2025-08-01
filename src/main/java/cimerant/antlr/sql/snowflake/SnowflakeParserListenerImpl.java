@@ -25,6 +25,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import sql.snowflake.SnowflakeParser;
 import sql.snowflake.SnowflakeParserBaseListener;
@@ -42,7 +43,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
     logger = CimerantLogger.getLogger(SnowflakeParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (SnowflakeParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -8068,7 +8069,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8111,7 +8112,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("DEFERRABLE", terminalNodeText)) {
+              if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
                 }
@@ -8122,11 +8123,11 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("AUTOINCREMENT", terminalNodeText)) {
+              if (Strings.CI.equals("AUTOINCREMENT", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.AUTO_INCREMENT, NotNullSet.getInstance(Boolean.TRUE));
                 }
-              } else if (StringUtils.equalsIgnoreCase("IDENTITY", terminalNodeText)) {
+              } else if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
                 final var terminalNodeTextList =
                     ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
                         .streamChildrenByClass(SnowflakeParser.Default_valueContext.class)
@@ -8167,7 +8168,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.MAX_SIZE)) {
                   currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8225,8 +8226,8 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .collect(Collectors.joining(" "));
 
     for (final var currentField : currentFieldList) {
-      if (StringUtils.equalsIgnoreCase("UNIQUE", uniqueKeyText)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT UNIQUE", uniqueKeyText)) {
+      if (Strings.CI.equals("UNIQUE", uniqueKeyText)
+          || Strings.CI.equals("CONSTRAINT UNIQUE", uniqueKeyText)) {
         currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
       }
     }
@@ -8258,18 +8259,18 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .listAllTerminalNodeText()
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SnowflakeParser.Out_of_line_constraintContext.class)
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .listAllTerminalNodeText()
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SnowflakeParser.Full_col_declContext.class)
             .streamChildrenByClass(SnowflakeParser.Inline_constraintContext.class)
@@ -8312,8 +8313,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .forEach(
                 outOfLineConstraintChild -> {
                   if (outOfLineConstraintChild instanceof TerminalNodeImpl
-                      && StringUtils.equalsIgnoreCase(
-                          "REFERENCES", outOfLineConstraintChild.getText())) {
+                      && Strings.CI.equals("REFERENCES", outOfLineConstraintChild.getText())) {
                     referencesFound.setTrue();
                   } else if (outOfLineConstraintChild
                       instanceof
@@ -8326,7 +8326,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
                         .listAllTerminalNodeText()
                         .forEach(
                             terminalNodeText -> {
-                              if (!referencesFound.getValue()) {
+                              if (!referencesFound.get()) {
                                 final Set<String> inheritsList;
                                 if (currentRelationship.get("column") instanceof Set) {
                                   inheritsList = (Set<String>) currentRelationship.get("column");
@@ -8692,7 +8692,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -8709,8 +8709,8 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
@@ -8813,7 +8813,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8833,7 +8833,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.MAX_SIZE)) {
                   currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -9187,7 +9187,9 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
     }
 
     final var currentTable = this.getCurrentTable(ctx);
-    if (currentTable == null) {}
+    if (currentTable == null) {
+      return;
+    }
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(SnowflakeParser.Comment_clauseContext.class)
@@ -9228,7 +9230,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamTerminalNodeString()
             .filter(
                 terminalNodeText ->
-                    !StringUtils.equalsIgnoreCase(currentTable.getObjectName(), terminalNodeText))
+                    !Strings.CI.equals(currentTable.getObjectName(), terminalNodeText))
             .collect(Collectors.toSet());
 
     if (!terminalNodeTextList.isEmpty()) {
@@ -14032,10 +14034,9 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(idChildrenList)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       if (1 < terminalNode.size()
-          && StringUtils.equalsIgnoreCase(
-              terminalNode.get(0).getText(), currentTable.getObjectName())) {
+          && Strings.CI.equals(terminalNode.get(0).getText(), currentTable.getObjectName())) {
         terminalNode.remove(0);
       }
 
@@ -14137,7 +14138,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
               .streamChildrenByClass(SnowflakeParser.Inline_constraintContext.class)
               .streamChildrenByClass(SnowflakeParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext)
               .streamChildrenByClass(SnowflakeParser.Full_col_declContext.class)
@@ -14145,22 +14146,22 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
               .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
               .streamChildrenByClass(SnowflakeParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext)
               .streamChildrenByClass(SnowflakeParser.Out_of_line_constraintContext.class)
               .streamChildrenByClass(SnowflakeParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext)
               .streamChildrenByClass(SnowflakeParser.Out_of_line_constraintContext.class)
               .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
               .streamChildrenByClass(SnowflakeParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
     }
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -14192,33 +14193,33 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamChildrenByClass(SnowflakeParser.Non_reserved_wordsContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_dynamic_tableContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_event_tableContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_external_tableContext.class)
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_table_as_selectContext.class)
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     final var ongoing = new MutableBoolean(true);
     ParseTreeStream.parseTreeStream(parentContext)
@@ -14226,16 +14227,16 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
         .forEach(
             createTableLikeChild -> {
               if (createTableLikeChild instanceof TerminalNodeImpl
-                  && StringUtils.equalsIgnoreCase("LIKE", createTableLikeChild.getText())) {
+                  && Strings.CI.equals("LIKE", createTableLikeChild.getText())) {
                 ongoing.setFalse();
               } else if (createTableLikeChild instanceof SnowflakeParser.Object_nameContext
-                  && ongoing.getValue()) {
+                  && ongoing.get()) {
                 terminalNodeTextList.addAll(
                     ParseTreeStream.parseTreeStream(
                             (SnowflakeParser.Object_nameContext) createTableLikeChild)
                         .streamChildrenByClass(SnowflakeParser.Id_Context.class)
                         .streamTerminalNodeString()
-                        .collect(Collectors.toList()));
+                        .toList());
               }
             });
 
@@ -14245,7 +14246,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_tableContext.class)
@@ -14253,7 +14254,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamChildrenByClass(SnowflakeParser.Builtin_functionContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_tableContext.class)
@@ -14261,7 +14262,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamChildrenByClass(SnowflakeParser.KeywordContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_tableContext.class)
@@ -14269,7 +14270,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamChildrenByClass(SnowflakeParser.Object_type_pluralContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SnowflakeParser.Create_tableContext.class)
@@ -14277,7 +14278,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserBaseListener {
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamChildrenByClass(SnowflakeParser.Unary_or_binary_builtin_functionContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     return SqlContextImpl.getInstance(this.getRootContext(), terminalNodeTextList);
   }

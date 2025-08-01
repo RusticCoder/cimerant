@@ -8,7 +8,6 @@ import cimerant.antlr.sql.ProxyErrorListenerImpl;
 import cimerant.context.sql.SqlRootContext;
 import cimerant.logger.CimerantLogger;
 import java.io.File;
-import java.io.IOException;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.IntStream;
@@ -32,9 +31,8 @@ public class PostgreSQLParserImpl extends PostgreSQLParser {
    *
    * @param file the object model file.
    * @return a instance of the parser.
-   * @throws IOException if an I/O error occurs
    */
-  public static PostgreSQLParserImpl getInstance(final File file) throws IOException {
+  public static PostgreSQLParserImpl getInstance(final File file) {
     final var moduleCode = ModuleCode.ERR_M3100;
 
     try {

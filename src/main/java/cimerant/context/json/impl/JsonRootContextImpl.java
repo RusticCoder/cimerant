@@ -13,18 +13,16 @@ import cimerant.context.cimerant.impl.ObjectRootContextImpl;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.json.JsonRootContext;
 import cimerant.logger.CimerantLogger;
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
-import java.io.IOException;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -33,7 +31,7 @@ import org.apache.commons.lang3.StringUtils;
 public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String, Object>>
     implements JsonRootContext {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(JsonRootContextImpl.class.getName());
@@ -46,12 +44,9 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
    * @param file the context map.
    * @param cliVariableList the context list of command-line interface variables.
    * @return a instance of the context.
-   * @throws IOException if an I/O error occurs
-   * @throws DatabindException if a databind error occurs
-   * @throws StreamReadException if a stream read error occurs
    */
-  public static JsonRootContext getInstance(final File file, final CliVariableList cliVariableList)
-      throws StreamReadException, DatabindException, IOException {
+  public static JsonRootContext getInstance(
+      final File file, final CliVariableList cliVariableList) {
     final var moduleCode = ModuleCode.ERR_M0600;
 
     try {
@@ -132,7 +127,6 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
     }
   }
 
-  @SuppressWarnings("unchecked")
   private static void parseMap(
       final Map<String, Object> contextObject,
       final CliVariableList cliVariableList,
@@ -142,8 +136,8 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
     for (final Entry<String, Object> entry : contextObject.entrySet()) {
       switch (CimerantKeys.valueOf(entry)) {
         case CIMERANT_ATTRIBUTES:
-          if (entry.getValue() instanceof final Map map) {
-            attributes.putAll(map);
+          if (entry.getValue() instanceof final Map<?, ?> map) {
+            attributes.putAll((Map<? extends String, ? extends NotNullSet>) map);
           }
           break;
         case CIMERANT_TYPE:
@@ -193,8 +187,7 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
         objects.stream()
             .filter(
                 otherEntity ->
-                    StringUtils.equalsIgnoreCase(
-                        otherEntityRelationshipName, otherEntity.getObjectName()))
+                    Strings.CI.equals(otherEntityRelationshipName, otherEntity.getObjectName()))
             .forEach(
                 otherEntity -> {
                   relationship.setOtherEntity(otherEntity);

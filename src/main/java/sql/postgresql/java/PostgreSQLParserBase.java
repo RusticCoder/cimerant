@@ -45,8 +45,7 @@ public abstract class PostgreSQLParserBase extends Parser {
     lexer.removeErrorListeners();
     parser.removeErrorListeners();
     final var listener_lexer =
-        new LexerDispatchingErrorListener(
-            (Lexer) ((CommonTokenStream) this.getInputStream()).getTokenSource());
+        new LexerDispatchingErrorListener((Lexer) this.getInputStream().getTokenSource());
     final var listener_parser = new ParserDispatchingErrorListener(this);
     lexer.addErrorListener(listener_lexer);
     parser.addErrorListener(listener_parser);

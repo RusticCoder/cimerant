@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import org.apache.commons.io.FileUtils;
@@ -44,7 +43,7 @@ public class DirUtils {
                 FileUtils.listFiles(
                     sourceFilePath.toFile(), TrueFileFilter.TRUE, TrueFileFilter.TRUE));
         sourceFilesSize = sourceFiles.size();
-        Collections.sort(sourceFiles, fileComparator);
+        sourceFiles.sort(fileComparator);
         sourceIterator = sourceFiles.iterator();
       }
 
@@ -58,7 +57,7 @@ public class DirUtils {
                 FileUtils.listFiles(
                     destinationFilePath.toFile(), TrueFileFilter.TRUE, TrueFileFilter.TRUE));
         destinationFilesSize = destinationFiles.size();
-        Collections.sort(destinationFiles, fileComparator);
+        destinationFiles.sort(fileComparator);
         destinationIterator = destinationFiles.iterator();
       }
 

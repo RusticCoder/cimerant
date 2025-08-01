@@ -29,6 +29,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.UnrecognizedOptionException;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.tools.generic.DateTool;
@@ -262,7 +263,7 @@ class ParsedCommandLine {
                 StringUtils.stripToEmpty(StringUtils.strip(StringUtils.stripToEmpty(str), "'")),
                 "\""));
 
-    if (StringUtils.equalsIgnoreCase("null", returnValue)) {
+    if (Strings.CI.equals("null", returnValue)) {
       returnValue = "";
     }
 
@@ -303,7 +304,7 @@ class ParsedCommandLine {
                 ParsedCommandLine.stripToEmpty(
                     this.getCmd().getOptionValue(CliOptions.INPUT_FILE_TYPE.getOption())));
 
-        if (!this.isValidPath(inputFilePath) || !this.isReadableFile(inputFilePath)) {
+        if (this.isValidPath(inputFilePath) || this.isReadableFile(inputFilePath)) {
           if (this.logger.isErrorEnabled()) {
             // 0009 | Invalid input file path
             final var s = StatusCode.ERR_0009.getSysError(moduleCode, inputFilePath);
@@ -403,7 +404,7 @@ class ParsedCommandLine {
 
         // Initialize CliValueList with template list or command line parameters
         if (this.getCmd().hasOption(CliOptions.TEMPLATES.getOption())) {
-          if (!this.isValidPath(templates) || !this.isReadableFile(templates)) {
+          if (this.isValidPath(templates) || this.isReadableFile(templates)) {
             if (this.logger.isErrorEnabled()) {
               // 0011 | Invalid template list path
               final var s = StatusCode.ERR_0011.getSysError(moduleCode, templates);
@@ -459,7 +460,7 @@ class ParsedCommandLine {
             ParsedCommandLine.stripToEmpty(
                 this.getCmd().getOptionValue(CliOptions.VARIABLES.getOption()));
 
-        if (!this.isValidPath(variables) || !this.isReadableFile(variables)) {
+        if (this.isValidPath(variables) || this.isReadableFile(variables)) {
           if (this.logger.isErrorEnabled()) {
             // 0012 | Invalid variable list path
             final var s = StatusCode.ERR_0012.getSysError(moduleCode, variables);
@@ -587,21 +588,19 @@ class ParsedCommandLine {
       if (this.isValidFileName(pathname)) {
         final var file = new File(pathname);
         final var path = Paths.get(file.getCanonicalPath());
-        if (file.exists()
-            && Files.exists(path)
-            && file.canRead()
-            && Files.isReadable(path)
-            && file.isFile()
-            && Files.isRegularFile(path)) {
-          return true;
-        }
+        return !file.exists()
+            || !Files.exists(path)
+            || !file.canRead()
+            || !Files.isReadable(path)
+            || !file.isFile()
+            || !Files.isRegularFile(path);
       }
-      return false;
+      return true;
     } catch (final Throwable t) {
       if (this.logger.isDebugEnabled()) {
         this.logger.debug(t.getMessage(), t);
       }
-      return false;
+      return true;
     }
   }
 
@@ -631,8 +630,8 @@ class ParsedCommandLine {
               final var s = StatusCode.ERR_0006.getSysError(moduleCode, cliValue.getLineNumber());
               this.logger.error(s.getMessage(), s);
             }
-          } else if ((!this.isValidPath(cliValue.getTemplate())
-                  || !this.isReadableFile(cliValue.getTemplate()))
+          } else if ((this.isValidPath(cliValue.getTemplate())
+                  || this.isReadableFile(cliValue.getTemplate()))
               && this.logger.isErrorEnabled()) {
             // 0010 | Invalid template path
             final var s =
@@ -727,14 +726,15 @@ class ParsedCommandLine {
   private boolean isValidPath(final String pathname) {
     try {
       if (this.isValidFileName(pathname)) {
-        return Paths.get(new File(pathname).getCanonicalPath()) != null;
+        Paths.get(new File(pathname).getCanonicalPath());
+        return false;
       }
-      return false;
+      return true;
     } catch (final Throwable t) {
       if (this.logger.isDebugEnabled()) {
         this.logger.debug(t.getMessage(), t);
       }
-      return false;
+      return true;
     }
   }
 

@@ -212,23 +212,13 @@ public class Snowflake {
     try {
       this.textWrittenToSystemErr =
           SystemLambda.tapSystemErr(
-              () -> {
-                this.statusCode =
-                    SystemLambda.catchSystemExit(
-                        () -> {
-                          Cimerant.main(stockArr);
-                        });
-              });
+              () -> this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr)));
     } catch (final java.lang.AssertionError e) {
       if (!"System.exit has not been called.".equals(e.getMessage())) {
         throw e;
       }
     }
     this.textWrittenToSystemErr = StringUtils.stripToNull(this.textWrittenToSystemErr);
-
-    // System.out.println(
-    // "cimerant.exe "
-    // + Arrays.toString(stockArr).replace(",", "").replace("[", "").replace("]", ""));
   }
 
   /**
@@ -261,23 +251,13 @@ public class Snowflake {
     try {
       this.textWrittenToSystemErr =
           SystemLambda.tapSystemErr(
-              () -> {
-                this.statusCode =
-                    SystemLambda.catchSystemExit(
-                        () -> {
-                          Cimerant.main(stockArr);
-                        });
-              });
+              () -> this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr)));
     } catch (final java.lang.AssertionError e) {
       if (!"System.exit has not been called.".equals(e.getMessage())) {
         throw e;
       }
     }
     this.textWrittenToSystemErr = StringUtils.stripToNull(this.textWrittenToSystemErr);
-
-    // System.out.println(
-    // "cimerant.exe "
-    // + Arrays.toString(stockArr).replace(",", "").replace("[", "").replace("]", ""));
   }
 
   /**
@@ -340,9 +320,6 @@ public class Snowflake {
     Assertions.assertTrue(
         this.contentEquals,
         "#" + argUnique + " '" + sharedSourceFile.toFile().getAbsolutePath() + "' not found.");
-    if (!this.contentEquals) {
-      return;
-    }
 
     final var sharedDestinationFile =
         Paths.get(Snowflake.sharedDestinationFilePath.toAbsolutePath().toString(), this.outputFile);
@@ -351,9 +328,6 @@ public class Snowflake {
     Assertions.assertTrue(
         this.contentEquals,
         "#" + argUnique + " '" + sharedDestinationFile.toFile().getAbsolutePath() + "' not found.");
-    if (!this.contentEquals) {
-      return;
-    }
 
     this.contentEquals =
         FileUtils.contentEquals(sharedSourceFile.toFile(), sharedDestinationFile.toFile());
@@ -366,9 +340,6 @@ public class Snowflake {
             + "' did not match '"
             + sharedDestinationFile.toFile().getAbsolutePath()
             + "'");
-    if (!this.contentEquals) {
-      return;
-    }
 
     this.sharedDestinationFile = sharedDestinationFile;
   }

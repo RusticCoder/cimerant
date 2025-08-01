@@ -1,6 +1,7 @@
 package cimerant.context.cimerant.impl;
 
 import cimerant.context.cimerant.ObjectRootContext;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map.Entry;
  * and get 'named' data object to pass them to the template engine to use when rendering a template.
  */
 public final class DummyContextImpl extends ObjectContextImpl<Entry<String, Object>> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Creates an instance.

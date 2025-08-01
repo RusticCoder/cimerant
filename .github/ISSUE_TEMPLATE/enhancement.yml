@@ -1,7 +1,7 @@
 name: Enhancement
 description: Suggest an enhancement for Cimerant.
 title: "[Enhancement]: "
-labels: "enhancement :new:"
+labels: ["enhancement :new:"]
 body:
 - type: markdown
   attributes:

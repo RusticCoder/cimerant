@@ -4,6 +4,7 @@ import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.lang.IterableContext;
 import cimerant.context.java.util.impl.IteratorContextImpl;
+import java.io.Serial;
 import java.util.Iterator;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Iterator;
  */
 public abstract class IterableContextImpl<E extends Iterable<?>, T extends ContextRoot<?>>
     extends ContextRootImpl<E> implements IterableContext<E, T> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Creates an instance.

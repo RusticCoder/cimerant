@@ -27,6 +27,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import sql.sqlite.SQLiteParser;
 import sql.sqlite.SQLiteParserBaseListener;
@@ -44,7 +45,7 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
     logger = CimerantLogger.getLogger(SQLiteParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (SQLiteParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -1478,8 +1479,8 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
               .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
               .filter(TerminalNode.class::isInstance)
               .map(child -> ParseTreeHelper.getField(currentTable, child))
-              .collect(Collectors.toList());
-      if (currentFieldList != null && !currentFieldList.isEmpty()) {
+              .toList();
+      if (!currentFieldList.isEmpty()) {
         var columnConstraintText = " ";
         columnConstraintText +=
             ParseTreeStream.parseTreeStream(ctx)
@@ -1513,7 +1514,7 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
         .forEach(
             terminalNodeText -> {
               for (final var currentField : currentFieldList) {
-                if (StringUtils.equalsIgnoreCase("MAX", terminalNodeText)) {
+                if (Strings.CI.equals("MAX", terminalNodeText)) {
                   currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
                 }
               }
@@ -1569,17 +1570,17 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
               final var terminalNodeText = ParseTreeHelper.trimToken(terminalNode.getText());
               if (terminalNodeText != null) {
                 for (final var currentField : currentFieldList) {
-                  if (StringUtils.equalsIgnoreCase("INHERIT", terminalNodeText)
-                      || StringUtils.equalsIgnoreCase("KEY", terminalNodeText)
-                      || StringUtils.equalsIgnoreCase("NO", terminalNodeText)
-                      || StringUtils.equalsIgnoreCase("VALID", terminalNodeText)
+                  if (Strings.CI.equals("INHERIT", terminalNodeText)
+                      || Strings.CI.equals("KEY", terminalNodeText)
+                      || Strings.CI.equals("NO", terminalNodeText)
+                      || Strings.CI.equals("VALID", terminalNodeText)
                       || terminalNodeText.contains("(")) {
                     // ignore
-                  } else if (StringUtils.equalsIgnoreCase("CLUSTERED", terminalNodeText)) {
+                  } else if (Strings.CI.equals("CLUSTERED", terminalNodeText)) {
                     currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.TRUE));
-                  } else if (StringUtils.equalsIgnoreCase("IDENTITY", terminalNodeText)) {
+                  } else if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
                     currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
-                  } else if (StringUtils.equalsIgnoreCase("NONCLUSTERED", terminalNodeText)) {
+                  } else if (Strings.CI.equals("NONCLUSTERED", terminalNodeText)) {
                     currentField.put(Field.CLUSTERED, NotNullSet.getInstance(Boolean.FALSE));
                   } else if (!currentField.containsKey(Field.FIELD_TYPE)) {
                     final var intervalText =
@@ -1588,12 +1589,12 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
                                 SQLiteParserListenerImpl.input,
                                 (ParserRuleContext)
                                     terminalNode.getParent().getParent().getParent()));
-                    if (StringUtils.equalsIgnoreCase("DOUBLE PRECISION", intervalText)) {
+                    if (Strings.CI.equals("DOUBLE PRECISION", intervalText)) {
                       currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(intervalText));
                     } else {
                       currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
                     }
-                  } else if (StringUtils.equalsIgnoreCase("CHAR", terminalNodeText)) {
+                  } else if (Strings.CI.equals("CHAR", terminalNodeText)) {
                     currentField.put("char", NotNullSet.getInstance(Boolean.TRUE));
                   } else {
                     final var intervalText =
@@ -1642,9 +1643,9 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
                   }
                 } else if (!currentField.containsKey(Field.SCALE)) {
                   currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                         currentField.get(Field.PRECISION).toString(), terminalNodeText)
-                    && !StringUtils.equalsIgnoreCase(Field.PRECISION, terminalNodeText)) {
+                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
                       NotNullSet.getInstance(Boolean.TRUE));
@@ -1668,12 +1669,12 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
         .streamTerminalNodeString()
         .forEach(
             terminalNodeText -> {
-              if (StringUtils.equalsIgnoreCase("DEFERRABLE", terminalNodeText)) {
+              if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
                 }
               }
-              if (StringUtils.equalsIgnoreCase("DEFERRED", terminalNodeText)) {
+              if (Strings.CI.equals("DEFERRED", terminalNodeText)) {
                 for (final var currentField : currentFieldList) {
                   currentField.put(Field.DEFERRED, NotNullSet.getInstance(Boolean.TRUE));
                 }
@@ -1686,7 +1687,7 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
         .forEach(
             parserRuleContext -> {
               if (parserRuleContext instanceof TerminalNode
-                  && StringUtils.equalsIgnoreCase("DEFAULT", parserRuleContext.getText())) {
+                  && Strings.CI.equals("DEFAULT", parserRuleContext.getText())) {
                 defaultFound.setTrue();
               } else if (!generatedFound.booleanValue()
                   && defaultFound.booleanValue()
@@ -1848,10 +1849,10 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
           .filter(StringUtils::isNoneBlank)
           .filter(Predicate.not("null"::equalsIgnoreCase))
           .forEach(
-              anyNameText -> {
-                currentRelationship.put(
-                    "foreignTable", NotNullSet.getInstance(ParseTreeHelper.trimToken(anyNameText)));
-              });
+              anyNameText ->
+                  currentRelationship.put(
+                      "foreignTable",
+                      NotNullSet.getInstance(ParseTreeHelper.trimToken(anyNameText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(SQLiteParser.Column_constraintContext.class)
           .streamChildrenByClass(SQLiteParser.Foreign_key_clauseContext.class)
@@ -1995,7 +1996,7 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -2021,18 +2022,17 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
                       .streamTerminalNodeString()
                       .filter(
                           terminalNodeText ->
-                              !StringUtils.equalsIgnoreCase(
-                                      currentTable.getObjectName(), terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("COMMENTS", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("CONSTRAINTS", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("DEFAULTS", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("IDENTITY", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("INCLUDING", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("INDEXES", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("INT", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("PROPERTIES", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("STORAGE", terminalNodeText)
-                                  && !StringUtils.equalsIgnoreCase("TEXT", terminalNodeText))
+                              !Strings.CI.equals(currentTable.getObjectName(), terminalNodeText)
+                                  && !Strings.CI.equals("COMMENTS", terminalNodeText)
+                                  && !Strings.CI.equals("CONSTRAINTS", terminalNodeText)
+                                  && !Strings.CI.equals("DEFAULTS", terminalNodeText)
+                                  && !Strings.CI.equals("IDENTITY", terminalNodeText)
+                                  && !Strings.CI.equals("INCLUDING", terminalNodeText)
+                                  && !Strings.CI.equals("INDEXES", terminalNodeText)
+                                  && !Strings.CI.equals("INT", terminalNodeText)
+                                  && !Strings.CI.equals("PROPERTIES", terminalNodeText)
+                                  && !Strings.CI.equals("STORAGE", terminalNodeText)
+                                  && !Strings.CI.equals("TEXT", terminalNodeText))
                       .collect(Collectors.toSet());
               if (!terminalNodeTextList.isEmpty()) {
                 final Set<String> inheritsList;
@@ -2056,8 +2056,8 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
@@ -2861,9 +2861,9 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
             .filter(StringUtils::isNoneBlank)
             .filter(Predicate.not("null"::equalsIgnoreCase))
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SQLiteParser.Foreign_key_clauseContext.class)
             .streamChildrenByClass(SQLiteParser.Column_nameContext.class)
@@ -3016,8 +3016,8 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
             .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
             .filter(TerminalNode.class::isInstance)
             .map(child -> ParseTreeHelper.getField(currentTable, child))
-            .collect(Collectors.toList());
-    if (currentFieldList == null || currentFieldList.isEmpty()) {
+            .toList();
+    if (currentFieldList.isEmpty()) {
       return;
     }
 
@@ -3251,8 +3251,8 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
               .filter(
                   keywordContext ->
                       (keywordContext instanceof TerminalNode
-                          && !StringUtils.equalsIgnoreCase("INDEX", keywordContext.getText())
-                          && !StringUtils.equalsIgnoreCase("LIKE", keywordContext.getText())))
+                          && !Strings.CI.equals("INDEX", keywordContext.getText())
+                          && !Strings.CI.equals("LIKE", keywordContext.getText())))
               .collect(Collectors.toSet()));
     }
 
@@ -3290,28 +3290,26 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
     final var parentContext =
         ParseTreeHelper.getParentContext(ctx, SQLiteParser.Column_defContext.class);
     final var terminalNode =
-        new ArrayList<>(
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(SQLiteParser.Column_constraintContext.class)
-                .streamChildrenByClass(SQLiteParser.Foreign_key_clauseContext.class)
-                .filter(TerminalNode.class::isInstance)
-                .map(
-                    foreignTerminalNode -> {
-                      final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                      if (StringUtils.equalsAnyIgnoreCase(
-                          "REFERENCES", foreignTerminalNode.getText())) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(parentContext)
-                                .streamChildrenByClass(SQLiteParser.Column_constraintContext.class)
-                                .streamChildrenByClass(SQLiteParser.NameContext.class)
-                                .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .collect(Collectors.toList()));
-                      }
-                      return returnValue;
-                    })
-                .flatMap(List::stream)
-                .collect(Collectors.toList()));
+        ParseTreeStream.parseTreeStream(parentContext)
+            .streamChildrenByClass(SQLiteParser.Column_constraintContext.class)
+            .streamChildrenByClass(SQLiteParser.Foreign_key_clauseContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .map(
+                foreignTerminalNode -> {
+                  final List<ParseTree> returnValue = new ArrayList<>();
+                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(parentContext)
+                            .streamChildrenByClass(SQLiteParser.Column_constraintContext.class)
+                            .streamChildrenByClass(SQLiteParser.NameContext.class)
+                            .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                  }
+                  return returnValue;
+                })
+            .flatMap(List::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
     if (terminalNode.isEmpty()) {
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext)
@@ -3320,20 +3318,19 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
               .filter(TerminalNode.class::isInstance)
               .map(
                   foreignTerminalNode -> {
-                    final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                    if (StringUtils.equalsAnyIgnoreCase(
-                        "REFERENCES", foreignTerminalNode.getText())) {
+                    final List<ParseTree> returnValue = new ArrayList<>();
+                    if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
                       returnValue.addAll(
                           ParseTreeStream.parseTreeStream(parentContext)
                               .streamChildrenByClass(SQLiteParser.Column_nameContext.class)
                               .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
                               .filter(TerminalNode.class::isInstance)
-                              .collect(Collectors.toList()));
+                              .toList());
                     }
                     return returnValue;
                   })
               .flatMap(List::stream)
-              .collect(Collectors.toList()));
+              .toList());
     }
     final var parentContext2 =
         ParseTreeHelper.getParentContext(ctx, SQLiteParser.Table_constraintContext.class);
@@ -3342,7 +3339,7 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
             .streamChildrenByClass(SQLiteParser.NameContext.class)
             .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
     if (terminalNode.isEmpty()) {
       terminalNode.addAll(
           ParseTreeStream.parseTreeStream(parentContext2)
@@ -3350,10 +3347,10 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
               .streamChildrenByClass(SQLiteParser.Foreign_tableContext.class)
               .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
               .filter(TerminalNode.class::isInstance)
-              .collect(Collectors.toList()));
+              .toList());
     }
 
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -3384,14 +3381,14 @@ public class SQLiteParserListenerImpl extends SQLiteParserBaseListener {
             .streamChildrenByClass(SQLiteParser.Table_nameContext.class)
             .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(SQLiteParser.Table_nameContext.class)
             .streamChildrenByClass(SQLiteParser.Any_nameContext.class)
             .streamChildrenByClass(SQLiteParser.KeywordContext.class)
             .streamTerminalNodeString()
-            .collect(Collectors.toList()));
+            .toList());
 
     return SqlContextImpl.getInstance(this.getRootContext(), terminalNodeTextList);
   }

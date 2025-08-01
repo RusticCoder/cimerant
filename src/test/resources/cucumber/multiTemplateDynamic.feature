@@ -14,5 +14,5 @@ Feature: Multiple Templates
     Then multiTemplateDynamic.<pUnique> an identical file is produced
 
     Examples:
-      | pUnique | pInputFile | pTemplate | pTemplates  | pSinti | pPath  | pFile | pVar   | pVars       |
-      | 1       | "input"    | ""        | "templates" | ""     | "path" | ""    | "keys" | "variables" |
+      | pUnique | pInputFile | pTemplates  | pSinti | pPath  | pFile | pVar   | pVars       |
+      | 1       | "input"    | "templates" | ""     | "path" | ""    | "keys" | "variables" |

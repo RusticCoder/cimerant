@@ -8,6 +8,7 @@ import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.MapEntryIteratorContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -24,7 +25,7 @@ import java.util.Objects;
 public final class MapEntryIteratorContextImpl<K, V> extends ContextRootImpl<Iterator<Entry<K, V>>>
     implements MapEntryIteratorContext<K, V> {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(MapEntryIteratorContextImpl.class.getName());

@@ -8,6 +8,7 @@ import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.SetContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
@@ -24,7 +25,7 @@ import java.util.Set;
 @SuppressWarnings("CPD-START")
 public final class SetContextImpl<E> extends ContextRootImpl<Set<E>> implements SetContext<E> {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(SetContextImpl.class.getName());

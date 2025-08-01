@@ -8,6 +8,7 @@ import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.util.ListIteratorContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.ListIterator;
 import java.util.Objects;
 
@@ -23,7 +24,7 @@ import java.util.Objects;
 public final class ListIteratorContextImpl<E extends ListIterator<?>, T extends ContextRoot<?>>
     extends IteratorContextImpl<E, T> implements ListIteratorContext<E, T> {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(ListIteratorContextImpl.class.getName());

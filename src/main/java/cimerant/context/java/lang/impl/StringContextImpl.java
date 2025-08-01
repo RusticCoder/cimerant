@@ -8,6 +8,7 @@ import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.java.lang.StringContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,7 +20,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class StringContextImpl extends ContextRootImpl<String> implements StringContext {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(StringContextImpl.class.getName());

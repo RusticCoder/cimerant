@@ -19,6 +19,7 @@ import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.json.JsonContext;
 import cimerant.context.json.JsonRootContext;
 import cimerant.logger.CimerantLogger;
+import java.io.Serial;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -31,7 +32,7 @@ import java.util.Objects;
 public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Object>>
     implements JsonContext {
   private static final CimerantLogger logger;
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   static {
     logger = CimerantLogger.getLogger(JsonContextImpl.class.getName());
@@ -64,8 +65,9 @@ public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Objec
 
       attributes.putAll(parent.getAttributes());
 
-      if (contextObject.getValue() instanceof final Map entryValue) {
-        JsonContextImpl.parseMap(entryValue, attributes, fields, relationships);
+      if (contextObject.getValue() instanceof final Map<?, ?> entryValue) {
+        JsonContextImpl.parseMap(
+            (Map<String, Object>) entryValue, attributes, fields, relationships);
       }
 
       return ContextRootImpl.registerInstance(
@@ -91,8 +93,8 @@ public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Objec
     for (final Entry<String, Object> mapEntry : map.entrySet()) {
       switch (CimerantKeys.valueOf(mapEntry)) {
         case CIMERANT_ATTRIBUTES:
-          if (mapEntry.getValue() instanceof final Map mapEntryValue) {
-            attributes.putAll(mapEntryValue);
+          if (mapEntry.getValue() instanceof final Map<?, ?> mapEntryValue) {
+            attributes.putAll((Map<? extends String, ? extends NotNullSet>) mapEntryValue);
           } else {
             attributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
           }
@@ -110,9 +112,10 @@ public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Objec
                   new ObjectRelationshipImpl((Map<String, Object>) mapEntry.getValue()));
               break;
             default:
-              if (mapEntry.getValue() instanceof final Map mapEntryValue) {
+              if (mapEntry.getValue() instanceof final Map<?, ?> mapEntryValue) {
                 attributes.putAll(
-                    JsonContextImpl.parseMap(mapEntryValue, attributes, fields, relationships));
+                    JsonContextImpl.parseMap(
+                        (Map<String, Object>) mapEntryValue, attributes, fields, relationships));
               } else {
                 attributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
               }
@@ -120,9 +123,10 @@ public final class JsonContextImpl extends ObjectContextImpl<Entry<String, Objec
           }
           break;
         default:
-          if (mapEntry.getValue() instanceof final Map mapEntryValue) {
+          if (mapEntry.getValue() instanceof final Map<?, ?> mapEntryValue) {
             attributes.putAll(
-                JsonContextImpl.parseMap(mapEntryValue, attributes, fields, relationships));
+                JsonContextImpl.parseMap(
+                    (Map<String, Object>) mapEntryValue, attributes, fields, relationships));
           } else if (!CimerantKeys.isValidKey(mapEntry.getKey())) {
             attributes.put(mapEntry.getKey(), NotNullSet.getInstance(mapEntry.getValue()));
           }

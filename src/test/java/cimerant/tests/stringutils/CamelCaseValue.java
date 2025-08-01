@@ -21,7 +21,7 @@ public class CamelCaseValue {
    */
   @Given("camelCaseValue.{int} the input null is passed into Cimerant")
   public void givenTheInputNullIsPassedIntoCimerant(final Integer argUnique) {
-    this.outputString = this.contextRoot.camelCase((String) null);
+    this.outputString = this.contextRoot.camelCase(null);
   }
 
   /**
@@ -124,6 +124,6 @@ public class CamelCaseValue {
    */
   @Then("camelCaseValue.{int} Cimerant outputs null")
   public void thenCimerantOutputsNull(final Integer argUnique) {
-    Assertions.assertEquals(this.outputString, null);
+    Assertions.assertNull(this.outputString);
   }
 }

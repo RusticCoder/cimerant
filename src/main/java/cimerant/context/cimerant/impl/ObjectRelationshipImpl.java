@@ -4,6 +4,7 @@ import cimerant.context.NotNullMap;
 import cimerant.context.NotNullSet;
 import cimerant.context.cimerant.ObjectContext;
 import cimerant.context.cimerant.ObjectRelationship;
+import java.io.Serial;
 import java.util.Map;
 import java.util.Objects;
 import java.util.SortedMap;
@@ -11,7 +12,7 @@ import java.util.SortedMap;
 /** An object that represents an relationship. */
 public class ObjectRelationshipImpl extends NotNullMap<String, NotNullSet>
     implements ObjectRelationship {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** The other related entity. */
   private ObjectContext<java.util.Map.Entry<String, Object>> otherEntity;

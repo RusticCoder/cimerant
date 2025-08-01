@@ -9,6 +9,7 @@ import cimerant.context.cimerant.ObjectRelationship;
 import cimerant.context.cimerant.ObjectRelationshipList;
 import cimerant.context.cimerant.ObjectRootContext;
 import cimerant.context.impl.ContextRootImpl;
+import java.io.Serial;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -21,7 +22,7 @@ import java.util.Objects;
  */
 public abstract class ObjectContextImpl<E extends Entry<String, Object>> extends ContextRootImpl<E>
     implements ObjectContext<E> {
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** The list of attributes. */
   private final ObjectAttributeList attributes;

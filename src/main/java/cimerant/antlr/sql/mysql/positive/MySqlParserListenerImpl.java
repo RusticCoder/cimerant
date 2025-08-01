@@ -27,6 +27,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import sql.mysql.positive.MySqlParser;
 import sql.mysql.positive.MySqlParserBaseListener;
@@ -44,7 +45,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     logger = CimerantLogger.getLogger(MySqlParserListenerImpl.class.getName());
   }
 
-  private static final void traceChildren(final String methodName, final ParseTree ctx) {
+  private static void traceChildren(final String methodName, final ParseTree ctx) {
     if (MySqlParserListenerImpl.logger.isTraceEnabled()) {
       ParseTreeHelper.printChildren(methodName, ctx);
     }
@@ -6153,6 +6154,17 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
    * <p>The default implementation does nothing.
    */
   @Override
+  public void exitTableOptionTransactional(MySqlParser.TableOptionTransactionalContext ctx) {
+    final var methodName = "exitTableOptionTransactional";
+    MySqlParserListenerImpl.traceChildren(methodName, ctx);
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * <p>The default implementation does nothing.
+   */
+  @Override
   public void enterTableOptionUnion(final MySqlParser.TableOptionUnionContext ctx) {
     final var methodName = "enterTableOptionUnion";
     MySqlParserListenerImpl.traceChildren(methodName, ctx);
@@ -8154,7 +8166,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -8173,7 +8185,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TRANSACTIONAL, NotNullSet.getInstance(terminalNodeText));
-                } else if (StringUtils.equalsIgnoreCase("TRANSACTIONAL", terminalNodeText)) {
+                } else if (Strings.CI.equals("TRANSACTIONAL", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TRANSACTIONAL, NotNullSet.getInstance(Boolean.TRUE));
@@ -8184,8 +8196,8 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
@@ -8224,12 +8236,12 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (StringUtils.equalsIgnoreCase("PRECISION", terminalNodeText)) {
+                } else if (Strings.CI.equals("PRECISION", terminalNodeText)) {
                   currentField.put(
                       Field.FIELD_TYPE,
                       NotNullSet.getInstance(
                           currentField.get(Field.FIELD_TYPE) + " " + terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8246,7 +8258,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8263,7 +8275,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8280,7 +8292,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8297,7 +8309,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8314,7 +8326,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8331,7 +8343,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               for (final var currentField : currentFieldList) {
                 if (!currentField.containsKey(Field.FIELD_TYPE)) {
                   currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!StringUtils.equalsIgnoreCase(
+                } else if (!Strings.CI.equals(
                     currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
                   currentField.put(
                       StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
@@ -8345,7 +8357,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.AutoIncrementColumnConstraintContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("AUTO_INCREMENT", autoIncrementText)) {
+    if (Strings.CI.equals("AUTO_INCREMENT", autoIncrementText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.AUTO_INCREMENT, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -8439,7 +8451,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
                 }
               }
             });
-    if (StringUtils.equalsIgnoreCase("INVISIBLE", autoIncrementText)) {
+    if (Strings.CI.equals("INVISIBLE", autoIncrementText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.FALSE));
       }
@@ -8480,7 +8492,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.PrimaryKeyColumnConstraintContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("PRIMARY KEY", primaryKeyText)) {
+    if (Strings.CI.equals("PRIMARY KEY", primaryKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.PRIMARY, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -8552,7 +8564,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.UniqueKeyColumnConstraintContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("UNIQUE", uniqueKeyText)) {
+    if (Strings.CI.equals("UNIQUE", uniqueKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -8629,10 +8641,10 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
           .map(fullIdContext -> ParseTreeHelper.trimToken(fullIdContext.getText()))
           .filter(StringUtils::isNoneBlank)
           .forEach(
-              fullIdText -> {
-                currentRelationship.put(
-                    "foreignTable", NotNullSet.getInstance(ParseTreeHelper.trimToken(fullIdText)));
-              });
+              fullIdText ->
+                  currentRelationship.put(
+                      "foreignTable",
+                      NotNullSet.getInstance(ParseTreeHelper.trimToken(fullIdText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(MySqlParser.ColumnDefinitionContext.class)
           .streamChildrenByClass(MySqlParser.ReferenceColumnConstraintContext.class)
@@ -8782,7 +8794,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
 
-    if (StringUtils.equalsIgnoreCase("PRIMARY KEY", primaryKeyText)) {
+    if (Strings.CI.equals("PRIMARY KEY", primaryKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.PRIMARY, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -8793,14 +8805,14 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.UniqueKeyTableConstraintContext.class)
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
-    if (StringUtils.equalsIgnoreCase("UNIQUE", uniqueKeyText)
-        || StringUtils.equalsIgnoreCase("CONSTRAINT UNIQUE", uniqueKeyText)) {
+    if (Strings.CI.equals("UNIQUE", uniqueKeyText)
+        || Strings.CI.equals("CONSTRAINT UNIQUE", uniqueKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
       }
     }
-    if (StringUtils.equalsIgnoreCase("UNIQUE KEY", uniqueKeyText)
-        || StringUtils.equalsIgnoreCase("UNIQUE INDEX", uniqueKeyText)) {
+    if (Strings.CI.equals("UNIQUE KEY", uniqueKeyText)
+        || Strings.CI.equals("UNIQUE INDEX", uniqueKeyText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.UNIQUE, NotNullSet.getInstance(Boolean.TRUE));
       }
@@ -8840,7 +8852,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -8853,7 +8865,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
         .forEach(
             copyCreateTableChild -> {
               if (copyCreateTableChild instanceof final TerminalNode terminalNode) {
-                likeFound.setValue(StringUtils.equalsIgnoreCase("LIKE", terminalNode.getText()));
+                likeFound.setValue(Strings.CI.equals("LIKE", terminalNode.getText()));
               }
               if (copyCreateTableChild
                       instanceof final MySqlParser.TableNameContext tableNameContext
@@ -9679,20 +9691,18 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MySqlParser.EngineNameBaseContext.class)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -9867,9 +9877,9 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .streamTerminalNodeString()
             .forEach(
-                terminalNodeText -> {
-                  currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText));
-                });
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
             .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
@@ -11914,7 +11924,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     final Set<String> fieldsToRemove = new TreeSet<>();
     for (final var field : currentTable.getFields().entrySet()) {
       if (!field.getValue().containsKey(Field.FIELD_TYPE)
-          || StringUtils.equalsIgnoreCase("CONSTRAINT", field.getKey())) {
+          || Strings.CI.equals("CONSTRAINT", field.getKey())) {
         fieldsToRemove.add(field.getKey());
       }
     }
@@ -11928,8 +11938,8 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
           .map(StringUtils::upperCase)
           .forEach(
               terminalNodeText -> {
-                if (StringUtils.equalsIgnoreCase("TEMPORARY", terminalNodeText)
-                    || StringUtils.equalsIgnoreCase("TEMP", terminalNodeText)) {
+                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                    || Strings.CI.equals("TEMP", terminalNodeText)) {
                   currentTable
                       .getAttributes()
                       .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
@@ -13474,21 +13484,19 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText)));
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MySqlParser.CharsetNameContext.class)
         .streamChildrenByClass(MySqlParser.CharsetNameBaseContext.class)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -13513,11 +13521,10 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.CHECKSUM, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.CHECKSUM, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -13544,18 +13551,18 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamTerminalNodeString()
             .collect(Collectors.joining(" "));
 
-    if (StringUtils.equalsIgnoreCase("COLLATE", collationNameText)) {
+    if (Strings.CI.equals("COLLATE", collationNameText)) {
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(MySqlParser.CollationNameContext.class)
           .streamChildrenByClass(MySqlParser.UidContext.class)
           .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
           .streamTerminalNodeString()
           .forEach(
-              terminalNodeText -> {
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
-              });
+              terminalNodeText ->
+                  currentTable
+                      .getAttributes()
+                      .put(
+                          SqlContextImpl.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText)));
     }
   }
 
@@ -13691,21 +13698,19 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
         .streamChildrenByClass(MySqlParser.EngineNameContext.class)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MySqlParser.EngineNameContext.class)
         .streamChildrenByClass(MySqlParser.EngineNameBaseContext.class)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -13924,11 +13929,10 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
         .streamChildrenByClass(MySqlParser.TableTypeContext.class)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.TABLE_TYPE, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.TABLE_TYPE, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -14052,11 +14056,10 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
         .forEach(
-            terminalNodeText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.TABLE_TYPE, NotNullSet.getInstance(terminalNodeText));
-            });
+            terminalNodeText ->
+                currentTable
+                    .getAttributes()
+                    .put(SqlContextImpl.TABLE_TYPE, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -14924,50 +14927,48 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     var parentContext =
         ParseTreeHelper.getParentContext(ctx, MySqlParser.ColumnDeclarationContext.class);
     final var terminalNode =
-        new ArrayList<>(
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(MySqlParser.ColumnDefinitionContext.class)
-                .streamChildrenByClass(MySqlParser.ReferenceColumnConstraintContext.class)
-                .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
-                .filter(TerminalNode.class::isInstance)
-                .map(
-                    foreignTerminalNode -> {
-                      final List<ParseTree> returnValue = new ArrayList<ParseTree>();
-                      if (StringUtils.equalsAnyIgnoreCase(
-                          "REFERENCES", foreignTerminalNode.getText())) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(
-                                    (ParserRuleContext)
-                                        foreignTerminalNode
-                                            .getParent()
-                                            .getParent()
-                                            .getParent()
-                                            .getParent())
-                                .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
-                                .streamChildrenByClass(MySqlParser.UidContext.class)
-                                .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .collect(Collectors.toList()));
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(
-                                    (ParserRuleContext)
-                                        foreignTerminalNode
-                                            .getParent()
-                                            .getParent()
-                                            .getParent()
-                                            .getParent())
-                                .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
-                                .streamChildrenByClass(MySqlParser.UidContext.class)
-                                .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
-                                .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
-                                .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .collect(Collectors.toList()));
-                      }
-                      return returnValue;
-                    })
-                .flatMap(List::stream)
-                .collect(Collectors.toList()));
+        ParseTreeStream.parseTreeStream(parentContext)
+            .streamChildrenByClass(MySqlParser.ColumnDefinitionContext.class)
+            .streamChildrenByClass(MySqlParser.ReferenceColumnConstraintContext.class)
+            .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .map(
+                foreignTerminalNode -> {
+                  final List<ParseTree> returnValue = new ArrayList<>();
+                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(
+                                (ParserRuleContext)
+                                    foreignTerminalNode
+                                        .getParent()
+                                        .getParent()
+                                        .getParent()
+                                        .getParent())
+                            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+                            .streamChildrenByClass(MySqlParser.UidContext.class)
+                            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(
+                                (ParserRuleContext)
+                                    foreignTerminalNode
+                                        .getParent()
+                                        .getParent()
+                                        .getParent()
+                                        .getParent())
+                            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+                            .streamChildrenByClass(MySqlParser.UidContext.class)
+                            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+                            .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
+                            .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                  }
+                  return returnValue;
+                })
+            .flatMap(List::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
     parentContext =
         ParseTreeHelper.getParentContext(ctx, MySqlParser.ForeignKeyTableConstraintContext.class);
     terminalNode.addAll(
@@ -14975,7 +14976,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.UidContext.class)
             .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
     terminalNode.addAll(
         ParseTreeStream.parseTreeStream(parentContext)
             .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
@@ -14984,9 +14985,9 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.UidContext.class)
             .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toList()));
+            .toList());
 
-    if (0 < terminalNode.size()) {
+    if (!terminalNode.isEmpty()) {
       return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
     }
     return null;
@@ -15007,7 +15008,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
           .forEach(
               copyCreateTableChild -> {
                 if (copyCreateTableChild instanceof final TerminalNode terminalNode) {
-                  likeFound.setValue(StringUtils.equalsIgnoreCase("like", terminalNode.getText()));
+                  likeFound.setValue(Strings.CI.equals("like", terminalNode.getText()));
                 }
                 if (copyCreateTableChild
                         instanceof final MySqlParser.TableNameContext tableNameContext
@@ -15016,19 +15017,13 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
                       .streamChildrenByClass(MySqlParser.FullIdContext.class)
                       .streamChildrenByClass(MySqlParser.UidContext.class)
                       .streamTerminalNodeString()
-                      .forEach(
-                          terminalNodeText -> {
-                            terminalNodeTextList.add(terminalNodeText);
-                          });
+                      .forEach(terminalNodeTextList::add);
                   ParseTreeStream.parseTreeStream(tableNameContext)
                       .streamChildrenByClass(MySqlParser.FullIdContext.class)
                       .streamChildrenByClass(MySqlParser.UidContext.class)
                       .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
                       .streamTerminalNodeString()
-                      .forEach(
-                          terminalNodeText -> {
-                            terminalNodeTextList.add(terminalNodeText);
-                          });
+                      .forEach(terminalNodeTextList::add);
                 }
               });
     }
@@ -15046,30 +15041,26 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               .listChildrenByClass(MySqlParser.SimpleIdContext.class);
 
       terminalNodeTextList.addAll(
-          ParseTreeStream.parseTreeStream(simpleIdChildren)
-              .streamTerminalNodeString()
-              .collect(Collectors.toList()));
+          ParseTreeStream.parseTreeStream(simpleIdChildren).streamTerminalNodeString().toList());
       terminalNodeTextList.addAll(
           ParseTreeStream.parseTreeStream(parentContext)
               .streamChildrenByClass(MySqlParser.TableNameContext.class)
               .streamChildrenByClass(MySqlParser.FullIdContext.class)
               .streamTerminalNodeString()
-              .collect(Collectors.toList()));
+              .toList());
       terminalNodeTextList.addAll(
-          ParseTreeStream.parseTreeStream(uidChildren)
-              .streamTerminalNodeString()
-              .collect(Collectors.toList()));
+          ParseTreeStream.parseTreeStream(uidChildren).streamTerminalNodeString().toList());
       terminalNodeTextList.addAll(
           ParseTreeStream.parseTreeStream(simpleIdChildren)
               .streamChildrenByClass(MySqlParser.KeywordsCanBeIdContext.class)
               .streamTerminalNodeString()
-              .collect(Collectors.toList()));
+              .toList());
       terminalNodeTextList.addAll(
           ParseTreeStream.parseTreeStream(simpleIdChildren)
               .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
               .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
               .streamTerminalNodeString()
-              .collect(Collectors.toList()));
+              .toList());
     }
     parentContext =
         ParseTreeHelper.getParentContext(ctx, MySqlParser.QueryCreateTableContext.class);
@@ -15081,7 +15072,7 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
               .streamChildrenByClass(MySqlParser.UidContext.class)
               .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
               .streamTerminalNodeString()
-              .collect(Collectors.toList()));
+              .toList());
     }
 
     if (terminalNodeTextList.isEmpty()) {

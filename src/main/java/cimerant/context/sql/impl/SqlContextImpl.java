@@ -11,6 +11,7 @@ import cimerant.context.cimerant.impl.ObjectRelationshipListImpl;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.sql.SqlContext;
 import cimerant.context.sql.SqlRootContext;
+import java.io.Serial;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -133,7 +134,7 @@ public final class SqlContextImpl extends ObjectContextImpl<Entry<String, Object
     }
   }
 
-  private static final long serialVersionUID = 1L;
+  @Serial private static final long serialVersionUID = 1L;
 
   /** Constant for SQL table type block chain. */
   public static final String BLOCKCHAIN = "blockchain";
