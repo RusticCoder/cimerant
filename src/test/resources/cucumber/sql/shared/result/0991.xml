@@ -11,7 +11,7 @@
             <field key="c">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="1">
-            <relationship key="fk_notpartitioned_pk">{cimerant:type=relationship, column=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
+            <relationship key="a_b">{cimerant:type=relationship, column=a, b, foreignTable=fk_notpartitioned_pk}</relationship>
         </relationships>
     </object>
 </root>

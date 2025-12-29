@@ -8006,6 +8006,16 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
     for (final var field : fieldsToRemove) {
       currentTable.getFields().remove(field);
     }
+    final Set<String> relationshipsToRemove = new TreeSet<>();
+    for (final var relationship : currentTable.getRelationships().entrySet()) {
+      if (!relationship.getValue().containsKey("column")
+          || !relationship.getValue().containsKey("foreignTable")) {
+        relationshipsToRemove.add(relationship.getKey());
+      }
+    }
+    for (final var relationship : relationshipsToRemove) {
+      currentTable.getRelationships().remove(relationship);
+    }
 
     if (!currentTable.getFields().isEmpty() || !currentTable.getAttributes().isEmpty()) {
       this.getRootContext().addObject(currentTable);
@@ -12350,59 +12360,57 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
       return null;
     }
 
-    final var parentContext =
-        ParseTreeHelper.getParentContext(ctx, TSqlParser.Column_definitionContext.class);
-    final var terminalNode =
-        ParseTreeStream.parseTreeStream(parentContext)
-            .streamChildrenByClass(TSqlParser.Column_definition_elementContext.class)
-            .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
-            .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
-            .filter(TerminalNode.class::isInstance)
-            .map(
-                foreignTerminalNode -> {
-                  final List<ParseTree> returnValue = new ArrayList<>();
-                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                    returnValue.addAll(
-                        ParseTreeStream.parseTreeStream(parentContext)
-                            .streamChildrenByClass(TSqlParser.Id_Context.class)
-                            .filter(TerminalNode.class::isInstance)
-                            .toList());
-                    if (returnValue.isEmpty()) {
+    final var terminalNode = new ArrayList<ParseTree>();
+    if (terminalNode.isEmpty()) {
+      terminalNode.addAll(
+          ParseTreeStream.parseTreeStream(ctx)
+              .filter(TerminalNode.class::isInstance)
+              .map(
+                  foreignTerminalNode -> {
+                    final List<ParseTree> returnValue = new ArrayList<>();
+                    if (Strings.CI.equalsAny("CONSTRAINT", foreignTerminalNode.getText())) {
                       returnValue.addAll(
-                          ParseTreeStream.parseTreeStream(parentContext)
-                              .streamChildrenByClass(
-                                  TSqlParser.Column_definition_elementContext.class)
-                              .streamChildrenByClass(TSqlParser.Column_constraintContext.class)
-                              .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
-                              .streamChildrenByClass(TSqlParser.Column_name_listContext.class)
+                          ParseTreeStream.parseTreeStream(ctx)
                               .streamChildrenByClass(TSqlParser.Id_Context.class)
                               .filter(TerminalNode.class::isInstance)
                               .toList());
                     }
-                  }
-                  return returnValue;
-                })
-            .flatMap(List::stream)
-            .collect(Collectors.toCollection(ArrayList::new));
-    final var parentContext2 =
-        ParseTreeHelper.getParentContext(ctx, TSqlParser.Table_constraintContext.class);
-    terminalNode.addAll(
-        ParseTreeStream.parseTreeStream(parentContext2)
-            .streamChildrenByClass(TSqlParser.Id_Context.class)
-            .filter(TerminalNode.class::isInstance)
-            .toList());
+                    return returnValue;
+                  })
+              .flatMap(List::stream)
+              .collect(Collectors.toCollection(ArrayList::new)));
+    }
     if (terminalNode.isEmpty()) {
       terminalNode.addAll(
-          ParseTreeStream.parseTreeStream(parentContext2)
+          ParseTreeStream.parseTreeStream(ctx)
               .streamChildrenByClass(TSqlParser.Foreign_key_optionsContext.class)
-              .streamChildrenByClass(TSqlParser.Table_nameContext.class)
+              .filter(TerminalNode.class::isInstance)
+              .map(
+                  foreignTerminalNode -> {
+                    final List<ParseTree> returnValue = new ArrayList<>();
+                    if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                      returnValue.addAll(
+                          ParseTreeStream.parseTreeStream(ctx)
+                              .streamChildrenByClass(TSqlParser.Column_name_listContext.class)
+                              .streamChildrenByClass(TSqlParser.Id_Context.class)
+                              .listAllTerminalNode());
+                    }
+                    return returnValue;
+                  })
+              .flatMap(List::stream)
+              .collect(Collectors.toCollection(ArrayList::new)));
+    }
+    if (terminalNode.isEmpty()) {
+      terminalNode.addAll(
+          ParseTreeStream.parseTreeStream(ctx)
               .streamChildrenByClass(TSqlParser.Id_Context.class)
               .filter(TerminalNode.class::isInstance)
               .toList());
     }
 
     if (!terminalNode.isEmpty()) {
-      return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
+      return ParseTreeHelper.getRelationship(
+          currentTable, String.join("_", terminalNode.stream().map(ParseTree::getText).toList()));
     }
     return null;
   }

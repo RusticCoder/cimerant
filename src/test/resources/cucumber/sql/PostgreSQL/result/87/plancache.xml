@@ -11,11 +11,29 @@
         <relationships size="0">
         </relationships>
     </object>
+    <object name="abc" grouping="[s1]">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="f2">{cimerant:type=field, fieldType=float8}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
     <object name="pc_list_parted">
         <attributes size="0">
         </attributes>
         <fields size="1">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="pcachetest">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="q3">{cimerant:type=field, fieldType=bigint}</field>
         </fields>
         <relationships size="0">
         </relationships>

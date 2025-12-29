@@ -2,6 +2,15 @@
 <root name="typed_table">
     <attributes size="0">
     </attributes>
+    <object name="persons">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="comment">{cimerant:type=field, fieldType=text}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
     <object name="stuff">
         <attributes size="0">
         </attributes>

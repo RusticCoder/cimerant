@@ -12,8 +12,8 @@
             <field key="id3c">{cimerant:type=field, fieldType=integer, primary=true}</field>
         </fields>
         <relationships size="2">
-            <relationship key="rule_and_refint_t1">{cimerant:type=relationship, column=id3a, id3b, foreignColumn=id1a, id1b, foreignTable=rule_and_refint_t1}</relationship>
-            <relationship key="rule_and_refint_t2">{cimerant:type=relationship, column=id3a, id3c, foreignColumn=id2a, id2c, foreignTable=rule_and_refint_t2}</relationship>
+            <relationship key="id3a_id3b">{cimerant:type=relationship, column=id3a, id3b, foreignColumn=id1a, id1b, foreignTable=rule_and_refint_t1}</relationship>
+            <relationship key="id3a_id3c">{cimerant:type=relationship, column=id3a, id3c, foreignColumn=id2a, id2c, foreignTable=rule_and_refint_t2}</relationship>
         </relationships>
     </object>
 </root>

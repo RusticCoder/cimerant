@@ -7,7 +7,7 @@
         </attributes>
         <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
-            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, nullable=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

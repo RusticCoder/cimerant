@@ -1,0 +1,27 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Mission {
+  description String maxlength(255)
+  name String required maxlength(255)
+}
+
+entity SpaceEvent {
+  date LocalDate required
+  description TextBlob required
+  name String required maxlength(255)
+  photo ImageBlob required
+  photoContentType String required maxlength(255)
+  type String required maxlength(255)
+}
+
+relationship OneToOne {
+  SpaceEvent to Mission
+}

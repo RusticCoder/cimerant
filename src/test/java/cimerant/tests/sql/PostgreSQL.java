@@ -27,6 +27,9 @@ import org.junit.rules.TemporaryFolder;
 public class PostgreSQL {
   private static File cimerantPath;
   private static Path destinationFilePath;
+  private static Path jdlDestinationFilePath;
+  private static String jdlRootPath;
+  private static Path jdlSourceFilePath;
   private static String rootPath;
   private static Path sharedDestinationFilePath;
   private static String sharedRootPath;
@@ -53,14 +56,23 @@ public class PostgreSQL {
 
     if (PostgreSQL.rootPath == null) {
       PostgreSQL.rootPath = "src/test/resources/cucumber/sql/" + PostgreSQL.class.getSimpleName();
+      PostgreSQL.jdlRootPath =
+          "src/test/resources/cucumber/sql/" + PostgreSQL.class.getSimpleName();
       PostgreSQL.sharedRootPath = "src/test/resources/cucumber/sql/shared";
     }
     if (PostgreSQL.sourceFilePath == null) {
       PostgreSQL.sourceFilePath = Paths.get(PostgreSQL.rootPath, "result");
+      PostgreSQL.jdlSourceFilePath = Paths.get(PostgreSQL.jdlRootPath, "result");
       PostgreSQL.sharedSourceFilePath = Paths.get(PostgreSQL.sharedRootPath, "result");
     }
     if (PostgreSQL.destinationFilePath == null) {
       PostgreSQL.destinationFilePath =
+          Paths.get(
+              PostgreSQL.cimerantPath.getAbsolutePath(),
+              "cucumber",
+              PostgreSQL.class.getSimpleName(),
+              "result");
+      PostgreSQL.jdlDestinationFilePath =
           Paths.get(
               PostgreSQL.cimerantPath.getAbsolutePath(),
               "cucumber",
@@ -90,10 +102,13 @@ public class PostgreSQL {
 
     PostgreSQL.cimerantPath = null;
     PostgreSQL.destinationFilePath = null;
+    PostgreSQL.jdlDestinationFilePath = null;
+    PostgreSQL.sharedDestinationFilePath = null;
     PostgreSQL.rootPath = null;
   }
 
   private boolean contentEquals = true;
+  private Path jdlDestinationFile;
   private String outputFile = null;
   private Path sharedDestinationFile;
   private int statusCode = 0;
@@ -122,12 +137,16 @@ public class PostgreSQL {
       }
     }
 
+    if (this.jdlDestinationFile != null) {
+      this.jdlDestinationFile.toFile().delete();
+    }
     if (this.sharedDestinationFile != null) {
       this.sharedDestinationFile.toFile().delete();
     }
 
     this.contentEquals = true;
     this.statusCode = 0;
+    this.jdlDestinationFile = null;
     this.sharedDestinationFile = null;
     this.uniqueDestinationFilePath = null;
   }
@@ -142,6 +161,31 @@ public class PostgreSQL {
   @Given("postgreSQL.{int} the input file {string}")
   public void givenInputFile(final Integer argUnique, final String argInputFile) {
     this.values.add("--input='" + PostgreSQL.rootPath + "/model/" + argInputFile + "'");
+  }
+
+  /**
+   * Describes the initial context or state of the system (the setup).
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @param argInputFile file to be transformed.
+   * @see Given
+   */
+  @Given("postgreSQL.{int} the jdl input file {string}")
+  public void givenJdlInputFile(final Integer argUnique, final String argInputFile) {
+    this.values.add("--input='" + PostgreSQL.jdlRootPath + "/model/" + argInputFile + "'");
+  }
+
+  /**
+   * Describes the initial context or state of the system (the setup).
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @param argOutputFile file to be returned.
+   * @see Given
+   */
+  @Given("postgreSQL.{int} the jdl output file {string}")
+  public void givenJdlOutputFile(final Integer argUnique, final String argOutputFile) {
+    this.outputFile = argOutputFile;
+    this.values.add("--file='" + this.outputFile + "'");
   }
 
   /**
@@ -180,6 +224,45 @@ public class PostgreSQL {
   public void givenSharedOutputFile(final Integer argUnique, final String argOutputFile) {
     this.outputFile = argOutputFile + ".xml";
     this.values.add("--file='" + this.outputFile + "'");
+  }
+
+  /**
+   * Describes the action or event that triggers the behavior.
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @throws Exception any exception thrown by the statement.
+   * @see When
+   */
+  @When("postgreSQL.{int} the jdl values are passed into Cimerant")
+  public void sinceWhenTheJdlValuesArePassedIntoCimerant(final Integer argUnique) throws Exception {
+    this.uniqueDestinationFilePath =
+        Paths.get(PostgreSQL.jdlDestinationFilePath.toString(), "" + argUnique);
+
+    this.values.add("--path='" + this.uniqueDestinationFilePath + "'");
+    this.values.add(
+        "--template='"
+            + PostgreSQL.rootPath
+            + "/template/"
+            + PostgreSQL.class.getSimpleName()
+            + "Jdl.vm'");
+    this.values.add("--single");
+    this.values.add("--input-type='PostgreSQL'");
+
+    final var stockArr = this.values.toArray(String[]::new);
+    this.values.clear();
+
+    Files.createDirectories(PostgreSQL.cimerantPath.toPath());
+
+    try {
+      this.textWrittenToSystemErr =
+          SystemLambda.tapSystemErr(
+              () -> this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr)));
+    } catch (final java.lang.AssertionError e) {
+      if (!"System.exit has not been called.".equals(e.getMessage())) {
+        throw e;
+      }
+    }
+    this.textWrittenToSystemErr = StringUtils.stripToNull(this.textWrittenToSystemErr);
   }
 
   /**
@@ -267,6 +350,40 @@ public class PostgreSQL {
    * @throws IOException folders cannot be compared.
    * @see Then
    */
+  @Then("postgreSQL.{int} Cimerant jdl outputs")
+  public void thenJdlOutputs(final Integer argUnique) throws IOException {
+    Assertions.assertTrue(
+        StringUtils.isBlank(this.textWrittenToSystemErr),
+        "#" + argUnique + " Unexpected Error: " + this.textWrittenToSystemErr);
+    Assertions.assertEquals(
+        0, this.statusCode, "#" + argUnique + " Unexpected Status Code: " + this.statusCode);
+
+    final var uniqueSourceFilePath =
+        Paths.get(PostgreSQL.jdlSourceFilePath.toString(), "" + argUnique);
+    if (this.uniqueDestinationFilePath == null) {
+      this.uniqueDestinationFilePath =
+          Paths.get(PostgreSQL.destinationFilePath.toString(), "" + argUnique);
+    }
+    this.contentEquals =
+        DirUtils.contentEquals(uniqueSourceFilePath, this.uniqueDestinationFilePath);
+    Assertions.assertTrue(
+        this.contentEquals,
+        "#"
+            + argUnique
+            + " '"
+            + uniqueSourceFilePath.toAbsolutePath()
+            + "' did not match '"
+            + this.uniqueDestinationFilePath.toAbsolutePath()
+            + "'");
+  }
+
+  /**
+   * Describes the expected outcome or result.
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @throws IOException folders cannot be compared.
+   * @see Then
+   */
   @Then("postgreSQL.{int} Cimerant outputs")
   public void thenOutputSourceFilePath(final Integer argUnique) throws IOException {
     Assertions.assertTrue(
@@ -321,6 +438,9 @@ public class PostgreSQL {
     Assertions.assertTrue(
         this.contentEquals,
         "#" + argUnique + " '" + sharedSourceFile.toFile().getAbsolutePath() + "' not found.");
+    if (!this.contentEquals) {
+      return;
+    }
 
     final var sharedDestinationFile =
         Paths.get(
@@ -330,6 +450,9 @@ public class PostgreSQL {
     Assertions.assertTrue(
         this.contentEquals,
         "#" + argUnique + " '" + sharedDestinationFile.toFile().getAbsolutePath() + "' not found.");
+    if (!this.contentEquals) {
+      return;
+    }
 
     this.contentEquals =
         FileUtils.contentEquals(sharedSourceFile.toFile(), sharedDestinationFile.toFile());
@@ -342,6 +465,9 @@ public class PostgreSQL {
             + "' did not match '"
             + sharedDestinationFile.toFile().getAbsolutePath()
             + "'");
+    if (!this.contentEquals) {
+      return;
+    }
 
     this.sharedDestinationFile = sharedDestinationFile;
   }

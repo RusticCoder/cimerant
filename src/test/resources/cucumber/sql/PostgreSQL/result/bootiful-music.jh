@@ -1,0 +1,43 @@
+application {
+  config {
+    baseName bootifulmusic
+    packageName com.jhipster.demo.bootifulmusic
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType neo4j
+//    prodDatabaseType postgresql
+    applicationType monolith
+    databaseType neo4j
+    enableHibernateCache false
+    testFrameworks [cypress]
+  }
+  entities *
+}
+
+entity Artist {
+	name String required
+}
+
+entity Genre {
+	name String required
+}
+
+entity Track {
+	name String required
+}
+
+entity Album {
+	name String required
+}
+
+relationship OneToOne {
+	Album{artist(name)} to Artist
+    Album{genre(name)} to Genre
+}
+
+relationship OneToMany {
+	Album{track(name)} to Track{album(name)}
+}
+
+paginate Artist, Genre, Track, Album with pagination

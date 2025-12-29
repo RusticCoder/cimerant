@@ -1,0 +1,50 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Author {
+  firstName String required maxlength(50)
+  lastName String required maxlength(50)
+}
+
+entity Book {
+  copies Integer required
+  cover ImageBlob
+  coverContentType String maxlength(255)
+  isbn String unique required maxlength(13)
+  name String required maxlength(100)
+  publishYear String required maxlength(50)
+}
+
+entity BorrowedBook {
+  borrowDate LocalDate
+}
+
+entity Client {
+  address String maxlength(50)
+  email String unique maxlength(50)
+  firstName String required maxlength(50)
+  lastName String required maxlength(50)
+  phone String maxlength(20)
+}
+
+entity Publisher {
+  name String unique required maxlength(100)
+}
+
+relationship OneToOne {
+  Book to Publisher
+  BorrowedBook to Book
+  BorrowedBook to Client
+}
+
+relationship ManyToMany {
+  Author to Author
+  Author to Book
+}

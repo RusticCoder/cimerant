@@ -1,0 +1,34 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Blog {
+  handle String required maxlength(255)
+  name String required maxlength(255)
+}
+
+entity Post {
+  content TextBlob required
+  date Instant required maxlength(6)
+  title String required maxlength(255)
+}
+
+entity Tag {
+  name String required maxlength(255)
+}
+
+relationship ManyToOne {
+  Blog to JhiUser
+  Post to Blog
+}
+
+relationship ManyToMany {
+  Post to Post
+  Post to Tag
+}

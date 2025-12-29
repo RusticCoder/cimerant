@@ -146,7 +146,8 @@
             <field key="id">{cimerant:type=field, fieldType=serial}</field>
             <field key="id1">{cimerant:type=field, default=nextval('truncate_a_id1'), fieldType=integer}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="1">
+            <relationship key="col1">{cimerant:type=relationship, column=col1, foreignTable=trunc_c}</relationship>
         </relationships>
     </object>
     <object name="truncate_b">

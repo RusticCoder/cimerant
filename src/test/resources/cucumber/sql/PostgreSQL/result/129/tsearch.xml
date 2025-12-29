@@ -25,7 +25,9 @@
     <object name="test_tsquery">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="4">
+            <field key="keyword">{cimerant:type=field, fieldType=tsquery}</field>
+            <field key="sample">{cimerant:type=field, fieldType=tsquery}</field>
             <field key="txtkeyword">{cimerant:type=field, fieldType=TEXT}</field>
             <field key="txtsample">{cimerant:type=field, fieldType=TEXT}</field>
         </fields>

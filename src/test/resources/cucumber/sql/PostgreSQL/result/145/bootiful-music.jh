@@ -1,0 +1,34 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Album {
+  name String required maxlength(255)
+}
+
+entity Artist {
+  name String required maxlength(255)
+}
+
+entity Genre {
+  name String required maxlength(255)
+}
+
+entity Track {
+  name String required maxlength(255)
+}
+
+relationship OneToOne {
+  Album to Artist
+  Album to Genre
+}
+
+relationship ManyToOne {
+  Track to Album
+}

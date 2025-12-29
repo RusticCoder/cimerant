@@ -10,7 +10,7 @@
             <field key="b">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="1">
-            <relationship key="refd_table">{cimerant:type=relationship, column=a, foreignTable=refd_table}</relationship>
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignTable=refd_table}</relationship>
         </relationships>
     </object>
 </root>

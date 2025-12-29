@@ -1,0 +1,76 @@
+application {
+  config {
+    baseName dinosaurs
+    packageName com.rj.dinosaurs
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+    applicationType monolith
+    authenticationType jwt
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework angularX
+    clientPackageManager npm
+    databaseType sql
+    dtoSuffix DTO
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation false
+    jhiPrefix jhi
+    languages [en]
+    messageBroker false
+    nativeLanguage en
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    skipClient false
+    skipServer false
+    skipUserManagement false
+    testFrameworks [protractor, cucumber, gatling]
+    websocket false
+  }
+  entities *
+}
+
+DEFAULT_MIN_LENGTH = 1
+DEFAULT_MAX_LENGTH = 64
+DEFAULT_MIN = 0
+DEFAULT_MAX = 999
+
+@dto(mapstruct)
+@service(serviceImpl)
+@paginate(pagination)
+entity Era {
+    name String required maxlength(DEFAULT_MAX_LENGTH)
+    fromMa Integer min(DEFAULT_MIN) max(DEFAULT_MAX)
+    toMa Integer min(DEFAULT_MIN) max(DEFAULT_MAX)
+}
+
+@dto(mapstruct)
+@service(serviceImpl)
+@paginate(pagination)
+entity Clade {
+	description String required maxlength(DEFAULT_MAX_LENGTH)
+}
+
+@dto(mapstruct)
+@service(serviceImpl)
+@paginate(infinite-scroll)
+entity Dinosaur {
+    name String required maxlength(DEFAULT_MAX_LENGTH)
+    weight Integer min(DEFAULT_MIN) max(DEFAULT_MAX)
+    length Integer min(DEFAULT_MIN) max(DEFAULT_MAX)
+    diet Diet
+    insertDt Instant required
+    modifiedDt Instant required
+}
+
+enum Diet {
+    HERBIVORE, CARNIVORE, OMNIVORE
+}
+
+relationship ManyToOne {
+	Dinosaur{era(name)} to Era,
+	Dinosaur{clade(description)} to Clade
+}

@@ -88,7 +88,7 @@
         </attributes>
         <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
-            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, nullable=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -239,8 +239,13 @@
     <object name="gtest25">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="6">
             <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, default=42, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, default=101, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
+            <field key="y">{cimerant:type=field, fieldType=float8}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -261,7 +266,7 @@
         <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
-            <field key="x">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{bigint=true, cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>

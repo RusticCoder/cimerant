@@ -132,9 +132,12 @@
     <object name="mlparted">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="5">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+            <field key="e">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -153,7 +156,8 @@
         <attributes size="1">
             <attribute key="like">mlparted1</attribute>
         </attributes>
-        <fields size="0">
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -172,7 +176,8 @@
         <attributes size="1">
             <attribute key="like">mlparted</attribute>
         </attributes>
-        <fields size="0">
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -224,8 +229,9 @@
     <object name="returningwrtest">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="0">
         </relationships>

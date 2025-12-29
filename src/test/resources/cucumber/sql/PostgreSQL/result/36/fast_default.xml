@@ -16,8 +16,21 @@
     <object name="has_fast_default">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, default=42, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="has_volatile">
+        <attributes size="0">
+        </attributes>
+        <fields size="4">
+            <field key="col1">{cimerant:type=field, fieldType=int}</field>
+            <field key="col2">{cimerant:type=field, default=1, fieldType=int}</field>
+            <field key="col3">{cimerant:type=field, default=current_timestamp, fieldType=timestamptz}</field>
+            <field key="col4">{cimerant:type=field, default=(random() * 10000)::int, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -25,9 +38,10 @@
     <object name="leader">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -44,13 +58,40 @@
     <object name="T">
         <attributes size="0">
         </attributes>
-        <fields size="6">
-            <field key="a">{cimerant:type=field, fieldType=int}</field>
+        <fields size="24">
+            <field key="a">{cimerant:type=field, default=1, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
             <field key="c">{cimerant:type=field, fieldType=int}</field>
-            <field key="c_int">{cimerant:type=field, default=1, fieldType=INT}</field>
+            <field key="c1">{cimerant:type=field, default=now(), fieldType=TIMESTAMP}</field>
+            <field key="c2">{cimerant:type=field, default=clock_timestamp(), fieldType=TIMESTAMP}</field>
+            <field key="c_array">{array=[], cimerant:type=field, default='{"This", "is", "the", "real", "world"}', fieldType=TEXT}</field>
+            <field key="c_big">{cimerant:type=field, default=180000000000018, fieldType=BIGINT}</field>
+            <field key="c_bigint">{cimerant:type=field, default=-1, fieldType=BIGINT, nullable=false}</field>
+            <field key="c_bpchar">{cimerant:type=field, default='hello', fieldType=BPCHAR, precision=5}</field>
+            <field key="c_date">{cimerant:type=field, default='2016-06-02', fieldType=DATE}</field>
+            <field key="c_hugetext">{cimerant:type=field, default=repeat('abcdefg',1000), fieldType=TEXT}</field>
+            <field key="c_int">{cimerant:type=field, default=1, fieldType=INT, nullable=false}</field>
+            <field key="c_interval">{cimerant:type=field, default='1 day', fieldType=INTERVAL}</field>
+            <field key="c_num">{cimerant:type=field, default=1.00000000001, fieldType=NUMERIC}</field>
+            <field key="c_small">{cimerant:type=field, default=-5, fieldType=SMALLINT}</field>
+            <field key="c_small_null">{cimerant:type=field, fieldType=SMALLINT}</field>
+            <field key="c_text">{cimerant:type=field, default='world', fieldType=TEXT}</field>
+            <field key="c_time">{cimerant:type=field, default='12:00:00', fieldType=TIME}</field>
+            <field key="c_timestamp">{cimerant:type=field, default='2016-09-01 12:00:00', fieldType=TIMESTAMP}</field>
+            <field key="c_timestamp_null">{cimerant:type=field, fieldType=TIMESTAMP}</field>
             <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
             <field key="pk">{cimerant:type=field, fieldType=INT, nullable=false, primary=true}</field>
+            <field key="x">{cimerant:type=field, default=4, fieldType=int, nullable=false}</field>
+            <field key="y">{cimerant:type=field, default=5, fieldType=int, nullable=false}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="t1">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -58,8 +99,10 @@
     <object name="vtype">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=integer}</field>
+            <field key="b">{cimerant:type=field, default=0.2, fieldType=DOUBLE PRECISION}</field>
+            <field key="c">{cimerant:type=field, default=true, fieldType=BOOLEAN}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -67,8 +110,9 @@
     <object name="vtype2">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, default='xxx', fieldType=varchar, maxSize=10}</field>
         </fields>
         <relationships size="0">
         </relationships>

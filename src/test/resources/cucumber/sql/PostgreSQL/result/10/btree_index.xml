@@ -44,10 +44,10 @@
         <attributes size="0">
         </attributes>
         <fields size="4">
-            <field key="a">{cimerant:type=field, fieldType=bigint}</field>
-            <field key="b">{cimerant:type=field, fieldType=bigint}</field>
-            <field key="c">{cimerant:type=field, fieldType=bigint}</field>
-            <field key="d">{cimerant:type=field, fieldType=bigint}</field>
+            <field key="a">{cimerant:type=field, fieldType=bigint, primary=true}</field>
+            <field key="b">{cimerant:type=field, fieldType=bigint, primary=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=bigint, primary=true}</field>
+            <field key="d">{cimerant:type=field, fieldType=bigint, primary=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

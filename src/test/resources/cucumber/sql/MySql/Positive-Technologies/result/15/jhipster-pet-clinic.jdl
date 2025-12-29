@@ -1,0 +1,51 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Owners {
+  address String required maxlength(255)
+  city String maxlength(32)
+  firstname String required maxlength(32)
+  lastname String required maxlength(32)
+  telephone String required maxlength(20)
+}
+
+entity Pets {
+  birthdate Instant maxlength(6)
+  name String required maxlength(32)
+}
+
+entity Specialties {
+  name String required maxlength(32)
+}
+
+entity Types {
+  name String required maxlength(80)
+}
+
+entity Vets {
+  firstname String required maxlength(32)
+  lastname String required maxlength(32)
+}
+
+entity Visits {
+  description String required maxlength(255)
+  visitdate Instant required maxlength(6)
+}
+
+relationship ManyToOne {
+  Pets to Owners
+  Pets to Types
+  Visits to Pets
+}
+
+relationship ManyToMany {
+  Specialties to Specialties
+  Specialties to Vets
+}

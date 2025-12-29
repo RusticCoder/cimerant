@@ -214,7 +214,8 @@
         <attributes size="1">
             <attribute key="like">uv_pt1</attribute>
         </attributes>
-        <fields size="0">
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -222,8 +223,9 @@
     <object name="wcowrtest">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="0">
         </relationships>

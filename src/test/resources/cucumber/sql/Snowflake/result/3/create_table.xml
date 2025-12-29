@@ -81,9 +81,9 @@
             <field key="f2">{cimerant:type=field, fieldType=number}</field>
         </fields>
         <relationships size="3">
+            <relationship key="C3">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
             <relationship key="CNAME">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
             <relationship key="INCNAME">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
-            <relationship key="T2">{cimerant:type=relationship, column=C3, foreignColumn=C2, foreignTable=t2}</relationship>
         </relationships>
     </object>
     <object name="t4">

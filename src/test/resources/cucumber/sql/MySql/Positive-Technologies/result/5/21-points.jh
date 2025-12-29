@@ -1,0 +1,43 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity BloodPressure {
+  diastolic Integer required
+  systolic Integer required
+  timestamp Instant required maxlength(6)
+}
+
+entity Points {
+  alcohol Integer
+  date LocalDate required
+  exercise Integer
+  meals Integer
+  notes String maxlength(140)
+}
+
+entity Preferences {
+  weeklyGoal Integer required
+  weightUnits String required maxlength(255)
+}
+
+entity Weight {
+  timestamp Instant required maxlength(6)
+  weight Double required
+}
+
+relationship OneToOne {
+  Preferences to JhiUser
+}
+
+relationship ManyToOne {
+  BloodPressure to JhiUser
+  Points to JhiUser
+  Weight to JhiUser
+}

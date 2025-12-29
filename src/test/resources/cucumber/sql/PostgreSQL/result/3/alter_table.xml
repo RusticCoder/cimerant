@@ -28,14 +28,16 @@
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
             <field key="f3">{cimerant:type=field, fieldType=int, primary=true}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="2">
+            <relationship key="alterlock2nv">{cimerant:type=relationship, column=f1, foreignColumn=f1, foreignTable=alterlock}</relationship>
+            <relationship key="f1">{cimerant:type=relationship, column=f1, foreignColumn=f1, foreignTable=alterlock}</relationship>
         </relationships>
     </object>
     <object name="alttype_cluster">
         <attributes size="0">
         </attributes>
         <fields size="1">
-            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -57,10 +59,10 @@
         <fields size="7">
             <field key="atcol1">{cimerant:type=field, fieldType=serial8}</field>
             <field key="atcol2">{cimerant:type=field, fieldType=boolean}</field>
-            <field key="f1">{cimerant:type=field, fieldType=int, primary=true}</field>
+            <field key="f1">{cimerant:type=field, fieldType=int, primary=true, unique=true}</field>
             <field key="f2">{cimerant:type=field, fieldType=int, unique=true}</field>
             <field key="f3">{cimerant:type=field, fieldType=int}</field>
-            <field key="f4">{cimerant:type=field, fieldType=int}</field>
+            <field key="f4">{cimerant:type=field, fieldType=int, unique=true}</field>
             <field key="f5">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
@@ -120,19 +122,22 @@
         <attributes size="0">
         </attributes>
         <fields size="11">
-            <field key="a">{bigint=true, cimerant:type=field, fieldType=int, int4=true, nullable=false, primary=true}</field>
-            <field key="b">{cimerant:type=field, fieldType=int, int4=true}</field>
+            <field key="a">{bigint=true, cimerant:type=field, fieldType=int, int4=true, nullable=false, primary=true, unique=true}</field>
+            <field key="b">{cimerant:type=field, default=random(), fieldType=float8, int=true, int4=true, nullable=false}</field>
             <field key="c">{cimerant:type=field, fieldType=int4, nullable=false}</field>
             <field key="d">{cimerant:type=field, fieldType=int4}</field>
             <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
             <field key="test">{cimerant:type=field, fieldType=int, nullable=false, primary=true, unique=true}</field>
-            <field key="test2">{cimerant:type=field, fieldType=int}</field>
+            <field key="test2">{cimerant:type=field, default=0, fieldType=int, primary=true, unique=true}</field>
             <field key="test3">{cimerant:type=field, fieldType=int}</field>
             <field key="test_a">{cimerant:type=field, fieldType=int}</field>
             <field key="test_b">{cimerant:type=field, fieldType=int}</field>
             <field key="value">{cimerant:type=field, fieldType=int}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="3">
+            <relationship key="a">{cimerant:type=relationship, column=a, foreignColumn=id, foreignTable=atacc2}</relationship>
+            <relationship key="atacc1_fkey">{cimerant:type=relationship, column=a, foreignColumn=a, foreignTable=atacc1}</relationship>
+            <relationship key="pg.dropped.1">{cimerant:type=relationship, column=pg.dropped.1, foreignColumn=id, foreignTable=atacc2}</relationship>
         </relationships>
     </object>
     <object name="atacc2">
@@ -143,14 +148,16 @@
             <field key="id">{cimerant:type=field, fieldType=int4, unique=true}</field>
             <field key="test2">{cimerant:type=field, fieldType=int}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="1">
+            <relationship key="id">{cimerant:type=relationship, column=id, foreignColumn=a, pg.dropped.1, foreignTable=atacc1}</relationship>
         </relationships>
     </object>
     <object name="atacc3">
         <attributes size="1">
             <attribute key="inherits">atacc1, atacc2</attribute>
         </attributes>
-        <fields size="1">
+        <fields size="2">
+            <field key="test2">{cimerant:type=field, fieldType=bool, int=true}</field>
             <field key="test3">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
@@ -180,11 +187,33 @@
         <attributes size="1">
             <attribute key="temp">true</attribute>
         </attributes>
-        <fields size="4">
+        <fields size="26">
+            <field key="a">{cimerant:type=field, default=3, fieldType=int4}</field>
             <field key="attmptable">{cimerant:type=field, fieldType=int}</field>
-            <field key="i">{cimerant:type=field, fieldType=integer}</field>
+            <field key="b">{cimerant:type=field, fieldType=name}</field>
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
+            <field key="d">{cimerant:type=field, fieldType=float8}</field>
+            <field key="e">{cimerant:type=field, fieldType=float4}</field>
+            <field key="f">{cimerant:type=field, fieldType=int2}</field>
+            <field key="g">{cimerant:type=field, fieldType=polygon}</field>
+            <field key="i">{cimerant:type=field, fieldType=char, integer=true}</field>
             <field key="initial">{cimerant:type=field, fieldType=int4}</field>
+            <field key="k">{cimerant:type=field, fieldType=int4}</field>
+            <field key="l">{cimerant:type=field, fieldType=tid}</field>
+            <field key="m">{cimerant:type=field, fieldType=xid}</field>
+            <field key="n">{cimerant:type=field, fieldType=oidvector}</field>
+            <field key="p">{cimerant:type=field, fieldType=boolean}</field>
+            <field key="q">{cimerant:type=field, fieldType=point}</field>
+            <field key="r">{cimerant:type=field, fieldType=lseg}</field>
             <field key="regtable">{cimerant:type=field, fieldType=int}</field>
+            <field key="s">{cimerant:type=field, fieldType=path}</field>
+            <field key="t">{cimerant:type=field, fieldType=box}</field>
+            <field key="v">{cimerant:type=field, fieldType=timestamp}</field>
+            <field key="w">{cimerant:type=field, fieldType=interval}</field>
+            <field key="x">{array=[], cimerant:type=field, fieldType=float8}</field>
+            <field key="xmin">{cimerant:type=field, fieldType=integer}</field>
+            <field key="y">{array=[], cimerant:type=field, fieldType=float4}</field>
+            <field key="z">{array=[], cimerant:type=field, fieldType=int2}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -205,7 +234,8 @@
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="1">
+            <relationship key="attmpconstr">{cimerant:type=relationship, column=a, c, foreignColumn=b, foreignTable=attmp2}</relationship>
         </relationships>
     </object>
     <object name="attmp4">
@@ -225,7 +255,8 @@
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="1">
+            <relationship key="attmpconstr">{cimerant:type=relationship, column=a, foreignColumn=a, foreignTable=attmp4}</relationship>
         </relationships>
     </object>
     <object name="attmp6">
@@ -277,8 +308,9 @@
     <object name="bar2">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=integer}</field>
+            <field key="b">{cimerant:type=field, default=1, fieldType=integer, nullable=false}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -373,7 +405,7 @@
         <attributes size="0">
         </attributes>
         <fields size="3">
-            <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="a">{cimerant:type=field, fieldType=int, primary=true, unique=true}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
             <field key="c">{cimerant:type=field, fieldType=int}</field>
         </fields>
@@ -434,6 +466,15 @@
         <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
+    <object name="depth0">
+        <attributes size="0">
+        </attributes>
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -514,10 +555,19 @@
             <attribute key="temp">true</attribute>
         </attributes>
         <fields size="2">
-            <field key="ftest1">{cidr=true, cimerant:type=field, fieldType=inet, int=true, int8=true, numeric=true}</field>
+            <field key="ftest1">{cidr=true, cimerant:type=field, deferrable=true, fieldType=inet, int=true, int8=true, numeric=true}</field>
             <field key="ftest2">{cimerant:type=field, fieldType=timestamp, inet=true}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="9">
+            <relationship key="fkdd">{cimerant:type=relationship, column=ftest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="fkdd2">{cimerant:type=relationship, column=ftest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="fkdi">{cimerant:type=relationship, column=ftest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="fkdi2">{cimerant:type=relationship, column=ftest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="fknd">{cimerant:type=relationship, column=ftest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="fknd2">{cimerant:type=relationship, column=ftest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="ftest1">{cimerant:type=relationship, column=ftest1, foreignColumn=ptest1, foreignTable=PKTABLE}</relationship>
+            <relationship key="ftest1_ftest2">{cimerant:type=relationship, column=ftest1, ftest2, foreignColumn=ptest1, ptest2, foreignTable=PKTABLE}</relationship>
+            <relationship key="ftest2_ftest1">{cimerant:type=relationship, column=ftest1, ftest2, foreignColumn=ptest1, ptest2, foreignTable=PKTABLE}</relationship>
         </relationships>
     </object>
     <object name="foo">
@@ -601,9 +651,10 @@
     <object name="list_parted2">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=char}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -736,11 +787,12 @@
     <object name="p1">
         <attributes size="0">
         </attributes>
-        <fields size="6">
+        <fields size="7">
             <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="a1">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
-            <field key="f2">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int, text=true}</field>
             <field key="id">{cimerant:type=field, fieldType=int}</field>
             <field key="name">{cimerant:type=field, fieldType=text}</field>
         </fields>
@@ -751,7 +803,8 @@
         <attributes size="1">
             <attribute key="like">p1</attribute>
         </attributes>
-        <fields size="0">
+        <fields size="1">
+            <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -840,7 +893,8 @@
         <attributes size="1">
             <attribute key="like">list_parted2</attribute>
         </attributes>
-        <fields size="0">
+        <fields size="1">
+            <field key="c">{cimerant:type=field, fieldType=text}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -1040,8 +1094,9 @@
         <attributes size="1">
             <attribute key="temp">true</attribute>
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{array=[], array_of_recur1=true, cimerant:type=field, fieldType=recur1, int=true, recur2=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -1069,8 +1124,10 @@
     <object name="renameColumn">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="w">{cimerant:type=field, fieldType=int}</field>
+            <field key="x">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -1185,10 +1242,15 @@
     <object name="test_add_column">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="5">
             <field key="c1">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c2">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c3">{cimerant:type=field, fieldType=integer, primary=true}</field>
+            <field key="c4">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c5">{cimerant:type=field, fieldType=SERIAL}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="1">
+            <relationship key="c4">{cimerant:type=relationship, column=c4, foreignTable=test_add_column}</relationship>
         </relationships>
     </object>
     <object name="test_drop_constr_child">
@@ -1231,8 +1293,9 @@
     <object name="test_storage">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=text}</field>
+            <field key="b">{cimerant:type=field, default=0, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -1269,8 +1332,9 @@
     <object name="test_type_diff">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -1412,8 +1476,9 @@
     <object name="tt8">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="f">{cimerant:type=field, fieldType=int, primary=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -1422,7 +1487,7 @@
         <attributes size="0">
         </attributes>
         <fields size="1">
-            <field key="c">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c">{cimerant:type=field, fieldType=integer, unique=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

@@ -12,7 +12,7 @@
             <field key="ptest4">{cimerant:type=field, fieldType=inet}</field>
         </fields>
         <relationships size="1">
-            <relationship key="pktable">{cimerant:type=relationship, column=ptest3, ptest4, foreignTable=PKTABLE}</relationship>
+            <relationship key="ptest4_ptest3">{cimerant:type=relationship, column=ptest3, ptest4, foreignTable=PKTABLE}</relationship>
         </relationships>
     </object>
 </root>

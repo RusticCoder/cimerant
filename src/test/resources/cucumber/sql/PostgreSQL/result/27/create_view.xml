@@ -150,9 +150,10 @@
     <object name="tt11">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="3">
             <field key="x">{cimerant:type=field, fieldType=int}</field>
             <field key="y">{cimerant:type=field, fieldType=int}</field>
+            <field key="z">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -192,10 +193,12 @@
     <object name="tt2">
         <attributes size="0">
         </attributes>
-        <fields size="3">
+        <fields size="5">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
             <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="d">{cimerant:type=field, fieldType=int}</field>
+            <field key="e">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -203,10 +206,11 @@
     <object name="tt3">
         <attributes size="0">
         </attributes>
-        <fields size="3">
+        <fields size="4">
             <field key="ax">{cimerant:type=field, fieldType=int8}</field>
             <field key="b">{cimerant:type=field, fieldType=int2}</field>
-            <field key="c">{cimerant:type=field, fieldType=numeric}</field>
+            <field key="c">{cimerant:type=field, fieldType=numeric, int=true}</field>
+            <field key="e">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -225,9 +229,11 @@
     <object name="tt5">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="4">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
             <field key="b">{cimerant:type=field, fieldType=int}</field>
+            <field key="c">{cimerant:type=field, fieldType=int}</field>
+            <field key="cc">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -245,10 +251,12 @@
     <object name="tt7">
         <attributes size="0">
         </attributes>
-        <fields size="3">
+        <fields size="5">
             <field key="x">{cimerant:type=field, fieldType=int}</field>
             <field key="xx">{cimerant:type=field, fieldType=int}</field>
             <field key="y">{cimerant:type=field, fieldType=int}</field>
+            <field key="z">{cimerant:type=field, fieldType=int}</field>
+            <field key="zz">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -267,9 +275,10 @@
     <object name="tt8">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="3">
             <field key="x">{cimerant:type=field, fieldType=int}</field>
             <field key="z">{cimerant:type=field, fieldType=int}</field>
+            <field key="z2">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>

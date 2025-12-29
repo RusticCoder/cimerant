@@ -1,0 +1,79 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+DEFAULT_MIN_LENGTH = 4
+DEFAULT_MAX_LENGTH = 64
+URL_MAX_LENGTH = 2048
+EMAIL_MAX_LENGTH = 256
+TEXT_MAX_LENGTH = 512
+PATH_MAX_LENGTH = 128
+DEFAULT_MIN = 0
+DEFAULT_MAX = 999
+
+entity Profile {
+  name String required maxlength(DEFAULT_MAX_LENGTH)
+  location String maxlength(DEFAULT_MAX_LENGTH)
+  status ProfileStatus required
+  avatarPath String maxlength(PATH_MAX_LENGTH)
+  photoPath String maxlength(PATH_MAX_LENGTH)
+  description String maxlength(TEXT_MAX_LENGTH)
+  email String unique required minlength(5) maxlength(EMAIL_MAX_LENGTH) pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+  github String maxlength(URL_MAX_LENGTH)
+  linkedin String maxlength(URL_MAX_LENGTH)
+  twitter String maxlength(URL_MAX_LENGTH)
+  createdBy Long required min(DEFAULT_MIN)  // Id of User.
+  createdDt Instant required
+  modifiedBy Long min(DEFAULT_MIN)  // Id of User.
+  modifiedDt Instant
+}
+
+enum ProfileStatus {
+  AVAILABLE, UNAVAILABLE
+}
+
+entity Project {
+  name String required maxlength(DEFAULT_MAX_LENGTH)
+  url String required maxlength(URL_MAX_LENGTH)
+}
+
+entity Skill {
+  level SkillLevel required
+  skill String maxlength(DEFAULT_MAX_LENGTH)
+  description String maxlength(TEXT_MAX_LENGTH)
+}
+
+enum SkillLevel {
+  CORE, PROFICIENT, FAMILIAR
+}
+
+entity SkillCategory {
+  category String required maxlength(DEFAULT_MAX_LENGTH)
+}
+
+entity Career {
+  step Integer required min(DEFAULT_MIN) max(DEFAULT_MAX)
+  description String required maxlength(DEFAULT_MAX_LENGTH)
+  imagePath String maxlength(PATH_MAX_LENGTH)
+  synopsis String maxlength(TEXT_MAX_LENGTH)
+}
+
+entity Interest {
+  title String required maxlength(DEFAULT_MAX_LENGTH)
+  imagePath String maxlength(PATH_MAX_LENGTH)
+  description String maxlength(TEXT_MAX_LENGTH)
+}
+
+relationship OneToMany {
+  Profile to Project
+  Profile to Skill
+  Profile to Career
+  Profile to Interest
+  SkillCategory to Skill
+}

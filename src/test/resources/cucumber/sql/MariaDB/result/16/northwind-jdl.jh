@@ -1,0 +1,210 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Customer {
+  address TextBlob
+  attachments ImageBlob
+  attachmentsContentType String maxlength(255)
+  businessPhone String maxlength(25)
+  city String maxlength(50)
+  company String maxlength(50)
+  countryRegion String maxlength(50)
+  emailAddress String maxlength(50)
+  faxNumber String maxlength(25)
+  firstName String maxlength(50)
+  homePhone String maxlength(25)
+  jobTitle String maxlength(50)
+  lastName String maxlength(50)
+  mobilePhone String maxlength(25)
+  notes TextBlob
+  stateProvince String maxlength(50)
+  webPage TextBlob
+  zipPostalCode String maxlength(15)
+}
+
+entity Employee {
+  address TextBlob
+  attachments ImageBlob
+  attachmentsContentType String maxlength(255)
+  businessPhone String maxlength(25)
+  city String maxlength(50)
+  company String maxlength(50)
+  countryRegion String maxlength(50)
+  emailAddress String maxlength(50)
+  faxNumber String maxlength(25)
+  firstName String maxlength(50)
+  homePhone String maxlength(25)
+  jobTitle String maxlength(50)
+  lastName String maxlength(50)
+  mobilePhone String maxlength(25)
+  notes TextBlob
+  stateProvince String maxlength(50)
+  webPage TextBlob
+  zipPostalCode String maxlength(15)
+}
+
+entity InventoryTransaction {
+  comments String maxlength(255)
+  quantity Integer required maxlength(11)
+  transactionCreatedDate Instant maxlength(6)
+  transactionModifiedDate Instant maxlength(6)
+}
+
+entity InventoryTransactionType {
+  typeName String required maxlength(50)
+}
+
+entity Invoice {
+  amountDue BigDecimal maxlength(21, 2)
+  dueDate Instant maxlength(6)
+  invoiceDate Instant maxlength(6)
+  shipping BigDecimal maxlength(21, 2)
+  tax BigDecimal maxlength(21, 2)
+}
+
+entity Nworder {
+  notes TextBlob
+  orderDate Instant maxlength(6)
+  paidDate Instant maxlength(6)
+  paymentType String maxlength(50)
+  shipAddress TextBlob
+  shipCity String maxlength(50)
+  shipCountryRegion String maxlength(50)
+  shipName String maxlength(50)
+  shipStateProvince String maxlength(50)
+  shipZipPostalCode String maxlength(50)
+  shippedDate Instant maxlength(6)
+  shippingFee BigDecimal maxlength(21, 2)
+  taxRate Double
+  taxes BigDecimal maxlength(21, 2)
+}
+
+entity OrderDetailStatu {
+  statusName String required maxlength(50)
+}
+
+entity OrderDetailer {
+  dateAllocated Instant maxlength(6)
+  discount Double required
+  inventoryId Integer maxlength(11)
+  purchaseOrderId Integer maxlength(11)
+  quantity BigDecimal required maxlength(21, 2)
+  unitPrice BigDecimal maxlength(21, 2)
+}
+
+entity OrderStatu {
+  statusName String required maxlength(50)
+}
+
+entity OrderTaxStatu {
+  taxStatusName String required maxlength(50)
+}
+
+entity Privilege {
+  privilegeName String maxlength(50)
+}
+
+entity Product {
+  attachments ImageBlob
+  attachmentsContentType String maxlength(255)
+  category String maxlength(50)
+  description TextBlob
+  discontinued Boolean required maxlength(1)
+  listPrice BigDecimal required maxlength(21, 2)
+  minimumReorderQuantity Integer maxlength(11)
+  productCode String maxlength(25)
+  productName String maxlength(50)
+  quantityPerUnit String maxlength(50)
+  reorderLevel Integer maxlength(11)
+  standardCost BigDecimal maxlength(21, 2)
+  supplierIds TextBlob
+  targetLevel Integer maxlength(11)
+}
+
+entity PurchaseOrder {
+  approvedBy Integer maxlength(11)
+  approvedDate Instant maxlength(6)
+  creationDate Instant maxlength(6)
+  expectedDate Instant maxlength(6)
+  notes TextBlob
+  paymentAmount BigDecimal maxlength(21, 2)
+  paymentDate Instant maxlength(6)
+  paymentMethod String maxlength(50)
+  shippingFee BigDecimal required maxlength(21, 2)
+  submittedBy Integer maxlength(11)
+  submittedDate Instant maxlength(6)
+  taxes BigDecimal required maxlength(21, 2)
+}
+
+entity PurchaseOrderDetailer {
+  dateReceived Instant maxlength(6)
+  postedToInventory Boolean required maxlength(1)
+  quantity BigDecimal required maxlength(21, 2)
+  unitCost BigDecimal required maxlength(21, 2)
+}
+
+entity PurchaseOrderStatu {
+  status String maxlength(50)
+}
+
+entity SalesReport {
+  defaultFlag Boolean required maxlength(1)
+  display String maxlength(50)
+  filterRowSource TextBlob
+  groupBy String required maxlength(50)
+  title String maxlength(50)
+}
+
+entity Shipper {
+  address TextBlob
+  attachments ImageBlob
+  attachmentsContentType String maxlength(255)
+  businessPhone String maxlength(25)
+  city String maxlength(50)
+  company String maxlength(50)
+  countryRegion String maxlength(50)
+  emailAddress String maxlength(50)
+  faxNumber String maxlength(25)
+  firstName String maxlength(50)
+  homePhone String maxlength(25)
+  jobTitle String maxlength(50)
+  lastName String maxlength(50)
+  mobilePhone String maxlength(25)
+  notes TextBlob
+  stateProvince String maxlength(50)
+  webPage TextBlob
+  zipPostalCode String maxlength(15)
+}
+
+entity Strings {
+  stringData String maxlength(255)
+  stringId Integer required maxlength(11)
+}
+
+entity Supplier {
+  address TextBlob
+  attachments ImageBlob
+  attachmentsContentType String maxlength(255)
+  businessPhone String maxlength(25)
+  city String maxlength(50)
+  company String maxlength(50)
+  countryRegion String maxlength(50)
+  emailAddress String maxlength(50)
+  faxNumber String maxlength(25)
+  firstName String maxlength(50)
+  homePhone String maxlength(25)
+  jobTitle String maxlength(50)
+  lastName String maxlength(50)
+  mobilePhone String maxlength(25)
+  notes TextBlob
+  stateProvince String maxlength(50)
+  webPage TextBlob
+  zipPostalCode String maxlength(15)
+}

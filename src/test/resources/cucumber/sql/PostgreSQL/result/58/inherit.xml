@@ -215,7 +215,8 @@
     <object name="errtst_child_fastdef">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="3">
+            <field key="data">{cimerant:type=field, default=0, fieldType=int, nullable=false}</field>
             <field key="partid">{cimerant:type=field, fieldType=int, nullable=false}</field>
             <field key="shdata">{cimerant:type=field, fieldType=int, nullable=false}</field>
         </fields>
@@ -682,7 +683,9 @@
     <object name="pp1">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="3">
+            <field key="a1">{cimerant:type=field, fieldType=int}</field>
+            <field key="a2">{cimerant:type=field, fieldType=int}</field>
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
         </fields>
         <relationships size="0">

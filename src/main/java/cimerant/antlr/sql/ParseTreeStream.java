@@ -1,6 +1,7 @@
 package cimerant.antlr.sql;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +20,6 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -179,23 +179,22 @@ public class ParseTreeStream implements Stream<ParseTree> {
    * @return {@link List} of all the {@link TerminalNode} children of this stream.
    */
   public List<TerminalNode> listAllTerminalNode() {
-    final var returnValue =
-        this.parseTreeChildren.stream()
-            .filter(TerminalNode.class::isInstance)
-            .map(terminalNode -> ((TerminalNode) terminalNode))
-            .collect(Collectors.toList());
-    returnValue.addAll(
-        this.parseTreeChildren.stream()
-            .filter(ParserRuleContext.class::isInstance)
-            .map(parserRuleContext -> ((ParserRuleContext) parserRuleContext).children)
-            .filter(Objects::nonNull)
+    return listAllTerminalNode(this.parseTreeChildren);
+  }
+
+  private List<TerminalNode> listAllTerminalNode(List<ParseTree> parseTreeList) {
+    return parseTreeList == null
+        ? new ArrayList<TerminalNode>()
+        : parseTreeList.stream()
             .map(
-                parserRuleContext ->
-                    ParseTreeStream.parseTreeStream(parserRuleContext).listAllTerminalNode())
-            .filter(Objects::nonNull)
+                parseTree ->
+                    parseTree instanceof ParserRuleContext
+                        ? listAllTerminalNode(((ParserRuleContext) parseTree).children)
+                        : parseTree instanceof TerminalNode
+                            ? Collections.singletonList((TerminalNode) parseTree)
+                            : new ArrayList<TerminalNode>())
             .flatMap(List::stream)
-            .toList());
-    return returnValue;
+            .toList();
   }
 
   /**
@@ -206,23 +205,10 @@ public class ParseTreeStream implements Stream<ParseTree> {
    *     stream.
    */
   public List<String> listAllTerminalNodeText() {
-    final var returnValue =
-        this.parseTreeChildren.stream()
-            .filter(TerminalNode.class::isInstance)
-            .map(terminalNode -> ParseTreeHelper.trimToken(terminalNode.getText()))
-            .filter(StringUtils::isNoneBlank)
-            .collect(Collectors.toList());
-    returnValue.addAll(
-        this.parseTreeChildren.stream()
-            .filter(ParserRuleContext.class::isInstance)
-            .map(parserRuleContext -> ((ParserRuleContext) parserRuleContext).children)
-            .filter(Objects::nonNull)
-            .map(
-                parserRuleContext ->
-                    new ParseTreeStream(parserRuleContext).listAllTerminalNodeText())
-            .flatMap(List::stream)
-            .toList());
-    return returnValue;
+    return listAllTerminalNode().stream()
+        .map(terminalNode -> ParseTreeHelper.trimToken(terminalNode.getText()))
+        .filter(Objects::nonNull)
+        .toList();
   }
 
   /**
@@ -239,7 +225,7 @@ public class ParseTreeStream implements Stream<ParseTree> {
         .map(parserRuleContext -> ((ParserRuleContext) parserRuleContext).children)
         .filter(Objects::nonNull)
         .flatMap(List::stream)
-        .collect(Collectors.toList());
+        .toList();
   }
 
   @Override

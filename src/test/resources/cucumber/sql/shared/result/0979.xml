@@ -10,7 +10,7 @@
             <field key="y">{cimerant:type=field, fieldType=float8}</field>
         </fields>
         <relationships size="1">
-            <relationship key="pktable2">{cimerant:type=relationship, column=x, y, foreignColumn=a, b, foreignTable=pktable2}</relationship>
+            <relationship key="x_y">{cimerant:type=relationship, column=x, y, foreignColumn=a, b, foreignTable=pktable2}</relationship>
         </relationships>
     </object>
 </root>

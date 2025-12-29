@@ -12,14 +12,13 @@ import cimerant.context.sql.impl.SqlContextImpl.Field;
 import cimerant.context.sql.impl.SqlRootContextImpl;
 import cimerant.logger.CimerantLogger;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -8173,6 +8172,16 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     for (final var field : fieldsToRemove) {
       currentTable.getFields().remove(field);
     }
+    final Set<String> relationshipsToRemove = new TreeSet<>();
+    for (final var relationship : currentTable.getRelationships().entrySet()) {
+      if (!relationship.getValue().containsKey("column")
+          || !relationship.getValue().containsKey("foreignTable")) {
+        relationshipsToRemove.add(relationship.getKey());
+      }
+    }
+    for (final var relationship : relationshipsToRemove) {
+      currentTable.getRelationships().remove(relationship);
+    }
 
     if (!currentTable.getFields().isEmpty() || !currentTable.getAttributes().isEmpty()) {
       ParseTreeStream.parseTreeStream(ctx)
@@ -8456,7 +8465,31 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
         currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.FALSE));
       }
     }
-    var nullableText = " ";
+    var allTerminalNodeTextList = ParseTreeStream.parseTreeStream(ctx).listAllTerminalNodeText();
+    final int defaultIndex =
+        IntStream.range(0, allTerminalNodeTextList.size())
+            .filter(i -> "DEFAULT".equalsIgnoreCase(allTerminalNodeTextList.get(i)))
+            .findFirst()
+            .orElse(-1);
+    final int storedIndex =
+        IntStream.range(0, allTerminalNodeTextList.size())
+            .filter(i -> "STORED".equalsIgnoreCase(allTerminalNodeTextList.get(i)))
+            .findFirst()
+            .orElse(-1);
+    var nullableText =
+        " "
+            + String.join(
+                " ",
+                0 < defaultIndex && defaultIndex < storedIndex
+                    ? allTerminalNodeTextList.subList(0, defaultIndex)
+                    : 0 < storedIndex && storedIndex < defaultIndex
+                        ? allTerminalNodeTextList.subList(0, storedIndex)
+                        : 0 < defaultIndex
+                            ? allTerminalNodeTextList.subList(0, defaultIndex)
+                            : 0 < storedIndex
+                                ? allTerminalNodeTextList.subList(0, storedIndex)
+                                : allTerminalNodeTextList)
+            + " ";
     nullableText +=
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MySqlParser.ColumnDefinitionContext.class)
@@ -8614,6 +8647,23 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
 
     final var currentRelationship = this.getCurrentRelationship(ctx);
     if (currentRelationship != null) {
+      ParseTreeStream.parseTreeStream(ctx)
+          .streamChildrenByClass(MySqlParser.UidContext.class)
+          .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+          .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
+          .filter(StringUtils::isNoneBlank)
+          .forEach(
+              simpleIdText -> {
+                final Set<String> inheritsList;
+                if (currentRelationship.get("column") instanceof Set) {
+                  inheritsList = (Set<String>) currentRelationship.get("column");
+                } else {
+                  inheritsList = new LinkedHashSet<>();
+                }
+                inheritsList.add(simpleIdText);
+
+                currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+              });
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
           .streamChildrenByClass(MySqlParser.UidContext.class)
@@ -8858,6 +8908,16 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     }
     for (final var field : fieldsToRemove) {
       currentTable.getFields().remove(field);
+    }
+    final Set<String> relationshipsToRemove = new TreeSet<>();
+    for (final var relationship : currentTable.getRelationships().entrySet()) {
+      if (!relationship.getValue().containsKey("column")
+          || !relationship.getValue().containsKey("foreignTable")) {
+        relationshipsToRemove.add(relationship.getKey());
+      }
+    }
+    for (final var relationship : relationshipsToRemove) {
+      currentTable.getRelationships().remove(relationship);
     }
 
     final var likeFound = new MutableBoolean(false);
@@ -9874,6 +9934,16 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.TableNameContext.class)
             .streamChildrenByClass(MySqlParser.FullIdContext.class)
             .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamTerminalNodeString()
+            .forEach(
+                terminalNodeText ->
+                    currentRelationship.put(
+                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
+            .streamChildrenByClass(MySqlParser.TableNameContext.class)
+            .streamChildrenByClass(MySqlParser.FullIdContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
             .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .streamTerminalNodeString()
             .forEach(
@@ -9885,7 +9955,43 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
             .streamChildrenByClass(MySqlParser.FullIdContext.class)
             .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamTerminalNodeString()
+            .forEach(
+                terminalNodeText -> {
+                  final Set<String> inheritsList;
+                  if (currentRelationship.get("foreignColumn") instanceof Set) {
+                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+                  } else {
+                    inheritsList = new LinkedHashSet<>();
+                  }
+                  inheritsList.add(terminalNodeText);
+
+                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+                });
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
+            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.FullIdContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
             .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .streamTerminalNodeString()
+            .forEach(
+                terminalNodeText -> {
+                  final Set<String> inheritsList;
+                  if (currentRelationship.get("foreignColumn") instanceof Set) {
+                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+                  } else {
+                    inheritsList = new LinkedHashSet<>();
+                  }
+                  inheritsList.add(terminalNodeText);
+
+                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+                });
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
             .streamTerminalNodeString()
             .forEach(
                 terminalNodeText -> {
@@ -9917,6 +10023,24 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
                   inheritsList.add(terminalNodeText);
 
                   currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+                });
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
+            .filter(StringUtils::isNoneBlank)
+            .forEach(
+                SimpleIdText -> {
+                  final Set<String> inheritsList;
+                  if (currentRelationship.get("column") instanceof Set) {
+                    inheritsList = (Set<String>) currentRelationship.get("column");
+                  } else {
+                    inheritsList = new LinkedHashSet<>();
+                  }
+                  inheritsList.add(SimpleIdText);
+
+                  currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
                 });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
@@ -11930,6 +12054,16 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
     }
     for (final var field : fieldsToRemove) {
       currentTable.getFields().remove(field);
+    }
+    final Set<String> relationshipsToRemove = new TreeSet<>();
+    for (final var relationship : currentTable.getRelationships().entrySet()) {
+      if (!relationship.getValue().containsKey("column")
+          || !relationship.getValue().containsKey("foreignTable")) {
+        relationshipsToRemove.add(relationship.getKey());
+      }
+    }
+    for (final var relationship : relationshipsToRemove) {
+      currentTable.getRelationships().remove(relationship);
     }
 
     if (!currentTable.getFields().isEmpty() || !currentTable.getAttributes().isEmpty()) {
@@ -14798,18 +14932,15 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
       }
     }
 
-    final var terminalNodeList = new HashSet<ParseTree>();
+    final var terminalNodeList =
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet());
 
     final var fullColumnNameChildren =
         ParseTreeStream.parseTreeStream(parentContext)
             .listChildrenByClass(MySqlParser.FullColumnNameContext.class);
-    final var fullColumnNameUidChildren =
-        ParseTreeStream.parseTreeStream(fullColumnNameChildren)
-            .listChildrenByClass(MySqlParser.UidContext.class);
-    final var fullColumnNameSimpleIdChildren =
-        ParseTreeStream.parseTreeStream(fullColumnNameUidChildren)
-            .listChildrenByClass(MySqlParser.SimpleIdContext.class);
-
     terminalNodeList.addAll(
         ParseTreeStream.parseTreeStream(fullColumnNameChildren)
             .streamChildrenByClass(MySqlParser.DottedIdContext.class)
@@ -14817,94 +14948,152 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
             .collect(Collectors.toSet()));
     if (terminalNodeList.isEmpty()) {
       terminalNodeList.addAll(
-          ParseTreeStream.parseTreeStream(fullColumnNameSimpleIdChildren)
+          ParseTreeStream.parseTreeStream(fullColumnNameChildren)
+              .streamChildrenByClass(MySqlParser.UidContext.class)
+              .filter(TerminalNode.class::isInstance)
+              .collect(Collectors.toSet()));
+      terminalNodeList.addAll(
+          ParseTreeStream.parseTreeStream(fullColumnNameChildren)
+              .streamChildrenByClass(MySqlParser.UidContext.class)
+              .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
               .filter(TerminalNode.class::isInstance)
               .collect(Collectors.toSet()));
     }
 
     terminalNodeList.addAll(
-        ParseTreeStream.parseTreeStream(fullColumnNameChildren)
-            .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toSet()));
-    terminalNodeList.addAll(
-        ParseTreeStream.parseTreeStream(fullColumnNameUidChildren)
-            .filter(TerminalNode.class::isInstance)
-            .collect(Collectors.toSet()));
-    terminalNodeList.addAll(
-        ParseTreeStream.parseTreeStream(fullColumnNameSimpleIdChildren)
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .streamChildrenByClass(MySqlParser.DataTypeBaseContext.class)
             .filter(TerminalNode.class::isInstance)
             .collect(Collectors.toSet()));
     terminalNodeList.addAll(
-        ParseTreeStream.parseTreeStream(fullColumnNameSimpleIdChildren)
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .streamChildrenByClass(MySqlParser.KeywordsCanBeIdContext.class)
             .filter(TerminalNode.class::isInstance)
             .collect(Collectors.toSet()));
     terminalNodeList.addAll(
-        ParseTreeStream.parseTreeStream(fullColumnNameSimpleIdChildren)
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
             .filter(TerminalNode.class::isInstance)
             .collect(Collectors.toSet()));
     terminalNodeList.addAll(
-        ParseTreeStream.parseTreeStream(fullColumnNameSimpleIdChildren)
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
             .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
             .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
             .filter(TerminalNode.class::isInstance)
             .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .streamChildrenByClass(MySqlParser.DataTypeBaseContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
+            .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.PrimaryKeyTableConstraintContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.UniqueKeyTableConstraintContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.UniqueKeyTableConstraintContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.UniqueKeyTableConstraintContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
+            .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
+            .streamChildrenByClass(MySqlParser.KeywordsCanBeIdContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
 
-    Arrays.asList(
-            ParseTreeStream.parseTreeStream(parentContext)
-                .listChildrenByClass(MySqlParser.UidContext.class),
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
-                .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
-                .listChildrenByClass(MySqlParser.UidContext.class),
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(MySqlParser.PrimaryKeyTableConstraintContext.class)
-                .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
-                .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
-                .listChildrenByClass(MySqlParser.UidContext.class),
-            ParseTreeStream.parseTreeStream(parentContext)
-                .streamChildrenByClass(MySqlParser.UniqueKeyTableConstraintContext.class)
-                .streamChildrenByClass(MySqlParser.IndexColumnNamesContext.class)
-                .streamChildrenByClass(MySqlParser.IndexColumnNameContext.class)
-                .listChildrenByClass(MySqlParser.UidContext.class))
-        .forEach(
-            uidChildren -> {
-              terminalNodeList.addAll(
-                  ParseTreeStream.parseTreeStream(uidChildren)
-                      .filter(TerminalNode.class::isInstance)
-                      .collect(Collectors.toSet()));
+    final var simpleIdChildren =
+        ParseTreeStream.parseTreeStream(ctx)
+            .streamChildrenByClass(MySqlParser.UidContext.class)
+            .listChildrenByClass(MySqlParser.SimpleIdContext.class);
 
-              final var simpleIdChildren =
-                  ParseTreeStream.parseTreeStream(uidChildren)
-                      .listChildrenByClass(MySqlParser.SimpleIdContext.class);
-              terminalNodeList.addAll(
-                  ParseTreeStream.parseTreeStream(simpleIdChildren)
-                      .filter(TerminalNode.class::isInstance)
-                      .collect(Collectors.toSet()));
-              terminalNodeList.addAll(
-                  ParseTreeStream.parseTreeStream(simpleIdChildren)
-                      .streamChildrenByClass(MySqlParser.DataTypeBaseContext.class)
-                      .filter(TerminalNode.class::isInstance)
-                      .collect(Collectors.toSet()));
-              terminalNodeList.addAll(
-                  ParseTreeStream.parseTreeStream(simpleIdChildren)
-                      .streamChildrenByClass(MySqlParser.KeywordsCanBeIdContext.class)
-                      .filter(TerminalNode.class::isInstance)
-                      .collect(Collectors.toSet()));
-              terminalNodeList.addAll(
-                  ParseTreeStream.parseTreeStream(simpleIdChildren)
-                      .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
-                      .filter(TerminalNode.class::isInstance)
-                      .collect(Collectors.toSet()));
-              terminalNodeList.addAll(
-                  ParseTreeStream.parseTreeStream(simpleIdChildren)
-                      .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
-                      .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
-                      .filter(TerminalNode.class::isInstance)
-                      .collect(Collectors.toSet()));
-            });
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(simpleIdChildren)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(simpleIdChildren)
+            .streamChildrenByClass(MySqlParser.DataTypeBaseContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(simpleIdChildren)
+            .streamChildrenByClass(MySqlParser.KeywordsCanBeIdContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(simpleIdChildren)
+            .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
+    terminalNodeList.addAll(
+        ParseTreeStream.parseTreeStream(simpleIdChildren)
+            .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
+            .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
+            .filter(TerminalNode.class::isInstance)
+            .collect(Collectors.toSet()));
 
     return terminalNodeList.stream()
         .map(child -> ParseTreeHelper.getField(currentTable, child))
@@ -14924,71 +15113,40 @@ public class MySqlParserListenerImpl extends MySqlParserBaseListener {
       return null;
     }
 
-    var parentContext =
-        ParseTreeHelper.getParentContext(ctx, MySqlParser.ColumnDeclarationContext.class);
-    final var terminalNode =
-        ParseTreeStream.parseTreeStream(parentContext)
-            .streamChildrenByClass(MySqlParser.ColumnDefinitionContext.class)
-            .streamChildrenByClass(MySqlParser.ReferenceColumnConstraintContext.class)
-            .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
-            .filter(TerminalNode.class::isInstance)
-            .map(
-                foreignTerminalNode -> {
-                  final List<ParseTree> returnValue = new ArrayList<>();
-                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                    returnValue.addAll(
-                        ParseTreeStream.parseTreeStream(
-                                (ParserRuleContext)
-                                    foreignTerminalNode
-                                        .getParent()
-                                        .getParent()
-                                        .getParent()
-                                        .getParent())
-                            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
-                            .streamChildrenByClass(MySqlParser.UidContext.class)
-                            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
-                            .filter(TerminalNode.class::isInstance)
-                            .toList());
-                    returnValue.addAll(
-                        ParseTreeStream.parseTreeStream(
-                                (ParserRuleContext)
-                                    foreignTerminalNode
-                                        .getParent()
-                                        .getParent()
-                                        .getParent()
-                                        .getParent())
-                            .streamChildrenByClass(MySqlParser.FullColumnNameContext.class)
-                            .streamChildrenByClass(MySqlParser.UidContext.class)
-                            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
-                            .streamChildrenByClass(MySqlParser.ScalarFunctionNameContext.class)
-                            .streamChildrenByClass(MySqlParser.FunctionNameBaseContext.class)
-                            .filter(TerminalNode.class::isInstance)
-                            .toList());
-                  }
-                  return returnValue;
-                })
-            .flatMap(List::stream)
-            .collect(Collectors.toCollection(ArrayList::new));
-    parentContext =
-        ParseTreeHelper.getParentContext(ctx, MySqlParser.ForeignKeyTableConstraintContext.class);
-    terminalNode.addAll(
-        ParseTreeStream.parseTreeStream(parentContext)
-            .streamChildrenByClass(MySqlParser.UidContext.class)
-            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
-            .filter(TerminalNode.class::isInstance)
-            .toList());
-    terminalNode.addAll(
-        ParseTreeStream.parseTreeStream(parentContext)
-            .streamChildrenByClass(MySqlParser.ReferenceDefinitionContext.class)
-            .streamChildrenByClass(MySqlParser.TableNameContext.class)
-            .streamChildrenByClass(MySqlParser.FullIdContext.class)
-            .streamChildrenByClass(MySqlParser.UidContext.class)
-            .streamChildrenByClass(MySqlParser.SimpleIdContext.class)
-            .filter(TerminalNode.class::isInstance)
-            .toList());
-
-    if (!terminalNode.isEmpty()) {
-      return ParseTreeHelper.getRelationship(currentTable, terminalNode.get(0));
+    var allTerminalNodeTextList = (ParseTreeStream.parseTreeStream(ctx).listAllTerminalNodeText());
+    final int constraintIndex =
+        IntStream.range(0, allTerminalNodeTextList.size())
+            .filter(i -> "CONSTRAINT".equalsIgnoreCase(allTerminalNodeTextList.get(i)))
+            .findFirst()
+            .orElse(-1);
+    final int foreignIndex =
+        IntStream.range(0, allTerminalNodeTextList.size())
+            .filter(i -> "FOREIGN".equalsIgnoreCase(allTerminalNodeTextList.get(i)))
+            .findFirst()
+            .orElse(-1);
+    if (-1 < constraintIndex && constraintIndex + 1 < foreignIndex) {
+      return ParseTreeHelper.getRelationship(
+          currentTable,
+          String.join("_", allTerminalNodeTextList.subList(constraintIndex + 1, foreignIndex)));
+    } else {
+      final int keyIndex =
+          IntStream.range(0, allTerminalNodeTextList.size())
+              .filter(i -> "KEY".equalsIgnoreCase(allTerminalNodeTextList.get(i)))
+              .findFirst()
+              .orElse(-1);
+      final int referencesIndex =
+          IntStream.range(0, allTerminalNodeTextList.size())
+              .filter(i -> "REFERENCES".equalsIgnoreCase(allTerminalNodeTextList.get(i)))
+              .findFirst()
+              .orElse(-1);
+      if (-1 < keyIndex && keyIndex + 1 < referencesIndex) {
+        return ParseTreeHelper.getRelationship(
+            currentTable,
+            String.join("_", allTerminalNodeTextList.subList(keyIndex + 1, referencesIndex)));
+      } else if (-1 < referencesIndex) {
+        return ParseTreeHelper.getRelationship(
+            currentTable, String.join("_", allTerminalNodeTextList.subList(0, 1)));
+      }
     }
     return null;
   }

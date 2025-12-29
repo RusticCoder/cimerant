@@ -1,0 +1,56 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity CustomerDetails {
+  addressLine1 String required maxlength(255)
+  addressLine2 String maxlength(255)
+  city String required maxlength(255)
+  country String required maxlength(255)
+  gender String required maxlength(255)
+  phone String required maxlength(255)
+}
+
+entity Product {
+  description String maxlength(255)
+  image ImageBlob
+  imageContentType String maxlength(255)
+  name String required maxlength(255)
+  price BigDecimal required maxlength(21, 2)
+  productSize String required maxlength(255)
+}
+
+entity ProductCategory {
+  description String maxlength(255)
+  name String required maxlength(255)
+}
+
+entity ProductOrder {
+  quantity Integer required maxlength(11)
+  totalPrice BigDecimal required maxlength(21, 2)
+}
+
+entity ShoppingCart {
+  paymentMethod String required maxlength(255)
+  paymentReference String maxlength(255)
+  placedDate Instant required maxlength(6)
+  status String required maxlength(255)
+  totalPrice BigDecimal required maxlength(21, 2)
+}
+
+relationship OneToOne {
+  CustomerDetails to JhiUser
+}
+
+relationship ManyToOne {
+  Product to ProductCategory
+  ProductOrder to Product
+  ProductOrder to ShoppingCart
+  ShoppingCart to CustomerDetails
+}

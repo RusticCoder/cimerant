@@ -1948,6 +1948,16 @@ public class PhoenixParserListenerImpl extends PhoenixParserBaseListener {
     for (final var field : fieldsToRemove) {
       currentTable.getFields().remove(field);
     }
+    final Set<String> relationshipsToRemove = new TreeSet<>();
+    for (final var relationship : currentTable.getRelationships().entrySet()) {
+      if (!relationship.getValue().containsKey("column")
+          || !relationship.getValue().containsKey("foreignTable")) {
+        relationshipsToRemove.add(relationship.getKey());
+      }
+    }
+    for (final var relationship : relationshipsToRemove) {
+      currentTable.getRelationships().remove(relationship);
+    }
 
     if (!currentTable.getFields().isEmpty() || !currentTable.getAttributes().isEmpty()) {
       this.getRootContext().addObject(currentTable);

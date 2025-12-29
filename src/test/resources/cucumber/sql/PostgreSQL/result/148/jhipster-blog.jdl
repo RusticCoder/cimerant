@@ -1,0 +1,32 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Blog {
+  handle String required maxlength(255)
+  name String required maxlength(255)
+}
+
+entity Entry {
+  content TextBlob required
+  date Instant required
+  title String required maxlength(255)
+}
+
+entity Tag {
+  name String required maxlength(255)
+}
+
+relationship ManyToOne {
+  Entry to Blog
+}
+
+relationship ManyToMany {
+  Entry to Tag
+}

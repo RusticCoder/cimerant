@@ -11,13 +11,32 @@
         <relationships size="0">
         </relationships>
     </object>
+    <object name="doesnt_exist_ft1">
+        <attributes size="0">
+        </attributes>
+        <fields size="6">
+            <field key="c10">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c4">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c6">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c7">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c8">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c9">{cimerant:type=field, fieldType=integer}</field>
+        </fields>
+        <relationships size="0">
+        </relationships>
+    </object>
     <object name="fd_pt1">
         <attributes size="0">
         </attributes>
-        <fields size="3">
+        <fields size="8">
             <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false}</field>
             <field key="c2">{cimerant:type=field, fieldType=text}</field>
             <field key="c3">{cimerant:type=field, fieldType=date}</field>
+            <field key="c4">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c5">{cimerant:type=field, default=0, fieldType=integer}</field>
+            <field key="c6">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c7">{cimerant:type=field, fieldType=integer, nullable=false}</field>
+            <field key="c8">{cimerant:type=field, fieldType=integer}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -60,10 +79,17 @@
         <attributes size="1">
             <attribute key="foreign">true</attribute>
         </attributes>
-        <fields size="3">
+        <fields size="10">
             <field key="c1">{cimerant:type=field, fieldType=integer, nullable=false, primary=true}</field>
+            <field key="c10">{cimerant:type=field, fieldType=integer}</field>
             <field key="c2">{cimerant:type=field, fieldType=text}</field>
             <field key="c3">{cimerant:type=field, fieldType=date, unique=true}</field>
+            <field key="c4">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c5">{cimerant:type=field, default=0, fieldType=integer}</field>
+            <field key="c6">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c7">{cimerant:type=field, fieldType=integer, nullable=false, primary=true}</field>
+            <field key="c8">{cimerant:type=field, fieldType=integer}</field>
+            <field key="c9">{cimerant:type=field, fieldType=integer}</field>
         </fields>
         <relationships size="1">
             <relationship key="c1">{cimerant:type=relationship, column=c1, foreignColumn=id, foreignTable=ref_table}</relationship>
@@ -119,7 +145,7 @@
         <attributes size="0">
         </attributes>
         <fields size="1">
-            <field key="a">{cimerant:type=field, fieldType=INT}</field>
+            <field key="a">{cimerant:type=field, fieldType=INT, primary=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

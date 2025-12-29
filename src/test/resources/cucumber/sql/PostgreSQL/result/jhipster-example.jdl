@@ -1,0 +1,90 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Department {
+  departmentId Long
+  departmentName String required
+}
+
+entity JobHistory {
+  startDate ZonedDateTime
+  endDate ZonedDateTime
+}
+
+entity Job {
+  jobId Long
+  jobTitle String
+  minSalary Long
+  maxSalary Long
+}
+
+entity Employee {
+  employeeId Long
+  firstName String
+  lastName String
+  email String
+  phoneNumber String
+  hireDate ZonedDateTime
+  salary Long
+  commissionPct Long
+}
+
+entity Location {
+  locationId Long
+  streetAddress String
+  postalCode String
+  city String
+  stateProvince String
+}
+
+entity Task {
+  taskId Long
+  title String
+  description String
+}
+
+entity Country {
+  countryId Long
+  countryName String
+}
+
+entity Region {
+  regionId Long
+  regionName String
+}
+
+relationship OneToOne {
+  JobHistory{department} to Department
+  JobHistory{job} to Job
+  JobHistory{employee} to Employee
+  Department{location} to Location
+  Location{country} to Country
+  Country{region} to Region
+}
+
+relationship OneToMany {
+  Department{employee} to Employee
+  Employee{job} to Job
+}
+
+relationship ManyToMany {
+  Job{task(title)} to Task{job}
+}
+
+relationship ManyToOne {
+  Employee{manager} to Employee
+}
+
+paginate JobHistory, Employee with infinite-scroll
+paginate Job with pagination
+
+dto * with mapstruct
+
+service Employee with serviceClass

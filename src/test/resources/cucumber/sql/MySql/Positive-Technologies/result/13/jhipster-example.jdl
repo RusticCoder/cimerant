@@ -1,0 +1,81 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Country {
+  countryId Long
+  countryName String maxlength(255)
+}
+
+entity Department {
+  departmentId Long
+  departmentName String required maxlength(255)
+}
+
+entity Employee {
+  commissionPct Long
+  email String maxlength(255)
+  employeeId Long
+  firstName String maxlength(255)
+  hireDate Instant maxlength(6)
+  lastName String maxlength(255)
+  phoneNumber String maxlength(255)
+  salary Long
+}
+
+entity Job {
+  jobId Long
+  jobTitle String maxlength(255)
+  maxSalary Long
+  minSalary Long
+}
+
+entity JobHistory {
+  endDate Instant maxlength(6)
+  startDate Instant maxlength(6)
+}
+
+entity Location {
+  city String maxlength(255)
+  locationId Long
+  postalCode String maxlength(255)
+  stateProvince String maxlength(255)
+  streetAddress String maxlength(255)
+}
+
+entity Region {
+  regionId Long
+  regionName String maxlength(255)
+}
+
+entity Task {
+  description String maxlength(255)
+  taskId Long
+  title String maxlength(255)
+}
+
+relationship OneToOne {
+  Country to Region
+  Department to Location
+  JobHistory to Department
+  JobHistory to Employee
+  JobHistory to Job
+  Location to Country
+}
+
+relationship ManyToOne {
+  Employee to Department
+  Employee to Employee
+  Job to Employee
+}
+
+relationship ManyToMany {
+  Job to Job
+  Job to Task
+}

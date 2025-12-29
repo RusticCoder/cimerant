@@ -216,7 +216,7 @@
         <attributes size="0">
         </attributes>
         <fields size="1">
-            <field key="xx">{cimerant:type=field, default='text', fieldType=text}</field>
+            <field key="xx">{cimerant:type=field, default='text', fieldType=text, primary=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

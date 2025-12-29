@@ -35,8 +35,10 @@
     <object name="itest13">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=int}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, identity=true}</field>
+            <field key="c">{cimerant:type=field, fieldType=int, identity=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -63,9 +65,10 @@
     <object name="itest3">
         <attributes size="0">
         </attributes>
-        <fields size="2">
+        <fields size="3">
             <field key="a">{cimerant:type=field, fieldType=smallint, identity=true}</field>
             <field key="b">{cimerant:type=field, fieldType=text}</field>
+            <field key="c">{cimerant:type=field, fieldType=int, identity=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -141,8 +144,9 @@
     <object name="itest7d">
         <attributes size="0">
         </attributes>
-        <fields size="1">
+        <fields size="2">
             <field key="a">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="b">{cimerant:type=field, fieldType=int, identity=true}</field>
         </fields>
         <relationships size="0">
         </relationships>
@@ -159,10 +163,15 @@
     <object name="itest8">
         <attributes size="0">
         </attributes>
-        <fields size="3">
+        <fields size="8">
             <field key="a">{cimerant:type=field, fieldType=int, identity=true}</field>
             <field key="b">{cimerant:type=field, fieldType=text}</field>
             <field key="f1">{cimerant:type=field, fieldType=int}</field>
+            <field key="f2">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="f22">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="f3">{cimerant:type=field, fieldType=int, nullable=false}</field>
+            <field key="f4">{cimerant:type=field, fieldType=int}</field>
+            <field key="f5">{cimerant:type=field, fieldType=int, identity=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

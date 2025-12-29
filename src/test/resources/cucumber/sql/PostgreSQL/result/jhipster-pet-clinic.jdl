@@ -1,0 +1,70 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+DEFAULT_MIN_LENGTH = 1
+DEFAULT_MAX_LENGTH = 32
+DEFAULT_MIN_BYTES = 20
+DEFAULT_MAX_BYTES = 40
+DEFAULT_MIN = 0
+DEFAULT_MAX = 999
+
+entity Vets {
+  firstname String required maxlength(DEFAULT_MAX_LENGTH)
+  lastname String required maxlength(DEFAULT_MAX_LENGTH)
+}
+
+entity Specialties {
+	name String required maxlength(DEFAULT_MAX_LENGTH)
+}
+
+entity Types {
+  name String required maxlength(80)
+}
+
+entity Owners {
+  firstname String required maxlength(DEFAULT_MAX_LENGTH)
+  lastname String required maxlength(DEFAULT_MAX_LENGTH)
+  address String required maxlength(255)
+  city String maxlength(DEFAULT_MAX_LENGTH)
+  telephone String required maxlength(20)
+}
+
+entity Pets {
+  name String required maxlength(DEFAULT_MAX_LENGTH)
+  birthdate Date
+}
+
+entity Visits {
+  visitdate Instant required
+  description String required maxlength(255)
+}
+
+relationship ManyToMany {
+  Specialties{vet} to Vets{specialty}
+}
+
+relationship OneToMany {
+  Owners to Pets{owner},
+  Pets to Visits{pet}
+}
+
+relationship ManyToOne {
+  Pets{type} to Types
+}
+
+// Set pagination options.
+paginate Owners, Pets with infinite-scroll
+paginate Vets, Types, Visits with pagination
+
+// Use a service layer with an interface for all entities.
+service all with serviceImpl
+
+// Use DTO's with the service layer with MapStruct.
+dto * with mapstruct

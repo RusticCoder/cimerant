@@ -1,0 +1,62 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Career {
+  description String required maxlength(64)
+  imagePath String maxlength(128)
+  step Integer required
+  synopsis String maxlength(512)
+}
+
+entity Interest {
+  description String maxlength(512)
+  imagePath String maxlength(128)
+  title String required maxlength(64)
+}
+
+entity Profile {
+  avatarPath String maxlength(128)
+  createdBy Long required
+  createdDt Instant required
+  description String maxlength(512)
+  email String unique required maxlength(256)
+  github String maxlength(2048)
+  linkedin String maxlength(2048)
+  location String maxlength(64)
+  modifiedBy Long
+  modifiedDt Instant
+  name String required maxlength(64)
+  photoPath String maxlength(128)
+  status String required maxlength(255)
+  twitter String maxlength(2048)
+}
+
+entity Project {
+  name String required maxlength(64)
+  url String required maxlength(2048)
+}
+
+entity Skill {
+  description String maxlength(512)
+  level String required maxlength(255)
+  skill String maxlength(64)
+}
+
+entity SkillCategory {
+  category String required maxlength(64)
+}
+
+relationship ManyToOne {
+  Career to Profile
+  Interest to Profile
+  Project to Profile
+  Skill to Profile
+  Skill to SkillCategory
+}

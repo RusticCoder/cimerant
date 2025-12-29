@@ -27,6 +27,9 @@ import org.junit.rules.TemporaryFolder;
 public class MySql {
   private static File cimerantPath;
   private static Path destinationFilePath;
+  private static Path jdlDestinationFilePath;
+  private static String jdlRootPath;
+  private static Path jdlSourceFilePath;
   private static String rootPath;
   private static Path sharedDestinationFilePath;
   private static String sharedRootPath;
@@ -56,14 +59,25 @@ public class MySql {
           "src/test/resources/cucumber/sql/"
               + MySql.class.getSimpleName()
               + "/Positive-Technologies";
+      MySql.jdlRootPath =
+          "src/test/resources/cucumber/sql/"
+              + MySql.class.getSimpleName()
+              + "/Positive-Technologies";
       MySql.sharedRootPath = "src/test/resources/cucumber/sql/shared";
     }
     if (MySql.sourceFilePath == null) {
       MySql.sourceFilePath = Paths.get(MySql.rootPath, "result");
+      MySql.jdlSourceFilePath = Paths.get(MySql.jdlRootPath, "result");
       MySql.sharedSourceFilePath = Paths.get(MySql.sharedRootPath, "result");
     }
     if (MySql.destinationFilePath == null) {
       MySql.destinationFilePath =
+          Paths.get(
+              MySql.cimerantPath.getAbsolutePath(),
+              "cucumber",
+              MySql.class.getSimpleName(),
+              "result");
+      MySql.jdlDestinationFilePath =
           Paths.get(
               MySql.cimerantPath.getAbsolutePath(),
               "cucumber",
@@ -93,10 +107,13 @@ public class MySql {
 
     MySql.cimerantPath = null;
     MySql.destinationFilePath = null;
+    MySql.jdlDestinationFilePath = null;
+    MySql.sharedDestinationFilePath = null;
     MySql.rootPath = null;
   }
 
   private boolean contentEquals = true;
+  private Path jdlDestinationFile;
   private String outputFile = null;
   private Path sharedDestinationFile;
   private int statusCode = 0;
@@ -125,12 +142,16 @@ public class MySql {
       }
     }
 
+    if (this.jdlDestinationFile != null) {
+      this.jdlDestinationFile.toFile().delete();
+    }
     if (this.sharedDestinationFile != null) {
       this.sharedDestinationFile.toFile().delete();
     }
 
     this.contentEquals = true;
     this.statusCode = 0;
+    this.jdlDestinationFile = null;
     this.sharedDestinationFile = null;
     this.uniqueDestinationFilePath = null;
   }
@@ -145,6 +166,31 @@ public class MySql {
   @Given("mySql.{int} the input file {string}")
   public void givenInputFile(final Integer argUnique, final String argInputFile) {
     this.values.add("--input='" + MySql.rootPath + "/model/" + argInputFile + "'");
+  }
+
+  /**
+   * Describes the initial context or state of the system (the setup).
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @param argInputFile file to be transformed.
+   * @see Given
+   */
+  @Given("mySql.{int} the jdl input file {string}")
+  public void givenJdlInputFile(final Integer argUnique, final String argInputFile) {
+    this.values.add("--input='" + MySql.jdlRootPath + "/model/" + argInputFile + "'");
+  }
+
+  /**
+   * Describes the initial context or state of the system (the setup).
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @param argOutputFile file to be returned.
+   * @see Given
+   */
+  @Given("mySql.{int} the jdl output file {string}")
+  public void givenJdlOutputFile(final Integer argUnique, final String argOutputFile) {
+    this.outputFile = argOutputFile;
+    this.values.add("--file='" + this.outputFile + "'");
   }
 
   /**
@@ -183,6 +229,41 @@ public class MySql {
   public void givenSharedOutputFile(final Integer argUnique, final String argOutputFile) {
     this.outputFile = argOutputFile + ".xml";
     this.values.add("--file='" + this.outputFile + "'");
+  }
+
+  /**
+   * Describes the action or event that triggers the behavior.
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @throws Exception any exception thrown by the statement.
+   * @see When
+   */
+  @When("mySql.{int} the jdl values are passed into Cimerant")
+  public void sinceWhenTheJdlValuesArePassedIntoCimerant(final Integer argUnique) throws Exception {
+    this.uniqueDestinationFilePath =
+        Paths.get(MySql.jdlDestinationFilePath.toString(), "" + argUnique);
+
+    this.values.add("--path='" + this.uniqueDestinationFilePath + "'");
+    this.values.add(
+        "--template='" + MySql.rootPath + "/template/" + MySql.class.getSimpleName() + "Jdl.vm'");
+    this.values.add("--single");
+    this.values.add("--input-type='MySql'");
+
+    final var stockArr = this.values.toArray(String[]::new);
+    this.values.clear();
+
+    Files.createDirectories(MySql.cimerantPath.toPath());
+
+    try {
+      this.textWrittenToSystemErr =
+          SystemLambda.tapSystemErr(
+              () -> this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr)));
+    } catch (final java.lang.AssertionError e) {
+      if (!"System.exit has not been called.".equals(e.getMessage())) {
+        throw e;
+      }
+    }
+    this.textWrittenToSystemErr = StringUtils.stripToNull(this.textWrittenToSystemErr);
   }
 
   /**
@@ -262,6 +343,39 @@ public class MySql {
    * @throws IOException folders cannot be compared.
    * @see Then
    */
+  @Then("mySql.{int} Cimerant jdl outputs")
+  public void thenJdlOutputs(final Integer argUnique) throws IOException {
+    Assertions.assertTrue(
+        StringUtils.isBlank(this.textWrittenToSystemErr),
+        "#" + argUnique + " Unexpected Error: " + this.textWrittenToSystemErr);
+    Assertions.assertEquals(
+        0, this.statusCode, "#" + argUnique + " Unexpected Status Code: " + this.statusCode);
+
+    final var uniqueSourceFilePath = Paths.get(MySql.jdlSourceFilePath.toString(), "" + argUnique);
+    if (this.uniqueDestinationFilePath == null) {
+      this.uniqueDestinationFilePath =
+          Paths.get(MySql.destinationFilePath.toString(), "" + argUnique);
+    }
+    this.contentEquals =
+        DirUtils.contentEquals(uniqueSourceFilePath, this.uniqueDestinationFilePath);
+    Assertions.assertTrue(
+        this.contentEquals,
+        "#"
+            + argUnique
+            + " '"
+            + uniqueSourceFilePath.toAbsolutePath()
+            + "' did not match '"
+            + this.uniqueDestinationFilePath.toAbsolutePath()
+            + "'");
+  }
+
+  /**
+   * Describes the expected outcome or result.
+   *
+   * @param argUnique a unique value indicating the line in the example data being tested.
+   * @throws IOException folders cannot be compared.
+   * @see Then
+   */
   @Then("mySql.{int} Cimerant outputs")
   public void thenOutputSourceFilePath(final Integer argUnique) throws IOException {
     Assertions.assertTrue(
@@ -315,6 +429,9 @@ public class MySql {
     Assertions.assertTrue(
         this.contentEquals,
         "#" + argUnique + " '" + sharedSourceFile.toFile().getAbsolutePath() + "' not found.");
+    if (!this.contentEquals) {
+      return;
+    }
 
     final var sharedDestinationFile =
         Paths.get(MySql.sharedDestinationFilePath.toAbsolutePath().toString(), this.outputFile);
@@ -323,6 +440,9 @@ public class MySql {
     Assertions.assertTrue(
         this.contentEquals,
         "#" + argUnique + " '" + sharedDestinationFile.toFile().getAbsolutePath() + "' not found.");
+    if (!this.contentEquals) {
+      return;
+    }
 
     this.contentEquals =
         FileUtils.contentEquals(sharedSourceFile.toFile(), sharedDestinationFile.toFile());
@@ -335,6 +455,9 @@ public class MySql {
             + "' did not match '"
             + sharedDestinationFile.toFile().getAbsolutePath()
             + "'");
+    if (!this.contentEquals) {
+      return;
+    }
 
     this.sharedDestinationFile = sharedDestinationFile;
   }

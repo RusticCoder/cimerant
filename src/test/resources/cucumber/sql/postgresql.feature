@@ -150,6 +150,33 @@ Feature: SQL PostgreSQL
       | 141     | "xmlmap.sql"                | "xmlmap"                |
 
   @postgreSQL
+  Scenario Outline: TransformJDL
+    Given postgreSQL.<pUnique> the jdl input file <pInputFile>
+    And postgreSQL.<pUnique> the jdl output file <pOutputFile>
+    When postgreSQL.<pUnique> the jdl values are passed into Cimerant
+    Then postgreSQL.<pUnique> Cimerant jdl outputs
+
+    Examples:
+      | pUnique | pInputFile                                     | pOutputFile                         |
+      | 142     | "21-points_postgresql.sql"                     | "21-points.jh"                      |
+      | 143     | "blog_postgresql.sql"                          | "blog.jh"                           |
+      | 144     | "blog-oauth2_postgresql.sql"                   | "blog-oauth2.jdl"                   |
+      | 145     | "bootiful-music_postgresql.sql"                | "bootiful-music.jh"                 |
+      | 146     | "bug-tracker_postgresql.sql"                   | "bug-tracker.jdl"                   |
+      | 147     | "e-commerce-monolith_postgresql.sql"           | "e-commerce-monolith.jdl"           |
+      | 148     | "jhipster-blog_postgresql.sql"                 | "jhipster-blog.jdl"                 |
+      | 149     | "jhipster-developer-portfolio_postgresql.sql"  | "jhipster-developer-portfolio.jdl"  |
+      | 150     | "jhipster-example_postgresql.sql"              | "jhipster-example.jdl"              |
+      | 151     | "jhipster-monolith-dinosaurs_postgresql.sql"   | "jhipster-monolith-dinosaurs.jdl"   |
+      | 152     | "jhipster-pet-clinic_postgresql.sql"           | "jhipster-pet-clinic.jdl"           |
+      | 153     | "library_postgresql.sql"                       | "library.jh"                        |
+      | 154     | "northwind-jdl_postgresql.sql"                 | "northwind-jdl.jh"                  |
+      | 155     | "online-shop_postgresql.sql"                   | "online-shop.jh"                    |
+      | 156     | "Oracle-Human-Resources-sample_postgresql.sql" | "Oracle-Human-Resources-sample.jdl" |
+      | 157     | "simple-online-shop_postgresql.sql"            | "simple-online-shop.jh"             |
+      | 158     | "space_postgresql.sql"                         | "space.jdl"                         |
+
+  @postgreSQL
   Scenario Outline: TransformShared
     Given postgreSQL.<pUnique> the shared input file <pInputFile>
     And postgreSQL.<pUnique> the shared output file <pOutputFile>

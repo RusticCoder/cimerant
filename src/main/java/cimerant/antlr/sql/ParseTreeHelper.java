@@ -105,16 +105,27 @@ public class ParseTreeHelper {
    */
   public static ObjectRelationship getRelationship(
       final SqlContext currentTable, final ParseTree parseTree) {
-    ObjectRelationship returnValue = null;
+    return getRelationship(currentTable, parseTree.getText());
+  }
 
-    final var text = ParseTreeHelper.trimToken(parseTree.getText());
-    if (StringUtils.isNoneBlank(text)) {
-      if (currentTable.getRelationships().containsKey(text)) {
-        returnValue = currentTable.getRelationships().get(text);
+  /**
+   * Returns the existing or creates the relationship associated with the table.
+   *
+   * @param currentTable the current table.
+   * @param text the relationship to find or create within the table.
+   * @return the relationship associated with the table.
+   */
+  public static ObjectRelationship getRelationship(SqlContext currentTable, String text) {
+    ObjectRelationship returnValue = null;
+    String trimmedText = ParseTreeHelper.trimToken(text);
+
+    if (StringUtils.isNotBlank(trimmedText)) {
+      if (currentTable.getRelationships().containsKey(trimmedText)) {
+        returnValue = currentTable.getRelationships().get(trimmedText);
       } else {
-        currentTable.getRelationships().put(text, new ObjectRelationshipImpl());
-        returnValue = ParseTreeHelper.getRelationship(currentTable, parseTree);
+        returnValue = new ObjectRelationshipImpl();
         returnValue.put("cimerant:type", NotNullSet.getInstance("relationship"));
+        currentTable.getRelationships().put(trimmedText, returnValue);
       }
     }
 

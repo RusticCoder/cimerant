@@ -37,9 +37,11 @@
         <attributes size="1">
             <attribute key="temp">true</attribute>
         </attributes>
-        <fields size="2">
+        <fields size="4">
             <field key="first">{cimerant:type=field, fieldType=text}</field>
             <field key="last">{cimerant:type=field, fieldType=text}</field>
+            <field key="longname">{cimerant:type=field, fieldType=text}</field>
+            <field key="suffix">{cimerant:type=field, default='', fieldType=text, nullable=true}</field>
         </fields>
         <relationships size="0">
         </relationships>

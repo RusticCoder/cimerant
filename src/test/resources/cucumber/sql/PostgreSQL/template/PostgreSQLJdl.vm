@@ -1,0 +1,123 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+#set($oneToOneList = [])
+#set($manyToOneList = [])
+#set($manyToManyList = [])
+#foreach($object in $this.getObjects())
+  #set($pascalObjectName = $this.pascalCase($object.getObjectName()))
+  #if( !$object.getFields().isEmpty()
+    && ${pascalObjectName} != "Databasechangelog"
+    && ${pascalObjectName} != "Databasechangeloglock"
+    && ${pascalObjectName} != "JhiAuthority"
+    && ${pascalObjectName} != "JhiUser"
+    && ${pascalObjectName} != "JhiUserAuthority")
+    #set($count = 0)
+    #foreach ($field in $object.getFields().entrySet())
+      #if(!$field.getValue().get('primary'))
+        #set($count = ${count} + 1)
+      #end
+    #end
+    #if(0 < ${count})
+      #set($relationshipColumnList = $this.newSet())
+      #foreach ($relationship in $object.getRelationships().entrySet())
+        #set($quiet = $relationshipColumnList.addAll($relationship.getValue().get('column')))
+      #end
+
+entity ${pascalObjectName} {
+      #foreach ($field in $object.getFields().entrySet())
+        #if(!$field.getValue().get('primary') && !$relationshipColumnList.contains($field.getKey()))
+          #set($camelKey = $this.camelCase($field.getKey()))
+  $camelKey #getJdlType($field.getValue().get('fieldType'))#if($field.getValue().get('unique') == "true") unique#end#if($field.getValue().get('nullable') == "false") required#end#if($field.getValue().containsKey("maxSize")) maxlength($field.getValue().get("maxSize"))#end#if($field.getValue().containsKey("scale")) maxlength($field.getValue().get("precision"), $field.getValue().get("scale"))#else#if($field.getValue().containsKey("precision")) maxlength($field.getValue().get("precision"))#end#end
+        #end
+      #end
+}
+    #end
+    #if ($object.getFields().size() == 2 && $object.getRelationships().size() == 2)
+      #if ($object.getRelationships().entrySet().toArray()[0].getValue().getOtherEntity())
+        #set($pascalObjectName = $this.pascalCase($object.getRelationships().entrySet().toArray()[0].getValue().getOtherEntity().getObjectName()))
+        #set($pascalOtherObjectName = $this.pascalCase($object.getRelationships().entrySet().toArray()[1].getValue().getOtherEntity().getObjectName()))
+        #set($quiet = $manyToManyList.add([${pascalObjectName}, ${pascalOtherObjectName}]))
+      #end
+    #else
+      #foreach ($relationship in $object.getRelationships().entrySet())
+        #if ($relationship.getValue().getOtherEntity())
+          #set($pascalOtherObjectName = $this.pascalCase($relationship.getValue().getOtherEntity().getObjectName()))
+          #if ($relationship.getValue().get("column").get(0) && $object.getFields().get($relationship.getValue().get("column").get(0)) && $object.getFields().get($relationship.getValue().get("column").get(0)).get("unique") == "true")
+            #if (!$oneToOneList.contains([${pascalObjectName}, ${pascalOtherObjectName}]))
+              #set($quiet = $oneToOneList.add([${pascalObjectName}, ${pascalOtherObjectName}]))
+            #end
+          #else
+            #if (!$manyToOneList.contains([${pascalObjectName}, ${pascalOtherObjectName}]))
+              #set($quiet = $manyToOneList.add([${pascalObjectName}, ${pascalOtherObjectName}]))
+            #end
+          #end
+        #end
+      #end
+    #end
+  #end
+#end
+#if (!$oneToOneList.isEmpty())
+
+relationship OneToOne {
+  #foreach ($entry in $oneToOneList)
+  $entry[0] to $entry[1]
+  #end
+}
+#end
+#if (!$manyToOneList.isEmpty())
+
+relationship ManyToOne {
+  #foreach ($entry in $manyToOneList)
+  $entry[0] to $entry[1]
+  #end
+}
+#end
+#if (!$manyToManyList.isEmpty())
+
+relationship ManyToMany {
+  #foreach ($entry in $manyToManyList)
+  $entry[0] to $entry[1]
+  #end
+}
+#end
+#macro(getJdlType, $jdlType)
+  #set($jdlType = $this.pascalCase($jdlType))
+  #if(${jdlType} == "Bigint")
+    #set($jdlType = "Long")
+  #elseif(${jdlType} == "Character")
+    #set($jdlType = "String")
+  #elseif(${jdlType} == "Date")
+    #set($jdlType = "LocalDate")
+  #elseif(${jdlType} == "Datetime")
+    #set($jdlType = "Instant")
+  #elseif(${jdlType} == "Decimal")
+    #set($jdlType = "BigDecimal")
+  #elseif(${jdlType} == "DoublePrecision")
+    #set($jdlType = "Double")
+  #elseif(${jdlType} == "Int")
+    #set($jdlType = "Integer")
+  #elseif(${jdlType} == "Longtext")
+    #set($jdlType = "TextBlob")
+  #elseif(${jdlType} == "Longblob")
+    #set($jdlType = "ImageBlob")
+  #elseif(${jdlType} == "Numeric")
+    #set($jdlType = "BigDecimal")
+  #elseif(${jdlType} == "Oid")
+    #set($jdlType = "ImageBlob")
+  #elseif(${jdlType} == "Text")
+    #set($jdlType = "TextBlob")
+  #elseif(${jdlType} == "Timestamp")
+    #set($jdlType = "Instant")
+  #elseif(${jdlType} == "Tinyint")
+    #set($jdlType = "Boolean")
+  #elseif(${jdlType} == "Varchar")
+    #set($jdlType = "String")
+  #end
+${jdlType}#end

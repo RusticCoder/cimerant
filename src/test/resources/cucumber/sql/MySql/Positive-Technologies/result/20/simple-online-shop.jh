@@ -1,0 +1,51 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Address {
+  address1 String maxlength(255)
+  address2 String maxlength(255)
+  city String maxlength(255)
+  country String required maxlength(2)
+  postcode String required maxlength(10)
+}
+
+entity Category {
+  dateAdded LocalDate
+  dateModified LocalDate
+  description String required maxlength(255)
+  sortOrder Integer
+  status String maxlength(255)
+}
+
+entity Customer {
+  email String maxlength(255)
+  firstName String maxlength(255)
+  lastName String maxlength(255)
+  telephone String maxlength(255)
+}
+
+entity Product {
+  dateAdded LocalDate
+  dateModified LocalDate
+  description String maxlength(255)
+  keywords String maxlength(255)
+  rating Integer
+  title String required maxlength(255)
+}
+
+relationship ManyToOne {
+  Address to Customer
+  Category to Category
+}
+
+relationship ManyToMany {
+  Category to Category
+  Category to Product
+}

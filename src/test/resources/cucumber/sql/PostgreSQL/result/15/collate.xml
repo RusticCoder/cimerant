@@ -58,7 +58,8 @@
         <fields size="1">
             <field key="f2">{cimerant:type=field, collate=POSIX, fieldType=text}</field>
         </fields>
-        <relationships size="0">
+        <relationships size="1">
+            <relationship key="f2">{cimerant:type=relationship, column=f2, foreignTable=collate_test20}</relationship>
         </relationships>
     </object>
     <object name="collate_test23">

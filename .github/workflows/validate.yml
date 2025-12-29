@@ -77,5 +77,8 @@ jobs:
       - name: Maven test upper lower
         run: mvn --batch-mode clean validate verify pmd:check pmd:cpd-check -Dcucumber.filter.tags="@commandLineArguments or @lowerFirstTemplate or @lowerFirstValue or @multiTemplateDynamic or @multiTemplateVariables or @singleTemplate or @singleTemplateDynamic or @singleTemplateStatic or @singleTemplateVariables or @upperFirstTemplate or @upperFirstValue"
 
-      - name: Maven test error
-        run: mvn --batch-mode clean validate verify pmd:check pmd:cpd-check -Dcucumber.filter.tags="@err0002 or @err0003 or @err0004 or @err0005 or @err0006 or @err0006Blank or @err0006Missing or @err0007 or @err0007Blank or @err0007Missing or @err0008 or @err0008Blank or @err0008Missing or @err0009 or @err0010 or @err0011 or @err0012 or @err0013 or @err0014 or @err0015 or @err0016 or @err0017 or @err0018 or @err0019 or @err0020"
+      - name: Maven test error 1
+        run: mvn --batch-mode clean validate verify pmd:check pmd:cpd-check -Dcucumber.filter.tags="@err0002 or @err0003 or @err0004 or @err0005 or @err0006 or @err0006Blank or @err0006Missing or @err0007 or @err0007Blank or @err0007Missing or @err0008 or @err0008Blank or @err0008Missing"
+
+      - name: Maven test error 2
+        run: mvn --batch-mode clean validate verify pmd:check pmd:cpd-check -Dcucumber.filter.tags="@err0009 or @err0010 or @err0011 or @err0012 or @err0013 or @err0014 or @err0015 or @err0016 or @err0017 or @err0018 or @err0019 or @err0020"

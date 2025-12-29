@@ -16,6 +16,33 @@ Feature: SQL MySql
       | 4       | "smoke_tests.sql" | "smoke_tests" |
 
   @mySql
+  Scenario Outline: TransformJDL
+    Given mySql.<pUnique> the jdl input file <pInputFile>
+    And mySql.<pUnique> the jdl output file <pOutputFile>
+    When mySql.<pUnique> the jdl values are passed into Cimerant
+    Then mySql.<pUnique> Cimerant jdl outputs
+
+    Examples:
+      | pUnique | pInputFile                                | pOutputFile                         |
+      | 5       | "21-points_mysql.sql"                     | "21-points.jh"                      |
+      | 6       | "blog_mysql.sql"                          | "blog.jh"                           |
+      | 7       | "blog-oauth2_mysql.sql"                   | "blog-oauth2.jdl"                   |
+      | 8       | "bootiful-music_mysql.sql"                | "bootiful-music.jh"                 |
+      | 9       | "bug-tracker_mysql.sql"                   | "bug-tracker.jdl"                   |
+      | 10      | "e-commerce-monolith_mysql.sql"           | "e-commerce-monolith.jdl"           |
+      | 11      | "jhipster-blog_mysql.sql"                 | "jhipster-blog.jdl"                 |
+      | 12      | "jhipster-developer-portfolio_mysql.sql"  | "jhipster-developer-portfolio.jdl"  |
+      | 13      | "jhipster-example_mysql.sql"              | "jhipster-example.jdl"              |
+      | 14      | "jhipster-monolith-dinosaurs_mysql.sql"   | "jhipster-monolith-dinosaurs.jdl"   |
+      | 15      | "jhipster-pet-clinic_mysql.sql"           | "jhipster-pet-clinic.jdl"           |
+      | 16      | "library_mysql.sql"                       | "library.jh"                        |
+      | 17      | "northwind-jdl_mysql.sql"                 | "northwind-jdl.jh"                  |
+      | 18      | "online-shop_mysql.sql"                   | "online-shop.jh"                    |
+      | 19      | "Oracle-Human-Resources-sample_mysql.sql" | "Oracle-Human-Resources-sample.jdl" |
+      | 20      | "simple-online-shop_mysql.sql"            | "simple-online-shop.jh"             |
+      | 21      | "space_mysql.sql"                         | "space.jdl"                         |
+
+  @mySql
   Scenario Outline: TransformShared
     Given mySql.<pUnique> the shared input file <pInputFile>
     And mySql.<pUnique> the shared output file <pOutputFile>

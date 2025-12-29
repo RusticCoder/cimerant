@@ -90,10 +90,13 @@
     <object name="rewriteme">
         <attributes size="0">
         </attributes>
-        <fields size="3">
+        <fields size="6">
+            <field key="another">{cimerant:type=field, default=-1, fieldType=int}</field>
             <field key="bar">{cimerant:type=field, fieldType=timestamptz}</field>
+            <field key="baz">{cimerant:type=field, default=0, fieldType=int}</field>
             <field key="foo">{cimerant:type=field, fieldType=float}</field>
             <field key="id">{cimerant:type=field, fieldType=serial, primary=true}</field>
+            <field key="onemore">{cimerant:type=field, default=0, fieldType=int}</field>
         </fields>
         <relationships size="0">
         </relationships>

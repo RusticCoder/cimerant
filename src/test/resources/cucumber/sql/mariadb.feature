@@ -15,6 +15,33 @@ Feature: SQL Maria DB
       | 3       | "fast/smoke_tests.sql" | "fast/smoke_tests" |
 
   @mariadb
+  Scenario Outline: TransformJDL
+    Given mariadb.<pUnique> the jdl input file <pInputFile>
+    And mariadb.<pUnique> the jdl output file <pOutputFile>
+    When mariadb.<pUnique> the jdl values are passed into Cimerant
+    Then mariadb.<pUnique> Cimerant jdl outputs
+
+    Examples:
+      | pUnique | pInputFile                                       | pOutputFile                         |
+      | 4       | "fast/21-points_mariadb.sql"                     | "21-points.jh"                      |
+      | 5       | "fast/blog_mariadb.sql"                          | "blog.jh"                           |
+      | 6       | "fast/blog-oauth2_mariadb.sql"                   | "blog-oauth2.jdl"                   |
+      | 7       | "fast/bootiful-music_mariadb.sql"                | "bootiful-music.jh"                 |
+      | 8       | "fast/bug-tracker_mariadb.sql"                   | "bug-tracker.jdl"                   |
+      | 9       | "fast/e-commerce-monolith_mariadb.sql"           | "e-commerce-monolith.jdl"           |
+      | 10      | "fast/jhipster-blog_mariadb.sql"                 | "jhipster-blog.jdl"                 |
+      | 11      | "fast/jhipster-developer-portfolio_mariadb.sql"  | "jhipster-developer-portfolio.jdl"  |
+      | 12      | "fast/jhipster-example_mariadb.sql"              | "jhipster-example.jdl"              |
+      | 13      | "fast/jhipster-monolith-dinosaurs_mariadb.sql"   | "jhipster-monolith-dinosaurs.jdl"   |
+      | 14      | "fast/jhipster-pet-clinic_mariadb.sql"           | "jhipster-pet-clinic.jdl"           |
+      | 15      | "fast/library_mariadb.sql"                       | "library.jh"                        |
+      | 16      | "fast/northwind-jdl_mariadb.sql"                 | "northwind-jdl.jh"                  |
+      | 17      | "fast/online-shop_mariadb.sql"                   | "online-shop.jh"                    |
+      | 18      | "fast/Oracle-Human-Resources-sample_mariadb.sql" | "Oracle-Human-Resources-sample.jdl" |
+      | 19      | "fast/simple-online-shop_mariadb.sql"            | "simple-online-shop.jh"             |
+      | 20      | "fast/space_mariadb.sql"                         | "space.jdl"                         |
+
+  @mariadb
   Scenario Outline: TransformShared
     Given mariadb.<pUnique> the shared input file <pInputFile>
     And mariadb.<pUnique> the shared output file <pOutputFile>

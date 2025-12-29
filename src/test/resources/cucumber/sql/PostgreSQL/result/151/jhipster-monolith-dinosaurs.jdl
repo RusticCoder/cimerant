@@ -1,0 +1,33 @@
+application {
+  config {
+//    prodDatabaseType mariadb
+//    prodDatabaseType mssql
+//    prodDatabaseType mysql
+    prodDatabaseType postgresql
+  }
+  entities *
+}
+
+entity Clade {
+  description String required maxlength(64)
+}
+
+entity Dinosaur {
+  diet String maxlength(255)
+  insertDt Instant required
+  length Integer
+  modifiedDt Instant required
+  name String required maxlength(64)
+  weight Integer
+}
+
+entity Era {
+  fromMa Integer
+  name String required maxlength(64)
+  toMa Integer
+}
+
+relationship ManyToOne {
+  Dinosaur to Clade
+  Dinosaur to Era
+}
