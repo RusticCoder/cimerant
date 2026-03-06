@@ -70,7 +70,7 @@
         <checkstyle.version>3.6.0</checkstyle.version>
         <commonmark.version>0.27.0</commonmark.version>
         <doxia.version>2.0.0</doxia.version>
-        <fasterxml.version>2.20.1</fasterxml.version>
+        <fasterxml.version>2.21.1</fasterxml.version>
         <maven.compiler.version>3.14.1</maven.compiler.version>
         <maven.dependency.version>3.9.0</maven.dependency.version>
         <maven.javadoc.version>3.12.0</maven.javadoc.version>
