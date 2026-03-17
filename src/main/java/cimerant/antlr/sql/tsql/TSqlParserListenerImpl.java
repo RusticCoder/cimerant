@@ -7043,7 +7043,7 @@ public class TSqlParserListenerImpl extends TSqlParserBaseListener {
               } else if (columnDefinitionContext
                   instanceof
                   final TSqlParser.Column_definition_elementContext
-                          columnDefinitionElementContext) {
+                      columnDefinitionElementContext) {
                 final var columnDefinitionElementText =
                     " "
                         + StringUtils.upperCase(

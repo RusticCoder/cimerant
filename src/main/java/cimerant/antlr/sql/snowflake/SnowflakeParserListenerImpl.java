@@ -337,7 +337,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
                   } else if (outOfLineConstraintChild
                       instanceof
                       final SnowflakeParser.Column_list_in_parenthesesContext
-                              columnListInParenthesesContext) {
+                          columnListInParenthesesContext) {
                     ParseTreeStream.parseTreeStream(columnListInParenthesesContext)
                         .streamChildrenByClass(SnowflakeParser.Column_listContext.class)
                         .streamChildrenByClass(SnowflakeParser.Column_nameContext.class)
