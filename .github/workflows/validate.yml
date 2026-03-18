@@ -63,7 +63,7 @@ jobs:
       # [Apache Maven with a settings path](https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path)
 
       - name: Force Maven update
-        run: mvn -U clean install
+        run: mvn -U -DskipTests clean
 
       - name: Maven test databases
         run: mvn --batch-mode clean validate verify pmd:check pmd:cpd-check -Dcucumber.filter.tags="@athena or @hive or @mariadb or @mySql or @phoenix or @plSql or @postgreSQL or @snowflake or @sqLite or @tSql"
