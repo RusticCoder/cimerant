@@ -42,7 +42,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
@@ -50,12 +50,19 @@ jobs:
       - name: Setup Maven
         uses: s4u/setup-maven-action@v1.7.0
         with:
-          java-version: '17'
+          java-version: '21'
           java-distribution: 'temurin'
-          maven-version: 3.9.1
+          maven-version: 3.9.11
 
       # [Building and testing Java with Maven](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven)
       # [Apache Maven with a settings path](https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path)
+
+      - name: Environment
+        run: mvn help:system
+
+      - name: Force Maven update
+        run: mvn -U -DskipTests clean
+
       - name: Validate the project is correct and all necessary information is available.
         run: mvn --batch-mode --update-snapshots clean validate
 
