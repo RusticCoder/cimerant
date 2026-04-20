@@ -75,7 +75,7 @@
         <maven.dependency.version>3.10.0</maven.dependency.version>
         <maven.javadoc.version>3.12.0</maven.javadoc.version>
         <maven.license.version>2.7.1</maven.license.version>
-        <maven.surefire.version>3.5.2</maven.surefire.version>
+        <maven.surefire.version>3.5.5</maven.surefire.version>
         <pmd.version>3.28.0</pmd.version>
         <slf4j.version>2.0.17</slf4j.version>
     </properties>
