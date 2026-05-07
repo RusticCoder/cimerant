@@ -10,8 +10,10 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -338,17 +340,17 @@ public class SnakeLowerCaseTemplate {
     this.values.clear();
 
     Files.createDirectories(SnakeLowerCaseTemplate.cimerantPath.toPath());
+    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    System.setErr(new PrintStream(byteArrayOutputStream));
 
     try {
-      this.textWrittenToSystemErr =
-          SystemLambda.tapSystemErr(
-              () -> this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr)));
+      this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr));
     } catch (final java.lang.AssertionError e) {
       if (!"System.exit has not been called.".equals(e.getMessage())) {
         throw e;
       }
     }
-    this.textWrittenToSystemErr = StringUtils.stripToNull(this.textWrittenToSystemErr);
+    this.textWrittenToSystemErr = StringUtils.stripToNull(byteArrayOutputStream.toString());
   }
 
   /**
