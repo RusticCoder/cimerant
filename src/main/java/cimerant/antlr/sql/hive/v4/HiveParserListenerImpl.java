@@ -534,7 +534,13 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
             .toList());
     int lastIdx =
         IntStream.range(0, ctx.children.size())
-            .filter(i -> ctx.children.get(i).getText().toUpperCase().contains("REFERENCES"))
+            .filter(
+                i ->
+                    ctx.children
+                        .get(i)
+                        .getText()
+                        .toUpperCase(Locale.getDefault())
+                        .contains("REFERENCES"))
             .findFirst()
             .orElse(-1);
     terminalNode.addAll(

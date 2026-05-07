@@ -49,8 +49,17 @@ public final class Cimerant {
    * @param args command line arguments used to specify how Cimerant works.
    */
   public static void main(final String... args) {
+    System.exit(mainCall(args));
+  }
+
+  /**
+   * Main execute method.
+   *
+   * @param args command line arguments used to specify how Cimerant works.
+   */
+  public static int mainCall(final String... args) {
     final var cimerant = new Cimerant();
-    cimerant.execute(args);
+    return cimerant.execute(args);
   }
 
   private final CimerantLogger logger;
@@ -67,7 +76,7 @@ public final class Cimerant {
     ContextRootImpl.clearInstances();
   }
 
-  private void execute(final String... args) {
+  private int execute(final String... args) {
     final var moduleCode = ModuleCode.ERR_M0100;
 
     try {
@@ -77,7 +86,7 @@ public final class Cimerant {
         final var helpFormatter = new HelpFormatter();
         helpFormatter.printHelp(Cimerant.CMD_LINE_SYNTAX, CliOptions.getOptions());
         this.clear();
-        System.exit(0);
+        return 0;
       }
 
       if (parsedCommandLine.isValid()) {
@@ -285,10 +294,10 @@ public final class Cimerant {
         }
         if (sysError != null) {
           this.clear();
-          System.exit(sysError.getExitCode());
+          return sysError.getExitCode();
         } else {
           this.clear();
-          System.exit(-999);
+          return -999;
         }
       }
     } catch (final Throwable t) {
@@ -319,8 +328,9 @@ public final class Cimerant {
       }
 
       this.clear();
-      System.exit(sysError.getExitCode());
+      return sysError.getExitCode();
     }
     this.clear();
+    return 0;
   }
 }

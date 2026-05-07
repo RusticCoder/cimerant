@@ -46,7 +46,7 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc("Display debug logging.")
             .required(false)
-            .build() //
+            .get() //
         ),
     ERROR(
         Option.builder()
@@ -54,7 +54,7 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc("Display error logging.")
             .required(false)
-            .build() //
+            .get() //
         ),
     FILE_PATTERN(
         Option.builder()
@@ -72,7 +72,7 @@ class ParsedCommandLine {
              single.""")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     HELP(
         Option.builder()
@@ -81,7 +81,7 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc("Display help and exit")
             .required(false)
-            .build() //
+            .get() //
         ),
     INFO(
         Option.builder()
@@ -89,7 +89,7 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc("Display info logging.")
             .required(false)
-            .build() //
+            .get() //
         ),
     INPUT_FILE(
         Option.builder()
@@ -100,7 +100,7 @@ class ParsedCommandLine {
             .desc("The formatted input file to be transformed.")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     INPUT_FILE_TYPE(
         Option.builder()
@@ -110,7 +110,7 @@ class ParsedCommandLine {
             .desc("The type of input file to be transformed.")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     KEY(
         Option.builder()
@@ -120,7 +120,7 @@ class ParsedCommandLine {
             .desc("The key in a key value pair.")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     MULTI(
         Option.builder()
@@ -132,7 +132,7 @@ class ParsedCommandLine {
          conjunction with --single and cannot be used in conjunction\
          with -l, --list).""")
             .required(false)
-            .build() //
+            .get() //
         ),
     OUTPUT_PATH(
         Option.builder()
@@ -147,7 +147,7 @@ class ParsedCommandLine {
              --list).""")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     SINGLE(
         Option.builder()
@@ -159,7 +159,7 @@ class ParsedCommandLine {
          in conjunction with --multi and cannot be used in\
          conjunction with -l, --list).""")
             .required(false)
-            .build() //
+            .get() //
         ),
     TEMPLATE(
         Option.builder()
@@ -170,7 +170,7 @@ class ParsedCommandLine {
             .desc("The template to use to transform the input file.")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     TEMPLATES(
         Option.builder()
@@ -183,7 +183,7 @@ class ParsedCommandLine {
                     + " format below)")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     TRACE(
         Option.builder()
@@ -191,7 +191,7 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc("Display trace logging.")
             .required(false)
-            .build() //
+            .get() //
         ),
     VALUE(
         Option.builder()
@@ -201,7 +201,7 @@ class ParsedCommandLine {
             .desc("The value in a key value pair.")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     VARIABLES(
         Option.builder()
@@ -212,7 +212,7 @@ class ParsedCommandLine {
             .desc("A list of Key/Value pairs that will be accessible within the" + " template.")
             .valueSeparator('=')
             .required(false)
-            .build() //
+            .get() //
         ),
     WARN(
         Option.builder()
@@ -220,7 +220,7 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc("Display warn logging.")
             .required(false)
-            .build() //
+            .get() //
         );
 
     private static final Options OPTIONS = new Options();

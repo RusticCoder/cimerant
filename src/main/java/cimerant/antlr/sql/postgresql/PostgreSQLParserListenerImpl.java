@@ -1198,8 +1198,6 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
 
   /** The default implementation does nothing. */
   private List<ObjectField> getCurrentFieldList(final ParserRuleContext ctx) {
-    final var methodName = "getCurrentFieldList";
-
     if (ctx == null || ctx.children == null || ctx.children.isEmpty()) {
       return null;
     }

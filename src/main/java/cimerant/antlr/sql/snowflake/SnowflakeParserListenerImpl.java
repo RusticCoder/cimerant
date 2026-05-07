@@ -730,7 +730,7 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
       return null;
     }
 
-    var allTerminalNodeTextList = (ParseTreeStream.parseTreeStream(ctx).listAllTerminalNodeText());
+    var allTerminalNodeTextList = ParseTreeStream.parseTreeStream(ctx).listAllTerminalNodeText();
     final int constraintIndex =
         IntStream.range(0, allTerminalNodeTextList.size())
             .filter(i -> "CONSTRAINT".equalsIgnoreCase(allTerminalNodeTextList.get(i)))

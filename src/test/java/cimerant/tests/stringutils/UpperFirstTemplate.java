@@ -2,7 +2,6 @@ package cimerant.tests.stringutils;
 
 import cimerant.Cimerant;
 import cimerant.util.DirUtils;
-import com.github.stefanbirkner.systemlambda.SystemLambda;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
@@ -14,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -342,13 +342,14 @@ public class UpperFirstTemplate {
     System.setErr(new PrintStream(byteArrayOutputStream));
 
     try {
-      this.statusCode = SystemLambda.catchSystemExit(() -> Cimerant.main(stockArr));
+      this.statusCode = Cimerant.mainCall(stockArr);
     } catch (final java.lang.AssertionError e) {
       if (!"System.exit has not been called.".equals(e.getMessage())) {
         throw e;
       }
     }
-    this.textWrittenToSystemErr = StringUtils.stripToNull(byteArrayOutputStream.toString());
+    this.textWrittenToSystemErr =
+        StringUtils.stripToNull(byteArrayOutputStream.toString(Charset.defaultCharset()));
   }
 
   /**
