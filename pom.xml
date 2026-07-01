@@ -68,16 +68,16 @@
         <project.build.sourceEncoding>${project.encondig}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.encondig}</project.reporting.outputEncoding>
         <checkstyle.version>3.6.0</checkstyle.version>
-        <commonmark.version>0.28.0</commonmark.version>
+        <commonmark.version>0.29.0</commonmark.version>
         <doxia.version>2.1.0</doxia.version>
-        <fasterxml.version>2.21.3</fasterxml.version>
+        <fasterxml.version>2.22.0</fasterxml.version>
         <maven.compiler.version>3.15.0</maven.compiler.version>
-        <maven.dependency.version>3.10.0</maven.dependency.version>
+        <maven.dependency.version>3.11.0</maven.dependency.version>
         <maven.javadoc.version>3.12.0</maven.javadoc.version>
         <maven.license.version>2.7.1</maven.license.version>
-        <maven.surefire.version>3.5.5</maven.surefire.version>
+        <maven.surefire.version>3.5.6</maven.surefire.version>
         <pmd.version>3.28.0</pmd.version>
-        <slf4j.version>2.0.17</slf4j.version>
+        <slf4j.version>2.0.18</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -86,7 +86,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>6.0.3</version>
+                <version>6.1.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -94,7 +94,7 @@
             <dependency>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-bom</artifactId>
-                <version>7.34.3</version>
+                <version>7.34.4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -385,7 +385,7 @@
         <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna-platform</artifactId>
-            <version>5.18.1</version>
+            <version>5.19.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -694,7 +694,7 @@
             <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-enforcer-plugin -->
             <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.6.2</version>
+                <version>3.6.3</version>
                 <executions>
                     <!-- https://maven.apache.org/enforcer/enforcer-rules/requireJavaVersion.html -->
                     <execution>
@@ -810,7 +810,7 @@
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>3.8.0</version>
                 <configuration>
                     <upToDateChecking>
                         <enabled>true</enabled>
@@ -934,7 +934,7 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>13.4.2</version>
+                        <version>13.7.0</version>
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
@@ -1085,7 +1085,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.14</version>
+                <version>0.8.15</version>
                 <executions>
                     <execution>
                         <id>jacoco-plugin-prepare-package</id>
@@ -1208,7 +1208,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.9.8.3</version>
+                <version>4.10.2.0</version>
                 <configuration>
                     <includeFilterFile>${project.basedir}/config/spotbugs/security-include.xml</includeFilterFile>
                     <excludeFilterFile>${project.basedir}/config/spotbugs/security-exclude.xml</excludeFilterFile>
@@ -1229,7 +1229,7 @@
                     <dependency>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs</artifactId>
-                        <version>4.9.8</version>
+                        <version>4.10.2</version>
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
@@ -1257,7 +1257,7 @@
             <plugin>
                 <groupId>com.trivago.rta</groupId>
                 <artifactId>cluecumber-maven</artifactId>
-                <version>3.14.1</version>
+                <version>4.2.0</version>
                 <configuration>
                     <sourceJsonReportDirectory>${project.build.directory}/cucumber</sourceJsonReportDirectory>
                     <generatedHtmlReportDirectory>${project.build.directory}/site/cluecumber</generatedHtmlReportDirectory>
