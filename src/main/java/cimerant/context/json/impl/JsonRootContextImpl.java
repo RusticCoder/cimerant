@@ -13,8 +13,6 @@ import cimerant.context.cimerant.impl.ObjectRootContextImpl;
 import cimerant.context.impl.ContextRootImpl;
 import cimerant.context.json.JsonRootContext;
 import cimerant.logger.CimerantLogger;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.Serial;
 import java.util.ArrayList;
@@ -23,6 +21,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import org.apache.commons.lang3.Strings;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -185,14 +185,12 @@ public final class JsonRootContextImpl extends ObjectRootContextImpl<Map<String,
       for (var relationship : object.getRelationships().values()) {
         var otherEntityRelationshipName = relationship.get("cimerant:otherEntity").first();
         objects.stream()
-            .filter(
-                otherEntity ->
-                    Strings.CI.equals(otherEntityRelationshipName, otherEntity.getObjectName()))
-            .forEach(
-                otherEntity -> {
-                  relationship.setOtherEntity(otherEntity);
-                  relationship.remove("cimerant:otherEntity");
-                });
+            .filter(otherEntity ->
+                Strings.CI.equals(otherEntityRelationshipName, otherEntity.getObjectName()))
+            .forEach(otherEntity -> {
+              relationship.setOtherEntity(otherEntity);
+              relationship.remove("cimerant:otherEntity");
+            });
       }
     }
 

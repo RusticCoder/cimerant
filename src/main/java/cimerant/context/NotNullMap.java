@@ -1,11 +1,12 @@
 package cimerant.context;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.StreamWriteConstraints;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Serial;
 import java.util.Map;
 import java.util.TreeMap;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.StreamWriteConstraints;
+import tools.jackson.core.json.JsonFactory;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * An object that maps keys to values. A map cannot contain duplicate keys; each key can map to at
@@ -69,13 +70,13 @@ public class NotNullMap<K extends String, V> extends TreeMap<K, V> {
   public String toJson() {
     try {
       final var jsonFactory =
-          new ObjectMapper()
-              .getFactory()
-              .setStreamWriteConstraints(
-                  StreamWriteConstraints.builder().maxNestingDepth(5000).build());
+          JsonFactory.builder()
+              .streamWriteConstraints(
+                  StreamWriteConstraints.builder().maxNestingDepth(5000).build())
+              .build();
       final var ow = new ObjectMapper(jsonFactory).writer().withDefaultPrettyPrinter();
       return ow.writeValueAsString(this);
-    } catch (final JsonProcessingException e) {
+    } catch (final JacksonException e) {
       return super.toString() + System.lineSeparator() + e.getMessage();
     }
   }

@@ -123,7 +123,7 @@
           AllocationExpression (: constr invocation :)
           )
           /ClassOrInterfaceType
-          [pmd-java:typeIs('com.fasterxml.jackson.databind.ObjectMapper')]
+          [pmd-java:typeIs('tools.jackson.databind.ObjectMapper')]
           [not(
           ancestor::FieldDeclaration (: skip fields :)
           or ancestor::Initializer   (: skip init blocks :)
@@ -140,7 +140,7 @@
     </properties>
     <example>
       <![CDATA[
-      import com.fasterxml.jackson.databind.ObjectMapper;
+      import tools.jackson.databind.ObjectMapper;
       class Foo {
           ObjectMapper objectMapper = new ObjectMapper(); //ok
 

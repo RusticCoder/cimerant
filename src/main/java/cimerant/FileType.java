@@ -4,11 +4,11 @@ import cimerant.context.cimerant.ObjectRootContext;
 import cimerant.context.sql.SqlRootContext;
 import cimerant.context.sql.impl.SqlRootContextImpl;
 import java.io.File;
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.StringUtils;
+import tools.jackson.core.JacksonException;
 
 /** List of file types with methods to return context related objects. */
 public enum FileType {
@@ -77,10 +77,10 @@ public enum FileType {
     @Override
     public boolean isValid(final File file) {
       try {
-        final var mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        final var mapper = new tools.jackson.databind.ObjectMapper();
         mapper.readTree(file);
         return true;
-      } catch (final IOException e) {
+      } catch (final JacksonException e) {
         return false;
       }
     }

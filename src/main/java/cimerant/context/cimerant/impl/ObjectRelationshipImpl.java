@@ -26,16 +26,15 @@ public class ObjectRelationshipImpl extends NotNullMap<String, NotNullSet>
    * @param map the map whose mappings are to be placed in this map
    */
   public ObjectRelationshipImpl(final Map<String, Object> map) {
-    map.forEach(
-        (string, object) -> {
-          if (string != null && object != null) {
-            if (object instanceof NotNullSet) {
-              this.put(string, (NotNullSet) object);
-            } else {
-              this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
-            }
-          }
-        });
+    map.forEach((string, object) -> {
+      if (string != null && object != null) {
+        if (object instanceof NotNullSet) {
+          this.put(string, (NotNullSet) object);
+        } else {
+          this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
+        }
+      }
+    });
   }
 
   /**
@@ -44,16 +43,15 @@ public class ObjectRelationshipImpl extends NotNullMap<String, NotNullSet>
    * @param map the map whose mappings are to be placed in this map
    */
   public ObjectRelationshipImpl(final SortedMap<String, NotNullSet> map) {
-    map.forEach(
-        (string, object) -> {
-          if (string != null && object != null) {
-            if (object instanceof NotNullSet) {
-              this.put(string, object);
-            } else {
-              this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
-            }
-          }
-        });
+    map.forEach((string, object) -> {
+      if (string != null && object != null) {
+        if (object instanceof NotNullSet) {
+          this.put(string, object);
+        } else {
+          this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
+        }
+      }
+    });
   }
 
   @Override

@@ -42,7 +42,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '27'
           distribution: 'temurin'
           cache: maven
 
@@ -50,7 +50,7 @@ jobs:
       - name: Setup Maven
         uses: s4u/setup-maven-action@v1.7.0
         with:
-          java-version: '21'
+          java-version: '27'
           java-distribution: 'temurin'
           maven-version: 3.9.11
 

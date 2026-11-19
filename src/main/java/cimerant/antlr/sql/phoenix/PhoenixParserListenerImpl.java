@@ -1691,35 +1691,33 @@ public class PhoenixParserListenerImpl extends PhoenixParserBaseListener {
 
     ParseTreeStream.parseTreeStream(sqlDataTypeChildrenList)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!currentField.get(Field.FIELD_TYPE).get(0).equals(terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!currentField.get(Field.FIELD_TYPE).get(0).equals(terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(sqlDataTypeChildrenList)
         .streamChildrenByClass(PhoenixParser.Precision_intContext.class)
         .streamChildrenByClass(PhoenixParser.IntegerContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.MAX_SIZE)) {
-                  currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!currentField.get(Field.MAX_SIZE).get(0).equals(terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.MAX_SIZE)) {
+              currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!currentField.get(Field.MAX_SIZE).get(0).equals(terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     final var primaryKeyText =
         ParseTreeStream.parseTreeStream(ctx)
             .streamTerminalNodeString()
@@ -1739,9 +1737,8 @@ public class PhoenixParserListenerImpl extends PhoenixParserBaseListener {
           ParseTreeStream.parseTreeStream(ctx)
               .streamTextByClass(
                   PhoenixParserListenerImpl.input, PhoenixParser.LiteralContext.class)
-              .forEach(
-                  intervalText ->
-                      currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText)));
+              .forEach(intervalText ->
+                  currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText)));
         }
       }
     }
@@ -1831,15 +1828,14 @@ public class PhoenixParserListenerImpl extends PhoenixParserBaseListener {
         .streamChildrenByClass(PhoenixParser.Column_nameContext.class)
         .streamChildrenByClass(PhoenixParser.NameContext.class)
         .filter(TerminalNode.class::isInstance)
-        .forEach(
-            terminalNode -> {
-              final var field = ParseTreeHelper.getField(currentTable, terminalNode);
-              if (!field.containsKey(Field.PRIMARY)
-                  && (Strings.CI.equals("PRIMARY KEY", primaryKeyText)
-                      || Strings.CI.equals("CONSTRAINT PRIMARY KEY", primaryKeyText))) {
-                field.put(Field.PRIMARY, NotNullSet.getInstance(Boolean.TRUE));
-              }
-            });
+        .forEach(terminalNode -> {
+          final var field = ParseTreeHelper.getField(currentTable, terminalNode);
+          if (!field.containsKey(Field.PRIMARY)
+              && (Strings.CI.equals("PRIMARY KEY", primaryKeyText)
+                  || Strings.CI.equals("CONSTRAINT PRIMARY KEY", primaryKeyText))) {
+            field.put(Field.PRIMARY, NotNullSet.getInstance(Boolean.TRUE));
+          }
+        });
   }
 
   /**
@@ -2935,41 +2931,34 @@ public class PhoenixParserListenerImpl extends PhoenixParserBaseListener {
         .streamChildrenByClass(PhoenixParser.OptionContext.class)
         .streamChildrenByClass(PhoenixParser.NameContext.class)
         .filter(TerminalNode.class::isInstance)
-        .forEach(
-            terminalNode -> {
-              final var terminalNodeText = ParseTreeHelper.trimToken(terminalNode.getText());
-              if (StringUtils.isNoneBlank(terminalNodeText)) {
-                if (Strings.CI.equals("DISABLE_WAL", terminalNodeText)) {
-                  ParseTreeStream.parseTreeStream(
-                          ((PhoenixParser.OptionContext) terminalNode.getParent().getParent())
-                              .children)
-                      .streamChildrenByClass(PhoenixParser.LiteralContext.class)
-                      .streamChildrenByClass(PhoenixParser.True_falseContext.class)
-                      .streamTerminalNodeString()
-                      .forEach(
-                          terminalNodeText2 ->
-                              currentTable
-                                  .getAttributes()
-                                  .put(
-                                      SqlContextImpl.DISABLE_WAL,
-                                      NotNullSet.getInstance(terminalNodeText2)));
-                } else if (Strings.CI.equals("STORE_NULLS", terminalNodeText)) {
-                  ParseTreeStream.parseTreeStream(
-                          ((PhoenixParser.OptionContext) terminalNode.getParent().getParent())
-                              .children)
-                      .streamChildrenByClass(PhoenixParser.LiteralContext.class)
-                      .streamChildrenByClass(PhoenixParser.True_falseContext.class)
-                      .streamTerminalNodeString()
-                      .forEach(
-                          terminalNodeText2 ->
-                              currentTable
-                                  .getAttributes()
-                                  .put(
-                                      SqlContextImpl.NULLABLE,
-                                      NotNullSet.getInstance(terminalNodeText2)));
-                }
-              }
-            });
+        .forEach(terminalNode -> {
+          final var terminalNodeText = ParseTreeHelper.trimToken(terminalNode.getText());
+          if (StringUtils.isNoneBlank(terminalNodeText)) {
+            if (Strings.CI.equals("DISABLE_WAL", terminalNodeText)) {
+              ParseTreeStream.parseTreeStream(
+                      ((PhoenixParser.OptionContext) terminalNode.getParent().getParent()).children)
+                  .streamChildrenByClass(PhoenixParser.LiteralContext.class)
+                  .streamChildrenByClass(PhoenixParser.True_falseContext.class)
+                  .streamTerminalNodeString()
+                  .forEach(terminalNodeText2 ->
+                      currentTable
+                          .getAttributes()
+                          .put(
+                              SqlContextImpl.DISABLE_WAL,
+                              NotNullSet.getInstance(terminalNodeText2)));
+            } else if (Strings.CI.equals("STORE_NULLS", terminalNodeText)) {
+              ParseTreeStream.parseTreeStream(
+                      ((PhoenixParser.OptionContext) terminalNode.getParent().getParent()).children)
+                  .streamChildrenByClass(PhoenixParser.LiteralContext.class)
+                  .streamChildrenByClass(PhoenixParser.True_falseContext.class)
+                  .streamTerminalNodeString()
+                  .forEach(terminalNodeText2 ->
+                      currentTable
+                          .getAttributes()
+                          .put(SqlContextImpl.NULLABLE, NotNullSet.getInstance(terminalNodeText2)));
+            }
+          }
+        });
   }
 
   /**

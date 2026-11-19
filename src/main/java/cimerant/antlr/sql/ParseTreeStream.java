@@ -186,13 +186,12 @@ public class ParseTreeStream implements Stream<ParseTree> {
     return parseTreeList == null
         ? new ArrayList<TerminalNode>()
         : parseTreeList.stream()
-            .map(
-                parseTree ->
-                    parseTree instanceof ParserRuleContext
-                        ? listAllTerminalNode(((ParserRuleContext) parseTree).children)
-                        : parseTree instanceof TerminalNode
-                            ? Collections.singletonList((TerminalNode) parseTree)
-                            : new ArrayList<TerminalNode>())
+            .map(parseTree ->
+                parseTree instanceof ParserRuleContext
+                    ? listAllTerminalNode(((ParserRuleContext) parseTree).children)
+                    : parseTree instanceof TerminalNode
+                        ? Collections.singletonList((TerminalNode) parseTree)
+                        : new ArrayList<TerminalNode>())
             .flatMap(List::stream)
             .toList();
   }
@@ -366,9 +365,8 @@ public class ParseTreeStream implements Stream<ParseTree> {
       final CharStream input, final Class<T> clazz) {
     return this.parseTreeChildren.stream()
         .filter(clazz::isInstance)
-        .map(
-            parserRuleContext ->
-                ParseTreeHelper.getText(input, (ParserRuleContext) parserRuleContext))
+        .map(parserRuleContext ->
+            ParseTreeHelper.getText(input, (ParserRuleContext) parserRuleContext))
         .filter(Objects::nonNull);
   }
 

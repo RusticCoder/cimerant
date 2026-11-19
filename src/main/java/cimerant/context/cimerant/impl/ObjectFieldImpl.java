@@ -21,16 +21,15 @@ public class ObjectFieldImpl extends NotNullMap<String, NotNullSet> implements O
    * @param map the map whose mappings are to be placed in this map
    */
   public ObjectFieldImpl(final Map<String, Object> map) {
-    map.forEach(
-        (string, object) -> {
-          if (string != null && object != null) {
-            if (object instanceof NotNullSet) {
-              this.put(string, (NotNullSet) object);
-            } else {
-              this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
-            }
-          }
-        });
+    map.forEach((string, object) -> {
+      if (string != null && object != null) {
+        if (object instanceof NotNullSet) {
+          this.put(string, (NotNullSet) object);
+        } else {
+          this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
+        }
+      }
+    });
   }
 
   /**
@@ -39,16 +38,15 @@ public class ObjectFieldImpl extends NotNullMap<String, NotNullSet> implements O
    * @param map the map whose mappings are to be placed in this map
    */
   public ObjectFieldImpl(final SortedMap<String, Object> map) {
-    map.forEach(
-        (string, object) -> {
-          if (string != null && object != null) {
-            if (object instanceof NotNullSet) {
-              this.put(string, (NotNullSet) object);
-            } else {
-              this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
-            }
-          }
-        });
+    map.forEach((string, object) -> {
+      if (string != null && object != null) {
+        if (object instanceof NotNullSet) {
+          this.put(string, (NotNullSet) object);
+        } else {
+          this.put(string, NotNullSet.getInstance(Objects.toString(object, "")));
+        }
+      }
+    });
   }
 
   @Override

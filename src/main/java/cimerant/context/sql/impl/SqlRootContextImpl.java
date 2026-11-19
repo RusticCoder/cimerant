@@ -27,14 +27,12 @@ public final class SqlRootContextImpl extends ObjectRootContextImpl<Map<String, 
       for (final var relationship : object.getRelationships().values()) {
         final var otherEntityRelationshipName = relationship.get("foreignTable").first();
         objects.stream()
-            .filter(
-                otherEntity ->
-                    Strings.CI.equals(otherEntityRelationshipName, otherEntity.getObjectName()))
-            .forEach(
-                otherEntity -> {
-                  relationship.setOtherEntity(otherEntity);
-                  relationship.remove("foreignTable");
-                });
+            .filter(otherEntity ->
+                Strings.CI.equals(otherEntityRelationshipName, otherEntity.getObjectName()))
+            .forEach(otherEntity -> {
+              relationship.setOtherEntity(otherEntity);
+              relationship.remove("foreignTable");
+            });
       }
     }
     return contextObject;

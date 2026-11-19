@@ -1606,35 +1606,33 @@ public class AthenaParserListenerImpl extends AthenaParserBaseListener {
 
     ParseTreeStream.parseTreeStream(primitiveTypeChildren)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(primitiveTypeChildren)
         .streamChildrenByClass(AthenaParser.Int_numberContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.MAX_SIZE)) {
-                  currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.MAX_SIZE)) {
+              currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
   }
 
   /**

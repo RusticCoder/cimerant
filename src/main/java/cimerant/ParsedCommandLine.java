@@ -64,12 +64,13 @@ class ParsedCommandLine {
             .argName("file")
             .desc(
                 """
-            The pattern for the file name to be created allowing ${CLASS_NAME}\
-             as a variable to be substituted when creating the file\
-             (cannot be used in conjunction with -l, --list).
+                The pattern for the file name to be created allowing ${CLASS_NAME}\
+                 as a variable to be substituted when creating the file\
+                 (cannot be used in conjunction with -l, --list).
 
-            ${CLASS_NAME} is required for multi and not allowed for\
-             single.""")
+                ${CLASS_NAME} is required for multi and not allowed for\
+                 single.\
+                """)
             .valueSeparator('=')
             .required(false)
             .get() //
@@ -128,9 +129,10 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc(
                 """
-        Transform the template once for each class (cannot be used in\
-         conjunction with --single and cannot be used in conjunction\
-         with -l, --list).""")
+                Transform the template once for each class (cannot be used in\
+                 conjunction with --single and cannot be used in conjunction\
+                 with -l, --list).\
+                """)
             .required(false)
             .get() //
         ),
@@ -142,9 +144,10 @@ class ParsedCommandLine {
             .argName("path")
             .desc(
                 """
-            The output path where to create the file/files relative to the\
-             working directory (cannot be used in conjunction with -l,\
-             --list).""")
+                The output path where to create the file/files relative to the\
+                 working directory (cannot be used in conjunction with -l,\
+                 --list).\
+                """)
             .valueSeparator('=')
             .required(false)
             .get() //
@@ -155,9 +158,10 @@ class ParsedCommandLine {
             .hasArg(false)
             .desc(
                 """
-        Transform the template once for the entire model (cannot be used\
-         in conjunction with --multi and cannot be used in\
-         conjunction with -l, --list).""")
+                Transform the template once for the entire model (cannot be used\
+                 in conjunction with --multi and cannot be used in\
+                 conjunction with -l, --list).\
+                """)
             .required(false)
             .get() //
         ),

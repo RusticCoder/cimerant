@@ -77,124 +77,115 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
         .streamChildrenByClass(SnowflakeParser.Col_declContext.class)
         .streamChildrenByClass(SnowflakeParser.Data_typeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              final var terminalNodeTextList =
-                  ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
-                      .streamChildrenByClass(SnowflakeParser.Col_declContext.class)
-                      .streamChildrenByClass(SnowflakeParser.Data_typeContext.class)
-                      .streamChildrenByClass(SnowflakeParser.NumContext.class)
-                      .listAllTerminalNodeText();
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-                terminalNodeTextList.forEach(
-                    text -> {
-                      if (!currentField.containsKey(Field.PRECISION)) {
-                        currentField.put(Field.PRECISION, NotNullSet.getInstance(text));
-                      } else if (!currentField.containsKey(Field.SCALE)) {
-                        currentField.put(Field.SCALE, NotNullSet.getInstance(text));
-                      }
-                    });
+        .forEach(terminalNodeText -> {
+          final var terminalNodeTextList =
+              ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
+                  .streamChildrenByClass(SnowflakeParser.Col_declContext.class)
+                  .streamChildrenByClass(SnowflakeParser.Data_typeContext.class)
+                  .streamChildrenByClass(SnowflakeParser.NumContext.class)
+                  .listAllTerminalNodeText();
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+            terminalNodeTextList.forEach(text -> {
+              if (!currentField.containsKey(Field.PRECISION)) {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(text));
+              } else if (!currentField.containsKey(Field.SCALE)) {
+                currentField.put(Field.SCALE, NotNullSet.getInstance(text));
               }
             });
+          }
+        });
     ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
         .streamTextByClass(SnowflakeParserListenerImpl.input, SnowflakeParser.StringContext.class)
         .map(ParseTreeHelper::trimSingleQuote)
         .filter(StringUtils::isNoneBlank)
-        .forEach(
-            intervalText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.COMMENT, NotNullSet.getInstance(intervalText));
-              }
-            });
+        .forEach(intervalText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.COMMENT, NotNullSet.getInstance(intervalText));
+          }
+        });
     ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
         .streamChildrenByClass(SnowflakeParser.CollateContext.class)
         .streamChildrenByClass(SnowflakeParser.StringContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(SnowflakeParser.Out_of_line_constraintContext.class)
         .streamChildrenByClass(SnowflakeParser.Common_constraint_propertiesContext.class)
         .streamChildrenByClass(SnowflakeParser.Deferrable_not_deferrableContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
         .streamChildrenByClass(SnowflakeParser.Default_valueContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              if (Strings.CI.equals("AUTOINCREMENT", terminalNodeText)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.AUTO_INCREMENT, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              } else if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
-                final var terminalNodeTextList =
-                    ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
-                        .streamChildrenByClass(SnowflakeParser.Default_valueContext.class)
-                        .streamChildrenByClass(SnowflakeParser.NumContext.class)
-                        .listAllTerminalNodeText();
+        .forEach(terminalNodeText -> {
+          if (Strings.CI.equals("AUTOINCREMENT", terminalNodeText)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.AUTO_INCREMENT, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          } else if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
+            final var terminalNodeTextList =
+                ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
+                    .streamChildrenByClass(SnowflakeParser.Default_valueContext.class)
+                    .streamChildrenByClass(SnowflakeParser.NumContext.class)
+                    .listAllTerminalNodeText();
 
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
-                  terminalNodeTextList.forEach(
-                      text -> {
-                        if (!currentField.containsKey(Field.SEED)) {
-                          currentField.put(Field.SEED, NotNullSet.getInstance(text));
-                        } else if (!currentField.containsKey(Field.INCREMENT)) {
-                          currentField.put(Field.INCREMENT, NotNullSet.getInstance(text));
-                        }
-                      });
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
+              terminalNodeTextList.forEach(text -> {
+                if (!currentField.containsKey(Field.SEED)) {
+                  currentField.put(Field.SEED, NotNullSet.getInstance(text));
+                } else if (!currentField.containsKey(Field.INCREMENT)) {
+                  currentField.put(Field.INCREMENT, NotNullSet.getInstance(text));
                 }
-              }
-            });
+              });
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
         .streamChildrenByClass(SnowflakeParser.Default_valueContext.class)
         .streamTextByClass(SnowflakeParserListenerImpl.input, SnowflakeParser.ExprContext.class)
         .map(ParseTreeHelper::trimParentheses)
-        .forEach(
-            intervalText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
-              }
-            });
+        .forEach(intervalText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
+          }
+        });
     ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
         .streamChildrenByClass(SnowflakeParser.Col_declContext.class)
         .streamChildrenByClass(SnowflakeParser.Data_typeContext.class)
         .streamChildrenByClass(SnowflakeParser.Data_type_sizeContext.class)
         .streamChildrenByClass(SnowflakeParser.NumContext.class)
         .listAllTerminalNodeText()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.MAX_SIZE)) {
-                  currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.MAX_SIZE)) {
+              currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
 
     final var nullableText =
         ParseTreeStream.parseTreeStream(fullColDeclChildrenList)
@@ -277,101 +268,91 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .listAllTerminalNodeText()
-            .forEach(
-                terminalNodeText ->
-                    currentRelationship.put(
-                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+            .forEach(terminalNodeText ->
+                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SnowflakeParser.Out_of_line_constraintContext.class)
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .listAllTerminalNodeText()
-            .forEach(
-                terminalNodeText ->
-                    currentRelationship.put(
-                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+            .forEach(terminalNodeText ->
+                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SnowflakeParser.Full_col_declContext.class)
             .streamChildrenByClass(SnowflakeParser.Inline_constraintContext.class)
             .streamChildrenByClass(SnowflakeParser.Column_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .listAllTerminalNodeText()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SnowflakeParser.Full_col_declContext.class)
             .streamChildrenByClass(SnowflakeParser.Col_declContext.class)
             .streamChildrenByClass(SnowflakeParser.Column_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .listAllTerminalNodeText()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("column") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("column");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("column") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("column");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+            });
         final var referencesFound = new MutableBoolean(false);
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(SnowflakeParser.Out_of_line_constraintContext.class)
-            .forEach(
-                outOfLineConstraintChild -> {
-                  if (outOfLineConstraintChild instanceof TerminalNodeImpl
-                      && Strings.CI.equals("REFERENCES", outOfLineConstraintChild.getText())) {
-                    referencesFound.setTrue();
-                  } else if (outOfLineConstraintChild
-                      instanceof
-                      final SnowflakeParser.Column_list_in_parenthesesContext
-                          columnListInParenthesesContext) {
-                    ParseTreeStream.parseTreeStream(columnListInParenthesesContext)
-                        .streamChildrenByClass(SnowflakeParser.Column_listContext.class)
-                        .streamChildrenByClass(SnowflakeParser.Column_nameContext.class)
-                        .streamChildrenByClass(SnowflakeParser.Id_Context.class)
-                        .listAllTerminalNodeText()
-                        .forEach(
-                            terminalNodeText -> {
-                              if (!referencesFound.get()) {
-                                final Set<String> inheritsList;
-                                if (currentRelationship.get("column") instanceof Set) {
-                                  inheritsList = (Set<String>) currentRelationship.get("column");
-                                } else {
-                                  inheritsList = new LinkedHashSet<>();
-                                }
-                                inheritsList.add(terminalNodeText);
+            .forEach(outOfLineConstraintChild -> {
+              if (outOfLineConstraintChild instanceof TerminalNodeImpl
+                  && Strings.CI.equals("REFERENCES", outOfLineConstraintChild.getText())) {
+                referencesFound.setTrue();
+              } else if (outOfLineConstraintChild
+                  instanceof
+                  final SnowflakeParser.Column_list_in_parenthesesContext
+                      columnListInParenthesesContext) {
+                ParseTreeStream.parseTreeStream(columnListInParenthesesContext)
+                    .streamChildrenByClass(SnowflakeParser.Column_listContext.class)
+                    .streamChildrenByClass(SnowflakeParser.Column_nameContext.class)
+                    .streamChildrenByClass(SnowflakeParser.Id_Context.class)
+                    .listAllTerminalNodeText()
+                    .forEach(terminalNodeText -> {
+                      if (!referencesFound.get()) {
+                        final Set<String> inheritsList;
+                        if (currentRelationship.get("column") instanceof Set) {
+                          inheritsList = (Set<String>) currentRelationship.get("column");
+                        } else {
+                          inheritsList = new LinkedHashSet<>();
+                        }
+                        inheritsList.add(terminalNodeText);
 
-                                currentRelationship.put(
-                                    "column", NotNullSet.getInstance(inheritsList));
-                              } else {
-                                final Set<String> inheritsList;
-                                if (currentRelationship.get("foreignColumn") instanceof Set) {
-                                  inheritsList =
-                                      (Set<String>) currentRelationship.get("foreignColumn");
-                                } else {
-                                  inheritsList = new LinkedHashSet<>();
-                                }
-                                inheritsList.add(terminalNodeText);
+                        currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+                      } else {
+                        final Set<String> inheritsList;
+                        if (currentRelationship.get("foreignColumn") instanceof Set) {
+                          inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+                        } else {
+                          inheritsList = new LinkedHashSet<>();
+                        }
+                        inheritsList.add(terminalNodeText);
 
-                                currentRelationship.put(
-                                    "foreignColumn", NotNullSet.getInstance(inheritsList));
-                              }
-                            });
-                  }
-                });
+                        currentRelationship.put(
+                            "foreignColumn", NotNullSet.getInstance(inheritsList));
+                      }
+                    });
+              }
+            });
       }
     }
   }
@@ -423,15 +404,14 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
           .streamChildrenByClass(SnowflakeParser.TemporaryContext.class)
           .streamTerminalNodeString()
           .map(StringUtils::upperCase)
-          .forEach(
-              terminalNodeText -> {
-                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
-                    || Strings.CI.equals("TEMP", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              });
+          .forEach(terminalNodeText -> {
+            if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                || Strings.CI.equals("TEMP", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          });
 
       this.getRootContext().addObject(currentTable);
     }
@@ -468,19 +448,18 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
         .streamChildrenByClass(SnowflakeParser.External_table_column_declContext.class)
         .streamChildrenByClass(SnowflakeParser.Data_typeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(SnowflakeParser.External_table_column_decl_listContext.class)
         .streamChildrenByClass(SnowflakeParser.External_table_column_declContext.class)
@@ -488,19 +467,18 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
         .streamChildrenByClass(SnowflakeParser.Data_type_sizeContext.class)
         .streamChildrenByClass(SnowflakeParser.NumContext.class)
         .listAllTerminalNodeText()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.MAX_SIZE)) {
-                  currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.MAX_SIZE)) {
+              currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.MAX_SIZE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
   }
 
   /**
@@ -527,12 +505,11 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
         .streamTextByClass(SnowflakeParserListenerImpl.input, SnowflakeParser.StringContext.class)
         .map(ParseTreeHelper::trimSingleQuote)
         .filter(StringUtils::isNoneBlank)
-        .forEach(
-            intervalText -> {
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.COMMENT, NotNullSet.getInstance(intervalText));
-            });
+        .forEach(intervalText -> {
+          currentTable
+              .getAttributes()
+              .put(SqlContextImpl.COMMENT, NotNullSet.getInstance(intervalText));
+        });
   }
 
   /**
@@ -559,9 +536,8 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
             .streamChildrenByClass(SnowflakeParser.Object_nameContext.class)
             .streamChildrenByClass(SnowflakeParser.Id_Context.class)
             .streamTerminalNodeString()
-            .filter(
-                terminalNodeText ->
-                    !Strings.CI.equals(currentTable.getObjectName(), terminalNodeText))
+            .filter(terminalNodeText ->
+                !Strings.CI.equals(currentTable.getObjectName(), terminalNodeText))
             .collect(Collectors.toSet());
 
     if (!terminalNodeTextList.isEmpty()) {
@@ -827,21 +803,20 @@ public class SnowflakeParserListenerImpl extends SnowflakeParserListenerBase {
     final var ongoing = new MutableBoolean(true);
     ParseTreeStream.parseTreeStream(parentContext)
         .streamChildrenByClass(SnowflakeParser.Create_table_likeContext.class)
-        .forEach(
-            createTableLikeChild -> {
-              if (createTableLikeChild instanceof TerminalNodeImpl
-                  && Strings.CI.equals("LIKE", createTableLikeChild.getText())) {
-                ongoing.setFalse();
-              } else if (createTableLikeChild instanceof SnowflakeParser.Object_nameContext
-                  && ongoing.get()) {
-                terminalNodeTextList.addAll(
-                    ParseTreeStream.parseTreeStream(
-                            (SnowflakeParser.Object_nameContext) createTableLikeChild)
-                        .streamChildrenByClass(SnowflakeParser.Id_Context.class)
-                        .streamTerminalNodeString()
-                        .toList());
-              }
-            });
+        .forEach(createTableLikeChild -> {
+          if (createTableLikeChild instanceof TerminalNodeImpl
+              && Strings.CI.equals("LIKE", createTableLikeChild.getText())) {
+            ongoing.setFalse();
+          } else if (createTableLikeChild instanceof SnowflakeParser.Object_nameContext
+              && ongoing.get()) {
+            terminalNodeTextList.addAll(
+                ParseTreeStream.parseTreeStream(
+                        (SnowflakeParser.Object_nameContext) createTableLikeChild)
+                    .streamChildrenByClass(SnowflakeParser.Id_Context.class)
+                    .streamTerminalNodeString()
+                    .toList());
+          }
+        });
 
     terminalNodeTextList.addAll(
         ParseTreeStream.parseTreeStream(parentContext)

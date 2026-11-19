@@ -2,10 +2,10 @@ package cimerant.tests.stringutils;
 
 import cimerant.context.ContextRoot;
 import cimerant.context.impl.ContextRootImpl;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.jupiter.api.Assertions;
+import tools.jackson.databind.ObjectMapper;
 
 /** This feature will test all the various combinations of command-line arguments. */
 public class SnakeTitleCaseValue {

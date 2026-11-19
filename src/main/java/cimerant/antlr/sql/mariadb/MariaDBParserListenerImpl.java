@@ -8228,15 +8228,14 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
       ParseTreeStream.parseTreeStream(ctx)
           .streamTerminalNodeString()
           .map(StringUtils::upperCase)
-          .forEach(
-              terminalNodeText -> {
-                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
-                    || Strings.CI.equals("TEMP", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              });
+          .forEach(terminalNodeText -> {
+            if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                || Strings.CI.equals("TEMP", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          });
 
       this.getRootContext().addObject(currentTable);
     }
@@ -8265,126 +8264,119 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.DimensionDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (Strings.CI.equals("PRECISION", terminalNodeText)) {
-                  currentField.put(
-                      Field.FIELD_TYPE,
-                      NotNullSet.getInstance(
-                          currentField.get(Field.FIELD_TYPE) + " " + terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (Strings.CI.equals("PRECISION", terminalNodeText)) {
+              currentField.put(
+                  Field.FIELD_TYPE,
+                  NotNullSet.getInstance(
+                      currentField.get(Field.FIELD_TYPE) + " " + terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.LongVarbinaryDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.LongVarcharDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.NationalStringDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.SimpleDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.SpatialDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.StringDataTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     final var autoIncrementText =
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
@@ -8400,91 +8392,86 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamTextByClass(
             MariaDBParserListenerImpl.input, MariaDBParser.CommentColumnConstraintContext.class)
-        .forEach(
-            intervalText -> {
-              final String value;
-              if (StringUtils.upperCase(intervalText.replaceAll("\\s", ""), Locale.getDefault())
-                  .startsWith("COMMENT=")) {
-                value = ParseTreeHelper.trimSingleQuote(intervalText.split("=", 2)[1]);
-              } else if (StringUtils.upperCase(intervalText, Locale.getDefault())
-                  .startsWith("COMMENT ")) {
-                value = ParseTreeHelper.trimSingleQuote(intervalText.split(" ", 2)[1]);
-              } else {
-                value = ParseTreeHelper.trimSingleQuote(intervalText);
-              }
-              if (StringUtils.isNoneBlank(value)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.COMMENT, NotNullSet.getInstance(value));
-                }
-              }
-            });
+        .forEach(intervalText -> {
+          final String value;
+          if (StringUtils.upperCase(intervalText.replaceAll("\\s", ""), Locale.getDefault())
+              .startsWith("COMMENT=")) {
+            value = ParseTreeHelper.trimSingleQuote(intervalText.split("=", 2)[1]);
+          } else if (StringUtils.upperCase(intervalText, Locale.getDefault())
+              .startsWith("COMMENT ")) {
+            value = ParseTreeHelper.trimSingleQuote(intervalText.split(" ", 2)[1]);
+          } else {
+            value = ParseTreeHelper.trimSingleQuote(intervalText);
+          }
+          if (StringUtils.isNoneBlank(value)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.COMMENT, NotNullSet.getInstance(value));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.DefaultColumnConstraintContext.class)
         .streamTextByClass(MariaDBParserListenerImpl.input, MariaDBParser.DefaultValueContext.class)
         .map(ParseTreeHelper::trimParentheses)
-        .forEach(
-            intervalText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
-              }
-            });
+        .forEach(intervalText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.DimensionDataTypeContext.class)
         .streamChildrenByClass(MariaDBParser.LengthOneDimensionContext.class)
         .streamChildrenByClass(MariaDBParser.DecimalLiteralContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.DimensionDataTypeContext.class)
         .streamChildrenByClass(MariaDBParser.LengthTwoOptionalDimensionContext.class)
         .streamChildrenByClass(MariaDBParser.DecimalLiteralContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.PRECISION)) {
-                  if (terminalNodeText.contains(".")) {
-                    final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-                  }
-                } else if (!currentField.containsKey(Field.SCALE)) {
-                  currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
-                }
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.PRECISION)) {
+              if (terminalNodeText.contains(".")) {
+                final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
               }
-            });
+            } else if (!currentField.containsKey(Field.SCALE)) {
+              currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.DimensionDataTypeContext.class)
         .streamChildrenByClass(MariaDBParser.LengthTwoDimensionContext.class)
         .streamChildrenByClass(MariaDBParser.DecimalLiteralContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.PRECISION)) {
-                  if (terminalNodeText.contains(".")) {
-                    final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-                  }
-                } else if (!currentField.containsKey(Field.SCALE)) {
-                  currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
-                }
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.PRECISION)) {
+              if (terminalNodeText.contains(".")) {
+                final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
               }
-            });
+            } else if (!currentField.containsKey(Field.SCALE)) {
+              currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
+            }
+          }
+        });
     if (Strings.CI.equals("INVISIBLE", autoIncrementText)) {
       for (final var currentField : currentFieldList) {
         currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.FALSE));
@@ -8561,24 +8548,22 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
         .streamChildrenByClass(MariaDBParser.CharsetNameContext.class)
         .streamChildrenByClass(MariaDBParser.CharsetNameBaseContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.CHARSET, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.CHARSET, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.StringDataTypeContext.class)
         .streamChildrenByClass(MariaDBParser.CollationNameContext.class)
         .streamChildrenByClass(MariaDBParser.UidContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.StringDataTypeContext.class)
@@ -8586,36 +8571,33 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
         .streamChildrenByClass(MariaDBParser.UidContext.class)
         .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.CollateColumnConstraintContext.class)
         .streamChildrenByClass(MariaDBParser.CollationNameContext.class)
         .streamChildrenByClass(MariaDBParser.UidContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.StringDataTypeContext.class)
         .streamChildrenByClass(MariaDBParser.LengthOneDimensionContext.class)
         .streamChildrenByClass(MariaDBParser.DecimalLiteralContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
+          }
+        });
     final var uniqueKeyText =
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
@@ -8630,21 +8612,19 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.VisibilityColumnConstraintContext.class)
-        .forEach(
-            visibilityColumnConstraintContext -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.TRUE));
-              }
-            });
+        .forEach(visibilityColumnConstraintContext -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.TRUE));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
         .streamChildrenByClass(MariaDBParser.InvisibilityColumnConstraintContext.class)
-        .forEach(
-            invisibilityColumnConstraintContext -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.FALSE));
-              }
-            });
+        .forEach(invisibilityColumnConstraintContext -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.VISIBLE, NotNullSet.getInstance(Boolean.FALSE));
+          }
+        });
     for (final var currentField : currentFieldList) {
       if (currentField.containsKey(Field.PRECISION)
           && !currentField.containsKey(Field.SCALE)
@@ -8677,18 +8657,17 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
           .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
           .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
           .filter(StringUtils::isNoneBlank)
-          .forEach(
-              simpleIdText -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("column") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("column");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(simpleIdText);
+          .forEach(simpleIdText -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("column") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("column");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(simpleIdText);
 
-                currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+          });
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
           .streamChildrenByClass(MariaDBParser.ReferenceColumnConstraintContext.class)
@@ -8697,11 +8676,9 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
           .streamChildrenByClass(MariaDBParser.FullIdContext.class)
           .map(fullIdContext -> ParseTreeHelper.trimToken(fullIdContext.getText()))
           .filter(StringUtils::isNoneBlank)
-          .forEach(
-              fullIdText ->
-                  currentRelationship.put(
-                      "foreignTable",
-                      NotNullSet.getInstance(ParseTreeHelper.trimToken(fullIdText))));
+          .forEach(fullIdText ->
+              currentRelationship.put(
+                  "foreignTable", NotNullSet.getInstance(ParseTreeHelper.trimToken(fullIdText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(MariaDBParser.ColumnDefinitionContext.class)
           .streamChildrenByClass(MariaDBParser.ReferenceColumnConstraintContext.class)
@@ -8712,18 +8689,17 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
           .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
           .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
           .filter(StringUtils::isNoneBlank)
-          .forEach(
-              simpleIdText -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("foreignColumn") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(simpleIdText);
+          .forEach(simpleIdText -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("foreignColumn") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(simpleIdText);
 
-                currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+          });
     }
   }
 
@@ -8929,55 +8905,49 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
 
     final var likeFound = new MutableBoolean(false);
     ParseTreeStream.parseTreeStream(ctx)
-        .forEach(
-            copyCreateTableChild -> {
-              if (copyCreateTableChild instanceof final TerminalNode terminalNode) {
-                likeFound.setValue(Strings.CI.equals("LIKE", terminalNode.getText()));
-              }
-              if (copyCreateTableChild
-                      instanceof final MariaDBParser.TableNameContext tableNameContext
-                  && likeFound.booleanValue()) {
-                ParseTreeStream.parseTreeStream(tableNameContext)
-                    .streamChildrenByClass(MariaDBParser.FullIdContext.class)
-                    .streamChildrenByClass(MariaDBParser.UidContext.class)
-                    .streamTerminalNodeString()
-                    .forEach(
-                        terminalNodeText -> {
-                          final Set<String> inheritsList;
-                          if (currentTable.getAttributes().get(SqlContextImpl.LIKE)
-                              instanceof Set) {
-                            inheritsList =
-                                (Set<String>) currentTable.getAttributes().get(SqlContextImpl.LIKE);
-                          } else {
-                            inheritsList = new TreeSet<>();
-                          }
-                          inheritsList.add(terminalNodeText);
-                          currentTable
-                              .getAttributes()
-                              .put(SqlContextImpl.LIKE, NotNullSet.getInstance(inheritsList));
-                        });
-                ParseTreeStream.parseTreeStream(tableNameContext)
-                    .streamChildrenByClass(MariaDBParser.FullIdContext.class)
-                    .streamChildrenByClass(MariaDBParser.UidContext.class)
-                    .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
-                    .streamTerminalNodeString()
-                    .forEach(
-                        terminalNodeText -> {
-                          final Set<String> inheritsList;
-                          if (currentTable.getAttributes().get(SqlContextImpl.LIKE)
-                              instanceof Set) {
-                            inheritsList =
-                                (Set<String>) currentTable.getAttributes().get(SqlContextImpl.LIKE);
-                          } else {
-                            inheritsList = new TreeSet<>();
-                          }
-                          inheritsList.add(terminalNodeText);
-                          currentTable
-                              .getAttributes()
-                              .put(SqlContextImpl.LIKE, NotNullSet.getInstance(inheritsList));
-                        });
-              }
-            });
+        .forEach(copyCreateTableChild -> {
+          if (copyCreateTableChild instanceof final TerminalNode terminalNode) {
+            likeFound.setValue(Strings.CI.equals("LIKE", terminalNode.getText()));
+          }
+          if (copyCreateTableChild instanceof final MariaDBParser.TableNameContext tableNameContext
+              && likeFound.booleanValue()) {
+            ParseTreeStream.parseTreeStream(tableNameContext)
+                .streamChildrenByClass(MariaDBParser.FullIdContext.class)
+                .streamChildrenByClass(MariaDBParser.UidContext.class)
+                .streamTerminalNodeString()
+                .forEach(terminalNodeText -> {
+                  final Set<String> inheritsList;
+                  if (currentTable.getAttributes().get(SqlContextImpl.LIKE) instanceof Set) {
+                    inheritsList =
+                        (Set<String>) currentTable.getAttributes().get(SqlContextImpl.LIKE);
+                  } else {
+                    inheritsList = new TreeSet<>();
+                  }
+                  inheritsList.add(terminalNodeText);
+                  currentTable
+                      .getAttributes()
+                      .put(SqlContextImpl.LIKE, NotNullSet.getInstance(inheritsList));
+                });
+            ParseTreeStream.parseTreeStream(tableNameContext)
+                .streamChildrenByClass(MariaDBParser.FullIdContext.class)
+                .streamChildrenByClass(MariaDBParser.UidContext.class)
+                .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
+                .streamTerminalNodeString()
+                .forEach(terminalNodeText -> {
+                  final Set<String> inheritsList;
+                  if (currentTable.getAttributes().get(SqlContextImpl.LIKE) instanceof Set) {
+                    inheritsList =
+                        (Set<String>) currentTable.getAttributes().get(SqlContextImpl.LIKE);
+                  } else {
+                    inheritsList = new TreeSet<>();
+                  }
+                  inheritsList.add(terminalNodeText);
+                  currentTable
+                      .getAttributes()
+                      .put(SqlContextImpl.LIKE, NotNullSet.getInstance(inheritsList));
+                });
+          }
+        });
 
     if (!currentTable.getFields().isEmpty() || !currentTable.getAttributes().isEmpty()) {
       this.getRootContext().addObject(currentTable);
@@ -9779,19 +9749,17 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.EngineNameBaseContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.ENGINE, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -9975,10 +9943,8 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
             .streamChildrenByClass(MariaDBParser.FullIdContext.class)
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText ->
-                    currentRelationship.put(
-                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+            .forEach(terminalNodeText ->
+                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ReferenceDefinitionContext.class)
             .streamChildrenByClass(MariaDBParser.TableNameContext.class)
@@ -9986,28 +9952,25 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText ->
-                    currentRelationship.put(
-                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+            .forEach(terminalNodeText ->
+                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ReferenceDefinitionContext.class)
             .streamChildrenByClass(MariaDBParser.FullColumnNameContext.class)
             .streamChildrenByClass(MariaDBParser.FullIdContext.class)
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ReferenceDefinitionContext.class)
             .streamChildrenByClass(MariaDBParser.FullColumnNameContext.class)
@@ -10015,36 +9978,34 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ReferenceDefinitionContext.class)
             .streamChildrenByClass(MariaDBParser.IndexColumnNamesContext.class)
             .streamChildrenByClass(MariaDBParser.IndexColumnNameContext.class)
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.ReferenceDefinitionContext.class)
             .streamChildrenByClass(MariaDBParser.IndexColumnNamesContext.class)
@@ -10052,36 +10013,34 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.IndexColumnNamesContext.class)
             .streamChildrenByClass(MariaDBParser.IndexColumnNameContext.class)
             .streamChildrenByClass(MariaDBParser.UidContext.class)
             .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
             .filter(StringUtils::isNoneBlank)
-            .forEach(
-                SimpleIdText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("column") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("column");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(SimpleIdText);
+            .forEach(SimpleIdText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("column") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("column");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(SimpleIdText);
 
-                  currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(MariaDBParser.IndexColumnNamesContext.class)
             .streamChildrenByClass(MariaDBParser.IndexColumnNameContext.class)
@@ -10089,18 +10048,17 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
             .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
             .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
             .filter(StringUtils::isNoneBlank)
-            .forEach(
-                SimpleIdText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("column") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("column");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(SimpleIdText);
+            .forEach(SimpleIdText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("column") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("column");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(SimpleIdText);
 
-                  currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+            });
       }
     }
   }
@@ -12115,15 +12073,14 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
       ParseTreeStream.parseTreeStream(ctx)
           .streamTerminalNodeString()
           .map(StringUtils::upperCase)
-          .forEach(
-              terminalNodeText -> {
-                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
-                    || Strings.CI.equals("TEMP", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              });
+          .forEach(terminalNodeText -> {
+            if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                || Strings.CI.equals("TEMP", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          });
 
       this.getRootContext().addObject(currentTable);
     }
@@ -13743,21 +13700,19 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText)));
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(MariaDBParser.CharsetNameContext.class)
         .streamChildrenByClass(MariaDBParser.CharsetNameBaseContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.CHARSET, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -13781,11 +13736,10 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.CHECKSUM, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.CHECKSUM, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -13818,12 +13772,10 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
           .streamChildrenByClass(MariaDBParser.UidContext.class)
           .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
           .streamTerminalNodeString()
-          .forEach(
-              terminalNodeText ->
-                  currentTable
-                      .getAttributes()
-                      .put(
-                          SqlContextImpl.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText)));
+          .forEach(terminalNodeText ->
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.COLLATION_NAME, NotNullSet.getInstance(terminalNodeText)));
     }
   }
 
@@ -13849,24 +13801,21 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
     ParseTreeStream.parseTreeStream(ctx.getParent())
         .streamTextByClass(
             MariaDBParserListenerImpl.input, MariaDBParser.TableOptionCommentContext.class)
-        .forEach(
-            intervalText -> {
-              final String value;
-              if (StringUtils.upperCase(intervalText.replaceAll("\\s", ""), Locale.getDefault())
-                  .startsWith("COMMENT=")) {
-                value = ParseTreeHelper.trimSingleQuote(intervalText.split("=", 2)[1]);
-              } else if (StringUtils.upperCase(intervalText, Locale.getDefault())
-                  .startsWith("COMMENT ")) {
-                value = ParseTreeHelper.trimSingleQuote(intervalText.split(" ", 2)[1]);
-              } else {
-                value = ParseTreeHelper.trimSingleQuote(intervalText);
-              }
-              if (StringUtils.isNoneBlank(value)) {
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.COMMENT, NotNullSet.getInstance(value));
-              }
-            });
+        .forEach(intervalText -> {
+          final String value;
+          if (StringUtils.upperCase(intervalText.replaceAll("\\s", ""), Locale.getDefault())
+              .startsWith("COMMENT=")) {
+            value = ParseTreeHelper.trimSingleQuote(intervalText.split("=", 2)[1]);
+          } else if (StringUtils.upperCase(intervalText, Locale.getDefault())
+              .startsWith("COMMENT ")) {
+            value = ParseTreeHelper.trimSingleQuote(intervalText.split(" ", 2)[1]);
+          } else {
+            value = ParseTreeHelper.trimSingleQuote(intervalText);
+          }
+          if (StringUtils.isNoneBlank(value)) {
+            currentTable.getAttributes().put(SqlContextImpl.COMMENT, NotNullSet.getInstance(value));
+          }
+        });
   }
 
   /**
@@ -14186,11 +14135,10 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.TRANSACTIONAL, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.TRANSACTIONAL, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -14302,11 +14250,10 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
 
     ParseTreeStream.parseTreeStream(ctx)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText ->
-                currentTable
-                    .getAttributes()
-                    .put(SqlContextImpl.TABLE_TYPE, NotNullSet.getInstance(terminalNodeText)));
+        .forEach(terminalNodeText ->
+            currentTable
+                .getAttributes()
+                .put(SqlContextImpl.TABLE_TYPE, NotNullSet.getInstance(terminalNodeText)));
   }
 
   /**
@@ -15141,27 +15088,26 @@ public class MariaDBParserListenerImpl extends MariaDBParserBaseListener {
     if (ctx instanceof final MariaDBParser.CopyCreateTableContext copyCreateTableContext) {
       final var likeFound = new MutableBoolean(false);
       ParseTreeStream.parseTreeStream(copyCreateTableContext)
-          .forEach(
-              copyCreateTableChild -> {
-                if (copyCreateTableChild instanceof final TerminalNode terminalNode) {
-                  likeFound.setValue(Strings.CI.equals("like", terminalNode.getText()));
-                }
-                if (copyCreateTableChild
-                        instanceof final MariaDBParser.TableNameContext tableNameContext
-                    && !likeFound.booleanValue()) {
-                  ParseTreeStream.parseTreeStream(tableNameContext)
-                      .streamChildrenByClass(MariaDBParser.FullIdContext.class)
-                      .streamChildrenByClass(MariaDBParser.UidContext.class)
-                      .streamTerminalNodeString()
-                      .forEach(terminalNodeTextList::add);
-                  ParseTreeStream.parseTreeStream(tableNameContext)
-                      .streamChildrenByClass(MariaDBParser.FullIdContext.class)
-                      .streamChildrenByClass(MariaDBParser.UidContext.class)
-                      .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
-                      .streamTerminalNodeString()
-                      .forEach(terminalNodeTextList::add);
-                }
-              });
+          .forEach(copyCreateTableChild -> {
+            if (copyCreateTableChild instanceof final TerminalNode terminalNode) {
+              likeFound.setValue(Strings.CI.equals("like", terminalNode.getText()));
+            }
+            if (copyCreateTableChild
+                    instanceof final MariaDBParser.TableNameContext tableNameContext
+                && !likeFound.booleanValue()) {
+              ParseTreeStream.parseTreeStream(tableNameContext)
+                  .streamChildrenByClass(MariaDBParser.FullIdContext.class)
+                  .streamChildrenByClass(MariaDBParser.UidContext.class)
+                  .streamTerminalNodeString()
+                  .forEach(terminalNodeTextList::add);
+              ParseTreeStream.parseTreeStream(tableNameContext)
+                  .streamChildrenByClass(MariaDBParser.FullIdContext.class)
+                  .streamChildrenByClass(MariaDBParser.UidContext.class)
+                  .streamChildrenByClass(MariaDBParser.SimpleIdContext.class)
+                  .streamTerminalNodeString()
+                  .forEach(terminalNodeTextList::add);
+            }
+          });
     }
 
     var parentContext =

@@ -88,39 +88,37 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
         .streamChildrenByClass(HiveParser.TypeContext.class)
         .streamChildrenByClass(HiveParser.PrimitiveTypeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (Strings.CI.equals("PRECISION", terminalNodeText)) {
-                  currentField.put(
-                      Field.FIELD_TYPE,
-                      NotNullSet.getInstance(
-                          currentField.get(Field.FIELD_TYPE) + " " + terminalNodeText));
-                } else if (NumberUtils.isCreatable(terminalNodeText)) {
-                  if (!currentField.containsKey(Field.MAX_SIZE)) {
-                    if (terminalNodeText.contains(".")) {
-                      final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                      currentField.put(
-                          Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                      currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                    } else {
-                      currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
-                    }
-                  } else {
-                    currentField.put(Field.PRECISION, currentField.get(Field.MAX_SIZE));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
-                    currentField.remove(Field.MAX_SIZE);
-                  }
-                } else if (!Strings.CI.equals(
-                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (Strings.CI.equals("PRECISION", terminalNodeText)) {
+              currentField.put(
+                  Field.FIELD_TYPE,
+                  NotNullSet.getInstance(
+                      currentField.get(Field.FIELD_TYPE) + " " + terminalNodeText));
+            } else if (NumberUtils.isCreatable(terminalNodeText)) {
+              if (!currentField.containsKey(Field.MAX_SIZE)) {
+                if (terminalNodeText.contains(".")) {
+                  final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                  currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                  currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+                } else {
+                  currentField.put(Field.MAX_SIZE, NotNullSet.getInstance(terminalNodeText));
                 }
+              } else {
+                currentField.put(Field.PRECISION, currentField.get(Field.MAX_SIZE));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeText));
+                currentField.remove(Field.MAX_SIZE);
               }
-            });
+            } else if (!Strings.CI.equals(
+                currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     final var nullableText =
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(HiveParser.ColumnConstraintContext.class)
@@ -155,12 +153,11 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
         .streamChildrenByClass(HiveParser.ColConstraintContext.class)
         .streamChildrenByClass(HiveParser.ColumnConstraintTypeContext.class)
         .streamTextByClass(HiveParserListenerImpl.input, HiveParser.DefaultValContext.class)
-        .forEach(
-            intervalText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
-              }
-            });
+        .forEach(intervalText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.DEFAULT, NotNullSet.getInstance(intervalText));
+          }
+        });
 
     for (final var currentField : currentFieldList) {
       if (Strings.CI.equals("DECIMAL", Objects.toString(currentField.get(Field.FIELD_TYPE), ""))
@@ -175,46 +172,42 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(HiveParser.Id_Context.class)
           .streamTerminalNodeString()
-          .forEach(
-              terminalNodeText -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("column") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("column");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(terminalNodeText);
+          .forEach(terminalNodeText -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("column") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("column");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(terminalNodeText);
 
-                currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+          });
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(HiveParser.ColumnConstraintContext.class)
           .streamChildrenByClass(HiveParser.ForeignKeyConstraintContext.class)
           .streamChildrenByClass(HiveParser.TableNameContext.class)
           .streamChildrenByClass(HiveParser.Id_Context.class)
           .streamTerminalNodeString()
-          .forEach(
-              terminalNodeText ->
-                  currentRelationship.put(
-                      "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+          .forEach(terminalNodeText ->
+              currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(HiveParser.ColumnConstraintContext.class)
           .streamChildrenByClass(HiveParser.ForeignKeyConstraintContext.class)
           .streamChildrenByClass(HiveParser.ColumnNameContext.class)
           .streamChildrenByClass(HiveParser.Id_Context.class)
           .streamTerminalNodeString()
-          .forEach(
-              terminalNodeText -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("foreignColumn") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(terminalNodeText);
+          .forEach(terminalNodeText -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("foreignColumn") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(terminalNodeText);
 
-                currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+          });
     }
   }
 
@@ -240,67 +233,60 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
       if (currentRelationship != null) {
         final var referencesFound = new MutableBoolean(false);
         ParseTreeStream.parseTreeStream(ctx)
-            .forEach(
-                createForeignKeyChild -> {
-                  if (createForeignKeyChild instanceof final TerminalNode terminalNode
-                      && !referencesFound.booleanValue()) {
-                    referencesFound.setValue(
-                        Strings.CI.equals("REFERENCES", terminalNode.getText()));
-                  } else if (createForeignKeyChild
-                          instanceof final HiveParser.TableNameContext tableNameContext
-                      && referencesFound.booleanValue()) {
-                    ParseTreeStream.parseTreeStream(tableNameContext)
-                        .streamChildrenByClass(HiveParser.Id_Context.class)
-                        .streamTerminalNodeString()
-                        .forEach(
-                            terminalNodeText ->
-                                currentRelationship.put(
-                                    "foreignTable", NotNullSet.getInstance(terminalNodeText)));
-                  } else if (createForeignKeyChild
-                      instanceof
-                      final HiveParser.ColumnParenthesesListContext columnParenthesesListContext) {
-                    if (referencesFound.booleanValue()) {
-                      ParseTreeStream.parseTreeStream(columnParenthesesListContext)
-                          .streamChildrenByClass(HiveParser.ColumnNameListContext.class)
-                          .streamChildrenByClass(HiveParser.ColumnNameContext.class)
-                          .streamChildrenByClass(HiveParser.Id_Context.class)
-                          .streamTerminalNodeString()
-                          .forEach(
-                              terminalNodeText -> {
-                                final Set<String> inheritsList;
-                                if (currentRelationship.get("foreignColumn") instanceof Set) {
-                                  inheritsList =
-                                      (Set<String>) currentRelationship.get("foreignColumn");
-                                } else {
-                                  inheritsList = new LinkedHashSet<>();
-                                }
-                                inheritsList.add(terminalNodeText);
+            .forEach(createForeignKeyChild -> {
+              if (createForeignKeyChild instanceof final TerminalNode terminalNode
+                  && !referencesFound.booleanValue()) {
+                referencesFound.setValue(Strings.CI.equals("REFERENCES", terminalNode.getText()));
+              } else if (createForeignKeyChild
+                      instanceof final HiveParser.TableNameContext tableNameContext
+                  && referencesFound.booleanValue()) {
+                ParseTreeStream.parseTreeStream(tableNameContext)
+                    .streamChildrenByClass(HiveParser.Id_Context.class)
+                    .streamTerminalNodeString()
+                    .forEach(terminalNodeText ->
+                        currentRelationship.put(
+                            "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+              } else if (createForeignKeyChild
+                  instanceof
+                  final HiveParser.ColumnParenthesesListContext columnParenthesesListContext) {
+                if (referencesFound.booleanValue()) {
+                  ParseTreeStream.parseTreeStream(columnParenthesesListContext)
+                      .streamChildrenByClass(HiveParser.ColumnNameListContext.class)
+                      .streamChildrenByClass(HiveParser.ColumnNameContext.class)
+                      .streamChildrenByClass(HiveParser.Id_Context.class)
+                      .streamTerminalNodeString()
+                      .forEach(terminalNodeText -> {
+                        final Set<String> inheritsList;
+                        if (currentRelationship.get("foreignColumn") instanceof Set) {
+                          inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+                        } else {
+                          inheritsList = new LinkedHashSet<>();
+                        }
+                        inheritsList.add(terminalNodeText);
 
-                                currentRelationship.put(
-                                    "foreignColumn", NotNullSet.getInstance(inheritsList));
-                              });
-                    } else {
-                      ParseTreeStream.parseTreeStream(columnParenthesesListContext)
-                          .streamChildrenByClass(HiveParser.ColumnNameListContext.class)
-                          .streamChildrenByClass(HiveParser.ColumnNameContext.class)
-                          .streamChildrenByClass(HiveParser.Id_Context.class)
-                          .streamTerminalNodeString()
-                          .forEach(
-                              terminalNodeText -> {
-                                final Set<String> inheritsList;
-                                if (currentRelationship.get("column") instanceof Set) {
-                                  inheritsList = (Set<String>) currentRelationship.get("column");
-                                } else {
-                                  inheritsList = new LinkedHashSet<>();
-                                }
-                                inheritsList.add(terminalNodeText);
+                        currentRelationship.put(
+                            "foreignColumn", NotNullSet.getInstance(inheritsList));
+                      });
+                } else {
+                  ParseTreeStream.parseTreeStream(columnParenthesesListContext)
+                      .streamChildrenByClass(HiveParser.ColumnNameListContext.class)
+                      .streamChildrenByClass(HiveParser.ColumnNameContext.class)
+                      .streamChildrenByClass(HiveParser.Id_Context.class)
+                      .streamTerminalNodeString()
+                      .forEach(terminalNodeText -> {
+                        final Set<String> inheritsList;
+                        if (currentRelationship.get("column") instanceof Set) {
+                          inheritsList = (Set<String>) currentRelationship.get("column");
+                        } else {
+                          inheritsList = new LinkedHashSet<>();
+                        }
+                        inheritsList.add(terminalNodeText);
 
-                                currentRelationship.put(
-                                    "column", NotNullSet.getInstance(inheritsList));
-                              });
-                    }
-                  }
-                });
+                        currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+                      });
+                }
+              }
+            });
       }
     }
   }
@@ -350,33 +336,31 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
         .streamChildrenByClass(HiveParser.TableNameContext.class)
         .streamChildrenByClass(HiveParser.Id_Context.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              final Set<String> inheritsList;
-              if (currentTable.getAttributes().get(SqlContextImpl.LIKE) instanceof Set) {
-                inheritsList = (Set<String>) currentTable.getAttributes().get(SqlContextImpl.LIKE);
-              } else {
-                inheritsList = new TreeSet<>();
-              }
-              inheritsList.add(terminalNodeText);
-              currentTable
-                  .getAttributes()
-                  .put(SqlContextImpl.LIKE, NotNullSet.getInstance(inheritsList));
-            });
+        .forEach(terminalNodeText -> {
+          final Set<String> inheritsList;
+          if (currentTable.getAttributes().get(SqlContextImpl.LIKE) instanceof Set) {
+            inheritsList = (Set<String>) currentTable.getAttributes().get(SqlContextImpl.LIKE);
+          } else {
+            inheritsList = new TreeSet<>();
+          }
+          inheritsList.add(terminalNodeText);
+          currentTable
+              .getAttributes()
+              .put(SqlContextImpl.LIKE, NotNullSet.getInstance(inheritsList));
+        });
 
     if (!currentTable.getFields().isEmpty() || !currentTable.getAttributes().isEmpty()) {
       ParseTreeStream.parseTreeStream(ctx)
           .streamTerminalNodeString()
           .map(StringUtils::upperCase)
-          .forEach(
-              terminalNodeText -> {
-                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
-                    || Strings.CI.equals("TEMP", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              });
+          .forEach(terminalNodeText -> {
+            if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                || Strings.CI.equals("TEMP", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          });
 
       this.getRootContext().addObject(currentTable);
     }
@@ -516,59 +500,56 @@ public class HiveParserListenerImpl extends HiveParserListenerBase {
             .streamChildrenByClass(HiveParser.ColumnConstraintContext.class)
             .streamChildrenByClass(HiveParser.ForeignKeyConstraintContext.class)
             .filter(TerminalNode.class::isInstance)
-            .map(
-                foreignTerminalNode -> {
-                  final List<ParseTree> returnValue = new ArrayList<>();
-                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                    returnValue.addAll(
-                        ParseTreeStream.parseTreeStream(
-                                (ParserRuleContext)
-                                    foreignTerminalNode.getParent().getParent().getParent())
-                            .streamChildrenByClass(HiveParser.Id_Context.class)
-                            .filter(TerminalNode.class::isInstance)
-                            .toList());
-                  }
-                  return returnValue;
-                })
+            .map(foreignTerminalNode -> {
+              final List<ParseTree> returnValue = new ArrayList<>();
+              if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                returnValue.addAll(
+                    ParseTreeStream.parseTreeStream(
+                            (ParserRuleContext)
+                                foreignTerminalNode.getParent().getParent().getParent())
+                        .streamChildrenByClass(HiveParser.Id_Context.class)
+                        .filter(TerminalNode.class::isInstance)
+                        .toList());
+              }
+              return returnValue;
+            })
             .flatMap(List::stream)
             .toList());
     int lastIdx =
         IntStream.range(0, ctx.children.size())
-            .filter(
-                i ->
-                    ctx.children
-                        .get(i)
-                        .getText()
-                        .toUpperCase(Locale.getDefault())
-                        .contains("REFERENCES"))
+            .filter(i ->
+                ctx.children
+                    .get(i)
+                    .getText()
+                    .toUpperCase(Locale.getDefault())
+                    .contains("REFERENCES"))
             .findFirst()
             .orElse(-1);
     terminalNode.addAll(
         ParseTreeStream.parseTreeStream(ctx)
             .filter(TerminalNode.class::isInstance)
-            .map(
-                foreignTerminalNode -> {
-                  final List<ParseTree> returnValue = new ArrayList<>();
-                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                    returnValue.addAll(
-                        ParseTreeStream.parseTreeStream(ctx)
-                            .streamChildrenByClass(HiveParser.Id_Context.class)
-                            .filter(TerminalNode.class::isInstance)
-                            .toList());
-                    if (returnValue.isEmpty()) {
-                      returnValue.addAll(
-                          ParseTreeStream.parseTreeStream(ctx)
-                              .streamChildrenByClass(HiveParser.ColumnParenthesesListContext.class)
-                              .streamChildrenByClass(HiveParser.ColumnNameListContext.class)
-                              .streamChildrenByClass(HiveParser.ColumnNameContext.class)
-                              .streamChildrenByClass(HiveParser.Id_Context.class)
-                              .filter(TerminalNode.class::isInstance)
-                              .toList()
-                              .subList(0, lastIdx - 1));
-                    }
-                  }
-                  return returnValue;
-                })
+            .map(foreignTerminalNode -> {
+              final List<ParseTree> returnValue = new ArrayList<>();
+              if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                returnValue.addAll(
+                    ParseTreeStream.parseTreeStream(ctx)
+                        .streamChildrenByClass(HiveParser.Id_Context.class)
+                        .filter(TerminalNode.class::isInstance)
+                        .toList());
+                if (returnValue.isEmpty()) {
+                  returnValue.addAll(
+                      ParseTreeStream.parseTreeStream(ctx)
+                          .streamChildrenByClass(HiveParser.ColumnParenthesesListContext.class)
+                          .streamChildrenByClass(HiveParser.ColumnNameListContext.class)
+                          .streamChildrenByClass(HiveParser.ColumnNameContext.class)
+                          .streamChildrenByClass(HiveParser.Id_Context.class)
+                          .filter(TerminalNode.class::isInstance)
+                          .toList()
+                          .subList(0, lastIdx - 1));
+                }
+              }
+              return returnValue;
+            })
             .flatMap(List::stream)
             .toList());
 

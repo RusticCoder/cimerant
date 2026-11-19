@@ -110,10 +110,8 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .map(qualifiedNameContext -> ParseTreeHelper.trimToken(qualifiedNameContext.getText()))
             .filter(StringUtils::isNoneBlank)
             .filter(Predicate.not("null"::equalsIgnoreCase))
-            .forEach(
-                terminalNodeText ->
-                    currentRelationship.put(
-                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+            .forEach(terminalNodeText ->
+                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdsContext.class)
             .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdContext.class)
@@ -125,18 +123,17 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdsContext.class)
             .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdContext.class)
@@ -148,18 +145,17 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .map(identifierContext -> ParseTreeHelper.trimToken(identifierContext.getText()))
             .filter(StringUtils::isNoneBlank)
-            .forEach(
-                identifierText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("column") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("column");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(identifierText);
+            .forEach(identifierText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("column") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("column");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(identifierText);
 
-                  currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+            });
       }
     }
   }
@@ -188,59 +184,56 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.ConstdatetimeContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.ConstintervalContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.BitContext.class)
         .streamChildrenByClass(PostgreSQLParser.BitwithlengthContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -249,30 +242,29 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .filter(PostgreSQLParser.Expr_listContext.class::isInstance)
         .map((Function<? super ParseTree, ? extends String>) ParseTree::getText)
         .filter(StringUtils::isNoneBlank)
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.PRECISION)) {
-                  if (terminalNodeText.contains(".")) {
-                    final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else if (terminalNodeText.contains(",")) {
-                    final var terminalNodeSplit = terminalNodeText.split(",", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-                  }
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.PRECISION).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.PRECISION)) {
+              if (terminalNodeText.contains(".")) {
+                final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else if (terminalNodeText.contains(",")) {
+                final var terminalNodeSplit = terminalNodeText.split(",", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
               }
-            });
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.PRECISION).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -281,79 +273,73 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.Opt_varyingContext.class)
         .streamTerminalNodeString()
         .map(StringUtils::upperCase)
-        .forEach(
-            terminalNodeText -> {
-              if (Strings.CI.equals("VARYING", terminalNodeText)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.VARYING, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          if (Strings.CI.equals("VARYING", terminalNodeText)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.VARYING, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
         .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
         .streamChildrenByClass(PostgreSQLParser.ColconstraintelemContext.class)
         .streamTerminalNodeString()
         .map(StringUtils::upperCase)
-        .forEach(
-            terminalNodeText -> {
-              if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          if (Strings.CI.equals("IDENTITY", terminalNodeText)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.IDENTITY, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
         .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
         .streamChildrenByClass(PostgreSQLParser.ConstraintattrContext.class)
         .streamTerminalNodeString()
         .map(StringUtils::upperCase)
-        .forEach(
-            terminalNodeText -> {
-              if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              } else if (Strings.CI.equals("DEFERRED", terminalNodeText)) {
-                for (final var currentField : currentFieldList) {
-                  currentField.put(Field.DEFERRED, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              } else {
-                for (final var currentField : currentFieldList) {
-                  if (!Strings.CI.equals("IMMEDIATE", terminalNodeText)
-                      && !Strings.CI.equals("INITIALLY", terminalNodeText)) {
-                    currentField.put(
-                        StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                        NotNullSet.getInstance(Boolean.TRUE));
-                  }
-                }
+        .forEach(terminalNodeText -> {
+          if (Strings.CI.equals("DEFERRABLE", terminalNodeText)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.DEFERRABLE, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          } else if (Strings.CI.equals("DEFERRED", terminalNodeText)) {
+            for (final var currentField : currentFieldList) {
+              currentField.put(Field.DEFERRED, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          } else {
+            for (final var currentField : currentFieldList) {
+              if (!Strings.CI.equals("IMMEDIATE", terminalNodeText)
+                  && !Strings.CI.equals("INITIALLY", terminalNodeText)) {
+                currentField.put(
+                    StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                    NotNullSet.getInstance(Boolean.TRUE));
               }
-            });
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
         .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
         .streamTerminalNodeString()
         .map(StringUtils::upperCase)
-        .forEach(
-            terminalNodeText -> {
-              if (Strings.CI.equals("COLLATE", terminalNodeText)) {
-                ParseTreeStream.parseTreeStream(ctx)
-                    .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
-                    .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
-                    .streamChildrenByClass(PostgreSQLParser.Any_nameContext.class)
-                    .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                    .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                    .streamTerminalNodeString()
-                    .forEach(
-                        collateNodeText -> {
-                          for (final var currentField : currentFieldList) {
-                            currentField.put(
-                                Field.COLLATION_NAME, NotNullSet.getInstance(collateNodeText));
-                          }
-                        });
-              }
-            });
+        .forEach(terminalNodeText -> {
+          if (Strings.CI.equals("COLLATE", terminalNodeText)) {
+            ParseTreeStream.parseTreeStream(ctx)
+                .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
+                .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
+                .streamChildrenByClass(PostgreSQLParser.Any_nameContext.class)
+                .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                .streamTerminalNodeString()
+                .forEach(collateNodeText -> {
+                  for (final var currentField : currentFieldList) {
+                    currentField.put(Field.COLLATION_NAME, NotNullSet.getInstance(collateNodeText));
+                  }
+                });
+          }
+        });
     {
       final var terminalNodeText =
           ParseTreeStream.parseTreeStream(ctx)
@@ -382,68 +368,65 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.CharacterContext.class)
         .streamChildrenByClass(PostgreSQLParser.Character_cContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.CharacterContext.class)
         .streamChildrenByClass(PostgreSQLParser.IconstContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.PRECISION)) {
-                  if (terminalNodeText.contains(".")) {
-                    final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else if (terminalNodeText.contains(",")) {
-                    final var terminalNodeSplit = terminalNodeText.split(",", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-                  }
-                }
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.PRECISION)) {
+              if (terminalNodeText.contains(".")) {
+                final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else if (terminalNodeText.contains(",")) {
+                final var terminalNodeSplit = terminalNodeText.split(",", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
               }
-            });
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.ConstdatetimeContext.class)
         .streamChildrenByClass(PostgreSQLParser.IconstContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.PRECISION)) {
-                  if (terminalNodeText.contains(".")) {
-                    final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else if (terminalNodeText.contains(",")) {
-                    final var terminalNodeSplit = terminalNodeText.split(",", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-                  }
-                }
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.PRECISION)) {
+              if (terminalNodeText.contains(".")) {
+                final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else if (terminalNodeText.contains(",")) {
+                final var terminalNodeSplit = terminalNodeText.split(",", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
               }
-            });
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -451,20 +434,19 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.Type_function_nameContext.class)
         .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -472,20 +454,19 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.Type_function_nameContext.class)
         .streamChildrenByClass(PostgreSQLParser.Unreserved_keywordContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -493,20 +474,19 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.Type_function_nameContext.class)
         .streamChildrenByClass(PostgreSQLParser.Type_func_name_keywordContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.FIELD_TYPE)) {
-                  currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.FIELD_TYPE)) {
+              currentField.put(Field.FIELD_TYPE, NotNullSet.getInstance(terminalNodeText));
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.FIELD_TYPE).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -515,74 +495,70 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .filter(PostgreSQLParser.Expr_listContext.class::isInstance)
         .map((Function<? super ParseTree, ? extends String>) ParseTree::getText)
         .filter(StringUtils::isNoneBlank)
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (!currentField.containsKey(Field.PRECISION)) {
-                  if (terminalNodeText.contains(".")) {
-                    final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else if (terminalNodeText.contains(",")) {
-                    final var terminalNodeSplit = terminalNodeText.split(",", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
-                  }
-                } else if (!Strings.CI.equals(
-                        currentField.get(Field.PRECISION).toString(), terminalNodeText)
-                    && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
-                  currentField.put(
-                      StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
-                      NotNullSet.getInstance(Boolean.TRUE));
-                }
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (!currentField.containsKey(Field.PRECISION)) {
+              if (terminalNodeText.contains(".")) {
+                final var terminalNodeSplit = terminalNodeText.split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else if (terminalNodeText.contains(",")) {
+                final var terminalNodeSplit = terminalNodeText.split(",", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeText));
               }
-            });
+            } else if (!Strings.CI.equals(
+                    currentField.get(Field.PRECISION).toString(), terminalNodeText)
+                && !Strings.CI.equals(Field.PRECISION, terminalNodeText)) {
+              currentField.put(
+                  StringUtils.lowerCase(terminalNodeText, Locale.getDefault()),
+                  NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.NumericContext.class)
         .streamChildrenByClass(PostgreSQLParser.Opt_type_modifiersContext.class)
         .filter(PostgreSQLParser.Expr_listContext.class::isInstance)
-        .forEach(
-            expr_listContext -> {
-              final var values = expr_listContext.getText().split(",", 0);
-              for (final var currentField : currentFieldList) {
-                if (values.length == 2) {
-                  if (!currentField.containsKey(Field.PRECISION)) {
-                    if (values[0].contains(".")) {
-                      final var terminalNodeSplit = values[0].split("\\.", 0);
-                      currentField.put(
-                          Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                      currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                    } else if (values[0].contains(",")) {
-                      final var terminalNodeSplit = values[0].split(",", 0);
-                      currentField.put(
-                          Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                      currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                    } else {
-                      currentField.put(Field.PRECISION, NotNullSet.getInstance(values[0]));
-                    }
-                  }
-                  if (!currentField.containsKey(Field.SCALE)) {
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(values[1]));
-                  }
-                } else if (values.length == 1 && !currentField.containsKey(Field.PRECISION)) {
-                  if (values[0].contains(".")) {
-                    final var terminalNodeSplit = values[0].split("\\.", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else if (values[0].contains(",")) {
-                    final var terminalNodeSplit = values[0].split(",", 0);
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
-                    currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
-                  } else {
-                    currentField.put(Field.PRECISION, NotNullSet.getInstance(values[0]));
-                  }
+        .forEach(expr_listContext -> {
+          final var values = expr_listContext.getText().split(",", 0);
+          for (final var currentField : currentFieldList) {
+            if (values.length == 2) {
+              if (!currentField.containsKey(Field.PRECISION)) {
+                if (values[0].contains(".")) {
+                  final var terminalNodeSplit = values[0].split("\\.", 0);
+                  currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                  currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+                } else if (values[0].contains(",")) {
+                  final var terminalNodeSplit = values[0].split(",", 0);
+                  currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                  currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+                } else {
+                  currentField.put(Field.PRECISION, NotNullSet.getInstance(values[0]));
                 }
               }
-            });
+              if (!currentField.containsKey(Field.SCALE)) {
+                currentField.put(Field.SCALE, NotNullSet.getInstance(values[1]));
+              }
+            } else if (values.length == 1 && !currentField.containsKey(Field.PRECISION)) {
+              if (values[0].contains(".")) {
+                final var terminalNodeSplit = values[0].split("\\.", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else if (values[0].contains(",")) {
+                final var terminalNodeSplit = values[0].split(",", 0);
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(terminalNodeSplit[0]));
+                currentField.put(Field.SCALE, NotNullSet.getInstance(terminalNodeSplit[1]));
+              } else {
+                currentField.put(Field.PRECISION, NotNullSet.getInstance(values[0]));
+              }
+            }
+          }
+        });
     final var fieldTypeText =
         " "
             + ParseTreeStream.parseTreeStream(ctx)
@@ -643,12 +619,11 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .filter(typenameText -> typenameText.contains("["))
         .map(typenameText -> typenameText.substring(typenameText.indexOf('[')))
         .filter(StringUtils::isNoneBlank)
-        .forEach(
-            typenameText -> {
-              for (final var currentField : currentFieldList) {
-                currentField.put(Field.ARRAY, NotNullSet.getInstance(typenameText));
-              }
-            });
+        .forEach(typenameText -> {
+          for (final var currentField : currentFieldList) {
+            currentField.put(Field.ARRAY, NotNullSet.getInstance(typenameText));
+          }
+        });
     ParseTreeStream.parseTreeStream(ctx)
         .streamChildrenByClass(PostgreSQLParser.TypenameContext.class)
         .streamChildrenByClass(PostgreSQLParser.SimpletypenameContext.class)
@@ -656,14 +631,13 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
         .streamChildrenByClass(PostgreSQLParser.Character_cContext.class)
         .streamChildrenByClass(PostgreSQLParser.Opt_varyingContext.class)
         .streamTerminalNodeString()
-        .forEach(
-            terminalNodeText -> {
-              for (final var currentField : currentFieldList) {
-                if (Strings.CI.equals("VARYING", terminalNodeText)) {
-                  currentField.put(Field.VARYING, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              }
-            });
+        .forEach(terminalNodeText -> {
+          for (final var currentField : currentFieldList) {
+            if (Strings.CI.equals("VARYING", terminalNodeText)) {
+              currentField.put(Field.VARYING, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          }
+        });
 
     final var timezoneText =
         ParseTreeStream.parseTreeStream(ctx)
@@ -713,35 +687,33 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
           .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
           .map(identifierContext -> ParseTreeHelper.trimToken(identifierContext.getText()))
           .filter(StringUtils::isNoneBlank)
-          .forEach(
-              identifierText -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("column") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("column");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(identifierText);
+          .forEach(identifierText -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("column") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("column");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(identifierText);
 
-                currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+          });
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
           .streamChildrenByClass(PostgreSQLParser.Unreserved_keywordContext.class)
           .map(identifierContext -> ParseTreeHelper.trimToken(identifierContext.getText()))
           .filter(StringUtils::isNoneBlank)
-          .forEach(
-              identifierText -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("column") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("column");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(identifierText);
+          .forEach(identifierText -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("column") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("column");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(identifierText);
 
-                currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+          });
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
           .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
@@ -750,11 +722,10 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
           .map(qualifiedNameContext -> ParseTreeHelper.trimToken(qualifiedNameContext.getText()))
           .filter(StringUtils::isNoneBlank)
           .filter(Predicate.not("null"::equalsIgnoreCase))
-          .forEach(
-              identifierText ->
-                  currentRelationship.put(
-                      "foreignTable",
-                      NotNullSet.getInstance(ParseTreeHelper.trimToken(identifierText))));
+          .forEach(identifierText ->
+              currentRelationship.put(
+                  "foreignTable",
+                  NotNullSet.getInstance(ParseTreeHelper.trimToken(identifierText))));
       ParseTreeStream.parseTreeStream(ctx)
           .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
           .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
@@ -766,18 +737,17 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
           .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
           .map(simpleIdContext -> ParseTreeHelper.trimToken(simpleIdContext.getText()))
           .filter(StringUtils::isNoneBlank)
-          .forEach(
-              simpleIdContext -> {
-                final Set<String> inheritsList;
-                if (currentRelationship.get("foreignColumn") instanceof Set) {
-                  inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                } else {
-                  inheritsList = new LinkedHashSet<>();
-                }
-                inheritsList.add(simpleIdContext);
+          .forEach(simpleIdContext -> {
+            final Set<String> inheritsList;
+            if (currentRelationship.get("foreignColumn") instanceof Set) {
+              inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+            } else {
+              inheritsList = new LinkedHashSet<>();
+            }
+            inheritsList.add(simpleIdContext);
 
-                currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-              });
+            currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+          });
     }
   }
 
@@ -843,20 +813,19 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
           .streamChildrenByClass(PostgreSQLParser.OpttempContext.class)
           .streamTerminalNodeString()
           .map(StringUtils::upperCase)
-          .forEach(
-              terminalNodeText -> {
-                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
-                    || Strings.CI.equals("TEMP", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
-                }
-                if (Strings.CI.equals("UNLOGGED", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.UNLOGGED, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              });
+          .forEach(terminalNodeText -> {
+            if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                || Strings.CI.equals("TEMP", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
+            }
+            if (Strings.CI.equals("UNLOGGED", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.UNLOGGED, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          });
 
       currentTable
           .getAttributes()
@@ -928,20 +897,19 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
           .streamChildrenByClass(PostgreSQLParser.OpttempContext.class)
           .streamTerminalNodeString()
           .map(StringUtils::upperCase)
-          .forEach(
-              terminalNodeText -> {
-                if (Strings.CI.equals("TEMPORARY", terminalNodeText)
-                    || Strings.CI.equals("TEMP", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
-                }
-                if (Strings.CI.equals("UNLOGGED", terminalNodeText)) {
-                  currentTable
-                      .getAttributes()
-                      .put(SqlContextImpl.UNLOGGED, NotNullSet.getInstance(Boolean.TRUE));
-                }
-              });
+          .forEach(terminalNodeText -> {
+            if (Strings.CI.equals("TEMPORARY", terminalNodeText)
+                || Strings.CI.equals("TEMP", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.TEMP, NotNullSet.getInstance(Boolean.TRUE));
+            }
+            if (Strings.CI.equals("UNLOGGED", terminalNodeText)) {
+              currentTable
+                  .getAttributes()
+                  .put(SqlContextImpl.UNLOGGED, NotNullSet.getInstance(Boolean.TRUE));
+            }
+          });
 
       this.getRootContext().addObject(currentTable);
     }
@@ -1110,10 +1078,8 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .map(qualifiedNameContext -> ParseTreeHelper.trimToken(qualifiedNameContext.getText()))
             .filter(StringUtils::isNoneBlank)
             .filter(Predicate.not("null"::equalsIgnoreCase))
-            .forEach(
-                terminalNodeText ->
-                    currentRelationship.put(
-                        "foreignTable", NotNullSet.getInstance(terminalNodeText)));
+            .forEach(terminalNodeText ->
+                currentRelationship.put("foreignTable", NotNullSet.getInstance(terminalNodeText)));
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
             .streamChildrenByClass(PostgreSQLParser.Opt_column_listContext.class)
@@ -1122,18 +1088,17 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .streamTerminalNodeString()
-            .forEach(
-                terminalNodeText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("foreignColumn") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(terminalNodeText);
+            .forEach(terminalNodeText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("foreignColumn") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("foreignColumn");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(terminalNodeText);
 
-                  currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("foreignColumn", NotNullSet.getInstance(inheritsList));
+            });
         ParseTreeStream.parseTreeStream(ctx)
             .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
             .streamChildrenByClass(PostgreSQLParser.ColumnlistContext.class)
@@ -1142,18 +1107,17 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
             .map(identifierContext -> ParseTreeHelper.trimToken(identifierContext.getText()))
             .filter(StringUtils::isNoneBlank)
-            .forEach(
-                identifierText -> {
-                  final Set<String> inheritsList;
-                  if (currentRelationship.get("column") instanceof Set) {
-                    inheritsList = (Set<String>) currentRelationship.get("column");
-                  } else {
-                    inheritsList = new LinkedHashSet<>();
-                  }
-                  inheritsList.add(identifierText);
+            .forEach(identifierText -> {
+              final Set<String> inheritsList;
+              if (currentRelationship.get("column") instanceof Set) {
+                inheritsList = (Set<String>) currentRelationship.get("column");
+              } else {
+                inheritsList = new LinkedHashSet<>();
+              }
+              inheritsList.add(identifierText);
 
-                  currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
-                });
+              currentRelationship.put("column", NotNullSet.getInstance(inheritsList));
+            });
       }
     }
   }
@@ -1357,37 +1321,35 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
             .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
             .streamChildrenByClass(PostgreSQLParser.ColconstraintelemContext.class)
             .filter(TerminalNode.class::isInstance)
-            .map(
-                foreignTerminalNode -> {
-                  final List<ParseTree> returnValue = new ArrayList<>();
-                  if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                    returnValue.addAll(
-                        ParseTreeStream.parseTreeStream(ctx)
-                            .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
-                            .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
-                            .streamChildrenByClass(PostgreSQLParser.NameContext.class)
-                            .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                            .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                            .filter(TerminalNode.class::isInstance)
-                            .toList());
-                    if (returnValue.isEmpty()) {
-                      returnValue.addAll(
-                          ParseTreeStream.parseTreeStream(ctx)
-                              .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                              .filter(TerminalNode.class::isInstance)
-                              .toList());
-                      returnValue.addAll(
-                          ParseTreeStream.parseTreeStream(ctx)
-                              .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                              .streamChildrenByClass(
-                                  PostgreSQLParser.Unreserved_keywordContext.class)
-                              .filter(TerminalNode.class::isInstance)
-                              .toList());
-                    }
-                  }
-                  return returnValue;
-                })
+            .map(foreignTerminalNode -> {
+              final List<ParseTree> returnValue = new ArrayList<>();
+              if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                returnValue.addAll(
+                    ParseTreeStream.parseTreeStream(ctx)
+                        .streamChildrenByClass(PostgreSQLParser.ColquallistContext.class)
+                        .streamChildrenByClass(PostgreSQLParser.ColconstraintContext.class)
+                        .streamChildrenByClass(PostgreSQLParser.NameContext.class)
+                        .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                        .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                        .filter(TerminalNode.class::isInstance)
+                        .toList());
+                if (returnValue.isEmpty()) {
+                  returnValue.addAll(
+                      ParseTreeStream.parseTreeStream(ctx)
+                          .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                          .filter(TerminalNode.class::isInstance)
+                          .toList());
+                  returnValue.addAll(
+                      ParseTreeStream.parseTreeStream(ctx)
+                          .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.Unreserved_keywordContext.class)
+                          .filter(TerminalNode.class::isInstance)
+                          .toList());
+                }
+              }
+              return returnValue;
+            })
             .flatMap(List::stream)
             .toList());
     if (terminalNode.isEmpty()) {
@@ -1395,31 +1357,30 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
           ParseTreeStream.parseTreeStream(ctx)
               .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
               .filter(TerminalNode.class::isInstance)
-              .map(
-                  foreignTerminalNode -> {
-                    final List<ParseTree> returnValue = new ArrayList<>();
-                    if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                      returnValue.addAll(
-                          ParseTreeStream.parseTreeStream(ctx)
-                              .streamChildrenByClass(PostgreSQLParser.NameContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                              .filter(TerminalNode.class::isInstance)
-                              .toList());
-                      if (returnValue.isEmpty()) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(ctx)
-                                .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColumnlistContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColumnElemContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .toList());
-                      }
-                    }
-                    return returnValue;
-                  })
+              .map(foreignTerminalNode -> {
+                final List<ParseTree> returnValue = new ArrayList<>();
+                if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                  returnValue.addAll(
+                      ParseTreeStream.parseTreeStream(ctx)
+                          .streamChildrenByClass(PostgreSQLParser.NameContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                          .filter(TerminalNode.class::isInstance)
+                          .toList());
+                  if (returnValue.isEmpty()) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(ctx)
+                            .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColumnlistContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColumnElemContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                  }
+                }
+                return returnValue;
+              })
               .flatMap(List::stream)
               .toList());
     }
@@ -1431,40 +1392,36 @@ public class PostgreSQLParserListenerImpl extends PostgreSQLParserListenerBase {
               .streamChildrenByClass(PostgreSQLParser.TableconstraintContext.class)
               .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
               .filter(TerminalNode.class::isInstance)
-              .map(
-                  foreignTerminalNode -> {
-                    final List<ParseTree> returnValue = new ArrayList<>();
-                    if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
-                      returnValue.addAll(
-                          ParseTreeStream.parseTreeStream(ctx)
-                              .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdsContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.TableconstraintContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.NameContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                              .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                              .filter(TerminalNode.class::isInstance)
-                              .toList());
-                      if (returnValue.isEmpty()) {
-                        returnValue.addAll(
-                            ParseTreeStream.parseTreeStream(ctx)
-                                .streamChildrenByClass(
-                                    PostgreSQLParser.Alter_table_cmdsContext.class)
-                                .streamChildrenByClass(
-                                    PostgreSQLParser.Alter_table_cmdContext.class)
-                                .streamChildrenByClass(
-                                    PostgreSQLParser.TableconstraintContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColumnlistContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColumnElemContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
-                                .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
-                                .filter(TerminalNode.class::isInstance)
-                                .toList());
-                      }
-                    }
-                    return returnValue;
-                  })
+              .map(foreignTerminalNode -> {
+                final List<ParseTree> returnValue = new ArrayList<>();
+                if (Strings.CI.equalsAny("REFERENCES", foreignTerminalNode.getText())) {
+                  returnValue.addAll(
+                      ParseTreeStream.parseTreeStream(ctx)
+                          .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdsContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.TableconstraintContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.NameContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                          .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                          .filter(TerminalNode.class::isInstance)
+                          .toList());
+                  if (returnValue.isEmpty()) {
+                    returnValue.addAll(
+                        ParseTreeStream.parseTreeStream(ctx)
+                            .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdsContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.Alter_table_cmdContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.TableconstraintContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ConstraintelemContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColumnlistContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColumnElemContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.ColidContext.class)
+                            .streamChildrenByClass(PostgreSQLParser.IdentifierContext.class)
+                            .filter(TerminalNode.class::isInstance)
+                            .toList());
+                  }
+                }
+                return returnValue;
+              })
               .flatMap(List::stream)
               .toList());
     }

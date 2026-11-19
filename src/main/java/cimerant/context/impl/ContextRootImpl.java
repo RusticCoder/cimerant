@@ -13,9 +13,6 @@ import cimerant.context.java.util.impl.MapContextImpl;
 import cimerant.context.java.util.impl.MapEntryContextImpl;
 import cimerant.context.java.util.impl.SetContextImpl;
 import cimerant.logger.CimerantLogger;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.StreamWriteConstraints;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Serial;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,6 +31,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.CaseUtils;
 import org.apache.velocity.VelocityContext;
 import org.atteo.evo.inflector.English;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.StreamWriteConstraints;
+import tools.jackson.core.json.JsonFactory;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * Class describing the template data context. This set of routines is used by the template to set
@@ -1185,13 +1186,13 @@ public class ContextRootImpl<E> extends VelocityContext implements ContextRoot<E
   public String toJson() {
     try {
       final var jsonFactory =
-          new ObjectMapper()
-              .getFactory()
-              .setStreamWriteConstraints(
-                  StreamWriteConstraints.builder().maxNestingDepth(5000).build());
+          JsonFactory.builder()
+              .streamWriteConstraints(
+                  StreamWriteConstraints.builder().maxNestingDepth(5000).build())
+              .build();
       final var ow = new ObjectMapper(jsonFactory).writer().withDefaultPrettyPrinter();
       return ow.writeValueAsString(this);
-    } catch (final JsonProcessingException e) {
+    } catch (final JacksonException e) {
       return super.toString() + System.lineSeparator() + e.getMessage();
     }
   }
